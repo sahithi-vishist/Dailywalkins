@@ -1,0 +1,872 @@
+
+<app-navbar-r></app-navbar-r>
+<div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+
+        <div class="container">
+            <div class="col-md-12" style="padding-left:0px; padding-right:0px;">
+
+                <div class="col-md-3">
+
+                    <div id="tab-container">
+                        <ul class="admin-list-group" id="main-menu">
+                            <li class="quick active bold"><a>Details</a></li>
+                            <li class="liclass" style="color: White"><a routerLink="/WalkinCentral/CreateDrive">Create
+                                    Drive</a></li>
+                            <li class="liclass" style="color: White"><a routerLink="/recruitment/walkincentral">Drive
+                                    details</a></li>
+                            <li class="liclass" style="color: White"><a
+                                    routerLink="/WalkinCentral/UploadProfiles">Upload Profile(s)</a></li>
+                            <li class="liclass " style="color: White"><a
+                                    routerLink="/WalkinCentral/CandidateDetails">Candidate Details</a></li>
+                            <li class="liclass" style="color: White"><a
+                                    routerLink="/WalkinCentral/CoOrdinatorsManagement">Co-Ordinators Management</a></li>
+                            <li class="liclass" style="color: White"><a
+                                    routerLink="/WalkinCentral/PanelManagement">Panel Management</a></li>
+                            <li class="liclass" style="color: White"><a
+                                    routerLink="/WalkinCentral/ShortlistedCandidates">Shortlisted Candidates</a></li>
+                            <li class="liclass" style="color: White"><a
+                                    routerLink="/WalkinCentral/EvaluationForms">Evaluation Forms</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-9" style="padding-right:0px;">
+
+
+                    <form [formGroup]="driveForm" (ngSubmit)="create()"><input name="__RequestVerificationToken"
+                            type="hidden"
+                            value="u9xbiJWufBznG1dLrgWYL7slJDtI7v9JUwVVaHPpV13Akx4QE7He12EZP0ncBWN_itL5MytLEV0KPeFGWJL2NZPvQ1MnXPq_JIRmXNib9F81" />
+                        <div class="wrapper">
+                            <div class="wrapper-container"
+                                style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+
+                                <section class="inner-page">
+                                    <div id="register" class="animate form">
+                                        <div class="form-horizontal ">
+                                            <div class="row">
+                                                <div class="wrapper-1" style="margin-left: 3px !important;">
+                                                    <h1> Create Drive </h1>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-6" style="margin-top:18px;">Create a new
+                                                            drive from existing template : </label>
+
+                                                        <label class="col-sm-2 checkbox-label checkbox-alg-none"
+                                                            style="position:relative;top:0px !important;">
+                                                            <input type="checkbox" class="check" id="chkNone"
+                                                                 formControlName="checkIn" />
+                                                            .
+                                                        </label>
+                                                    </div>
+                                                    <div *ngIf="driveForm.controls.checkIn.value">
+                                                    <div class="form-group" id="divDrives" >
+                                                        <label class="col-sm-3">Select Drive <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <select
+                                                                class="form-control form-control-width-1 input-width"
+                                                                data-val="true"
+                                                                id="ddlDrive" (change)="selectDrive($event)"formControlname="SelectDrive" >
+                                                                <option value="">--Select Drive--</option>
+                                                                <option *ngFor="let drive of drives" value="{{drive.createDriveId}}">{{drive.driveName}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2  col-sm-3">Drive name <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtJobTitle"
+                                                                formControlName="drivename" placeholder="java"
+                                                                type="text" value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['drivename'].touched && driveForm.controls['drivename'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.drivename.errors.required">
+                                                                    Please specify drivename</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3">Experience <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8" style="white-space:nowrap">
+                                                            <div class="form-inline">
+                                                                <select class="form-control" data-val="true" id="minExp"
+                                                                    formControlName="ExpMin"
+                                                                    (change)="selectExpmin($event)">
+                                                                    <option value="">--Select Years--</option>
+
+                                                                    <option *ngFor="let exp of experience"
+                                                                        value="{{exp.experienceId}}">{{exp.expValue}}
+                                                                    </option>
+
+                                                                </select>
+
+                                                                Year(s)
+
+                                                                &nbsp; to
+                                                                <select class="form-control" data-val="true" id="maxExp"
+                                                                    (change)="selectExpmax($event)"
+                                                                    formControlName="ExpMax">
+                                                                    <option value="">--Select Years--</option>
+                                                                    <option *ngFor="let expe of experience"
+                                                                        value="{{expe.experienceId}}">{{expe.expValue}}
+                                                                    </option>
+                                                                </select>
+                                                                Year(s)
+                                                                <br />
+                                                                <mat-hint
+                                                                    *ngIf="driveForm.controls['ExpMin'].touched && driveForm.controls['ExpMin'].invalid">
+                                                                    <mat-error
+                                                                        *ngIf="driveForm.controls.ExpMin.errors.required">
+                                                                        Please specify MinimumExperience</mat-error>
+                                                                </mat-hint>
+                                                                <mat-hint
+                                                                    *ngIf="driveForm.controls['ExpMax'].touched && driveForm.controls['ExpMax'].invalid">
+                                                                    <mat-error
+                                                                        *ngIf="driveForm.controls.ExpMax.errors.required">
+                                                                        Please specify MaximumExperience</mat-error>
+                                                                </mat-hint>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2  col-sm-3">Walkin Date <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtWalkinDate"
+                                                                formControlName="WalkinDate" type="text" value="" />
+                                                             <mat-hint *ngIf="driveForm.controls['WalkinDate'].touched && driveForm.controls['WalkinDate'].invalid">
+                                            <mat-error *ngIf="driveForm.controls.WalkinDate.errors.required">Please specify WalkinDate</mat-error>
+                                        </mat-hint> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3" style="white-space:nowrap">Walkin Time
+                                                            Slots <span style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <select
+                                                                class="listbox form-control form-control-width-1 input-width"
+                                                                data-val="true" (change)="selectTimeslots($event)"
+                                                                id="WalkinTimeSlots" formControlName="WalkinTimeSlots">
+                                                                <option value="" disabled selected>Select Timeslot
+                                                                </option>
+                                                                <option *ngFor="let timeslot of walkintimeslots"
+                                                                    value="{{timeslot.timeSlotsId}}">
+                                                                    {{timeslot.hoursText}}</option>
+                                                            </select><br />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['WalkinTimeSlots'].touched && driveForm.controls['WalkinTimeSlots'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.WalkinTimeSlots.errors.required">
+                                                                    Please specify WalkinTimeslot</mat-error>
+                                                            </mat-hint>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-5 col-sm-3"
+                                                            style="white-space:nowrap">Walkin Location <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8" style="white-space:nowrap">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtWalkinLocation"
+                                                                formControlName="Location" placeholder="Hyd" type="text"
+                                                                value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['Location'].touched && driveForm.controls['Location'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.Location.errors.required">
+                                                                    Please specify Location</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-5 col-sm-3">Locality <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" Locality id="txtWalkinLocality"
+                                                                formControlName="Locality" placeholder="Hyd" type="text"
+                                                                value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['Locality'].touched && driveForm.controls['Locality'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.Locality.errors.required">
+                                                                    Please specify Locality</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3">Industry <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input data-val="true" id="InId" name="InId" type="hidden"
+                                                                value="0" />
+                                                            
+                                                            <select
+                                                                class="form-control form-control-width-1 input-width"
+                                                                (change)="selectIndustry($event)"
+                                                                formCotrolName="Industry" id="IndustryName">
+                                                                <option value="" disabled selected>Select Industry
+                                                                </option>
+                                                                <option *ngFor="let ind of industries"
+                                                                    value="{{ind.industryId}}">{{ind.industryType}}
+                                                                </option>
+
+                                                            </select>
+                                                            <mat-hint *ngIf="driveForm.controls['Industry'].touched && driveForm.controls['Industry'].invalid">
+        <mat-error *ngIf="driveForm.controls.Industry.errors.required">Please specify Industry</mat-error>
+    </mat-hint>  
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3">Role <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input data-val="true" id="Role" name="Role" type="hidden"
+                                                                value="" />
+                                                            <input data-val="true" id="RId" name="RId" type="hidden"
+                                                                value="0" />
+                                                            <select
+                                                                class="form-control form-control-width-1 input-width"
+                                                                id="RoleName" formControlName="Role">
+                                                                <option value="">--Select Role--</option>
+                                                            </select>
+                                                             <mat-hint *ngIf="driveForm.controls['Role'].touched && driveForm.controls['Role'].invalid">
+        <mat-error *ngIf="driveForm.controls.Role.errors.required">Please specify Role</mat-error>
+    </mat-hint>  
+
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3">Job Description <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtJobDescription"
+                                                                formControlName="JobDescription" placeholder="java,c++"
+                                                                type="text" value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['JobDescription'].touched && driveForm.controls['JobDescription'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.JobDescription.errors.required">
+                                                                    Please specify JobDescription</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3">Key Skills <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtKeySkills"
+                                                                formControlName="KeySkills" placeholder="java,c++"
+                                                                type="text" value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['KeySkills'].touched && driveForm.controls['KeySkills'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.KeySkills.errors.required">
+                                                                    Please specify KeySkills</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3">Drive Co-Ordinators <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="form-inline">
+                                                                <input
+                                                                    class="form-control form-control-width input-width"
+                                                                    data-val="true" id="txtCoordinators"
+                                                                    formControlName="CoOrdinators"
+                                                                    type="text" value="" />
+                                                                <a [routerLink]="" class="btn-primary btn-sm"
+                                                                    style="margin-top:-67px;"
+                                                                    (click)="displayCoordinators()">CoOrdinators</a>
+                                                            </div>
+                                                             <mat-hint *ngIf="driveForm.controls['CoOrdinators'].touched && driveForm.controls['CoOrdinators'].invalid">
+                                                    <mat-error *ngIf="driveForm.controls.CoOrdinators.errors.required">Please specify CoOrdinators</mat-error>
+                                                </mat-hint>  
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3">Designation </label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                id="txtDesignation" formControlName="Designation"
+                                                                placeholder="UI" type="text" value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['Designation'].touched && driveForm.controls['Designation'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.Designation.errors.required">
+                                                                    Please specify Designation</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3">Notice Period <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <select
+                                                                class="form-control form-control-width-1 input-width"
+                                                                data-val="true" (change)="selectNotice($event)"
+                                                                id="NoticePeriod" formControlName="NoticePeriod">
+                                                                <option value="">--Select NoticePeriod--</option>
+
+                                                                <option value="" disabled selected>Select Industry
+                                                                </option>
+                                                                <option *ngFor="let period of noticeperiod"
+                                                                    value="{{period.noticePeriodId}}">
+                                                                    {{period.noticeText}}</option>
+
+                                                            </select>
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['NoticePeriod'].touched && driveForm.controls['NoticePeriod'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.NoticePeriod.errors.required">
+                                                                    Please specify NoticePeriod</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3">Job Type <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <select
+                                                                class="form-control form-control-width-1 input-width"
+                                                                data-val="true" (change)="selectJobtype($event)"
+                                                                id="JTId" formControlName="JobType">
+                                                                <option value="">--Select type--</option>
+
+                                                                <option *ngFor="let job of jobtype"
+                                                                    value="{{job.jobTypeId}}">{{job.jobType}}</option>
+                                                            </select>
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['JobType'].touched && driveForm.controls['JobType'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.JobType.errors.required">
+                                                                    Please specify JobType</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3">Qualification <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <select
+                                                                class="form-control form-control-width-1 input-width"
+                                                                id="ddlQualification"
+                                                                (change)="selectQualification($event)"
+                                                                formControlName="Qualification" placeholder="mca">
+                                                                <option value="">--Select Qualification--</option>
+                                                                <option *ngFor="let qual of qualifications"
+                                                                    value="{{qual.qualificationId}}">
+                                                                    {{qual.qualification}}</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3" style="white-space:nowrap">Annual Salary
+                                                            Offered <span style="color:red;"></span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8" style="white-space:nowrap">
+                                                            <div class="form-inline">
+                                                                <input data-val="true" id="MinSal" name="MinSal"
+                                                                    type="hidden" value="" />
+
+                                                                <select class="form-control" id="MinSalary"
+                                                                    (change)="selectSalmin($event)"
+                                                                    formControlName="SalMin">
+                                                                    <option value="">--Select type--</option>
+                                                                    <option *ngFor="let sal of salary"
+                                                                        value="{{sal.salaryId}}">{{sal.salValue}}
+                                                                    </option>
+
+                                                                </select>
+                                                                Lakh(s)
+                                                                &nbsp; to
+                                                                <select class="form-control" data-val="true" id="maxSal"
+                                                                    (change)="selectSalmax($event)"
+                                                                    formControlName="SalMax">
+                                                                    <option value="">--Select type--</option>
+                                                                    <option *ngFor="let sals of salary"
+                                                                        value="{{sals.salaryId}}">{{sals.salValue}}
+                                                                    </option>
+                                                                </select>
+                                                                Lakh(s)
+                                                                <br />
+                                                                <mat-hint
+                                                                    *ngIf="driveForm.controls['SalMin'].touched && driveForm.controls['SalMin'].invalid">
+                                                                    <mat-error
+                                                                        *ngIf="driveForm.controls.SalMin.errors.required">
+                                                                        Please specify MinimumSalary</mat-error>
+                                                                </mat-hint>
+                                                                <mat-hint
+                                                                    *ngIf="driveForm.controls['SalMax'].touched && driveForm.controls['SalMax'].invalid">
+                                                                    <mat-error
+                                                                        *ngIf="driveForm.controls.SalMax.errors.required">
+                                                                        Please specify MaximumSalary</mat-error>
+                                                                </mat-hint>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3"
+                                                            style="white-space:nowrap">Roles & Responsibilties <span
+                                                                style="color:red;"></span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                id="txtRolesResponsibilties"
+                                                                formControlName="RolesResponsibilties" placeholder="ui"
+                                                                type="text" value="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3"
+                                                            style="white-space:nowrap">Company Name <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtCompanyName"
+                                                                formControlName="CompanyName" placeholder="vishist"
+                                                                type="text" value=""/>
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['CompanyName'].touched && driveForm.controls['CompanyName'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.CompanyName.errors.required">
+                                                                    Please specify CompanyName</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3">End Client <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtEndClient"
+                                                                formControlName="EndClient" placeholder="vishist"
+                                                                type="text" value="{{edClient}}" />
+
+                                                            <input type="checkbox" style="top: 3px;" class="check"
+                                                                id="chkClient" value="none" formControlName="checkEndClient"
+                                                                (click)="changeClientName()" /> Same as company
+                                                            name<br />
+                                                        
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['EndClient'].touched && driveForm.controls['EndClient'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.EndClient.errors.required">
+                                                                    Please specify EndClient</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-5 col-sm-3"
+                                                            style="white-space:nowrap">Client Location <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8" style="white-space:nowrap">
+                                                            <input class="form-control form-control-width input-width"
+                                                                id="txtLocation" formControlName="CLocation" type="text"
+                                                                value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['CLocation'].touched && driveForm.controls['CLocation'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.CLocation.errors.required">
+                                                                    Please specify EndClient</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-5 col-sm-3">Client Locality <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                id="txtLocality" formControlName="CLocality" type="text"
+                                                                value="" />
+                                                            <span class="field-validation-valid text-danger"
+                                                                data-valmsg-for="Locality"
+                                                                data-valmsg-replace="true"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3"
+                                                            style="white-space:nowrap">Company Profile <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtCompanyProfile"
+                                                                formControlName="CompanyProfile" placeholder="vishist"
+                                                                type="text" value="" />
+
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['CompanyProfile'].touched && driveForm.controls['CompanyProfile'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.CompanyProfile.errors.required">
+                                                                    Please specify CompanyProfile</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-1 col-sm-3">Contact Email <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtEmail" formControlName="Email"
+                                                                placeholder="babu@gmail.com" type="text" value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['Email'].touched && driveForm.controls['Email'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.Email.errors.required">
+                                                                    Please specify Email</mat-error>
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.Email.errors.email">Enter
+                                                                    valid email address</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3">Contact Person <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                data-val="true" id="txtContactPerson"
+                                                                formControlName="ContactPerson" placeholder="rambabu"
+                                                                type="text" value="" />
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['ContactPerson'].touched && driveForm.controls['ContactPerson'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.ContactPerson.errors.required">
+                                                                    Please specify ContactPerson</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3">Contact No (Mobile) <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon">
+                                                                    +91
+                                                                </div>
+                                                                <input
+                                                                    class="form-control form-control-width input-width input-width-con"
+                                                                    data-val="true" id="txtPhone"
+                                                                    formControlName="Phone" placeholder="7386747422"
+                                                                    type="text" value="" />
+                                                            </div>
+                                                            <mat-hint
+                                                                *ngIf="driveForm.controls['Phone'].touched && driveForm.controls['Phone'].invalid">
+                                                                <mat-error
+                                                                    *ngIf="driveForm.controls.Phone.errors.required">
+                                                                    Please specify ContactNumber</mat-error>
+                                                            </mat-hint>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3"
+                                                            style="white-space:nowrap">ContactNo_Landline <span
+                                                                style="color:red;"></span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon">
+                                                                    +91
+                                                                </div>
+                                                                <input
+                                                                    class="form-control form-control-width input-width input-width-con"
+                                                                    id="txtContactNoLandline"
+                                                                    formControlName="ContactNoLandline"
+                                                                     type="text" value="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-icon-2 col-sm-3">Company Address <span
+                                                                style="color:red;"></span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-8">
+                                                            <input class="form-control form-control-width input-width"
+                                                                id="txtAddress" formControlName="Address"
+                                                                placeholder="miyapur" type="text" value="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3">Company Logo <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+
+                                                        <div class="col-sm-8" style="position:relative;top:6px;">
+                                                            <figure class="form-inline">
+                                                                <input data-val="true" id="CompanyLogo"
+                                                                    name="CompanyLogo" type="hidden" value="" />
+
+                                                                <input type="file" formControlName="image"
+                                                                    id="logoFile" /><br />
+                                                                <img src="/assets\images\Company-logo\default_company_logo.jpg"
+                                                                    alt="Logo Not Loaded" height="80" width="100"
+                                                                    id="imgProfile" />
+                                                            </figure>
+                                                            <label style="color:red;" id="lblLogo"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3"></label>
+                                                        <label class="col-sm-1"></label>
+                                                        <div class="col-sm-8">
+                                                            <input type="submit" value="Create"
+                                                                class="btn btn-primary" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <div id='myModal'class='modal' style="margin-top:7px;">
+                                    <div class="modal-dialog">
+                                        <input id="CoOrdinators" name="CoOrdinators" type="hidden" value="" />;
+                                        <div class="modal-content">
+                                            <div id='myModalContent' class="modal-body">
+                                                <div class="form-horizontal">
+                                                    <div class="portlet" id="divCoOrdinators"
+                                                        style="margin-left:6px;margin-right:6px;display:none">
+                                                        <div class="portlet-header">
+                                                            <span style="font-size: 17px;line-height:38px;color:#fff;">
+                                                                <input type="checkbox" class="check check-box-1"
+                                                                    id="chkAll" (click)="checkAllEmails()" />Select
+                                                                All
+                                                            </span>
+                                                            <ul class="portlet-tools pull-right">
+                                                                <li>
+                                                                    <a href="#" class="btn btn-primary btn-sm"
+                                                                        (click)="addToTextBox()">Submit</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="btn btn-primary btn-sm"
+                                                                        (click)="addCoordinator()">Add</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" class="btn btn-primary btn-sm"
+                                                                        (click)="cancel()">Cancel</a>
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                        <div class="table-responsive">
+                                                            <table id="gridTbl"
+                                                                class="table table-striped table-bordered dt-responsive nowrap table-th-nowrap"
+                                                                width="100%" cellspacing="0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>Name</th>
+                                                                        <th>Email</th>
+                                                                        <th>Contact Number</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><input type="checkbox"
+                                                                                class="check check-box-1"
+                                                                                value=sahithisai180@gmail.com
+                                                                                onclick="checkEmail(this)" /></td>
+                                                                        <td>Sravya</td>
+                                                                        <td>sahithisai180@gmail.com</td>
+                                                                        <td>9030150495</td>
+                                                                    </tr>
+
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-content">
+                                            <div id='divAddCoOrd' class="modal-body" style="display:none">
+                                                <div class="form-horizontal">
+                                                    <div class="form-group from-model">
+                                                        <label class="col-sm-5" style="white-space:nowrap">Name <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-width input-width input-width-con"
+                                                                id="txtName" name="CoOrdinatorName" type="text"
+                                                                value="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group from-model">
+                                                        <label class="col-sm-5" style="white-space:nowrap">Contact No
+                                                            <span style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-width input-width input-width-con"
+                                                                id="txtCPhone" name="CoOrdinatorContactNo"
+                                                                placeholder="7386747422" type="text" value="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group from-model">
+                                                        <label class="col-sm-5" style="white-space:nowrap">Email <span
+                                                                style="color:red;">*</span></label>
+                                                        <label class="col-sm-1">:</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-width input-width input-width-con"
+                                                                id="txtCEmail" name="CoOrdinatorEmail" type="text"
+                                                                value="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3" style="white-space:nowrap"> </label>
+                                                        <label class="col-sm-1"></label>
+                                                        <div class="col-sm-8">
+                                                            <a href="#" onclick="saveCoOrdinator()"
+                                                                class="btn btn-primary btn-sm"
+                                                                imagealign="AbsMiddle">Submit</a>
+                                                            <button class="btn btn-primary btn-sm" name="Submit"
+                                                                value="Submit" imagealign="AbsMiddle"
+                                                                (click)="submit()">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>>
+
+
+  
+<!-- <div class="modal-dialog">
+                        <input id="CoOrdinators" name="CoOrdinators" type="hidden" value="">;
+                        <div class="modal-content">
+                            <div id="myModalContent" class="modal-body">
+                                <div class="form-horizontal">
+                                    <div class="portlet" id="divCoOrdinators" style="margin-left: 6px; margin-right: 6px; display: block;">
+                                        <div class="portlet-header">
+                                            <span style="font-size: 17px;line-height:38px;color:#fff;">
+                                                <input type="checkbox" class="check check-box-1" id="chkAll" onclick="checkAllEmails(this)">Select All
+                                            </span>
+                                            <ul class="portlet-tools pull-right">
+                                                <li>
+                                                    <a href="#" class="btn btn-primary btn-sm" onclick="addToTextBox()">Submit</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="btn btn-primary btn-sm" onclick="addCoOrdinator()">Add</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="btn btn-primary btn-sm" onclick="cancel()">Cancel</a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table id="gridTbl" class="table table-striped table-bordered dt-responsive nowrap table-th-nowrap" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Contact Number</th>
+                                                    </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox" class="check check-box-1" value="kumar@gmail.com" onclick="checkEmail(this)"></td>
+                                                            <td>Kumar</td>
+                                                            <td>kumar@gmail.com</td>
+                                                            <td>8978232992</td>                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox" class="check check-box-1" value="chnagaraju05@gmail.com" onclick="checkEmail(this)"></td>
+                                                            <td>sadad</td>
+                                                            <td>chnagaraju05@gmail.com</td>
+                                                            <td>9032498099</td>                                                            
+                                                        </tr>
+
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-content">
+                            <div id="divAddCoOrd" class="modal-body" style="display:none">
+                                <div class="form-horizontal">
+                                    <div class="form-group from-model">
+                                        <label class="col-sm-5" style="white-space:nowrap">Name <span style="color:red;">*</span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control form-control-width input-width input-width-con" id="txtName" name="CoOrdinatorName" type="text" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group from-model">
+                                        <label class="col-sm-5" style="white-space:nowrap">Contact No <span style="color:red;">*</span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control form-control-width input-width input-width-con" id="txtCPhone" name="CoOrdinatorContactNo" placeholder="7386747422" type="text" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group from-model">
+                                        <label class="col-sm-5" style="white-space:nowrap">Email <span style="color:red;">*</span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control form-control-width input-width input-width-con" id="txtCEmail" name="CoOrdinatorEmail" type="text" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space:nowrap"> </label>
+                                        <label class="col-sm-1"></label>
+                                        <div class="col-sm-8">
+                                            <a href="#" onclick="saveCoOrdinator()" class="btn btn-primary btn-sm" imagealign="AbsMiddle">Submit</a>
+                                            <button class="btn btn-primary btn-sm" name="Submit" value="Submit" imagealign="AbsMiddle" onclick="return addCancel();">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  -->
+                   <app-footer></app-footer>  
