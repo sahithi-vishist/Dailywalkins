@@ -1,0 +1,49 @@
+
+        <div class="site-header-point">
+            <div class="wrapper vishist-topbar vishist-topbar-textcolor-dark ">
+                <div class="container">
+                    <div class="table-row" style="float:right">
+                        <div class="vishist-tb-content vishist-flexible-width-left">
+                            <ul class="nospace top-contact">
+                                <li style="float:right">
+                                    <label> <a *ngIf="login" routerLink="/walker/logout" id="lnkLogout">Logout</a></label>                                
+                                </li>
+                                <li style="float:right">
+                                    <label>Dear Walker</label>
+                                </li>
+    
+                                <li style="float:right">
+                                    <a href="/" ng-class="{activeSmall:part == 'projects'}"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="">
+            <header id="header">
+                <div class="wrapper row-2">
+                    <div class="container container-height">
+                        <div class="logo logo-img text-left ">
+                            <a routerLink="/walker/home">
+                                <img src="assets/images/DW-LOGO.png" alt="">
+                            </a>
+                        </div>
+                        <div class="">
+                            <a class="mobile_1" href="#" >☰</a>
+                            <nav class="nav-click" style="margin-top:-100px">
+                                <ul>                               
+                                    <li><a routerLink="/walker/applied-walkin" ngClass="{activeSmall:part == 'projects'}">Applied Walkins</a></li>
+                                    <li><a routerLink="/walker/advance-search" ngClass="{activeSmall:part == 'privacy'}">Advance Search</a></li>
+                                    <li><a routerLink="/walker/myprofile" ngClass="{activeSmall:part == 'privacy'}">My Profile</a></li>
+                                    
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    

@@ -1,0 +1,656 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <div class="inner-page">
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <h3 style="margin-top:0px !important">
+                            Personal Information
+                            <span class="portlet-tools pull-right " id="btnUpdate"
+                                style="margin-top:-2px !important;"><input type="submit" value="Update"
+                                    class="btn btn-primary btn-sm" (click)="updateDetails(update);"></span>
+
+                        </h3>
+
+
+                    </div>
+                    <div class="portlet-content">
+                        <div class="form-horizontal ">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space:nowrap">First Name <span
+                                                style="color:red;">*</span></label>
+
+                                        <label class="col-sm-1"
+                                            style="width:3% !important; padding-top:6px !important;">:</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" data-val="true" pattern="[a-zA-Z ]*$" ngModel
+                                                #fname="ngModel" id="txtFirstName" name="FirstName" type="text" value=""
+                                                [(ngModel)]="update.firstName" required>
+                                            <mat-hint *ngIf="fname.touched && fname.invalid">
+                                                <mat-error *ngIf="fname.errors.required">Please specify firstname
+                                                </mat-error>
+                                            </mat-hint>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space:nowrap">Last Name <span
+                                                style="color:red;">*</span></label>
+
+                                        <label class="col-sm-1"
+                                            style="width:3% !important; padding-top:6px !important;">:</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" data-val="true" id="txtLastName" ngModel
+                                                #lname="ngModel" name="LastName" type="text" value=""
+                                                [(ngModel)]="update.lastName" required>
+                                            <mat-hint *ngIf="lname.touched && lname.invalid">
+                                                <mat-error *ngIf="lname.errors.required">Please specify lastname
+                                                </mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space:nowrap">Gender <span
+                                                style="color:red;">*</span></label>
+
+                                        <label class="col-sm-1" style="width:3% !important;">:</label>
+                                        <div class="col-md-8 genderalng">
+                                            <select class="form-control" data-val="true" id="txtGender" ngModel
+                                                #gender="ngModel" [(ngModel)]="update.gender" name="Gender" required>
+                                                <option value="">--Select type--</option>
+                                                <option value="Male">Male</option>
+                                                <option selected="selected" value="Female">Female</option>
+                                            </select>
+                                            <mat-hint *ngIf="gender.touched && gender.invalid">
+                                                <mat-error *ngIf="gender.errors.required">Please select gender
+                                                </mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space:nowrap">Email <span
+                                                style="color:red;">*</span></label>
+
+                                        <label class="col-sm-1"
+                                            style="width:3% !important; padding-top:6px !important;">:</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control"
+                                            pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" id="txtEmail"
+                                            ngModel #email="ngModel" name="Email" value=""
+                                            type="text" value="" [(ngModel)]="update.email" required>
+                                        <mat-hint *ngIf="email.touched && email.invalid">
+                                            <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                                            <mat-error *ngIf="email.errors && email.errors.pattern">Please enter valid Email
+                                            </mat-error>
+                                        </mat-hint>
+                                               
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space:nowrap">Location <span
+                                                style="color:red;">*</span></label>
+
+                                        <label class="col-sm-1" style="width:3% !important;">:</label>
+                                        <div class="col-md-8">
+                                            
+                                                <select class="form-control" 
+                                                ngModel #location="ngModel" [(ngModel)]="update.location" id="txtLocation"
+                                                   (change)="onSelectLocation($event)" name="locId" required>
+                                               
+                                                  <option *ngFor="let loc of locations" value="{{loc.locationLatLongId}}">{{loc.location}}</option>
+                                              </select>
+                                                <mat-hint *ngIf="location.touched && location.invalid">
+                                                    <mat-error *ngIf="location.errors.required">Location is Required</mat-error>
+                                                    
+                                                </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group contactNumber">
+                                        <label class="col-sm-3" style="white-space:nowrap">Contact No <span
+                                                style="color:red;">*</span></label>
+
+                                        <label class="col-sm-1"
+                                            style="width:3% !important; padding-top:6px !important;">:</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    +91
+                                                </div>
+                                                <input class="form-control" data-val="true"
+                                                
+                                                    pattern="^[0-9 ]{10}$"
+                                                  id="txtContactNo" ngModel #contactNo="ngModel"
+                                                    name="ContactNo" type="text" value="" [(ngModel)]="update.contactNo" required>
+                                                    <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+                                                        <mat-error *ngIf="contactNo.errors.required">Mobile Number is Required</mat-error>
+                                                        <mat-error *ngIf="contactNo.errors&&contactNo.errors.pattern">Please enter valid mobile number</mat-error>
+                                                    </mat-hint>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space:nowrap">ContactNo_Landline <span
+                                                style="color:red;"></span></label>
+
+                                        <label class="col-sm-1"
+                                            style="width:3% !important; padding-top:6px !important;">:</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    +91
+                                                </div>
+                                                <input class="form-control input-box-alg" id="txtContactNo_Landline"
+                                                    name="ContactNo_Landline" type="text" ngModel #contactNo_Landline="ngModel" [(ngModel)]="update.contactNoLandline" 
+                                                    value="">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 label-txt-alg">
+                                            Date Of Birth <span style="color:red;"></span>
+                                        </label><label class="col-sm-1"
+                                            style="width:3% !important; padding-top:6px !important;">:</label>
+                                        <div class="col-md-4">
+                                            <input
+                                                class="form-control form-control-width input-width   input-box-alg hasDatepicker"
+                                                id="txtDateOfBirth" ngModel #dob="ngModel" name="DateOfBirth" type="text" value="" [(ngModel)]="update.dateOfBirth">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space:nowrap">Languages Known <span
+                                                style="color:red;"></span></label>
+
+                                        <label class="col-sm-1"
+                                            style="width:3% !important; padding-top:6px !important;">:</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control input-box-alg ui-autocomplete-input"
+                                                id="txtlanguagesKnown" ngModel #languagesKnown="ngModel" name="languagesKnown" 
+                                                type="text" value="" [(ngModel)]="update.languagesKnown"
+                                                autocomplete="off">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="thumbnail">
+                                        <img src="data:image/gif;base64,default" alt="Logo Not Loaded" id="imgProfile">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="file" id="ImageFile" ngModel #image="ngModel" [(ngModel)]="update.image" name="image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="height:300px">
+            <div class="inner-page">
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <h3 style="margin-top:0px !important">Educational Information</h3>
+                    </div>
+                    <div class="portlet-content">
+                        <div class="form-horizontal custom-form">
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Education <span
+                                        style="color:red;">*</span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+                                    <select class="form-control form-control-width-1 input-width"
+                                    data-val="true" ngModel #education="ngModel" id="ddlQualification"
+                                    name="Education" placeholder="mca" (change)="onSelectEducation($event)" [(ngModel)]="update.education" required>
+                
+                                    <option *ngFor="let education of qualifications" value="{{education.qualificationId}}">{{education.qualification}}</option>
+                                    
+                                </select>
+                                        <mat-hint *ngIf="education.touched && education.invalid">
+                                            <mat-error *ngIf="education.errors.required">Education is required</mat-error>
+                                        </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Institute <span
+                                        style="color:red;">*</span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" data-val="true"
+                                        id="txtInstitute" name="Institute" ngModel #institute="ngModel" [(ngModel)]="update.institute"
+                                        type="text" value="" autocomplete="off" required>
+                                        <mat-hint *ngIf="institute.touched && institute.invalid">
+                                            <mat-error *ngIf="institute.errors.required">Institute is required</mat-error>
+                                        </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 label-txt-alg">
+                                    Year of Pass <span style="color:red;">*</span>
+                                </label><label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" id="txtYearOfPass" ngModel
+                                    #yop="ngModel" [(ngModel)]="update.yearOfPass" name="YearOfPass" type="text"
+                                        value="" required>
+                                        <mat-hint *ngIf="yop.touched && yop.invalid">
+                                            <mat-error *ngIf="yop.errors.required">YearOfPass is required</mat-error>
+                                        </mat-hint>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-page">
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <h3 style="margin-top:0px !important">Experience Information</h3>
+                    </div>
+                    <div class="portlet-content">
+                        <div class="form-horizontal custom-form">
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Experience <span
+                                        style="color:red;">*</span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+                                    <div class="form-inline">
+                                
+                                        <select class="form-control" data-val="true" pattern="[0-9 ]*$" id="Experience" ngModel 
+                                        #minExp="ngModel" [(ngModel)]="update.minExp"
+                                             id="minExp"
+                                            name="ExpYears" required>
+                                            <option value="">--Select type--</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option selected="selected" value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                        </select>
+                                        Year(s)&nbsp;
+                                       
+                                        and
+                                        <select class="form-control selct-maxexp" data-val="true"
+                                          ngModel #maxExp="ngModel" id="maxExp" [(ngModel)]="update.maxExp"
+                                            name="ExpMonths" required>
+                                            <option value="">--Select type--</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option selected="selected" value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                        </select>
+                                        Month(s)
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Current CTC <span
+                                        style="color:red;"></span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-sm-8">
+                                    <div class="form-inline">
+                                        
+                                        <select class="form-control selct-maxexp" data-val="true"
+                                            ngModel #CCTCFrom="ngModel" [(ngModel)]="update.CCTCFrom" id="CCTCFrom"
+                                            name="CTCLakhs" required>
+                                            <option value="">--Select type--</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option selected="selected" value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                            <option value="32">32</option>
+                                            <option value="33">33</option>
+                                            <option value="34">34</option>
+                                            <option value="35">35</option>
+                                            <option value="36">36</option>
+                                            <option value="37">37</option>
+                                            <option value="38">38</option>
+                                            <option value="39">39</option>
+                                            <option value="40">40</option>
+                                            <option value="41">41</option>
+                                            <option value="42">42</option>
+                                            <option value="43">43</option>
+                                            <option value="44">44</option>
+                                            <option value="45">45</option>
+                                            <option value="46">46</option>
+                                            <option value="47">47</option>
+                                            <option value="48">48</option>
+                                            <option value="49">49</option>
+                                            <option value="50">50</option>
+                                            <option value="51">51</option>
+                                            <option value="52">52</option>
+                                            <option value="53">53</option>
+                                            <option value="54">54</option>
+                                            <option value="55">55</option>
+                                            <option value="56">56</option>
+                                            <option value="57">57</option>
+                                            <option value="58">58</option>
+                                            <option value="59">59</option>
+                                            <option value="60">60</option>
+                                            <option value="61">61</option>
+                                            <option value="62">62</option>
+                                            <option value="63">63</option>
+                                            <option value="64">64</option>
+                                            <option value="65">65</option>
+                                            <option value="66">66</option>
+                                            <option value="67">67</option>
+                                            <option value="68">68</option>
+                                            <option value="69">69</option>
+                                            <option value="70">70</option>
+                                            <option value="71">71</option>
+                                            <option value="72">72</option>
+                                            <option value="73">73</option>
+                                            <option value="74">74</option>
+                                            <option value="75">75</option>
+                                            <option value="76">76</option>
+                                            <option value="77">77</option>
+                                            <option value="78">78</option>
+                                            <option value="79">79</option>
+                                            <option value="80">80</option>
+                                            <option value="81">81</option>
+                                            <option value="82">82</option>
+                                            <option value="83">83</option>
+                                            <option value="84">84</option>
+                                            <option value="85">85</option>
+                                            <option value="86">86</option>
+                                            <option value="87">87</option>
+                                            <option value="88">88</option>
+                                            <option value="89">89</option>
+                                            <option value="90">90</option>
+                                            <option value="91">91</option>
+                                            <option value="92">92</option>
+                                            <option value="93">93</option>
+                                            <option value="94">94</option>
+                                            <option value="95">95</option>
+                                            <option value="96">96</option>
+                                            <option value="97">97</option>
+                                            <option value="98">98</option>
+                                            <option value="99">99</option>
+                                        </select>
+                                        Lakh(s)&nbsp;
+
+                                        and
+                                        <select class="form-control selct-maxexp" data-val="true"
+                                           ngModel #CCTCTo="ngModel" [(ngModel)]="update.CCTCTo" id="CCTCTo"
+                                            name="CTCThs">
+                                            <option value="">--Select type--</option>
+                                            <option value="0">0</option>
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="40">40</option>
+                                            <option value="50">50</option>
+                                            <option selected="selected" value="60">60</option>
+                                            <option value="70">70</option>
+                                            <option value="80">80</option>
+                                            <option value="90">90</option>
+                                        </select>
+                                        Thousand(s)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Industry <span
+                                        style="color:red;">*</span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+
+                                    <!-- <input data-val="true" data-val-required="Industry is Required" id="Industry"
+                                        name="Industry" type="hidden" value="IT Software &amp; Hardware"> -->
+                                    <select class="form-control" data-val="true"
+                                      ngModel #industry="ngModel" [(ngModel)]="update.industryType" id="IndustryName"
+                                         (change)="onSelectIndustry($event)" name="InId" required>
+                                     
+                                        <option *ngFor="let ind of industries" value="{{ind.industryId}}">{{ind.industryType}}</option>
+                                    </select>
+                                    <mat-hint *ngIf="industry.touched && industry.invalid">
+                                        <mat-error *ngIf="industry.errors.required">Industry is required</mat-error>
+                                      </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Role <span
+                                        style="color:red;">*</span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+
+                                    <!-- <input data-val="true" data-val-required="Role is Required" id="Role" name="Role"
+                                        type="hidden" value="Developer"> -->
+                                    <select class="form-control" data-val="true" 
+                                        ngModel #role="ngModel" [(ngModel)]="update.role" id="RoleName" name="RId" 
+                                        (change)="onSelectedRole($event)" required>
+                                     
+                                        <option *ngFor="let role of roles" value="{{role.roleId}}">{{role.roleName}}</option>
+                                       
+                                    </select>
+                                    <mat-hint *ngIf="role.touched && role.invalid">
+                                        <mat-error *ngIf="role.errors.required">Role is required</mat-error>
+                                      </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 label-txt-alg">
+                                    Job Type <span style="color:red;">*</span>
+                                </label><label class="col-sm-1" style="width:3% !important;">:</label>
+
+                                <div class="col-sm-8">
+                                    <!-- <input data-val="true" data-val-required="Job Type is Required" id="Jobtype"
+                                        name="Jobtype" type="hidden" value="1"> -->
+                                    <select class="form-control" data-val="true" (change)="onSelectJobType($event)"
+                                        ngModel #jobType="ngModel" [(ngModel)]="update.jobType" id="jobType" name="JTId" required>
+                                        
+                                        <option *ngFor="let jt of jobTypes" value="{{jt.jobTypeId}}">{{jt.jobType}}</option>
+                                       
+                                    </select>
+                                    <mat-hint *ngIf="jobType.touched && jobType.invalid">
+                                        <mat-error *ngIf="jobType.errors.required">JobType is required</mat-error>
+                                      </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Key Skills <span
+                                        style="color:red;">*</span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+
+                                <div class="col-md-8">
+                                    <input class="form-control" data-val="true"
+                                         ngModel #keySkills="ngModel" [(ngModel)]="update.keySkills" id="txtKeySkills" name="KeySkills"
+                                        onblur="fillHeadLine();" type="text" value=""
+                                        autocomplete="off">
+                                        
+                                    <div class="example">
+                                        KeySkill(s) examples : Java, ASP.Net,Oracle,PHP, CPP etc...
+                                    </div>
+                                    <mat-hint *ngIf="keySkills.touched && keySkills.invalid">
+                                        <mat-error *ngIf="keySkills.errors.required">Key Skills is required</mat-error>
+                                      </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label-icon-10 col-sm-3 label-txt-alg" style="white-space: nowrap;">
+                                    Resume Headline <span style="color:red;">*</span>
+                                </label><label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" data-val="true"
+                                       ngModel #resumeHeadLine="ngModel" [(ngModel)]="update.resumeHeadLine" id="txtResumeHeadLine"
+                                        name="ResumeHeadLine" type="text" value="" required>
+                                        <mat-hint *ngIf="resumeHeadLine.touched && resumeHeadLine.invalid">
+                                            <mat-error *ngIf="resumeHeadLine.errors.required">Resume HeadLine is required</mat-error>
+                                          </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Current Designation <span
+                                        style="color:red;"></span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" ngModel #currentDesignation="ngModel" id="txtCurrentDesignation"
+                                       [(ngModel)]="update.currentDesignation" name="CurrentDesignation" type="text" value="" autocomplete="off">
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Current Company <span
+                                        style="color:red;"></span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" id="txtCurrentCompany" ngModel #currentCompany="ngModel"
+                                       [(ngModel)]="update.currentCompany" name="CurrentCompany" type="text" value=""
+                                        autocomplete="off">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Preferred Location <span
+                                        style="color:red;">*</span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" data-val="true"
+                                       ngModel #preLocation="ngModel" [(ngModel)]="update.preferredLocation
+                                       " id="txtPreferredLocation"
+                                        name="PreferredLocation" type="text" value="" autocomplete="off" required>
+                                        <mat-hint *ngIf="preLocation.touched && preLocation.invalid">
+                                            <mat-error *ngIf="preLocation.errors.required">Preferred Location is required</mat-error>
+                                        </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3" style="white-space:nowrap">Notice Period <span
+                                        style="color:red;"></span></label>
+
+                                <label class="col-sm-1" style="width:3% !important;">:</label>
+
+                                <div class="col-md-8">
+                                    <select class="form-control" data-val="true"
+                                       (change)="onSelectNoticePeriod($event)"
+                                       ngModel #noticePeriod="ngModel" [(ngModel)]="update.noticePeriod" id="NoticePeriod"
+                                        name="NoticePeriod" required>
+                                     
+                                        <option *ngFor="let np of noticePeriods" value="{{np.noticePeriodId}}">{{np.noticeText}}</option>
+                                        
+                                    </select>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-page">
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <h3 style="margin-top:0px !important"><i class="fa fa-file-word-o"
+                                aria-hidden="true"></i>Uploaded Resume</h3>
+                        <ul class="portlet-tools">
+                            <li>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 label-txt-alg" for="Resume">Resume</label>
+                                    <label class="col-sm-1" style="width:3% !important;">:</label>
+                                    <div class="col-md-8">
+                                        <input type="file" name="file" ngModel #resume="ngModel" [(ngModel)]="update.resume" id="resumeFile">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="/Walker/DownloadResume">Download Resume</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="portlet-content">
+                        <div class="clearboth">
+                            <div class="iframe-demo">&nbsp;</div>
+                            <label id="lblresume" style="color:red">No Resume Found..</label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

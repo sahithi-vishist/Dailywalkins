@@ -1,0 +1,486 @@
+<app-navbar-r></app-navbar-r>
+
+<form ngForm (ngSubmit)="sendData(vm)">
+  <div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+      <div class="container">
+        <h1 class="page-title">Recruiter-Registration Form </h1>
+        <section class="inner-page">
+
+          <label style="color:red;font:bold"> <span></span></label>
+
+          <div id="register" class="animate form">
+            <div class="form-horizontal ">
+              <div class="row">
+                <div class="col-md-8 col-sm-8 wrapper-1">
+                  <h1 style="text-align: center"> Registration </h1>
+                  <div id="msg"class="form-group">
+                  <h5> <label>{{msg}}</label></h5> 
+                </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Company Name <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" id="txtLastName1" name="companyName" type="text" value=""
+                        #cname="ngModel" [(ngModel)]="vm.comapnyName" pattern="[a-zA-Z ]*$" required>
+                      <mat-hint *ngIf="cname.touched && cname.invalid">
+                        <mat-error *ngIf="cname.errors.required">Company name is required</mat-error>
+                        <mat-error *ngIf="cname.errors && cname.errors.pattern">Invalid Name</mat-error>
+                      </mat-hint>
+                    </div>
+
+
+
+
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Email <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" id="txtLastName2" name="Email" type="text" value="" #email="ngModel"
+                        [(ngModel)]="vm.Email"email pattern="[a-zA-Z ]*$" required>
+                      <mat-hint *ngIf="email.touched && email.invalid">
+                        <mat-error *ngIf="email.errors.required">Email Address is required</mat-error>
+                        <mat-error *ngIf="email.errors.email ">Enter valid Email Address</mat-error>
+                      </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Company URL <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" id="txtLastName3" name="URL" type="text" value="" #curl="ngModel"
+                        [(ngModel)]="vm.URL"pattern="[a-zA-Z ]*$" required>
+                      <mat-hint *ngIf="curl.touched && curl.invalid">
+                        <mat-error *ngIf="curl.errors.required">Company URL is required</mat-error>
+                        <mat-error *ngIf="curl.errors.pattern ">Enter vald URL</mat-error>
+                      </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group contactNumber">
+                    <label class="col-sm-3">
+                      Password <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control form-control-width input-width" data-val="true"
+                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&amp;,\.;'/<>{}^():_|=+~-]{6,}$"
+                        id="txtPassword" ngModel #pwd="ngModel" name="Password" minlength="8" type="password"
+                        [(ngModel)]="vm.password" required>
+                      <mat-hint *ngIf="pwd.touched && pwd.invalid">
+                        <mat-error *ngIf="pwd.errors.required">Password is required</mat-error>
+                        <mat-error *ngIf="pwd.errors.pattern ">Password must contain: Minimum 6 characters and atleast
+                          one number and atleast 1 alphabet</mat-error>
+                      </mat-hint>
+
+                      <div class="help-block">
+                        Example: abc123
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3" style="white-space: nowrap;">
+                      Confirm Password <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control form-control-width input-width" data-val="true"
+                        [(ngModel)]="vm.ConfirmPassword" required pattern="{{vm.password}}" #cpwd="ngModel"
+                        id="ConfirmPassword" name="ConfirmPassword" type="password" />
+                      <mat-hint *ngIf="cpwd.touched && cpwd.invalid">
+                        <mat-error *ngIf="cpwd.errors.required">ConfirmPassword is required</mat-error>
+                        <mat-error *ngIf="cpwd.errors.pattern ">Entered password does not match</mat-error>
+                      </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Location <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control form-control-width input-width" [(ngModel)]="vm.location"
+                        #location="ngModel" required id="txtLocation" name="Location" type="text" value="" />
+                      <mat-hint   *ngIf="location.touched && location.invalid">
+                        <mat-error *ngIf="location.errors.required">Location is required</mat-error>
+
+                      </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Address <span style="color:red;"></span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control form-control-width input-width" [(ngModel)]="vm.address"
+                        #address="ngModel" id="Address" name="Address" type="text" value="" />
+
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Industry <span style="color:red;"></span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input id="Industry" name="Industry" type="hidden" value="" />
+                      <select [(ngModel)]="vm.industry"[ngModelOptions]="{standalone: true}" #industry="ngModel"
+                        class="form-control form-control-width-1 input-width" id="IndustryName" name="IndustryName">
+                        <option value="">--Select Industry--</option>
+                        <option value="8">Accounting/Finance</option>
+                        <option value="28">Admin/ secretory</option>
+                        <option value="4">Advertising/Event Management</option>
+                        <option value="36">Agriculture and Forestry</option>
+                        <option value="29">Analytics/ Business Intelligence</option>
+                        <option value="9">Banking</option>
+                        <option value="15">Call Centre/ Customer Service/ITEs/BPO</option>
+                        <option value="25">Construction/ Production/ Manufacturing</option>
+                        <option value="40">Courier / Transportation / Freight / Warehousing</option>
+                        <option value="21">Courier/Freight/Transpotation</option>
+                        <option value="31">Education/ Teaching</option>
+                        <option value="35">Energy and Utilities</option>
+                        <option value="22">Export/ Import</option>
+                        <option value="33">Fashion/ Art/ Design</option>
+                        <option value="38">FMCG / Foods / Beverage</option>
+                        <option value="37">Food &amp; Catering/Bar</option>
+                        <option value="18">Hotels/ Restaurants</option>
+                        <option value="6">Human Resource,Recruitment</option>
+                        <option value="41">Industrial Products / Heavy Machinery</option>
+                        <option value="10">Insurance</option>
+                        <option value="1">IT Software &amp; Hardware</option>
+                        <option value="12">Legal/ Law</option>
+                        <option value="3">Marketing &amp; Communications</option>
+                        <option value="5">Media/ Entertainment</option>
+                        <option value="17">Medical/ HealthCare/Hospitals</option>
+                        <option value="39">MKPO / Research / Analytics</option>
+                        <option value="24">Oil &amp; Gas</option>
+                        <option value="26">Others</option>
+                        <option value="14">Pharmaceutical/Bio Technology&amp; Life Sciences</option>
+                        <option value="13">Production/ Engg/ R&amp;D</option>
+                        <option value="7">Purchase/ Supply Chain</option>
+                        <option value="34">Recruitment</option>
+                        <option value="20">Retailing</option>
+                        <option value="2">Sales/ Sales Persons</option>
+                        <option value="32">Sports &amp; Leisure /Lifestyle</option>
+                        <option value="16">Telecommunication</option>
+                        <option value="19">Travels</option>
+                      </select>
+
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Company Profile <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="genderalng col-sm-8">
+                      <input class="form-control form-control-width input-width" data-val="true" required
+                        [(ngModel)]="vm.CompanyProfile" #cprofile="ngModel" id="CompanyProfile" name="CompanyProfile"
+                        type="text" value="" />
+                      <mat-hint *ngIf="cprofile.touched && cprofile.invalid">
+                        <mat-error *ngIf="cprofile.errors.required">Comapny profile is required</mat-error>
+
+                      </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Company Logo <span style="color:red;"></span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8 form-inline">
+                      <div class="col-sm-4 form-inline">
+                        <img src="\assets\images\Company-logo\default_company_logo.jpg" alt="Logo Not Loaded"
+                          height="80" width="100" id="imgProfile" />
+                      </div>
+                      <div class="col-sm-4 form-inline" style="margin-top:32px">
+                        <input [(ngModel)]="vm.file"[ngModelOptions]="{standalone: true}" #file="ngModel" type="file" id="logoFile" name="image" />
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      First Name <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+
+                    <div class="col-sm-8">
+                      <input class="form-control form-control-width input-width" data-val="true"
+                        [(ngModel)]="vm.FirstName" #fname="ngModel" required pattern="[a-zA-Z ]*$" id="FirstName"
+                        name="FirstName" type="text" value="" />
+                      <mat-hint *ngIf="fname.touched && fname.invalid">
+                        <mat-error *ngIf="fname.errors.required">First Name is required</mat-error>
+                        <mat-error *ngIf="fname.errors && fname.errors.pattern">Enter valid Name</mat-error>
+                      </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Last Name <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+
+                    <div class="col-sm-8">
+                      <input class="form-control form-control-width input-width" data-val="true"
+                        [(ngModel)]="vm.lastName" #lname="ngModel" required pattern="[a-zA-Z ]*$" id="LastName"
+                        name="LastName" type="text" value="" />
+                      <mat-hint *ngIf="lname.touched && lname.invalid">
+                        <mat-error *ngIf="lname.errors.required">Last Name is required</mat-error>
+                        <mat-error *ngIf="lname.errors && lname.errors.pattern">Enter valid Name</mat-error>
+                      </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Mobile <span style="color:red;">*</span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <div class="input-group-addon">
+                          +91
+                        </div>
+                        <input class="form-control form-control-width input-width input-width-con" data-val="true"
+                          [(ngModel)]="vm.mobile" #mobile="ngModel" pattern="^[0-9 ]{10}$" required id="ContactNo"
+                          name="ContactNo" type="text" value="" />
+                        <mat-hint *ngIf="mobile.touched && mobile.invalid">
+                          <mat-error *ngIf="mobile.errors.required">Mobile number is required</mat-error>
+                          <mat-error *ngIf="mobile.errors && mobile.errors.pattern">Enter correct mobile number
+                          </mat-error>
+                        </mat-hint>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3" style="white-space:nowrap">
+                      ContactNo_Landline <span style="color:red;"></span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <div class="input-group-addon">
+                          +91/
+                        </div>
+                        <input class="form-control form-control-width input-width input-width-con"
+                          [(ngModel)]="vm.cmobile"#cmobile="ngModel" id="ContactNo_Landline" name="ContactNo_Landline"
+                          type="text" value="" />
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3">
+                      Designation <span style="color:red;"></span>
+                    </label><label class="col-sm-1">:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control form-control-width input-width" [(ngModel)]="vm.Designation"
+                        #des="ngModel" id="Designation" name="Designation" type="text" value="" />
+                    </div>
+                  </div>
+                 <!--<div class="form-group">
+                    <label for="UpdatePanel1" class="col-sm-3">
+                      Profile Alerts
+                    </label>
+                    <label class="col-sm-1"></label>
+                    <div class="col-sm-8">
+                      <div class="checkbox">
+                        <input class="check" data-val="true" [(ngModel)]="vm.emailalert" #mail="ngModel" required id="chkEmail"
+                          name="EmailAlert" (click)="checkEmail()" type="checkbox" value="true" /><input
+                          name="EmailAlert" type="hidden" value="false" /> Email
+
+                        <label class="checkbox-label">
+                          <input class="check" data-val="true"  required id="chkSMS" name="SmsAlert"
+                            (click)="checkboxSMS()" type="checkbox" value="true" /><input name="SmsAlert" type="hidden"
+                            value="false" /> SMS
+                        </label>
+                        <label class="checkbox-label">
+                          <input class="check" data-val="true" required id="chkChat"
+                            name="ChatAlert" (click)="checkboxChat()" type="checkbox" value="true" /><input
+                            name="ChatAlert" type="hidden" value="false" /> Chat
+                        </label>
+                        <label class="checkbox-label">
+                          <input id="chkNone" type="checkbox" class="check" id="chkNone" value="None"
+                            (change)="checkboxNone()" />None
+                        </label>
+
+                      </div>
+                      <div id="divEmail" style="display: none;">
+
+
+
+                        <input id="WeekDay" name="WeekDay"[(ngModel)]="vm.day" type="hidden" value="" />
+
+                        <label class="check-1">
+                          <input class="check-1" id="WeekDay" name="WeekDay"  (click)="getValue1()"
+                            type="radio" value="Daily" />Daily
+                        </label>
+                        <label class="check-1">
+                          <input class="check-1" id="WeekDay" name="WeekDay" (click)="getvalue2()"
+                            type="radio" value="Weekly" />Weekly
+                        </label>
+                        <label class="check-1">
+                          <input class="check-1" id="WeekDay" name="WeekDay" (click)="getvalue3()"
+                            type="radio" value="Instant" />Instant
+                        </label>
+                      </div>
+                      <div class="form-group" id="divDay" style="display: none">
+                        <label class="control-label col-md-6">
+                          <span class="red"></span>Select day and time :
+                        </label>
+                        <div class="col-md-6" style="margin-top:10px;">
+                          <input id="WeekDay" name="WeekDay" type="hidden" value="" />
+                          <select class="ddlAlert form-control" [(ngModel)]="vm.WeekDay" id="ddlAlertsJob"
+                            name="ddlAlertsJob" (click)="getDropDownValue()">
+                            <option value="">--Select type--</option>
+                            <option value="1">Sunday</option>
+                            <option value="2">Monday</option>
+                            <option value="3">Tuesday</option>
+                            <option value="4">Wednesday</option>
+                            <option value="5">Thursday</option>
+                            <option value="6">Friday</option>
+                            <option value="7">Saturday</option>
+                          </select>
+
+                        </div>
+                      </div>
+
+                      <div class="col-md-8" id="divTime" style="display: none;white-space: nowrap;">
+                        <input id="OnDemandTime" name="OnDemandTime" type="hidden" value="" />
+                        <input checked="checked" class="radiobtn" id="radio_1" name="rd8AM"
+                          (click)="changeTime()" type="radio" value="8:00 AM" /><label for="">8:00 AM</label>
+                        <input class="radiobtn" id="radio_2" name="rd12PM" (click)="changeTime()"
+                          type="radio" value="12:00 PM" /><label for="">12:00 PM</label>
+                        <input class="radiobtn" id="radio_3" name="rd4PM" (click)="changeTime()" type="radio"
+                          value="4:00 PM" /><label for="">4:00 PM</label>
+                        <input class="radiobtn" id="radio_4" name="rd8PM" (click)="changeTime()" type="radio"
+                          value="8:00 PM" /><label for="">8:00 PM</label>
+                      </div>
+                    </div>
+                  </div>-->
+                  <div class="form-group">
+                    <label for="UpdatePanel1" class="col-sm-3" style="margin-top: 4px;">
+                        Profile Alerts
+                    </label>
+                    <label class="col-sm-1" style="margin-top: 4px;">:</label>
+                    <div class="col-sm-8" style="white-space:nowrap">
+                        <div class="checkbox checkbox-alg-none">
+                            <input class="check" data-val="true"
+                                
+                                id="EmailAlert" name="EmailAlert" (change)="checkboxEmail()"
+                                type="checkbox" value="true"><input name="EmailAlert" type="hidden"
+                                value="false" rquired > Email
+                            <label class="checkbox-label checkbox-alg-none">
+                                <input class="check" data-val="true"
+                                  
+                                    id="SmsAlert" name="SmsAlert" 
+                                    type="checkbox" value="true"><input name="SmsAlert"
+                                    type="hidden" value="false" required> SMS
+                            </label>
+                            <label class="checkbox-label checkbox-alg-none">
+                                <input class="check" data-val="true"
+                                    
+                                    id="ChatAlert" name="ChatAlert" 
+                                    type="checkbox" value="true"><input name="ChatAlert"
+                                    type="hidden" value="false" required> Chat
+                            </label>
+                            <label class="checkbox-label checkbox-alg-none">
+
+                                <input type="checkbox" class="check" id="chkNone" value="None"
+                                    (change)="checkboxNone()">None
+                            </label>
+                        </div>
+                        <div id="divEmail" hidden="true">
+                            <input id="WeekDay" name="WeekDay" type="hidden" value="">
+
+                            <label class="check-1">
+                                <input class="check-1" id="WeekDay1" name="WeekDay"
+                                    (click)="showDaily()" type="radio" value="Daily" [(ngModel)]="vm.daily"[ngModelOptions]="{standalone: true}">Daily
+                            </label>
+                            <label class="check-1">
+                                <input class="check-1" id="WeekDay2" name="WeekDay"
+                                (click)="showWeekly()"  type="radio" value="Weekly"  [(ngModel)]="vm.weekly"[ngModelOptions]="{standalone: true}">Weekly
+                            </label>
+                            <label class="check-1">
+                                <input class="check-1" id="WeekDay3" name="WeekDay"
+                                (click)="hideDW()" type="radio" value="Instant">Instant
+                            </label>
+                        </div>
+                        <div class="form-group" id="divDay" hidden="true">
+                            <label class="control-label col-md-6">
+                                <span class="red"></span>Select day and time :
+                            </label>
+                            <div class="col-md-6" style="margin-top:10px;">
+                                <input id="WeekDay" name="WeekDay" type="hidden" value="" [(ngModel)]="vm.weekDay"[ngModelOptions]="{standalone: true}">
+                                <select class="ddlAlert form-control" id="ddlAlertsJob"
+                                    name="ddlAlertsJob" [(ngModel)]="vm.day" (change)="getDropDownValue()">
+                                    <option value="">--Select type--</option>
+                                    <option value="1">Sunday</option>
+                                    <option value="2">Monday</option>
+                                    <option value="3">Tuesday</option>
+                                    <option value="4">Wednesday</option>
+                                    <option value="5">Thursday</option>
+                                    <option value="6">Friday</option>
+                                    <option value="7">Saturday</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 emial-check-box" id="divTime"
+                            style="white-space: nowrap;" hidden="true">
+                            <input id="OnDemandTime" name="OnDemandTime" type="hidden" value="">
+                            <input checked="checked" class="radiobtn" id="radio_1" name="rd8AM"
+                                 type="radio"
+                                value="8:00 AM" [(ngModel)]="vm.value"[ngModelOptions]="{standalone: true}"><label for="">8:00 AM</label>
+                            <input class="radiobtn" id="radio_2" name="rd12PM"
+                                type="radio"
+                                value="12:00 PM" [(ngModel)]="vm.value"><label for="">12:00 PM</label>
+                            <input class="radiobtn" id="radio_3" name="rd4PM"
+                                 type="radio"
+                                value="4:00 PM" [(ngModel)]="vm.value"><label for="">4:00 PM</label>
+                            <input class="radiobtn" id="radio_4" name="rd8PM"
+                                 type="radio"
+                                value="8:00 PM" [(ngModel)]="vm.value"><label for="">8:00 PM</label>
+                        </div>
+                    </div>
+                </div>
+                <input id="ChatAlert" name="ChatAlert" type="hidden" value="False">
+                <input id="SmsAlert" name="SmsAlert" type="hidden" value="False">
+                <input id="EmailAlert" name="EmailAlert" type="hidden" value="False">
+               
+                  <div class="form-group">
+                    <label class="col-sm-4 "></label>
+                    <div class="col-sm-8 checkbox-condetion">
+                      <div class="checkbox ">
+                        <label class="label-conditions">
+                          <input type="checkbox" [(ngModel)]="vm.checked" name="checkterms"id="chkTerms" value="chkTerms" class="check" />
+                          I have read, understood and agree to the
+                          <a href="/Home/TermsAndConditions" class="terms-conditions"> Terms and Conditions</a>
+                          <br />
+                          <label id="lblTerms" style="left: -85px;color: red;position: relative;"></label>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <input id="EmailAlert" name="EmailAlert" type="hidden" value="False" />
+                  <input id="SmsAlert" name="SmsAlert" type="hidden" value="False" />
+                  <input id="ChatAlert" name="ChatAlert" type="hidden" value="False" />
+                  <div class="form-group">
+                    <label class="col-sm-4 "></label>
+                    <div class="col-sm-4">
+                      <div class="checkbox">
+                        <span class="bold">
+                          <Label Text=""></Label>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <label class="col-sm-4 "></label>
+                  <div class="col-sm-8">
+                    <input type="submit" value="Submit" (click)="submitRegistration(vm)"class="btn btn-primary" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</form>
+<app-footer></app-footer>
