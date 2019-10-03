@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { DriveFormModel } from './recruiter/create-drive/createdrive.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { PostWalkinModel } from './recruiter/postwalkin/postwalkin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,9 @@ getSalary(){
 createDrive(driveformmodel:DriveFormModel ){
  
   return this.http.post("http://localhost:62222/postdrive",driveformmodel);
+}
+postWalkinDetails(walkinModel:PostWalkinModel){
+  return this.http.post('http://localhost:62222/postjobs',walkinModel);
 }
 getdrives(){
   return this.http.get("http://localhost:62222/getdrive");

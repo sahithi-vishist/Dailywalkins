@@ -29,7 +29,7 @@ addfacility(){
   {console.log(res);
   });
 
- this.router.navigate(['/Facility/MyFacilities'])
+ this.router.navigate(['/facility/MyFacilities'])
 }
 }
 

@@ -22,7 +22,7 @@ import { FacilityModule } from './facility.module';
     }
    
     postfac(loginDetails:UpdatefacilityModel){
-      return this.http.post('http://localhost:62222/facilityLogin',loginDetails)
+      return this.http.post('http://localhost:62222/loginFacilityCheck',loginDetails)
     }
     getFacilityById(id){
 return this.http.get('http://localhost:62222/getfacilitybyid?Id='+id);

@@ -22,13 +22,13 @@ export class UpdatefacilityComponent implements OnInit {
     if(this.obj.FacilityID==undefined){
       this.service.facilityAdd(this.obj).subscribe((res)=>{
         console.log(this.obj);
-        this.router.navigate(['facility/MyFacilities'])
+        this.router.navigate(['/facility/MyFacilities'])
       })
     }
     else{
       this.service.facilityAdd(this.obj).subscribe((res)=>{
         console.log(this.obj);
-        this.router.navigate(['Facility/MyFacilities'])
+        this.router.navigate(['/facility/MyFacilities'])
       })
     }
   }
