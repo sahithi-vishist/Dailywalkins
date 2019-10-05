@@ -56,6 +56,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WalkinDetailsComponent } from './walkin-details/walkin-details.component';
+import { DisplaywalkinsBysearchComponent } from './displaywalkins-bysearch/displaywalkins-bysearch.component';
+import { FileuploadComponent } from './fileupload/fileupload.component';
+import { DisplayWalkinsComponent } from './display-walkins/display-walkins.component';
+import { DisplayWalkersComponent } from './display-walkers/display-walkers.component';
 
 @NgModule({
   declarations: [LoginComponent,HomeComponent,
@@ -64,7 +68,8 @@ import { WalkinDetailsComponent } from './walkin-details/walkin-details.componen
     MyprofileComponent, AdvanceSearchComponent,
      LogoutComponent, ViewComponent, EditComponent, 
      JobtypeComponent, WalkinDetailsComponent, 
-     NavbarComponent,SelectedJobComponent],
+     NavbarComponent,SelectedJobComponent, DisplaywalkinsBysearchComponent,
+      FileuploadComponent, DisplayWalkinsComponent, DisplayWalkersComponent],
   imports: [
     SharedModule,
     ReactiveFormsModule,
@@ -116,7 +121,8 @@ import { WalkinDetailsComponent } from './walkin-details/walkin-details.componen
     HomeComponent,
     SelectedJobComponent,
     WalkinDetailsComponent,
-    SharedModule
+    FileuploadComponent,DisplayWalkinsComponent,DisplayWalkersComponent,
+    SharedModule,DisplaywalkinsBysearchComponent
     
 ]
 })

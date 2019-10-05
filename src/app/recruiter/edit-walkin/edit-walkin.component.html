@@ -1,768 +1,689 @@
 <app-navbar-r></app-navbar-r>
-<form action="/Recruitment/EditWalkin/4281" enctype="multipart/form-data" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="APxWddomIUUpNifANoNUhchjwxY7R1lQsva6bkpBYDEPGlXJ7V_h9feYIOhuTJI9xfPJFMljoSZAltBe-jMXevtwk-TQwIWByk9a1cn3A2A1">    <div class="wrapper">
+
+<div id="snackbar"></div>
+  
+<div class="body-content demo-index">
+    <div class="">
+        
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="../assets/css/jquery.ui.timepicker.css" type="text/css">
+
+
+
+<style>
+.dropdown-menu > .active > a {
+    background-color: none !important;
+    color: #fff !important;
+}
+
+.multiselect-container > li > a > label {
+    height: 1% !important;
+}
+
+.dropdown-menu {
+    position: relative;
+    top: 0px !important;
+    left: 0px !important;
+}
+
+label.checkbox {
+    position: relative;
+    top: 0px !important;
+}
+
+.open > .dropdown-menu {
+    display: block;
+    width: 230px;
+    text-align: center;
+}
+
+button.multiselect.dropdown-toggle.btn.btn-default {
+    width: 230px !important;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > li > a > label:hover {
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #017163 !important;
+}
+</style>
+
+ 
+<form #walkinForm="ngForm" (ngSubmit)="update()">     
+    <div class="wrapper">
     <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
         <div class="container">
-            <h1 class="page-title">Edit Walkin</h1>
+            <h1 class="page-title">Edit  Walkin</h1>
             <section class="inner-page">
                 <div id="register" class="animate form">
                     <div class="form-horizontal ">
                         <div class="row">
-                            <input data-val="true" data-val-number="The field JobNo must be a number." data-val-required="The JobNo field is required." id="JobNo" name="JobNo" type="hidden" value="4281">
                             <div class="col-md-8 col-sm-8 wrapper-1">
                                 <h1> Post Walkin </h1>
                                 <div class="form-group">
-                                    <label class="label-icon-2  col-sm-3">Job Title <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" data-val="true" data-val-required="* Please specify JobTitle" id="txtJobTitle" name="JobTitle" placeholder="java" type="text" value="UI developer">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="JobTitle" data-valmsg-replace="true"></span>
+                                        <label class="label-icon-2  col-sm-3">Job Title <span
+                                                style="color:red;">*</span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width" data-val="true"
+                                                [(ngModel)]="walkinModel.jobTitle" #jtitle="ngModel" required id="txtJobTitle"
+                                                name="JobTitle" type="text" value="">
+                                            <mat-hint *ngIf="jtitle.touched && jtitle.invalid">
+                                                <mat-error *ngIf="jtitle.errors.required">Job title is required
+                                                </mat-error>
+    
+                                            </mat-hint>
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="form-group">
-                                    <label class="label-icon-2  col-sm-3">Walkin Date <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width hasDatepicker" data-val="true" data-val-required="* Please specify WalkinDate" id="txtWalkinDate" name="WalkinDate" type="text" value="30/09/2019">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="WalkinDate" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3" style="white-space:nowrap">Walkin Time Slots <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <span class="multiselect-native-select"><select class="listbox form-control form-control-width-1 input-width" data-val="true" data-val-required="* Please specify WalkinTimeSlots" id="WalkinTimeSlots" multiple="True" name="WalkinTimeSlots"><option value="8">08.00 AM</option>
-<option value="9">09.00 AM</option>
-<option value="10">10.00 AM</option>
-<option selected="selected" value="11">11.00 AM</option>
-<option value="12">12.00 PM</option>
-<option value="13">01.00 PM</option>
-<option selected="selected" value="14">02.00 PM</option>
-<option value="15">03.00 PM</option>
-<option value="16">04.00 PM</option>
-<option selected="selected" value="17">05.00 PM</option>
-<option value="18">06.00 PM</option>
-<option value="19">07.00 PM</option>
-</select><div class="btn-group"><button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="11.00 AM, 02.00 PM, 05.00 PM"><span class="multiselect-selected-text">11.00 AM, 02.00 PM, 05.00 PM</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu"><li class="multiselect-item multiselect-all"><a tabindex="0" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all">  Select all</label></a></li><li><a tabindex="0"><label class="checkbox" title="08.00 AM"><input type="checkbox" value="8"> 08.00 AM</label></a></li><li><a tabindex="0"><label class="checkbox" title="09.00 AM"><input type="checkbox" value="9"> 09.00 AM</label></a></li><li><a tabindex="0"><label class="checkbox" title="10.00 AM"><input type="checkbox" value="10"> 10.00 AM</label></a></li><li class="active"><a tabindex="0"><label class="checkbox" title="11.00 AM"><input type="checkbox" value="11"> 11.00 AM</label></a></li><li><a tabindex="0"><label class="checkbox" title="12.00 PM"><input type="checkbox" value="12"> 12.00 PM</label></a></li><li><a tabindex="0"><label class="checkbox" title="01.00 PM"><input type="checkbox" value="13"> 01.00 PM</label></a></li><li class="active"><a tabindex="0"><label class="checkbox" title="02.00 PM"><input type="checkbox" value="14"> 02.00 PM</label></a></li><li><a tabindex="0"><label class="checkbox" title="03.00 PM"><input type="checkbox" value="15"> 03.00 PM</label></a></li><li><a tabindex="0"><label class="checkbox" title="04.00 PM"><input type="checkbox" value="16"> 04.00 PM</label></a></li><li class="active"><a tabindex="0"><label class="checkbox" title="05.00 PM"><input type="checkbox" value="17"> 05.00 PM</label></a></li><li><a tabindex="0"><label class="checkbox" title="06.00 PM"><input type="checkbox" value="18"> 06.00 PM</label></a></li><li><a tabindex="0"><label class="checkbox" title="07.00 PM"><input type="checkbox" value="19"> 07.00 PM</label></a></li></ul></div></span>                                           
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="WalkinTimeSlots" data-valmsg-replace="true"></span>
+                                            <label class="label-icon-2  col-sm-3">Walkin Date <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width hasDatepicker"
+                                                    data-val="true" [(ngModel)]="walkinModel.walkinDate" #wdate="ngModel" required
+                                                    id="txtWalkinDate" name="WalkinDate" type="date" value="">
+        
+                                                <mat-hint *ngIf="wdate.touched && wdate.invalid">
+                                                    <mat-error *ngIf="wdate.errors.required">Walkin Date is required
+                                                    </mat-error>
+        
+                                                </mat-hint>
+        
+                                            </div>
                                      </div>
-                                </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3">Experience <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8" style="white-space:nowrap">
-                                        <div class="form-inline">
-                                            <select class="form-control" data-val="true" data-val-number="The field Experience must be a number." data-val-required="* Please specify ExpMin" id="minExp" name="ExpMin"><option value="">--Select Years--</option>
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option selected="selected" value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-</select>
-
-                                            Year(s)
-                                            <span class="field-validation-valid text-danger" data-valmsg-for="ExpMin" data-valmsg-replace="true"></span>
-                                            &nbsp; to
-                                            <select class="form-control" data-val="true" data-val-number="The field Experience must be a number." data-val-required="* Please specify ExpMax" id="maxExp" name="ExpMax"><option value="">--Select Years--</option>
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option selected="selected" value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-</select>
-                                            <span class="field-validation-valid text-danger" data-valmsg-for="ExpMax" data-valmsg-replace="true"></span>
-                                            Years(s)
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-5 col-sm-3" style="white-space:nowrap">Walkin Location <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8" style="white-space:nowrap">
-                                        <input class="form-control form-control-width input-width ui-autocomplete-input" data-val="true" data-val-required="* Please specify Location" id="txtLocation" name="Location" placeholder="Hyd" type="text" value="Hyderabad" autocomplete="off">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Location" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-5 col-sm-3">Locality <span style="color:red;"></span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width ui-autocomplete-input" data-val="true" data-val-required="* Please specify Locality" id="txtLocality" name="Locality" placeholder="Miyapur" type="text" value="Hyder Nagar" autocomplete="off">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Locality" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3">Industry <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input data-val="true" data-val-number="The field InId must be a number." id="InId" name="InId" type="hidden" value="1">
-                                        <input data-val="true" data-val-required="* Please specify Industry" id="Industry" name="Industry" type="hidden" value="IT Software &amp; Hardware">
-                                        <select class="form-control form-control-width-1 input-width" id="IndustryName" name="InId"><option value="">--Select Industry--</option>
-<option value="8">Accounting/Finance</option>
-<option value="28">Admin/ secretory</option>
-<option value="4">Advertising/Event Management</option>
-<option value="36">Agriculture and  Forestry</option>
-<option value="29">Analytics/ Business Intelligence</option>
-<option value="9">Banking</option>
-<option value="15">Call Centre/ Customer Service/ITEs/BPO</option>
-<option value="25">Construction/ Production/ Manufacturing</option>
-<option value="40">Courier / Transportation / Freight / Warehousing</option>
-<option value="21">Courier/Freight/Transpotation</option>
-<option value="31">Education/ Teaching</option>
-<option value="35">Energy and Utilities</option>
-<option value="22">Export/ Import</option>
-<option value="33">Fashion/ Art/ Design</option>
-<option value="38">FMCG / Foods / Beverage</option>
-<option value="37">Food &amp; Catering/Bar</option>
-<option value="18">Hotels/ Restaurants</option>
-<option value="6">Human Resource,Recruitment</option>
-<option value="41">Industrial Products / Heavy Machinery</option>
-<option value="10">Insurance</option>
-<option selected="selected" value="1">IT Software &amp; Hardware</option>
-<option value="12">Legal/ Law</option>
-<option value="3">Marketing &amp; Communications</option>
-<option value="5">Media/ Entertainment</option>
-<option value="17">Medical/ HealthCare/Hospitals</option>
-<option value="39">MKPO / Research / Analytics</option>
-<option value="24">Oil &amp; Gas</option>
-<option value="26">Others</option>
-<option value="14">Pharmaceutical/Bio Technology&amp; Life Sciences</option>
-<option value="13">Production/ Engg/ R&amp;D</option>
-<option value="7">Purchase/ Supply Chain</option>
-<option value="34">Recruitment</option>
-<option value="20">Retailing</option>
-<option value="2">Sales/ Sales Persons</option>
-<option value="32">Sports &amp; Leisure /Lifestyle</option>
-<option value="16">Telecommunication</option>
-<option value="19">Travels</option>
-</select>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Industry" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3">Role <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input data-val="true" data-val-required="* Please specify Role" id="Role" name="Role" type="hidden" value="Developer">
-                                        <input data-val="true" data-val-number="The field RId must be a number." data-val-required="* Please specify Role" id="RId" name="RId" type="hidden" value="3305">
-                                        <select class="form-control form-control-width-1 input-width" id="RoleName" name="RId"><option value="">--Select Role--</option>
-<option value="66">ABAP Programmer</option>
-<option value="1">Analyst Programer</option>
-<option value="3297">Apprentices</option>
-<option value="10">Asst Engineer</option>
-<option value="6">Asst General Manager</option>
-<option value="14">Asst Manager</option>
-<option value="69">Business Analyst</option>
-<option value="2">Business Development Analyst</option>
-<option value="3">Business Development Executive</option>
-<option value="71">Cartographer</option>
-<option value="62">CEO/MD/Country Manager</option>
-<option value="58">Chief Information Officer</option>
-<option value="57">Chief Technology Officer</option>
-<option value="72">Cisco Support Technician</option>
-<option value="73">Communications Systems Specialist</option>
-<option value="50">Computer Operator/Data Entry</option>
-<option value="42">Configuration Mgr/ReleaseMgr</option>
-<option value="1254">Consultant</option>
-<option value="136">Content Writer</option>
-<option value="74">Data Centre Manager</option>
-<option value="75">Database Administrator</option>
-<option value="21">Database Architech/Designer</option>
-<option value="37">Datawarehousing Consultants</option>
-<option value="23">Delivery Manager</option>
-<option value="76">Designer</option>
-<option selected="selected" value="3305">Developer</option>
-<option value="78">Development Manager</option>
-<option value="3309">Digital Marketing</option>
-<option value="3310">Digital Marketing Executive</option>
-<option value="63">Director on Board</option>
-<option value="54">EDP Analyst</option>
-<option value="79">Engineer</option>
-<option value="39">ERP,CRM-Functional Consultant</option>
-<option value="40">ERP,CRM-Support Consultant</option>
-<option value="38">ERP,CRM-Technical Consultant</option>
-<option value="64">External Consultant</option>
-<option value="81">Flash Designer</option>
-<option value="17">Fresher</option>
-<option value="5">General Manager</option>
-<option value="41">Graphic Designer/Animator</option>
-<option value="46">H/W Installation/Maintenance Engg</option>
-<option value="44">Hardware Design Engineer</option>
-<option value="45">Hardware Design Technical Leader</option>
-<option value="82">Hardware Designer</option>
-<option value="83">Head of IT</option>
-<option value="84">Helpdesk Manager</option>
-<option value="85">Helpdesk Professional</option>
-<option value="86">Helpdesk Technician</option>
-<option value="87">Informatics Manager</option>
-<option value="88">Information Systems Specialist</option>
-<option value="56">Information systems(MIS)-Manager</option>
-<option value="89">Infrastructure Manager</option>
-<option value="90">Innovative Supply Chain Manager</option>
-<option value="52">Instructional Designer</option>
-<option value="91">Internet Developer</option>
-<option value="92">IT Account Manager</option>
-<option value="93">IT Administrator</option>
-<option value="94">IT Consultant</option>
-<option value="95">IT Developer</option>
-<option value="96">IT Director</option>
-<option value="97">IT Engineer</option>
-<option value="98">IT Instructor</option>
-<option value="99">IT Manager</option>
-<option value="55">IT Networking(EDP)-Manager</option>
-<option value="100">IT Operations Manager</option>
-<option value="101">IT Operator</option>
-<option value="102">IT Project Manager</option>
-<option value="103">IT Sales Manager</option>
-<option value="104">IT Security Team Manager</option>
-<option value="105">IT Specialist</option>
-<option value="106">IT Support</option>
-<option value="107">IT Trainee</option>
-<option value="109">Junior Web Developer</option>
-<option value="3307">Lead</option>
-<option value="15">Manager</option>
-<option value="27">Network Administrator</option>
-<option value="111">Network Control Operator</option>
-<option value="28">Network Designer</option>
-<option value="9">Network Engineer</option>
-<option value="113">Network Manager</option>
-<option value="114">Network Support Specialist</option>
-<option value="115">Network Technician</option>
-<option value="116">Networking Specialist</option>
-<option value="117">Non-Graduate IT Trainee</option>
-<option value="118">Operations</option>
-<option value="119">Oracle Consultant</option>
-<option value="3281">PrAssistant Manager</option>
-<option value="7">President</option>
-<option value="35">Product Manager</option>
-<option value="24">Program Manager</option>
-<option value="3279">Project Assistant</option>
-<option value="22">Project Leader</option>
-<option value="4">Project Manager</option>
-<option value="47">Quality Assurance Executive</option>
-<option value="48">Quality Assurance-Manager</option>
-<option value="34">S/W Installation/Maintenance Engg</option>
-<option value="122">SAP Consultant</option>
-<option value="61">SBU Head/Profit Center Head</option>
-<option value="30">Security Analyst</option>
-<option value="29">Security System-Engineer</option>
-<option value="123">Senior Commercial Manager</option>
-<option value="16">Senior Manager</option>
-<option value="124">Senior Operations Manager</option>
-<option value="3311">SEO Analyst</option>
-<option value="126">Software Engineer</option>
-<option value="18">Software Engineer/Programmer</option>
-<option value="31">Software Test Engineer</option>
-<option value="3308">Support Analyst</option>
-<option value="26">System Administrator</option>
-<option value="20">System Analyst/Tech Architect</option>
-<option value="32">System Integrator</option>
-<option value="128">Systems Analyst</option>
-<option value="129">Systems Development Manager</option>
-<option value="19">Team Leader/Technical Leader</option>
-<option value="130">Technical Director</option>
-<option value="131">Technical Support Consultant</option>
-<option value="33">Technical Support Engineer</option>
-<option value="51">Technical Writer</option>
-<option value="3280">Tester</option>
-<option value="132">Trainee IT</option>
-<option value="53">Trainer/Faculty</option>
-<option value="8">Vice President</option>
-<option value="49">VP/GM-Quality</option>
-<option value="59">VP/Head-Technology(IT)</option>
-<option value="60">VP-Operations/COO</option>
-<option value="133">Web Architect</option>
-<option value="134">Web Designer</option>
-<option value="43">Web Master/Web Site Master</option>
-<option>Select</option></select>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="RId" data-valmsg-replace="true"></span>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3">Job Positions <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" data-val="true" data-val-number="The field Job Positions must be a number." data-val-required="* Please specify job Positions" id="txtjobPositions" name="jobPositions" placeholder="UI" type="text" value="5">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="jobPositions" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3">Key Skills <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width ui-autocomplete-input" data-val="true" data-val-required="* Please specify Key Skills" id="txtKeySkills" name="KeySkills" placeholder="java,c++" type="text" value="Angular7" autocomplete="off">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="KeySkills" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3">Job Description <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" data-val="true" data-val-required="* Please specify Job Description" id="txtJobDescription" name="JobDescription" placeholder="java,c++" type="text" value="Delivering a complete front end code">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="JobDescription" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3">Designation <span style="color:red;"></span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width ui-autocomplete-input" id="txtDesignation" name="Designation" placeholder="UI" type="text" value="UI Developer" autocomplete="off">
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3"> Notice Period <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <select class="form-control form-control-width-1 input-width" data-val="true" data-val-number="The field Notice Period must be a number." data-val-required="* Please specify Notice Period" id="NoticePeriod" name="NoticePeriod"><option value="">--Notice Period--</option>
-<option value="0">On Notice Period</option>
-<option value="7">1 Week</option>
-<option value="15">2 Weeks</option>
-<option value="21">3 Weeks</option>
-<option selected="selected" value="30">1 Month</option>
-<option value="60">2 Months</option>
-<option value="90">3 Months</option>
-</select>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="NoticePeriod" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3">Job Type <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <select class="form-control form-control-width-1 input-width" data-val="true" data-val-number="The field Job Type must be a number." data-val-required="* Please specify job Type" id="JTId" name="JTId"><option value="">--Select type--</option>
-<option selected="selected" value="1">Permanent</option>
-<option value="2">Contract</option>
-<option value="3">Any</option>
-</select>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="JTId" data-valmsg-replace="true"></span>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3">Qualification <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <span class="multiselect-native-select"><select class="listbox form-control form-control-width-1 input-width" data-val="true" data-val-required="* Please specify Qualification" id="SelectedQualifications" multiple="True" name="SelectedQualifications"><option value="12th">12th</option>
-<option value="Aviation">Aviation</option>
-<option value="B.A">B.A</option>
-<option value="B.Arch">B.Arch</option>
-<option value="B.Com">B.Com</option>
-<option value="B.Ed">B.Ed</option>
-<option value="B.Pharm">B.Pharm</option>
-<option value="B.Plan">B.Plan</option>
-<option value="B.Sc">B.Sc</option>
-<option value="BBA">BBA</option>
-<option value="BCA">BCA</option>
-<option value="BDS">BDS</option>
-<option value="BE/B.Tech">BE/B.Tech</option>
-<option value="BGL">BGL</option>
-<option value="BHM">BHM</option>
-<option value="BL/LLB">BL/LLB</option>
-<option value="BVSC">BVSC</option>
-<option value="CA">CA</option>
-<option value="CS">CS</option>
-<option value="Degree">Degree</option>
-<option value="Diploma">Diploma</option>
-<option value="Doctorate(Phd)">Doctorate(Phd)</option>
-<option value="ICWA">ICWA</option>
-<option value="Information Technology">Information Technology</option>
-<option value="M.A">M.A</option>
-<option value="M.Arch">M.Arch</option>
-<option value="M.Com">M.Com</option>
-<option value="M.Ed">M.Ed</option>
-<option value="M.Pharm">M.Pharm</option>
-<option value="M.Phil">M.Phil</option>
-<option value="M.Plan">M.Plan</option>
-<option value="M.Sc">M.Sc</option>
-<option value="MBA/PGDM">MBA/PGDM</option>
-<option value="MBBS">MBBS</option>
-<option value="MCA/PGDCA">MCA/PGDCA</option>
-<option value="MD/MS">MD/MS</option>
-<option value="MDS">MDS</option>
-<option value="ME/M.Tech">ME/M.Tech</option>
-<option value="ML/LLM">ML/LLM</option>
-<option value="MSIT">MSIT</option>
-<option value="Others">Others</option>
-</select><div class="btn-group"><button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="None selected"><span class="multiselect-selected-text">None selected</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu"><li class="multiselect-item multiselect-all"><a tabindex="0" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all">  Select all</label></a></li><li><a tabindex="0"><label class="checkbox" title="12th"><input type="checkbox" value="12th"> 12th</label></a></li><li><a tabindex="0"><label class="checkbox" title="Aviation"><input type="checkbox" value="Aviation"> Aviation</label></a></li><li><a tabindex="0"><label class="checkbox" title="B.A"><input type="checkbox" value="B.A"> B.A</label></a></li><li><a tabindex="0"><label class="checkbox" title="B.Arch"><input type="checkbox" value="B.Arch"> B.Arch</label></a></li><li><a tabindex="0"><label class="checkbox" title="B.Com"><input type="checkbox" value="B.Com"> B.Com</label></a></li><li><a tabindex="0"><label class="checkbox" title="B.Ed"><input type="checkbox" value="B.Ed"> B.Ed</label></a></li><li><a tabindex="0"><label class="checkbox" title="B.Pharm"><input type="checkbox" value="B.Pharm"> B.Pharm</label></a></li><li><a tabindex="0"><label class="checkbox" title="B.Plan"><input type="checkbox" value="B.Plan"> B.Plan</label></a></li><li><a tabindex="0"><label class="checkbox" title="B.Sc"><input type="checkbox" value="B.Sc"> B.Sc</label></a></li><li><a tabindex="0"><label class="checkbox" title="BBA"><input type="checkbox" value="BBA"> BBA</label></a></li><li><a tabindex="0"><label class="checkbox" title="BCA"><input type="checkbox" value="BCA"> BCA</label></a></li><li><a tabindex="0"><label class="checkbox" title="BDS"><input type="checkbox" value="BDS"> BDS</label></a></li><li><a tabindex="0"><label class="checkbox" title="BE/B.Tech"><input type="checkbox" value="BE/B.Tech"> BE/B.Tech</label></a></li><li><a tabindex="0"><label class="checkbox" title="BGL"><input type="checkbox" value="BGL"> BGL</label></a></li><li><a tabindex="0"><label class="checkbox" title="BHM"><input type="checkbox" value="BHM"> BHM</label></a></li><li><a tabindex="0"><label class="checkbox" title="BL/LLB"><input type="checkbox" value="BL/LLB"> BL/LLB</label></a></li><li><a tabindex="0"><label class="checkbox" title="BVSC"><input type="checkbox" value="BVSC"> BVSC</label></a></li><li><a tabindex="0"><label class="checkbox" title="CA"><input type="checkbox" value="CA"> CA</label></a></li><li><a tabindex="0"><label class="checkbox" title="CS"><input type="checkbox" value="CS"> CS</label></a></li><li><a tabindex="0"><label class="checkbox" title="Degree"><input type="checkbox" value="Degree"> Degree</label></a></li><li><a tabindex="0"><label class="checkbox" title="Diploma"><input type="checkbox" value="Diploma"> Diploma</label></a></li><li><a tabindex="0"><label class="checkbox" title="Doctorate(Phd)"><input type="checkbox" value="Doctorate(Phd)"> Doctorate(Phd)</label></a></li><li><a tabindex="0"><label class="checkbox" title="ICWA"><input type="checkbox" value="ICWA"> ICWA</label></a></li><li><a tabindex="0"><label class="checkbox" title="Information Technology"><input type="checkbox" value="Information Technology"> Information Technology</label></a></li><li><a tabindex="0"><label class="checkbox" title="M.A"><input type="checkbox" value="M.A"> M.A</label></a></li><li><a tabindex="0"><label class="checkbox" title="M.Arch"><input type="checkbox" value="M.Arch"> M.Arch</label></a></li><li><a tabindex="0"><label class="checkbox" title="M.Com"><input type="checkbox" value="M.Com"> M.Com</label></a></li><li><a tabindex="0"><label class="checkbox" title="M.Ed"><input type="checkbox" value="M.Ed"> M.Ed</label></a></li><li><a tabindex="0"><label class="checkbox" title="M.Pharm"><input type="checkbox" value="M.Pharm"> M.Pharm</label></a></li><li><a tabindex="0"><label class="checkbox" title="M.Phil"><input type="checkbox" value="M.Phil"> M.Phil</label></a></li><li><a tabindex="0"><label class="checkbox" title="M.Plan"><input type="checkbox" value="M.Plan"> M.Plan</label></a></li><li><a tabindex="0"><label class="checkbox" title="M.Sc"><input type="checkbox" value="M.Sc"> M.Sc</label></a></li><li><a tabindex="0"><label class="checkbox" title="MBA/PGDM"><input type="checkbox" value="MBA/PGDM"> MBA/PGDM</label></a></li><li><a tabindex="0"><label class="checkbox" title="MBBS"><input type="checkbox" value="MBBS"> MBBS</label></a></li><li><a tabindex="0"><label class="checkbox" title="MCA/PGDCA"><input type="checkbox" value="MCA/PGDCA"> MCA/PGDCA</label></a></li><li><a tabindex="0"><label class="checkbox" title="MD/MS"><input type="checkbox" value="MD/MS"> MD/MS</label></a></li><li><a tabindex="0"><label class="checkbox" title="MDS"><input type="checkbox" value="MDS"> MDS</label></a></li><li><a tabindex="0"><label class="checkbox" title="ME/M.Tech"><input type="checkbox" value="ME/M.Tech"> ME/M.Tech</label></a></li><li><a tabindex="0"><label class="checkbox" title="ML/LLM"><input type="checkbox" value="ML/LLM"> ML/LLM</label></a></li><li><a tabindex="0"><label class="checkbox" title="MSIT"><input type="checkbox" value="MSIT"> MSIT</label></a></li><li><a tabindex="0"><label class="checkbox" title="Others"><input type="checkbox" value="Others"> Others</label></a></li></ul></div></span>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="SelectedQualifications" data-valmsg-replace="true"></span>                                           
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3" style="white-space:nowrap">Salary <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8" style="white-space:nowrap">
-                                        <div class="form-inline">
-                                            <select class="form-control" data-val="true" data-val-number="The field MinSal must be a number." id="MinSalary" name="MinSal"><option value="">--Select--</option>
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option selected="selected" value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-<option value="60">60</option>
-<option value="61">61</option>
-<option value="62">62</option>
-<option value="63">63</option>
-<option value="64">64</option>
-<option value="65">65</option>
-<option value="66">66</option>
-<option value="67">67</option>
-<option value="68">68</option>
-<option value="69">69</option>
-<option value="70">70</option>
-<option value="71">71</option>
-<option value="72">72</option>
-<option value="73">73</option>
-<option value="74">74</option>
-<option value="75">75</option>
-<option value="76">76</option>
-<option value="77">77</option>
-<option value="78">78</option>
-<option value="79">79</option>
-<option value="80">80</option>
-<option value="81">81</option>
-<option value="82">82</option>
-<option value="83">83</option>
-<option value="84">84</option>
-<option value="85">85</option>
-<option value="86">86</option>
-<option value="87">87</option>
-<option value="88">88</option>
-<option value="89">89</option>
-<option value="90">90</option>
-<option value="91">91</option>
-<option value="92">92</option>
-<option value="93">93</option>
-<option value="94">94</option>
-<option value="95">95</option>
-<option value="96">96</option>
-<option value="97">97</option>
-<option value="98">98</option>
-</select>
-                                            <span class="field-validation-valid text-danger" data-valmsg-for="MinSal" data-valmsg-replace="true"></span>
-                                            Lakh(s)&nbsp; to
-
-                                            <select class="form-control" data-val="true" data-val-number="The field MaxSal must be a number." id="MaxSalary" name="MaxSal"><option value="">--Select--</option>
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option selected="selected" value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-<option value="16">16</option>
-<option value="17">17</option>
-<option value="18">18</option>
-<option value="19">19</option>
-<option value="20">20</option>
-<option value="21">21</option>
-<option value="22">22</option>
-<option value="23">23</option>
-<option value="24">24</option>
-<option value="25">25</option>
-<option value="26">26</option>
-<option value="27">27</option>
-<option value="28">28</option>
-<option value="29">29</option>
-<option value="30">30</option>
-<option value="31">31</option>
-<option value="32">32</option>
-<option value="33">33</option>
-<option value="34">34</option>
-<option value="35">35</option>
-<option value="36">36</option>
-<option value="37">37</option>
-<option value="38">38</option>
-<option value="39">39</option>
-<option value="40">40</option>
-<option value="41">41</option>
-<option value="42">42</option>
-<option value="43">43</option>
-<option value="44">44</option>
-<option value="45">45</option>
-<option value="46">46</option>
-<option value="47">47</option>
-<option value="48">48</option>
-<option value="49">49</option>
-<option value="50">50</option>
-<option value="51">51</option>
-<option value="52">52</option>
-<option value="53">53</option>
-<option value="54">54</option>
-<option value="55">55</option>
-<option value="56">56</option>
-<option value="57">57</option>
-<option value="58">58</option>
-<option value="59">59</option>
-<option value="60">60</option>
-<option value="61">61</option>
-<option value="62">62</option>
-<option value="63">63</option>
-<option value="64">64</option>
-<option value="65">65</option>
-<option value="66">66</option>
-<option value="67">67</option>
-<option value="68">68</option>
-<option value="69">69</option>
-<option value="70">70</option>
-<option value="71">71</option>
-<option value="72">72</option>
-<option value="73">73</option>
-<option value="74">74</option>
-<option value="75">75</option>
-<option value="76">76</option>
-<option value="77">77</option>
-<option value="78">78</option>
-<option value="79">79</option>
-<option value="80">80</option>
-<option value="81">81</option>
-<option value="82">82</option>
-<option value="83">83</option>
-<option value="84">84</option>
-<option value="85">85</option>
-<option value="86">86</option>
-<option value="87">87</option>
-<option value="88">88</option>
-<option value="89">89</option>
-<option value="90">90</option>
-<option value="91">91</option>
-<option value="92">92</option>
-<option value="93">93</option>
-<option value="94">94</option>
-<option value="95">95</option>
-<option value="96">96</option>
-<option value="97">97</option>
-<option value="98">98</option>
-</select>
-
-                                            <span class="field-validation-valid text-danger" data-valmsg-for="MaxSal" data-valmsg-replace="true"></span>
-                                            Lakh(s)
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Company Name <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width ui-autocomplete-input" data-val="true" data-val-required="* Please specify CompanyName" id="txtCompanyName" name="CompanyName" placeholder="vishist" type="text" value="Vishist Business Solutions Pvt Ltd" autocomplete="off">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="CompanyName" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3">End Client <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" data-val="true" data-val-required="* Please specify EndClient" id="txtEndClient" name="EndClient" placeholder="vishist" type="text" value="Vishist Business Solutions Pvt Ltd">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="EndClient" data-valmsg-replace="true"></span>
-                                        <input type="checkbox" class="check" id="chkClient" value="None" onclick="changeClientName(this)"> Same as company name
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Company Profile <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" data-val="true" data-val-required="* Please specify Company Profile" id="txtCompanyProfile" name="CompanyProfile" placeholder="vishist" type="text" value="Vishist">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="CompanyProfile" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-1 col-sm-3">Email <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" data-val="true" data-val-required="* Please specify Email" id="txtEmail" name="Email" placeholder="rambabu@gmail.com" type="text" value="something@gmail.com">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3">Contact Person <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" data-val="true" data-val-required="* Please specify ContactPerson" id="txtContactPerson" name="ContactPerson" placeholder="name" type="text" value="xyz">
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="ContactPerson" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3">Contact Number <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                +91
+                                            <label class="col-sm-3" style="white-space:nowrap">Walkin Time Slots <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <span class="multiselect-native-select">
+                                                    <select class="listbox form-control form-control-width-1 input-width"
+                                                        data-val="true" [(ngModel)]="walkinModel.walkinTimeSlots" #timeslot="ngModel"
+                                                        required id="WalkinTimeSlots"
+                                                        name="WalkinTimeSlots"(change)="selectedTimeSlots($event)">
+                                                        <option value="">--Select TimeSlot--</option>
+                                                        <option *ngFor="let period of timeSlots"value="{{period.timeSlotsId}}">{{period.hoursText}}</option>
+                                                    </select>
+                                                    <!-- <div class="btn-group">
+                                                        <button type="button"
+                                                            class="multiselect dropdown-toggle btn btn-default"
+                                                            data-toggle="dropdown" title="None selected"><span
+                                                                class="multiselect-selected-text">None selected</span> <b
+                                                                class="caret"></b></button>
+                                                        <ul class="multiselect-container dropdown-menu">
+                                                            <li class="multiselect-item multiselect-all"><a tabindex="0"
+                                                                    class="multiselect-all"><label class="checkbox"><input
+                                                                            type="checkbox" value="multiselect-all"> Select
+                                                                        all</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="08.00 AM"><input type="checkbox" value="8">
+                                                                        08.00 AM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="09.00 AM"><input type="checkbox" value="9">
+                                                                        09.00 AM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="10.00 AM"><input type="checkbox" value="10">
+                                                                        10.00 AM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="11.00 AM"><input type="checkbox" value="11">
+                                                                        11.00 AM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="12.00 PM"><input type="checkbox" value="12">
+                                                                        12.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="01.00 PM"><input type="checkbox" value="13">
+                                                                        01.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="02.00 PM"><input type="checkbox" value="14">
+                                                                        02.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="03.00 PM"><input type="checkbox" value="15">
+                                                                        03.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="04.00 PM"><input type="checkbox" value="16">
+                                                                        04.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="05.00 PM"><input type="checkbox" value="17">
+                                                                        05.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="06.00 PM"><input type="checkbox" value="18">
+                                                                        06.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="07.00 PM"><input type="checkbox" value="19">
+                                                                        07.00 PM</label></a></li>
+                                                        </ul>
+                                                    </div> -->
+                                                </span>
+                                                <mat-hint *ngIf="timeslot.touched && timeslot.invalid">
+                                                    <mat-error *ngIf="timeslot.errors.required"> Please specify walkin
+                                                        WalkinTimeSlots</mat-error>
+        
+                                                </mat-hint>
                                             </div>
-                                            <input class="form-control form-control-width input-width input-width-con" data-val="true" data-val-required="* Please specify Phone" id="txtPhone" name="Phone" placeholder="mobile number" type="text" value="9999999999">
-                                        </div>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
-                                    </div>
-                                </div>
+                                     </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3" style="white-space:nowrap">ContactNo_Landline <span style="color:red;"></span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                +91
+                                        <label class="col-sm-3">Experience <span style="color:red;">*</span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8" style="white-space:nowrap">
+                                            <div class="form-inline">
+                                                <select class="form-control" data-val="true" [(ngModel)]="walkinModel.expMin"
+                                                    required #expMin id="minExp" name="ExpMin"(change)="selectMinExp($event)">
+                                                    <option value="">--Select Years--</option>
+                                                    <option *ngFor="let exp of experience"
+                                                    value="{{exp.experienceId}}">{{exp.expValue}}
+                                                </option>
+                                                </select>
+    
+                                                Year(s)
+    
+                                                &nbsp; to
+                                                <select class="form-control" data-val="true" [(ngModel)]="walkinModel.expMax"
+                                                    required #expMax id="maxExp" name="ExpMax"(change)="selectMaxExp($event)">
+                                                    <option value="">--Select Years--</option>
+                                                    <option *ngFor="let expe of experience"
+                                                    value="{{expe.experienceId}}">{{expe.expValue}}
+                                                </option>
+                                                </select> Year(s)
+                                                <mat-hint
+                                                *ngIf="expMin.touched && expMin.invalid">
+                                                <mat-error
+                                                    *ngIf="expMin.errors.required">
+                                                    Please specify MinimumExperience</mat-error>
+                                            </mat-hint>
+                                            <mat-hint
+                                                *ngIf="expMax.touched && expMax.invalid">
+                                                <mat-error
+                                                    *ngIf="expMax.errors.required">
+                                                    Please specify MaximumExperience</mat-error>
+                                            </mat-hint>
+    
                                             </div>
-                                            <input class="form-control form-control-width input-width input-width-con" id="txtContactNo_Landline" name="ContactNo_Landline" type="text" value="">
-                                        </div>                                          
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Roles &amp; Responsibilties: <span style="color:red;"></span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" id="txtRolesResponsibilties" name="RolesResponsibilties" placeholder="ui" type="text" value="">
+                                            <label class="label-icon-5 col-sm-3" style="white-space:nowrap">Walkin Location
+                                                <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8" style="white-space:nowrap">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    [(ngModel)]="walkinModel.walkinLocation" #wlocation="ngModel" id="txtLocation"
+                                                    name="WalkinLocation" type="text" value="" autocomplete="off">
+                                                
+                                                    <mat-hint *ngIf="wlocation.touched && wlocation.invalid">
+                                                            <mat-error *ngIf="wlocation.errors.required"> Please specify walkin Location
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                     </div>
+                                <div class="form-group">
+                                                <label class="label-icon-5 col-sm-3">Locality <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input
+                                                        class="form-control form-control-width input-width ui-autocomplete-input"
+                                                        [(ngModel)]="walkinModel.locality" #locality="ngModel" id="txtLocality"
+                                                        name="WalkinLocality" type="text" value="" autocomplete="off">
+                                                        <mat-hint *ngIf="locality.touched && locality.invalid">
+                                                                <mat-error *ngIf="locality.errors.required"> Please specify Locality
+                                                                </mat-error>
+                    
+                                                            </mat-hint>
+                                                </div>
+                                     </div>
+                                <div class="form-group">
+                                                    <label class="col-sm-3">Industry <span style="color:red;">*</span></label>
+                                                    <label class="col-sm-1">:</label>
+                                                    <div class="col-sm-8">
+                                                        <input data-val="true"
+                                                            id="InId" name="InId" type="hidden" value="0">
+                                                        <input data-val="true" required 
+                                                            id="Industry" name="Industry" type="hidden" value="">
+                                                        <select class="form-control form-control-width-1 input-width"
+                                                            [(ngModel)]="walkinModel.industryId" #industry="ngModel"(change)="selectIndustry($event)" required id="IndustryName" name="Industry">
+                                                            <option value="">--Select Industry--</option>
+                                                            <option *ngFor="let ind of industries"
+                                                                    value="{{ind.industryId}}">{{ind.industryType}}
+                                                                </option>
+                                                        </select>
+                                                        <mat-hint *ngIf="industry.touched && industry.invalid">
+                                                                <mat-error *ngIf="industry.errors.required"> Please specify industry
+                                                                </mat-error>
+                    
+                                                            </mat-hint>
+                                                    </div>
+                                     </div>
+                                <div class="form-group">
+                                                    <label class="col-sm-3">Role <span style="color:red;">*</span></label>
+                                                    <label class="col-sm-1">:</label>
+                                                    <div class="col-sm-8">
+                                                        <input data-val="true" required id="Role"
+                                                            name="Role" type="hidden" value="">
+                                                        <input data-val="true" 
+                                                           required  id="RId" name="RId"
+                                                            type="hidden" value="">
+                                                        <select class="form-control form-control-width-1 input-width"
+                                                            [(ngModel)]="walkinModel.role" #role="ngModel"(change)="selectRole($event)"id="RoleName" name="Role">
+                                                            <option value="">--Select Role--</option>
+                                                            <option *ngFor="let rol of roles"
+                                                                    value="{{rol.roleId}}">{{rol.roleName}}</option>
+                                                        </select>
+                                                        <mat-hint *ngIf="role.touched && role.invalid">
+                                                                <mat-error *ngIf="role.errors.required"> Please specify role
+                                                                </mat-error>
+                    
+                                                            </mat-hint>
+                                                    </div>
                                     </div>
-                                </div>
                                 <div class="form-group">
-                                    <label class="label-icon-2 col-sm-3">Address: <span style="color:red;"></span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width" id="txtAddress" name="Address" placeholder="miyapur" type="text" value="hyderabad">
+                                            <label class="label-icon-2 col-sm-3">Job Positions <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" data-val="true"
+                                                    [(ngModel)]="walkinModel.jobPositions" #jpositions="ngModel"
+                                                    required id="txtjobPositions"
+                                                    name="jobPositions" type="text" value="0">
+                                                    <mat-hint *ngIf="jpositions.touched && jpositions.invalid">
+                                                            <mat-error *ngIf="jpositions.errors.required"> Please specify JobPositions
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
                                     </div>
-                                </div>                                  
                                 <div class="form-group">
-                                    <label class="col-sm-3"> Company Logo <span style="color:red;">*</span></label>
-                                    <label class="col-sm-1">:</label>
-                                    <div class="col-sm-8" style="position:relative;top:6px;">
-                                        <figure class="form-inline">
-                                            <input data-val="true" data-val-required="* Company Logo required" id="CompanyLogo" name="CompanyLogo" type="hidden" value="Screenshot (1).png">
+                                            <label class="label-icon-2 col-sm-3">Key Skills <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    data-val="true" [(ngModel)]="walkinModel.keySkills" #jobskills="ngModel"
+                                                    required id="txtKeySkills"
+                                                    name="KeySkills" placeholder="java,c++" type="text" value=""
+                                                    autocomplete="off">
+                                                    <mat-hint *ngIf="jobskills.touched && jobskills.invalid">
+                                                            <mat-error *ngIf="jobskills.errors.required"> Please specify KeySkills
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3">Job Description <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" data-val="true"
+                                                    [(ngModel)]="walkinModel.jobDescription" #jdescription="ngModel"
+                                                    required
+                                                    id="txtJobDescription" name="JobDescription" placeholder="java,c++"
+                                                    type="text" value="">
+                                                    <mat-hint *ngIf="jdescription.touched && jdescription.invalid">
+                                                            <mat-error *ngIf="jdescription.errors.required"> Please specify JobDescription
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3">Designation <span
+                                                    style="color:red;"></span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    [(ngModel)]="walkinModel.designation" #designation="ngModel" id="txtDesignation"
+                                                    name="Designation" placeholder="UI" type="text" value=""
+                                                    autocomplete="off">
+                                            </div>
+                                    </div>
+                                 <div class="form-group">
+                                            <label class="col-sm-3"> Notice Period <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control form-control-width-1 input-width"
+                                                    data-val="true" [(ngModel)]="walkinModel.noticePeriod" #noticeperiod="ngModel"
+                                                    required id="NoticePeriod"(change)="selectNoticePeriod($event)"
+                                                    name="noticeperiod">
+                                                    <option value="">--Notice Period--</option> 
+                                                    <option *ngFor="let noperiod of noticeperiodList"
+                                                    value="{{noperiod.noticePeriodId}}">
+                                                    {{noperiod.noticeText}}</option>
+                                                </select>
+                                                <mat-hint *ngIf="noticeperiod.touched &&noticeperiod.invalid">
+                                                        <mat-error *ngIf="noticeperiod.errors.required"> Please specify NoticePeriod
+                                                        </mat-error>
+            
+                                                    </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="col-sm-3">Job Type <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control form-control-width-1 input-width"
+                                                    [(ngModel)]="walkinModel.jobTypeId" #jobtype="ngModel" (change)="selectJobType($event)"
+                                                    required id="JTId" name="JTId">
+                                                    <option value="">--Select type--</option>
+                                                    <option *ngFor="let job of jobtypeList"
+                                                    value="{{job.jobTypeId}}">{{job.jobType}}</option>
+                                                </select>
+                                                <mat-hint *ngIf="jobtype.touched &&jobtype.invalid">
+                                                        <mat-error *ngIf="jobtype.errors.required"> Please specify jobType
+                                                        </mat-error>
+            
+                                                    </mat-hint>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="col-sm-3">
+                                                Qualification <span style="color:red;">*</span>
+                                            </label><label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control form-control-width-1 input-width"
+                                                    data-val="true" ngModel #qualification="ngModel" id="ddlQualification"
+                                                    name="qualification" placeholder="mca" 
+                                                    [(ngModel)]="walkinModel.qualification"(change)="selectQualification($event)" required>
+                                                    <option value="">--Select Qualification--</option>
+                                                    <option *ngFor="let qual of qualifications"
+                                                        value="{{qual.qualificationId}}">{{qual.qualification}}
+                                                    </option>
+    
+                                                </select>
+                                                <mat-hint *ngIf="qualification.touched && qualification.invalid">
+                                                    <mat-error *ngIf="qualification.errors.required">Qualification is required
+                                                    </mat-error>
+                                                </mat-hint>
+                                            </div>
+                                        </div>
+                                <div class="form-group">
+                                            <label class="col-sm-3" style="white-space:nowrap">Annual Salary Offered <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8" style="white-space:nowrap">
+                                                <div class="form-inline">
+                                                    <select class="form-control" data-val="true" [(ngModel)]="walkinModel.minSal"
+                                                        required id="MinSalary"
+                                                        name="MinSal" (change)="selectMinSalary($event)"
+                                                        #salMin="ngModel">
+                                                        <option value="">--Select--</option>
+                                                        <option *ngFor="let sal of salary"
+                                                        value="{{sal.salaryId}}">{{sal.salValue}}
+                                                    </option>
+                                                    </select>
+                                                    Lakh(s)&nbsp; to
+                                                    <select class="form-control" data-val="true" [(ngModel)]="walkinModel.maxSal"
+                                                       required #salMax="ngModel" id="MaxSalary" (change)="selectMaxSalary($event)"
+                                                        name="MaxSal">
+                                                        <option value="">--Select--</option>
+                                                        <option *ngFor="let sal of salary"
+                                                        value="{{sal.salaryId}}">{{sal.salValue}}
+                                                    </select>
+                                                    Lakh(s)
+                                        
+                                                        <mat-hint *ngIf="salMin.touched && salMin.invalid">
+                                                                <mat-error *ngIf="salMin.errors.required">MinimumSalary is required
+                                                                </mat-error>
+                                                            </mat-hint>
+                                                            <mat-hint *ngIf="salMax.touched && salMax.invalid">
+                                                                    <mat-error *ngIf="salMax.errors.required">MaximumSalary is required
+                                                                    </mat-error>
+                                                                </mat-hint>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Company Name
+                                                <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    data-val="true" [(ngModel)]="walkinModel.companyName" #cname="ngModel"
+                                                    required id="txtCompanyName"
+                                                    name="CompanyName" type="text" value="" autocomplete="off">
+                                                    <mat-hint *ngIf="cname.touched && cname.invalid">
+                                                            <mat-error *ngIf="cname.errors.required">Please Specify Company Name
+                                                            </mat-error>
+                                                        </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3">End Client <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" data-val="true"
+                                                    [(ngModel)]="walkinModel.endClient" #endclient="ngModel" required
+                                                    id="txtEndClient" name="EndClient" type="text" value="">
+                                    
+                                                <input type="checkbox" class="check" id="chkClient" value="None"
+                                                (click)="changeClientName()"> Same as company name
                                             
-                                            <input type="file" name="image" id="logoFile">
-                                            <img src="data:image/gif;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjdBQzQwMDlFRkFEQjExRTg5OTFGRkExRDhCNzU5NzIwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjdBQzQwMDlGRkFEQjExRTg5OTFGRkExRDhCNzU5NzIwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0FDNDAwOUNGQURCMTFFODk5MUZGQTFEOEI3NTk3MjAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6N0FDNDAwOURGQURCMTFFODk5MUZGQTFEOEI3NTk3MjAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAGBAQEBQQGBQUGCQYFBgkLCAYG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" alt="Logo Not Loaded" height="80" width="100" id="imgProfile">
-                                        </figure>
-                                        <label style="color:red;" id="lblLogo"></label>
-                                        <span class="field-validation-valid text-danger" data-valmsg-for="CompanyLogo" data-valmsg-replace="true"></span>  
+                                                <mat-hint *ngIf="endclient.touched && endclient.invalid">
+                                                        <mat-error *ngIf="endclient.errors.required">Please specify EndClient
+                                                        </mat-error>
+            
+                                                    </mat-hint>
+                                        </div>
                                     </div>
-                                </div>
+                                    
                                 <div class="form-group">
-                                    <label class="col-sm-3"></label>
-                                    <label class="col-sm-1"></label>
+                                            <label class="label-icon-5 col-sm-3" style="white-space:nowrap">Client Location
+                                                <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8" style="white-space:nowrap">
+                                                <input class="form-control form-control-width input-width"
+                                                    [(ngModel)]="walkinModel.location" #clocation="ngModel" id="txtClientLocation"
+                                                    name="WalkinLocation" type="text" value="">
+                                                    <mat-hint *ngIf="clocation.touched && clocation.invalid">
+                                                            <mat-error *ngIf="clocation.errors.required">Please specify Client Location
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                        </div>
+                                <div class="form-group">
+                                            <label class="label-icon-5 col-sm-3">Client Locality <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width"required
+                                                    [(ngModel)]="walkinModel.clientLocality" #clocality="ngModel" id="txtClientLocality"
+                                                    name="WalkinLocality" type="text" value="">
+                                                    <mat-hint *ngIf="clocality.touched && clocality.invalid">
+                                                            <mat-error *ngIf="clocality.errors.required">Please specify Client Locality
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                        </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Company Profile
+                                                <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" data-val="true"
+                                                    [(ngModel)]="walkinModel.companyProfile" #cprofile="ngModel"
+                                                    required id="txtCompanyProfile"
+                                                    name="CompanyProfile" type="text" value="">
+                                                    <mat-hint *ngIf="cprofile.touched && cprofile.invalid">
+                                                            <mat-error *ngIf="cprofile.errors.required">Please specify CompanyProfile
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="label-icon-1 col-sm-3">Email <span style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width" data-val="true"
+                                                        [(ngModel)]="walkinModel.email" #email="ngModel" required email id="txtEmail"
+                                                        name="Email" type="text" value="">
+                                                    <mat-hint *ngIf="email.touched && email.invalid">
+                                                        <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                                                        <mat-error *ngIf="email.errors.email">Invalid email</mat-error>
+                                                    </mat-hint>
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Contact Person <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width" data-val="true"
+                                                        [(ngModel)]="walkinModel.contactPerson " #cperson="ngModel" required id="txtContactPerson"
+                                                        name="ContactPerson" type="text" value="" />
+                                                    <mat-hint *ngIf="cperson.touched && cperson.invalid">
+                                                        <mat-error *ngIf="cperson.errors.required">ContactPerson is required
+                                                        </mat-error>
+                
+                                                    </mat-hint>
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="col-sm-3">Contact Number <span style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            +91
+                                                        </div>
+                                                        <input class="form-control form-control-width input-width input-width-con"
+                                                            data-val="true" [(ngModel)]="walkinModel.phone" #cno="ngModel" required
+                                                            id="txtPhone" name="Phone" type="text" value="">
+                                                    </div>
+                                                    <mat-hint *ngIf="cno.touched && cno.invalid">
+                                                        <mat-error *ngIf="cno.errors.required">ContactNumber is required</mat-error>
+                
+                                                    </mat-hint>
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="col-sm-3" style="white-space:nowrap">ContactNo_Landline <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            +91
+                                                        </div>
+                                                        <input class="form-control form-control-width input-width input-width-con"
+                                                            [(ngModel)]="walkinModel.contactNoLandline" #clno="ngModel" id="txtContactNo_Landline"
+                                                            name="ContactNo_Landline" type="text" value="">
+                                                    </div>
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Roles &amp;
+                                                    Responsibilities: <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        [(ngModel)]="walkinModel.rolesResponsibilties" id="txtRolesResponsibilties"
+                                                        name="RolesResponsibilties" placeholder="ui" type="text" value="">
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Venue Details </label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        [(ngModel)]="walkinModel.venueDetails" #vdetails="ngModel" id="txtAddress"
+                                                        name="venuedetails" placeholder="miyapur" type="text" value="">
+                                                </div>
+                                        </div>
+                                        <div class="col-sm-4"></div>
                                     <div class="col-sm-8">
-                                        <input type="submit" value="Update" class="btn btn-primary" onclick="return checkPost();">
+                                            <div class="form-group">
+                                                    <label>
+                                                        <input id="RequirePanel" name="RequirePanel" type="hidden" value="">
+                                                        <input type="checkbox" class="check check-box-2" [(ngModel)]="walkinModel.requirePanel"
+                                                            id="chkRequirePanel" name="requiredpanel" value="chkRequirePanel"
+                                                            (click)="chkRequireFPanel()">
+                                                        Panel Needed
+                                                        <br>
+                                                    </label>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label>
+                                                            <input id="SpaceNeeded" name="SpaceNeeded" type="hidden" value="">
+                                                            <input type="checkbox" class="check check-box-2" [(ngModel)]="walkinModel.spaceNeeded"
+                                                                id="chkSpace" name="SpaceNeeded" value="chkSpaceNeeded"
+                                                                (click)="chkFSpace()">Space Needed
+                                                            <br>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label>
+                                                                <input id="ResourceNeeded" name="ResourceNeeded" type="hidden" value="">
+                                                                <input type="checkbox" class="check check-box-2" [(ngModel)]="walkinModel.resourceNeeded"
+                                                                    #resorce="ngModel" id="chkResource" name="ResourceNeeded"
+                                                                    value="chkResourceNeeded" (click)="chkFResource()">Resource Needed
+                                                                <br>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                <input id="TPArrangement" name="TPArrangement" type="hidden" value="">
+                                                                <input type="checkbox" class="check check-box-2" [(ngModel)]="walkinModel.tpArrangement"
+                                                                    #tparr="ngModel" id="chkTP" name="TPArrangement"
+                                                                    value="chkTPArrangement" (click)="chkFTP()">TP Arrangement
+                                                                <br>
+                                                            </label>
+                                                        </div>
+                                       
+                                        
                                     </div>
+                                    <div class="form-group">
+                                            <label class="col-sm-3"> Company Logo <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8" style="position:relative;top:6px;">
+                                                <figure class="form-inline">
+                                                    <input data-val="true" required id="CompanyLogo" name="CompanyLogo"
+                                                        type="hidden" value="">
+                                                    <input type="file" [(ngModel)]="walkinModel.componyLogo" #file="ngModel" name="image"
+                                                        id="logoFile"><br>
+                                                    <img src="/assets/images/Company-logo/default_company_logo.jpg" height="80"
+                                                        width="100" id="imgProfile">
+                                                </figure>
+                                                <label style="color:red;" id="lblLogo"></label>
+                                                <mat-hint *ngIf="file.touched && file.invalid">
+                                                    <mat-error *ngIf="file.errors.required">CompanyLogo is required</mat-error>
+            
+                                                </mat-hint>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label class="col-sm-3"></label>
+                                                <label class="col-sm-1"></label>
+                                                <div class="col-sm-8">
+                                                    <input type="submit" value="Update" (click)="updateWalkin(walkinModel)"
+                                                        class="btn btn-primary">
+                                                </div>
+                                            </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
-</div>
 </form>
+</div>                                     
+
+
+
+
+
 <app-footer></app-footer>

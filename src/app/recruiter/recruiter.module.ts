@@ -60,6 +60,11 @@ import { CreatePanelComponent } from './create-panel/create-panel.component';
 import { EditPanelComponent } from './edit-panel/edit-panel.component';
 import { DrivedetailsComponent } from './drivedetails/drivedetails.component';
 import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.component';
+import { UploadProfilesComponent } from './upload-profiles/upload-profiles.component';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
+import { ShortlistedCandidatesComponent } from './shortlisted-candidates/shortlisted-candidates.component';
+import { EvaluationFormsComponent } from './evaluation-forms/evaluation-forms.component';
+import { NavbarWComponent } from './navbar-w/navbar-w.component';
 
 @NgModule({
   declarations: [LoginRComponent,
@@ -80,6 +85,11 @@ import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.com
    CreatePanelComponent,
    EditPanelComponent,
    DrivedetailsComponent,
+   UploadProfilesComponent,
+   CandidateDetailsComponent,
+   ShortlistedCandidatesComponent,
+   EvaluationFormsComponent,
+   NavbarWComponent,
  
 ],
   imports: [
@@ -126,7 +136,8 @@ import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.com
     WalkincentralComponent,ViewComponent,
   CreateDriveComponent,EditWalkinComponent,
   NavbarRComponent,EditdriveComponent,DrivedetailsComponent,
- WalkinDetailsRComponent,
+ WalkinDetailsRComponent,UploadProfilesComponent,NavbarWComponent,
+ CandidateDetailsComponent,ShortlistedCandidatesComponent,EvaluationFormsComponent,
   ViewWalkinsComponent,HomepageComponent]
 })
 export class RecruiterModule { }

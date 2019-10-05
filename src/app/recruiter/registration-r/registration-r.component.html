@@ -158,7 +158,7 @@
                       </div>
                       <div class="col-sm-4 form-inline" style="margin-top:32px">
                         <input [(ngModel)]="vm.file" [ngModelOptions]="{standalone: true}" #file="ngModel" type="file"
-                          id="logoFile" name="image" />
+                          id="logoFile" name="image" accept="image/*" (change)="selectCompanyLogo($event)" />
                       </div>
 
                     </div>

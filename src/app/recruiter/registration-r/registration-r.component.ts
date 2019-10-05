@@ -40,6 +40,7 @@ export class RegistrationRComponent implements OnInit {
 
   };
   industries;
+  selectedCompanyLogo:File
   constructor(private alert:AlertService,private router:Router,
     private service:RecruiterauthserviceService) { 
 this.service.getIndustries().subscribe((res)=>{
@@ -75,11 +76,14 @@ getDropDownValue(){
   document.getElementById('divTime').hidden = false;
 
 }
+selectCompanyLogo(event){
+  this.selectedCompanyLogo=event.target.files[0];
+  }
 sendData(val){
   console.log(val);
 }
 submitRegistration(values){
-this.service.recruiterRegsiter(values).subscribe((res)=>{
+this.service.recruiterRegsiter(values,this.selectedCompanyLogo).subscribe((res)=>{
    
    if(res){
   this.msg="Registration successfull please login";

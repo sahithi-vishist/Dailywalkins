@@ -23,8 +23,8 @@
                                                         style="color:red;"></span></label>
                                                 <label class="col-sm-1">:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" [(ngModel)]="obj.FacilityID"
-                                                        name="FacilityID">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.facility"
+                                                        name="facility">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -106,7 +106,7 @@
                                                 <label class="col-sm-1">:</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" class="form-control"
-                                                        [(ngModel)]="obj.tPAvailabilityCount"
+                                                        [(ngModel)]="obj.tpAvailabilityCount"
                                                         name="tpAvailabilityCount">
                                                 </div>
                                             </div>
@@ -148,7 +148,7 @@
                                                         style="color:red;"></span></label>
                                                 <label class="col-sm-1">:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" [(ngModel)]="obj.tpRoomCost"
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.tproomCost"
                                                         name="tpRoomCost">
                                                 </div>
                                             </div>
@@ -158,7 +158,7 @@
                                                 <label class="col-sm-1">:</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" class="form-control"
-                                                        [(ngModel)]="obj.meetingRoomsCount" name="meetingRoomsCount">
+                                                        [(ngModel)]="obj.MeetingRoomCost" name="MeetingRoomCost">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -167,7 +167,7 @@
                                                 <label class="col-sm-1">:</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" class="form-control"
-                                                        [(ngModel)]="obj.coordinatorsCost" name="coordinatorsCost">
+                                                        [(ngModel)]="obj.coordinatorCost" name="coordinatorCost">
                                                 </div>
                                             </div>
                                             <div class="form-group  form-inline">
@@ -177,25 +177,20 @@
                                                 <label class="col-sm-1">:</label>
                                                 <div class="">
                                                     <div class="col-sm-3">
-                                                        <input type="text" class="form-control"
-                                                            [(ngModel)]="obj.availabilityFromString"
-                                                            name="availabilityFromString">
-                                                        <span
-                                                            class="field-validation-valid text-danger text-demo-danger"
-                                                            data-valmsg-for="AvailabilityFromString"
-                                                            data-valmsg-replace="true"></span>
+                                                        <input type="date" class="form-control"
+                                                            [(ngModel)]="obj.availabilityFromDate"
+                                                            name="availabilityFromDate">
+                                                       
                                                     </div>
                                                     <div class="col-sm-1"
                                                         style="width:12% !important;position: relative;left: 33px;">
                                                         <label>To </label>
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <input type="text" class="form-control"
-                                                            [(ngModel)]="obj.availabilityToString"
-                                                            name="availabilityToString">
-                                                        <span class="field-validation-valid text-danger "
-                                                            data-valmsg-for="AvailabilityToString"
-                                                            data-valmsg-replace="true"></span>
+                                                        <input type="date" class="form-control"
+                                                            [(ngModel)]="obj.availabilityToDate"
+                                                            name="availabilityToDate">
+                                                       
                                                     </div>
                                                 </div>
                                             </div>

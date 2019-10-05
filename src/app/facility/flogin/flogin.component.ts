@@ -12,7 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class FloginComponent implements OnInit {
   loginForm:FormGroup;
-
+  facilityLoginDetails;
   constructor(private router:Router,private service:FacilityService){
   
    }
@@ -30,9 +30,12 @@ export class FloginComponent implements OnInit {
 
   login(){
     console.log(this.loginForm.value);
-    
+   
     this.service.postfac(this.loginForm.value).subscribe((res)=>
-    {console.log(res);
+    {
+      this.facilityLoginDetails=res;
+      localStorage.setItem("facilityId",this.facilityLoginDetails.facilityLoginId);
+      this.service.setFacilityLogin(this.facilityLoginDetails);
       this.router.navigate(['/facility/MyFacilities'])
     });
 

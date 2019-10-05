@@ -1,20 +1,23 @@
 export class MyFacilityModel{
-    FacilityID:any;
+    facility:any;
+    facilityId:any;
     location:any;
     locality:any;
     contactName:any;
     email:any;
     contactNumber:any;
     address:any;
-    seatingAvailability:any;
+    seatingAvailabilityCount:any;
     tpAvailabilityCount:any;
     meetingRoomsCount:any;
-    coOrdinators:any;
+    coordinators:any;
     seatCost:any;
-    tpRoomCost:any;
-    coOrdinatorsCost:any;
-    availabilityFromString:any;
-    availabilityToString:any;
-    Comments:any;
+    tproomCost:any;
+    MeetingRoomCost:any;
+    coordinatorCost:any;
+    availabilityFromDate:any;
+    availabilityToDate:any;
+    availabilityDates:any;
+    comments:any;
 
 }

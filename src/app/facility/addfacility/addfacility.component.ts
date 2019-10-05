@@ -25,11 +25,14 @@ export class AddfacilityComponent implements OnInit {
 }
 
 addfacility(){    
+ this.obj.availabilityDates=this.obj.availabilityFromDate+"to"+this.obj.availabilityToDate;
+ this.obj.facilityId={facilityLoginId:localStorage.getItem("facilityId")};
+ 
   this.service.facilityAdd(this.obj).subscribe((res)=>
   {console.log(res);
   });
 
- this.router.navigate(['/Facility/MyFacilities'])
+ this.router.navigate(['/facility/MyFacilities'])
 }
 }
 

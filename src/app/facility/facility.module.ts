@@ -39,9 +39,13 @@ import {
   MatTooltipModule,} from '@angular/material';
 import { NavbarFacComponent } from './navbar-fac/navbar-fac.component'
 import { SharedModule } from '../shared/shared.module';
+import { FacilitiesComponent } from './facilities/facilities.component';
+import { FacilityService } from './facilityservice.service';
+import { BookFacilityComponent } from './book-facility/book-facility.component';
 
 @NgModule({
-  declarations: [FregistrationComponent, FloginComponent, AddfacilityComponent, MyfacilityComponent, UpdatefacilityComponent, NavbarFacComponent],
+  declarations: [FregistrationComponent, FloginComponent, AddfacilityComponent, MyfacilityComponent, UpdatefacilityComponent, 
+    NavbarFacComponent, FacilitiesComponent, BookFacilityComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -84,7 +88,8 @@ import { SharedModule } from '../shared/shared.module';
       FregistrationComponent,
       AddfacilityComponent,
       MyfacilityComponent,
-      SharedModule,
+      SharedModule,FacilitiesComponent,
+      BookFacilityComponent,
       UpdatefacilityComponent],
   
 })

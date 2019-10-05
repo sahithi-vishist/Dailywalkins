@@ -23,6 +23,10 @@ import { UpdateComponent } from './update/update.component';
 import { DrivedetailsComponent } from './drivedetails/drivedetails.component';
 import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.component';
 import { RecruiterguardGuard } from '../recruiterguard.guard';
+import { UploadProfilesComponent } from './upload-profiles/upload-profiles.component';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
+import { ShortlistedCandidatesComponent } from './shortlisted-candidates/shortlisted-candidates.component';
+import { EvaluationFormsComponent } from './evaluation-forms/evaluation-forms.component';
 
 
 const routes: Routes = [
@@ -39,7 +43,7 @@ const routes: Routes = [
   {path:"registration",component:RegistrationRComponent},
   {path:"editdrive/:id",component:EditdriveComponent},
   {path:"selectedjob/:jobId",component:ViewWalkinsComponent},
-  {path:'editWalkin',component:EditWalkinComponent },
+  {path:'editWalkin/:id',component:EditWalkinComponent},
   {path:'WalkinCentral/Drivedetails',component:DrivedetailsComponent},
   {path:'WalkinCentral/CoOrdinatorsManagement',component:HomepageComponent},
 {path:'WalkinCentral/createCoordinator',component:CreateComponent}, 
@@ -47,7 +51,11 @@ const routes: Routes = [
 {path:'WalkinCentral/panel',component:PanelComponent},
 {path:'WalkinCentral/createpanel',component:CreatePanelComponent},
 {path:'WalkinCentral/editpanel',component:EditPanelComponent},
-{path:'WalkinCentral/WalkinDetails/:id',component:WalkinDetailsRComponent}
+{path:'WalkinCentral/WalkinDetails/:id',component:WalkinDetailsRComponent},
+{path:'WalkinCentral/UploadProfiles',component:UploadProfilesComponent},
+{path:'WalkinCentral/CandidateDetails',component:CandidateDetailsComponent},
+{path:'WalkinCentral/ShortlistedCandidates',component:ShortlistedCandidatesComponent},
+{path:'WalkinCentral/EvaluationForms',component:EvaluationFormsComponent}
 ];
 
 @NgModule({
