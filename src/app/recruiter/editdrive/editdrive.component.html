@@ -54,7 +54,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
                                                                         data-val="true" id="txtJobTitle"
-                                                                        formControlName="drivename" placeholder="java"
+                                                                        formControlName="drivename"  [(ngModel)]="driveformmodel.driveName"
                                                                         type="text" value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['drivename'].touched && driveForm.controls['drivename'].invalid">
@@ -71,7 +71,7 @@
                                                                 <div class="col-sm-8" style="white-space:nowrap">
                                                                     <div class="form-inline">
                                                                         <select class="form-control" data-val="true" id="minExp"
-                                                                            formControlName="ExpMin"
+                                                                            formControlName="ExpMin" [(ngModel)]="driveformmodel.experienceMin"
                                                                             (change)="selectExpmin($event)">
                                                                             <option value="">--Select Years--</option>
         
@@ -85,7 +85,7 @@
         
                                                                         &nbsp; to
                                                                         <select class="form-control" data-val="true" id="maxExp"
-                                                                            (change)="selectExpmax($event)"
+                                                                            (change)="selectExpmax($event)" [(ngModel)]="driveformmodel.experienceMax"
                                                                             formControlName="ExpMax">
                                                                             <option value="">--Select Years--</option>
                                                                             <option *ngFor="let expe of experience"
@@ -116,11 +116,11 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        data-val="true" id="txtWalkinDate"
-                                                                        formControlName="WalkinDate" type="text" value="" />
-                                                                    <!-- <mat-hint *ngIf="driveForm.controls['WalkinDate'].touched && driveForm.controls['WalkinDate'].invalid">
+                                                                        data-val="true" id="txtWalkinDate" [(ngModel)]="driveformmodel.walkinDate"
+                                                                        formControlName="WalkinDate" type="date" value="" />
+                                                                    <mat-hint *ngIf="driveForm.controls['WalkinDate'].touched && driveForm.controls['WalkinDate'].invalid">
                                                     <mat-error *ngIf="driveForm.controls.WalkinDate.errors.required">Please specify WalkinDate</mat-error>
-                                                </mat-hint> -->
+                                                </mat-hint> 
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -130,11 +130,11 @@
                                                                 <div class="col-sm-8">
                                                                     <select
                                                                         class="listbox form-control form-control-width-1 input-width"
-                                                                        data-val="true" (change)="selectTimeslots($event)"
+                                                                        data-val="true" (change)="selectTimeslots($event)" [(ngModel)]="driveformmodel.timeslot"
                                                                         id="WalkinTimeSlots" formControlName="WalkinTimeSlots">
                                                                         <option value="" disabled selected>Select Timeslot
                                                                         </option>
-                                                                        <option *ngFor="let timeslot of walkintimeslots"
+                                                                        <option *ngFor="let timeslot of timeSlots"
                                                                             value="{{timeslot.timeSlotsId}}">
                                                                             {{timeslot.hoursText}}</option>
                                                                     </select><br />
@@ -154,8 +154,8 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8" style="white-space:nowrap">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        data-val="true" id="txtWalkinLocation"
-                                                                        formControlName="Location" placeholder="Hyd" type="text"
+                                                                        data-val="true" id="txtWalkinLocation"[(ngModel)]="driveformmodel.walkinLocation"
+                                                                        formControlName="Location" type="text"
                                                                         value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['Location'].touched && driveForm.controls['Location'].invalid">
@@ -172,7 +172,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
                                                                         data-val="true" Locality id="txtWalkinLocality"
-                                                                        formControlName="Locality" placeholder="Hyd" type="text"
+                                                                        formControlName="Locality" type="text"[(ngModel)]="driveformmodel.locality"
                                                                         value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['Locality'].touched && driveForm.controls['Locality'].invalid">
@@ -187,14 +187,14 @@
                                                                         style="color:red;">*</span></label>
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8">
-                                                                    <input data-val="true" id="InId" name="InId" type="hidden"
+                                                                    <input data-val="true" id="InId" name="InId" type="hidden" 
                                                                         value="0" />
                                                                     
                                                                     <select
                                                                         class="form-control form-control-width-1 input-width"
                                                                         (change)="selectIndustry($event)"
-                                                                        formCotrolName="Industry" id="IndustryName">
-                                                                        <option value="" disabled selected>Select Industry
+                                                                        formCotrolName="Industry" [(ngModel)]="driveformmodel.industry"id="IndustryName">
+                                                                        <option value="" >Select Industry
                                                                         </option>
                                                                         <option *ngFor="let ind of industries"
                                                                             value="{{ind.industryId}}">{{ind.industryType}}
@@ -206,7 +206,7 @@
             </mat-hint>  
                                                                 </div>
                                                             </div>
-                                                            <!-- <div class="form-group">
+                                                            <div class="form-group">
                                                                 <label class="col-sm-3">Role <span
                                                                         style="color:red;">*</span></label>
                                                                 <label class="col-sm-1">:</label>
@@ -217,15 +217,17 @@
                                                                         value="0" />
                                                                     <select
                                                                         class="form-control form-control-width-1 input-width"
-                                                                        id="RoleName" formControlName="Role">
+                                                                        id="RoleName"[(ngModel)]="driveformmodel.role" formControlName="Role">
                                                                         <option value="">--Select Role--</option>
+                                                                        <option *ngFor="let rol of roles"
+                                                                    value="{{rol.roleId}}">{{rol.roleName}}</option>
                                                                     </select>
                                                                      <mat-hint *ngIf="driveForm.controls['Role'].touched && driveForm.controls['Role'].invalid">
                 <mat-error *ngIf="driveForm.controls.Role.errors.required">Please specify Role</mat-error>
             </mat-hint>  
         
                                                                 </div>
-                                                            </div> -->
+                                                            </div> 
                                                             <div class="form-group">
                                                                 <label class="label-icon-2 col-sm-3">Job Description <span
                                                                         style="color:red;">*</span></label>
@@ -233,7 +235,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
                                                                         data-val="true" id="txtJobDescription"
-                                                                        formControlName="JobDescription" placeholder="java,c++"
+                                                                        formControlName="JobDescription" [(ngModel)]="driveformmodel.jobDescription"
                                                                         type="text" value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['JobDescription'].touched && driveForm.controls['JobDescription'].invalid">
@@ -250,7 +252,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
                                                                         data-val="true" id="txtKeySkills"
-                                                                        formControlName="KeySkills" placeholder="java,c++"
+                                                                        formControlName="KeySkills" [(ngModel)]="driveformmodel.keySkills"
                                                                         type="text" value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['KeySkills'].touched && driveForm.controls['KeySkills'].invalid">
@@ -285,7 +287,7 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        id="txtDesignation" formControlName="Designation"
+                                                                        id="txtDesignation" formControlName="Designation"[(ngModel)]="driveformmodel.designation"
                                                                         placeholder="UI" type="text" value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['Designation'].touched && driveForm.controls['Designation'].invalid">
@@ -302,13 +304,13 @@
                                                                 <div class="col-sm-8">
                                                                     <select
                                                                         class="form-control form-control-width-1 input-width"
-                                                                        data-val="true" (change)="selectNotice($event)"
+                                                                        data-val="true" (change)="selectNotice($event)"[(ngModel)]="driveformmodel.noticePeriod"
                                                                         id="NoticePeriod" formControlName="NoticePeriod">
                                                                         <option value="">--Select NoticePeriod--</option>
         
-                                                                        <option value="" disabled selected>Select Industry
+                                                                        <option value=""  >Select Industry
                                                                         </option>
-                                                                        <option *ngFor="let period of noticeperiod"
+                                                                        <option *ngFor="let period of noticeperiodList"
                                                                             value="{{period.noticePeriodId}}">
                                                                             {{period.noticeText}}</option>
         
@@ -328,11 +330,11 @@
                                                                 <div class="col-sm-8">
                                                                     <select
                                                                         class="form-control form-control-width-1 input-width"
-                                                                        data-val="true" (change)="selectJobtype($event)"
+                                                                        data-val="true" (change)="selectJobtype($event)"[(ngModel)]="driveformmodel.jobType"
                                                                         id="JTId" formControlName="JobType">
                                                                         <option value="">--Select type--</option>
         
-                                                                        <option *ngFor="let job of jobtype"
+                                                                        <option *ngFor="let job of jobtypeList"
                                                                             value="{{job.jobTypeId}}">{{job.jobType}}</option>
                                                                     </select>
                                                                     <mat-hint
@@ -352,7 +354,7 @@
                                                                         class="form-control form-control-width-1 input-width"
                                                                         id="ddlQualification"
                                                                         (change)="selectQualification($event)"
-                                                                        formControlName="Qualification" placeholder="mca">
+                                                                        formControlName="Qualification" [(ngModel)]="driveformmodel.qualification">
                                                                         <option value="">--Select Qualification--</option>
                                                                         <option *ngFor="let qual of qualifications"
                                                                             value="{{qual.qualificationId}}">
@@ -372,7 +374,7 @@
         
                                                                         <select class="form-control" id="MinSalary"
                                                                             (change)="selectSalmin($event)"
-                                                                            formControlName="SalMin">
+                                                                            formControlName="SalMin"[(ngModel)]="driveformmodel.salaryMin">
                                                                             <option value="">--Select type--</option>
                                                                             <option *ngFor="let sal of salary"
                                                                                 value="{{sal.salaryId}}">{{sal.salValue}}
@@ -383,7 +385,7 @@
                                                                         &nbsp; to
                                                                         <select class="form-control" data-val="true" id="maxSal"
                                                                             (change)="selectSalmax($event)"
-                                                                            formControlName="SalMax">
+                                                                            formControlName="SalMax"[(ngModel)]="driveformmodel.salaryMax">
                                                                             <option value="">--Select type--</option>
                                                                             <option *ngFor="let sals of salary"
                                                                                 value="{{sals.salaryId}}">{{sals.salValue}}
@@ -413,8 +415,8 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        id="txtRolesResponsibilties"
-                                                                        formControlName="RolesResponsibilties" placeholder="ui"
+                                                                        id="txtRolesResponsibilties" [(ngModel)]="driveformmodel.rolesResposibilities"
+                                                                        formControlName="RolesResponsibilties" 
                                                                         type="text" value="" />
                                                                 </div>
                                                             </div>
@@ -426,7 +428,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
                                                                         data-val="true" id="txtCompanyName"
-                                                                        formControlName="CompanyName" placeholder="vishist"
+                                                                        formControlName="CompanyName" [(ngModel)]="driveformmodel.companyName"
                                                                         type="text" value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['CompanyName'].touched && driveForm.controls['CompanyName'].invalid">
@@ -443,7 +445,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
                                                                         data-val="true" id="txtEndClient"
-                                                                        formControlName="EndClient" placeholder="vishist"
+                                                                        formControlName="EndClient" [(ngModel)]="driveformmodel.endClient"
                                                                         type="text" value="" />
         
                                                                     <input type="checkbox" style="top: 3px;" class="check"
@@ -465,7 +467,7 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8" style="white-space:nowrap">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        id="txtLocation" formControlName="CLocation" type="text"
+                                                                        id="txtLocation"[(ngModel)]="driveformmodel.clientLocation" formControlName="CLocation" type="text"
                                                                         value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['CLocation'].touched && driveForm.controls['CLocation'].invalid">
@@ -481,7 +483,7 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        id="txtLocality" formControlName="CLocality" type="text"
+                                                                        id="txtLocality"[(ngModel)]="driveformmodel.clientLocality" formControlName="CLocality" type="text"
                                                                         value="" />
                                                                     <span class="field-validation-valid text-danger"
                                                                         data-valmsg-for="Locality"
@@ -495,8 +497,8 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        data-val="true" id="txtCompanyProfile"
-                                                                        formControlName="CompanyProfile" placeholder="vishist"
+                                                                        data-val="true" id="txtCompanyProfile"[(ngModel)]="driveformmodel.companyProfile"
+                                                                        formControlName="CompanyProfile"
                                                                         type="text" value="" />
         
                                                                     <mat-hint
@@ -513,7 +515,7 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        data-val="true" id="txtEmail" formControlName="Email"
+                                                                        data-val="true" id="txtEmail" formControlName="Email"[(ngModel)]="driveformmodel.contactEmail"
                                                                         placeholder="babu@gmail.com" type="text" value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['Email'].touched && driveForm.controls['Email'].invalid">
@@ -533,7 +535,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
                                                                         data-val="true" id="txtContactPerson"
-                                                                        formControlName="ContactPerson" placeholder="rambabu"
+                                                                        formControlName="ContactPerson"[(ngModel)]="driveformmodel.contactPerson"
                                                                         type="text" value="" />
                                                                     <mat-hint
                                                                         *ngIf="driveForm.controls['ContactPerson'].touched && driveForm.controls['ContactPerson'].invalid">
@@ -555,7 +557,7 @@
                                                                         <input
                                                                             class="form-control form-control-width input-width input-width-con"
                                                                             data-val="true" id="txtPhone"
-                                                                            formControlName="Phone" placeholder="7386747422"
+                                                                            formControlName="Phone" [(ngModel)]="driveformmodel.contactNo"
                                                                             type="text" value="" />
                                                                     </div>
                                                                     <mat-hint
@@ -578,7 +580,7 @@
                                                                         </div>
                                                                         <input
                                                                             class="form-control form-control-width input-width input-width-con"
-                                                                            id="txtContactNoLandline"
+                                                                            id="txtContactNoLandline"[(ngModel)]="driveformmodel.contactNoLandline"
                                                                             formControlName="ContactNoLandline"
                                                                              type="text" value="" />
                                                                     </div>
@@ -590,8 +592,8 @@
                                                                 <label class="col-sm-1">:</label>
                                                                 <div class="col-sm-8">
                                                                     <input class="form-control form-control-width input-width"
-                                                                        id="txtAddress" formControlName="Address"
-                                                                        placeholder="miyapur" type="text" value="" />
+                                                                        id="txtAddress" formControlName="Address" [(ngModel)]="driveformmodel.companyAddress"
+                                                                         type="text" value="" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -601,7 +603,7 @@
         
                                                                 <div class="col-sm-8" style="position:relative;top:6px;">
                                                                     <figure class="form-inline">
-                                                                        <input data-val="true" id="CompanyLogo"
+                                                                        <input data-val="true" id="CompanyLogo"[(ngModel)]="driveformmodel.companyLogo"
                                                                             name="CompanyLogo" type="hidden" value="" />
         
                                                                         <input type="file" formControlName="image"
@@ -617,7 +619,7 @@
                                                                 <label class="col-sm-3"></label>
                                                                 <label class="col-sm-1"></label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="submit" value="Create"
+                                                                    <input type="submit" value="Update" (click)="updateDrive(driveformmodel)"
                                                                         class="btn btn-primary" />
                                                                 </div>
                                                             </div>

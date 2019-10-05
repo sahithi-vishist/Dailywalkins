@@ -40,6 +40,7 @@ export class RegistrationRComponent implements OnInit {
 
   };
   industries;
+  selectedCompanyLogo:File;
   constructor(private alert:AlertService,private router:Router,
     private service:RecruiterauthserviceService) { 
 this.service.getIndustries().subscribe((res)=>{
@@ -79,7 +80,7 @@ sendData(val){
   console.log(val);
 }
 submitRegistration(values){
-this.service.recruiterRegsiter(values).subscribe((res)=>{
+this.service.recruiterRegsiter(values,this.selectedCompanyLogo).subscribe((res)=>{
    
    if(res){
   this.msg="Registration successfull please login";
@@ -100,6 +101,9 @@ selectIndustry(event){
 // this.vm.industry=this.industries.find(indestry=>indestry['industryId'] == event.target['value']);
 // console.log(this.vm.industry);
 this.vm.industry=event.target.value;
+}
+selectCompanyLogo(event){
+this.selectedCompanyLogo=event.target.files[0];
 }
   ngOnInit() {
   

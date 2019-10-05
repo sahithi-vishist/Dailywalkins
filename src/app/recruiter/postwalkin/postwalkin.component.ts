@@ -46,6 +46,7 @@ vm={
   check4:'',
   file:''
 };
+selectedCompanyLogo:File;
 timeSlots;
 selectedTimeslot;
 selctedIndustry;
@@ -54,6 +55,8 @@ selctedJobtype;
 jobtypeList;
 selctedMaxSal;
 qualifications;
+selectedRole;
+roles;
 selctedMinSal;
 walkintimeslots;
 noticeperiodList;
@@ -66,6 +69,7 @@ industries;
   constructor(private dates:DatePipe,private service:RecruiterauthserviceService) {
 this.service.getTimeslots().subscribe((res)=>{
   this.timeSlots=res;
+});
   this.service.getJobtype().subscribe((res)=>{
     this.jobtypeList=res;
         });
@@ -74,6 +78,9 @@ this.service.getTimeslots().subscribe((res)=>{
               });
         this.service.getQualification().subscribe((res)=>{
           this.qualifications=res;
+        });
+        this.service.getRoles().subscribe((res)=>{
+          this.roles=res;
         });
         this.service.getTimeslots().subscribe((res)=>{
           this.walkintimeslots=res;
@@ -88,12 +95,14 @@ this.service.getTimeslots().subscribe((res)=>{
         this.service.getSalary().subscribe((res)=>{
           this.salary=res;
         });
-});
-   }
+      }
    changeClientName(){
     
 this.vm.EndClient=this.vm.companyname;
 
+  }
+  selectCompanyLogo(event){
+    this.selectedCompanyLogo=event.target.files[0];
   }
   chkRequireFPanel(){
 
@@ -114,7 +123,7 @@ this.vm.EndClient=this.vm.companyname;
     this.selctedMinExp= this.experience.find(expr=>expr['experienceId'] == event.target['value']);
   }
   selectMaxExp(event){
-    this.selctedMaxExp= this.experience.find(salary1=>salary1['salaryId'] == event.target['value']);
+    this.selctedMaxExp= this.experience.find(expr1=>expr1['experienceId'] == event.target['value']);
   }
   selectIndustry(event){
     this.selctedIndustry= this.industries.find(indestry=>indestry['industryId'] == event.target['value']);
@@ -133,6 +142,9 @@ this.vm.EndClient=this.vm.companyname;
   }
   selectMaxSalary(event){
     this.selctedMaxSal= this.salary.find(salary2=>salary2['salaryId'] == event.target['value']);
+  }
+  selectRole(event){
+this.selectedRole=this.roles.find(role=>role['roleId'] == event.target['value']);
   }
 
   createWalkin(data){
@@ -169,12 +181,16 @@ this.vm.EndClient=this.vm.companyname;
     this.walkinModel.spaceNeeded=data.check2;
     this.walkinModel.resourceNeeded=data.check3;
     this.walkinModel.tpArrangement=data.check4;
-    this.walkinModel.companyLogo=data.file;
+   
     this.walkinModel.facilityId={facilityRegistrationId:1};
     this.walkinModel.locId={locationLatLongId:1};
-    this.walkinModel.roleId={roleId:5,industryId:{industryId: 1}};
-this.service.postWalkinDetails(this.walkinModel).subscribe((res)=>{
-  console.log(res);
+    this.walkinModel.roleId=this.selectedRole;
+const formData=new FormData();
+formData.append('postWalkinDetails',JSON.stringify(this.walkinModel));
+formData.append('companyLogo',this.selectedCompanyLogo);
+
+this.service.postWalkinDetails(formData).subscribe((res)=>{
+ // console.log(res);
 });
   }
   postWalkins(val){

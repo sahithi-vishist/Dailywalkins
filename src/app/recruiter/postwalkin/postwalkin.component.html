@@ -270,11 +270,13 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                            required  id="RId" name="RId"
                                                             type="hidden" value="0">
                                                         <select class="form-control form-control-width-1 input-width"
-                                                            [(ngModel)]="vm.role" #role="ngModel"id="RoleName" name="Role">
+                                                            [(ngModel)]="vm.role" #role="ngModel"(change)="selectRole($event)"id="RoleName" name="Role">
                                                             <option value="">--Select Role--</option>
+                                                            <option *ngFor="let rol of roles"
+                                                                    value="{{rol.roleId}}">{{rol.roleName}}</option>
                                                         </select>
-                                                        <mat-hint *ngIf="industry.touched && industry.invalid">
-                                                                <mat-error *ngIf="industry.errors.required"> Please specify industry
+                                                        <mat-hint *ngIf="role.touched && role.invalid">
+                                                                <mat-error *ngIf="role.errors.required"> Please specify Role
                                                                 </mat-error>
                     
                                                             </mat-hint>
@@ -649,7 +651,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 <figure class="form-inline">
                                                     <input data-val="true" required id="CompanyLogo" name="CompanyLogo"
                                                         type="hidden" value="">
-                                                    <input type="file" [(ngModel)]="vm.file" #file="ngModel" name="image"
+                                                    <input type="file" [(ngModel)]="vm.file" accept="image/*" (change)="selectCompanyLogo($event)"#file="ngModel" name="image"
                                                         id="logoFile"><br>
                                                     <img src="/assets/images/Company-logo/default_company_logo.jpg" height="80"
                                                         width="100" id="imgProfile">

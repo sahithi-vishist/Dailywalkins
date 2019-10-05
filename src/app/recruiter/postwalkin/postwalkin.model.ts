@@ -15,7 +15,7 @@ export class PostWalkinModel{
     designation:any;
     noticePeriod:any;
     jobTypeId:any;
-    qualification :any;
+    qualification:any;
     minSal:any;
     maxSal:any;
     companyName:any;

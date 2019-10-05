@@ -153,11 +153,11 @@
                     </label><label class="col-sm-1">:</label>
                     <div class="col-sm-8 form-inline">
                       <div class="col-sm-4 form-inline">
-                        <img src="\assets\images\Company-logo\default_company_logo.jpg" alt="Logo Not Loaded"
+                        <img src="\assets\images\Company-logo\default_company_logo.jpg"
                           height="80" width="100" id="imgProfile" />
                       </div>
                       <div class="col-sm-4 form-inline" style="margin-top:32px">
-                        <input [(ngModel)]="vm.file" [ngModelOptions]="{standalone: true}" #file="ngModel" type="file"
+                        <input [(ngModel)]="vm.file" [ngModelOptions]="{standalone: true}"accept="image/*" (change)="selectCompanyLogo($event)" #file="ngModel" type="file"
                           id="logoFile" name="image" />
                       </div>
 

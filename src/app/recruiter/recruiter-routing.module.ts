@@ -39,7 +39,7 @@ const routes: Routes = [
   {path:"registration",component:RegistrationRComponent},
   {path:"editdrive/:id",component:EditdriveComponent},
   {path:"selectedjob/:jobId",component:ViewWalkinsComponent},
-  {path:'editWalkin',component:EditWalkinComponent },
+  {path:'editWalkin/:id',component:EditWalkinComponent },
   {path:'WalkinCentral/Drivedetails',component:DrivedetailsComponent},
   {path:'WalkinCentral/CoOrdinatorsManagement',component:HomepageComponent},
 {path:'WalkinCentral/createCoordinator',component:CreateComponent}, 

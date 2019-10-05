@@ -19,6 +19,7 @@ contactNo;
 updatedOn;
 location;
 postedJobs;walkinDate;
+countJobs;
   constructor(private service:RecruiterauthserviceService,
     private http:HttpClient,private route:ActivatedRoute,
     private router:Router,private date:DatePipe) {
@@ -36,7 +37,9 @@ postedJobs;walkinDate;
      this.service.getPostWalkins(this.email).subscribe((res)=>{
       this.postedJobs=res;
       this.postedJobs.walkinDate=res['walkinDate'];
-     })
+      this.countJobs=this.postedJobs.length;
+     });
+  
     },(err)=>{
       console.log("error");
     });

@@ -37,6 +37,8 @@ drives;
 edClient;
 selcteddrive;
 driveId;
+selectedRole;
+roles;
 driveformmodel=new DriveFormModel();
 
   constructor(private service:RecruiterauthserviceService,
@@ -44,6 +46,9 @@ driveformmodel=new DriveFormModel();
 
     this.service.getIndustries().subscribe((res)=>{
 this.industries=res;
+    });
+    this.service.getRoles().subscribe((res)=>{
+      this.roles=res;
     });
     this.service.getJobtype().subscribe((res)=>{
 this.jobtype=res;
@@ -137,7 +142,7 @@ this.driveForm=new FormGroup({
     this.driveformmodel.salaryMax=this.selctedmaxsal;
     this.driveformmodel.noticePeriod=this.selctedperiod;
     this.driveformmodel.companyLogo=this.driveForm.get('image').value;
-   // this.driveformmodel.role=this.driveForm.get('Role').value;
+    this.driveformmodel.role=this.selectedRole;
   console.log(this.driveformmodel);
  this.service.createDrive(this.driveformmodel).subscribe((res)=>{
    console.log(res);
@@ -183,59 +188,62 @@ console.log(this.driveForm);
     
    
   }
+  selectRole(event){
+    this.selectedRole= this.roles.find(role=>role['roleId'] == event.target['value']);
+  }
   selectDrive(event){
-    console.log(event.target.value);
+    //console.log(event.target.value);
     this.driveId=event.target.value;
     this.selcteddrive= this.drives.find(drivess=>drivess['createDriveId'] == event.target['value']);
-    console.log(this.selcteddrive);
+   // console.log(this.selcteddrive);
     this.router.navigate(['/recruitment/editdrive/'+this.driveId]);
   }
 
   selectIndustry(event)
   {
-    console.log(event.target.value);
+    
     this.selctedIndustry= this.industries.find(indestry=>indestry['industryId'] == event.target['value']);
-    console.log(this.selctedIndustry);
+
 
   }
   selectJobtype(event){
-    console.log("job type is ="+event.target.value);
+    
     this.selctedJobtype= this.jobtype.find(jobtypes=>jobtypes['jobTypeId'] == event.target['value']);
-    console.log(this.selctedJobtype);
+   
   }
   selectQualification(event){
-    console.log(event.target.value);
+  
     this.selctedQualification= this.qualifications.find(quals=>quals['qualificationId'] == event.target['value']);
-    console.log(this.selctedQualification);
+
   }
   selectTimeslots(event){
-    console.log(event.target.value);
+   
     this.selctedTimeslots= this.walkintimeslots.find(time=>time['timeSlotsId'] == event.target['value']);
-    console.log(this.selctedTimeslots);
+    
   }
   selectNotice(event){
-    console.log(event.target.value);
+  
     this.selctedperiod= this.noticeperiod.find(notice=>notice['noticePeriodId'] == event.target['value']);
-    console.log(this.selctedperiod);
+
   }
   selectExpmin(event){
-    console.log(event.target.value);
+
     this.selctedminexp= this.experience.find(expr=>expr['experienceId'] == event.target['value']);
-    console.log(this.selctedminexp);
+  
   }
   selectExpmax(event){
-    console.log(event.target.value);
+
     this.selctedmaxexp= this.experience.find(expre=>expre['experienceId'] == event.target['value']);
-    console.log(this.selctedmaxexp);
+    
   }
   selectSalmin(event){
-    console.log(event.target.value);
+  
     this.selctedminsal= this.salary.find(salary1=>salary1['salaryId'] == event.target['value']);
-    console.log(this.selctedminsal);
+
   }
   selectSalmax(event){
-    console.log(event.target.value);
+   
     this.selctedmaxsal= this.salary.find(salary2=>salary2['salaryId'] == event.target['value']);
-    console.log(this.selctedmaxsal);
+
   }
 }

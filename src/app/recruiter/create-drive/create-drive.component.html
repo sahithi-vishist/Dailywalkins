@@ -244,8 +244,10 @@
                                                                 value="0" />
                                                             <select
                                                                 class="form-control form-control-width-1 input-width"
-                                                                id="RoleName" formControlName="Role">
+                                                                id="RoleName"(change)="selectRole($event)" formControlName="Role">
                                                                 <option value="">--Select Role--</option>
+                                                                <option *ngFor="let rol of roles"
+                                                                    value="{{rol.roleId}}">{{rol.roleName}}</option>
                                                             </select>
                                                              <mat-hint *ngIf="driveForm.controls['Role'].touched && driveForm.controls['Role'].invalid">
         <mat-error *ngIf="driveForm.controls.Role.errors.required">Please specify Role</mat-error>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DriveFormModel } from '../create-drive/createdrive.model';
+import { RecruiterauthserviceService } from 'src/app/recruiterauthservice.service';
+import { AlertService } from 'src/app/alert.service';
 
 
 @Component({
@@ -13,11 +16,50 @@ export class EditdriveComponent implements OnInit {
 driveId;  
 driveForm:FormGroup;
 drivedetails;
-  constructor(private route:ActivatedRoute,private http:HttpClient) { 
+timeSlots;
+jobtypeList;
+industries;
+qualifications;
+noticeperiodList;
+experience;
+salary;
+roles;
+driveformmodel=new DriveFormModel();
+constructor(private service:RecruiterauthserviceService,
+  private route:ActivatedRoute,private alert:AlertService,
+  private http:HttpClient) { 
 this.driveId=this.route.snapshot.params.id;
 this.http.get("http://localhost:62222/getdriveById?driveId=" + this.driveId).subscribe((res)=>{
   this.drivedetails=res;
 });
+this.service.getDriveById(this.driveId).subscribe((res:DriveFormModel)=>{
+  this.driveformmodel=res;
+});
+this.service.getTimeslots().subscribe((res)=>{
+  this.timeSlots=res;
+});
+this.service.getJobtype().subscribe((res)=>{
+  this.jobtypeList=res;
+      });
+      this.service.getIndustries().subscribe((res)=>{
+        this.industries=res;
+            });
+      this.service.getQualification().subscribe((res)=>{
+        this.qualifications=res;
+      });
+      this.service.getNoticePeriod().subscribe((res)=>{
+        this.noticeperiodList=res;
+       
+      });
+      this.service.getExperience().subscribe((res)=>{
+        this.experience=res;
+      });
+      this.service.getSalary().subscribe((res)=>{
+        this.salary=res;
+      });
+      this.service.getRoles().subscribe((res)=>{
+        this.roles=res;
+      });
   }
 
   ngOnInit() {
@@ -58,5 +100,45 @@ this.http.get("http://localhost:62222/getdriveById?driveId=" + this.driveId).sub
       Role:new FormControl('')
   });
 }
-
+selectedTimeSlots(event){
+  this.driveformmodel.timeslot=this.timeSlots.find(time=>time['timeSlotsId'] == event.target['value']);
+}
+selectMinExp(event){
+  this.driveformmodel.experienceMin= this.experience.find(expr=>expr['experienceId'] == event.target['value']);
+}
+selectMaxExp(event){
+  this.driveformmodel.experienceMax= this.experience.find(expr1=>expr1['experienceId'] == event.target['value']);
+}
+selectIndustry(event){
+  this.driveformmodel.industry= this.industries.find(indestry=>indestry['industryId'] == event.target['value']);
+}
+selectNoticePeriod(event){
+  this.driveformmodel.noticePeriod= this.noticeperiodList.find(notice=>notice['noticePeriodId'] == event.target['value']);
+}
+selectJobType(event){
+  this.driveformmodel.jobType= this.jobtypeList.find(jobtypes=>jobtypes['jobTypeId'] == event.target['value']);
+}
+selectQualification(event){
+  this.driveformmodel.qualification= this.qualifications.find(quals=>quals['qualificationId'] == event.target['value']);
+}
+selectMinSalary(event){
+  this.driveformmodel.salaryMin= this.salary.find(salary1=>salary1['salaryId'] == event.target['value']);
+}
+selectMaxSalary(event){
+  this.driveformmodel.salaryMax= this.salary.find(salary2=>salary2['salaryId'] == event.target['value']);
+}
+selectRole(event){
+  this.driveformmodel.role= this.roles.find(role=>role['roleId'] == event.target['value']);
+}
+updateDrive(driveformmodel){
+  this.service.updateCreatedDrive(this.driveformmodel).subscribe((res)=>{
+    if (res != null) {
+      this.alert.showAlert('success', "Updated Successfully");
+  
+    }
+    else {
+      this.alert.showAlert('Error', "Update unsuccessful");
+    }
+  });
+}
 }
