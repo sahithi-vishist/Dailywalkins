@@ -14,6 +14,10 @@ import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from '../home/home.component';
 import { WalkinDetailsComponent } from './walkin-details/walkin-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DisplaywalkinsBysearchComponent } from './displaywalkins-bysearch/displaywalkins-bysearch.component';
+import { FileuploadComponent } from './fileupload/fileupload.component';
+import { DisplayWalkinsComponent } from './display-walkins/display-walkins.component';
+import { DisplayWalkersComponent } from './display-walkers/display-walkers.component';
 
 const routes: Routes = [{path:'',component:LoginComponent},
   {path:"login",component:LoginComponent},
@@ -23,12 +27,15 @@ const routes: Routes = [{path:'',component:LoginComponent},
 {path:"applied-walkin",component:AppliedWalkinComponent,canActivate:[AuthGuardService]},
 {path:'advance-search',component:AdvanceSearchComponent},
 {path:'myprofile',component:MyprofileComponent,canActivate:[AuthGuardService]},
-
+{path:'displayjobsbysearch',component:DisplaywalkinsBysearchComponent},
 {path:'view',component:ViewComponent},
 {path:'edit',component:EditComponent},
 {path:'jobtype/:id',component:JobtypeComponent},
 {path:'logout',component:LogoutComponent},
-{path:'selected-job/:jobId',component:WalkinDetailsComponent}];
+{path:'selected-job/:jobId',component:WalkinDetailsComponent},
+{path:'uploadprofile',component:FileuploadComponent},
+{path:'displaywalkins',component:DisplayWalkinsComponent},
+{path:'displaywalkers',component:DisplayWalkersComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

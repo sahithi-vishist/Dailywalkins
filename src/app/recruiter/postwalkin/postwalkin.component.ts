@@ -46,7 +46,7 @@ vm={
   check4:'',
   file:''
 };
-selectedCompanyLogo:File;
+imgURL;
 timeSlots;
 selectedTimeslot;
 selctedIndustry;
@@ -66,6 +66,7 @@ selctedperiod;
 selctedQualification;
 salary;
 industries;
+  selectedCompanyLogo:File;
   constructor(private dates:DatePipe,private service:RecruiterauthserviceService) {
 this.service.getTimeslots().subscribe((res)=>{
   this.timeSlots=res;
@@ -100,9 +101,6 @@ this.service.getTimeslots().subscribe((res)=>{
     
 this.vm.EndClient=this.vm.companyname;
 
-  }
-  selectCompanyLogo(event){
-    this.selectedCompanyLogo=event.target.files[0];
   }
   chkRequireFPanel(){
 
@@ -146,6 +144,14 @@ this.vm.EndClient=this.vm.companyname;
   selectRole(event){
 this.selectedRole=this.roles.find(role=>role['roleId'] == event.target['value']);
   }
+  selectCompanyLogo(event){
+    this.selectedCompanyLogo=event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
+  }
 
   createWalkin(data){
     //console.log(data);
@@ -181,17 +187,17 @@ this.selectedRole=this.roles.find(role=>role['roleId'] == event.target['value'])
     this.walkinModel.spaceNeeded=data.check2;
     this.walkinModel.resourceNeeded=data.check3;
     this.walkinModel.tpArrangement=data.check4;
-   
+    //this.walkinModel.companyLogo=data.file;
     this.walkinModel.facilityId={facilityRegistrationId:1};
     this.walkinModel.locId={locationLatLongId:1};
     this.walkinModel.roleId=this.selectedRole;
-const formData=new FormData();
-formData.append('postWalkinDetails',JSON.stringify(this.walkinModel));
-formData.append('companyLogo',this.selectedCompanyLogo);
-
-this.service.postWalkinDetails(formData).subscribe((res)=>{
- // console.log(res);
-});
+    const formData=new FormData();
+    formData.append('postWalkinDetails',JSON.stringify(this.walkinModel));
+    formData.append('companyLogo',this.selectedCompanyLogo);
+    
+    this.service.postWalkinDetails(formData).subscribe((res)=>{
+     // console.log(res);
+    });
   }
   postWalkins(val){
   

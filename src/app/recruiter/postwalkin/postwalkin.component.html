@@ -651,9 +651,9 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 <figure class="form-inline">
                                                     <input data-val="true" required id="CompanyLogo" name="CompanyLogo"
                                                         type="hidden" value="">
-                                                    <input type="file" [(ngModel)]="vm.file" accept="image/*" (change)="selectCompanyLogo($event)"#file="ngModel" name="image"
-                                                        id="logoFile"><br>
-                                                    <img src="/assets/images/Company-logo/default_company_logo.jpg" height="80"
+                                                    <input type="file" [(ngModel)]="vm.file" #file="ngModel" name="image"
+                                                        id="logoFile" (change)="selectCompanyLogo($event)" accept="image/*"><br>
+                                                    <img src="{{imgURL}}" onerror="this.src='/assets/images/default_company_logo.jpg'"height="80"
                                                         width="100" id="imgProfile">
                                                 </figure>
                                                 <label style="color:red;" id="lblLogo"></label>

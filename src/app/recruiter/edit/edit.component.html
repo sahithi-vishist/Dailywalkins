@@ -1,4 +1,4 @@
-<app-navbar-r></app-navbar-r>
+<app-navbar-w></app-navbar-w>
 <div class="container">
         <div class="inner-page">
             <div class="portlet">
@@ -108,11 +108,11 @@
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <div class="thumbnail">
-                                            <img src="/assets/images/Profile-Avatar.jpg" id="imgProfile">
+                                            <img  src="{{imgURL}}"  onerror="this.src='/assets/images/download.png'"id="imgProfile">
 
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" [(ngModel)]="edit.companyLogo"id="ImageFile" name="image">
+                                    <input type="file" id="ImageFile"  accept="image/*" (change)="selectCompanyLogo($event)"name="image">
                                     <label style="color:red;" id="lblLogo"></label>
                                 </div>
                             </div>

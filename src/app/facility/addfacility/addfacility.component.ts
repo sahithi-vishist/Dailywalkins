@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../facilityservice.service';
 import { MyFacilityModel } from '../myfacility/myfacility.model';
 
@@ -12,9 +12,13 @@ import { MyFacilityModel } from '../myfacility/myfacility.model';
 export class AddfacilityComponent implements OnInit {
 
   obj=new MyFacilityModel();
-
-  constructor(private router:Router,private service:FacilityService){
+  loginFacUser;
+  id;
+  constructor(private router:Router,private service:FacilityService,
+    private route:ActivatedRoute){
+      this.id=localStorage.getItem("facilityId");
   
+ 
   }
 
   ngOnInit() {
@@ -23,13 +27,23 @@ export class AddfacilityComponent implements OnInit {
     this.obj=this.service.getter();
     console.log(this.obj) */
 }
+cancel(){
+  
+// this.service.getfac().subscribe((res)=>{
+//   this.router.navigate(['/facility/MyFacilities']);
+// });
 
+}
 addfacility(){    
+ this.obj.availabilityDates=this.obj.availabilityFromDate+"to"+this.obj.availabilityToDate;
+ this.obj.facilityId={facilityLoginId:localStorage.getItem("facilityId")};
+ 
   this.service.facilityAdd(this.obj).subscribe((res)=>
-  {console.log(res);
+  {//console.log(res);
+    this.router.navigate(['/facility/MyFacilities']);
   });
 
- this.router.navigate(['/facility/MyFacilities'])
+ 
 }
 }
 

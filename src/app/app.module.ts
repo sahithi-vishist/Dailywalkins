@@ -19,8 +19,7 @@ import { DisplayalljobsComponent } from './displayalljobs/displayalljobs.compone
 import { RecruiterModule } from './recruiter/recruiter.module';
 import { AlertService } from './alert.service';
 import { FacilityModule } from './facility/facility.module';
-
-
+import { SharedServiceService } from './shared-service.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +30,7 @@ import { FacilityModule } from './facility/facility.module';
     PrivacyPolicyComponent,
     TermsAndConditionsComponent,
     DisplayalljobsComponent,
+  
  
   ],
   imports: [
@@ -41,6 +41,7 @@ import { FacilityModule } from './facility/facility.module';
     RecruiterModule
   ],
   providers: [DatePipe,NotificationService,WalkerAuthService,AlertService,
+    SharedServiceService,
     {provide:HTTP_INTERCEPTORS,useClass:HttpinterceptorService,multi:true}
   ],
   bootstrap: [AppComponent]

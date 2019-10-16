@@ -1,5 +1,5 @@
 export class DriveFormModel {
-   // coordinators:any;
+   coordinators:{coordinatorId:number};
     companyEmail:any;
     driveName:any;
     experienceMin:{experienceId:number};
@@ -9,7 +9,7 @@ export class DriveFormModel {
     clientLocality:any;
     locality:any;
     industry:{industryId:number};
-    role:{roleId:number};
+   role:any;
     jobDescription:any;
     keySkills:any;
     designation:any;

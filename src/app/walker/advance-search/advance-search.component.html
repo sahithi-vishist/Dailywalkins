@@ -24,9 +24,13 @@
                                         <label class="col-sm-3">Location <span style="color:red;"></span></label>
                                         <label class="col-sm-1">:</label>
                                         <div class="col-sm-8">
-                                            <input class="form-control" id="txtLocation" formControlName="location"
-                                                placeholder="Hyderabad" type="text" value="" autocomplete="off">
-
+                                            <input class="form-control" id="txtLocation" formControlName="location" 
+                                                placeholder="Hyderabad" [formControl]="locControl" type="text" [matAutocomplete]="lauto">
+                                                <mat-autocomplete #lauto="matAutocomplete">
+                                                    <mat-option *ngFor="let loc of locations" value="{{loc.location}}">
+                                                      {{loc.location}}
+                                                    </mat-option>
+                                                  </mat-autocomplete>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -34,8 +38,12 @@
                                         <label class="col-sm-1">:</label>
                                         <div class="col-sm-8">
                                             <input class="form-control" id="txtEducation" formControlName="education"
-                                                type="text" value="" autocomplete="off">
-
+                                                type="text" value="" [formControl]="eduControl" [matAutocomplete]="eauto">
+                                                <mat-autocomplete #eauto="matAutocomplete">
+                                                    <mat-option *ngFor="let edu of education" value="{{edu.qualification}}">
+                                                      {{edu.qualification}}
+                                                    </mat-option>
+                                                  </mat-autocomplete>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -84,7 +92,7 @@
                                         <label class="col-sm-1">:</label>
                                         <div class="col-sm-8">
 
-                                            <select class="form-control" id="RoleName" formControlName="role" (change)="onSelectJobType($event)">
+                                            <select class="form-control" id="RoleName" formControlName="role" (change)="onSelectRole($event)">
                                                 <option>--Select Role--</option>
                                                 <option *ngFor="let role of roles" value="{{role.roleId}}">{{role.roleName}}</option>
 
@@ -96,7 +104,7 @@
                                         <label class="col-sm-3">Job Type <span style="color:red;"></span></label>
                                         <label class="col-sm-1">:</label>
                                         <div class="col-sm-8">
-                                            <select class="form-control" id="jType" formControlName="jobType">
+                                            <select class="form-control" id="jType" formControlName="jobType" (change)="onSelectJobType($event)">
                                                 <option value="">--Select type--</option>
                                                 <option *ngFor="let jt of jobTypes" value="{{jt.jobTypeId}}">{{jt.jobType}}</option>
 

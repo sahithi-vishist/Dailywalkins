@@ -19,6 +19,7 @@ address;
 contactnoLandline;
 industry;
 companyProfile;
+companyLogo;
   constructor(private http:HttpClient) { 
     var id=localStorage.getItem('recruiterId');
     this.http.get("http://localhost:62222/getRecruiterById?recruiterId="+id).subscribe((res)=>{
@@ -31,6 +32,7 @@ companyProfile;
       this.location=res['location'];
       this.contactnoLandline=res['contactnoLandline'];
       this.address=res['address'];
+      this.companyLogo=res['companyLogo'];
       this.companyProfile=res['companyProfile'];
       this.industry=res['industry'].industryType;
       console.log(this.industry);

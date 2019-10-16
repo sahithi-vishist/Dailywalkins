@@ -19,16 +19,16 @@ export class UpdatefacilityComponent implements OnInit {
   }
 
   update(){
-    if(this.obj.FacilityID==undefined){
+    if(this.obj.facilityId==undefined){
       this.service.facilityAdd(this.obj).subscribe((res)=>{
-        console.log(this.obj);
-        this.router.navigate(['/facility/MyFacilities'])
+      //  console.log(this.obj);
+        this.router.navigate(['/facility/MyFacilities']);
       })
     }
     else{
       this.service.facilityAdd(this.obj).subscribe((res)=>{
-        console.log(this.obj);
-        this.router.navigate(['/facility/MyFacilities'])
+      //  console.log(this.obj);
+        this.router.navigate(['/facility/MyFacilities']);
       })
     }
   }

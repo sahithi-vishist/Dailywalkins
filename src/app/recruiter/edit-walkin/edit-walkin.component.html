@@ -651,10 +651,10 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 <figure class="form-inline">
                                                     <input data-val="true" required id="CompanyLogo" name="CompanyLogo"
                                                         type="hidden" value="">
-                                                    <input type="file" [(ngModel)]="walkinModel.componyLogo" #file="ngModel" name="image"
+                                                    <input type="file"ngModel #file="ngModel" name="image"(change)="selectCompanyLogo($event)"
                                                         id="logoFile"><br>
-                                                    <img src="/assets/images/Company-logo/default_company_logo.jpg" height="80"
-                                                        width="100" id="imgProfile">
+                                                    <img src="{{imgURL}}"  onerror="this.src='/assets/images/download.png'" id="imgProfile" height="80"
+                                                        width="100" >
                                                 </figure>
                                                 <label style="color:red;" id="lblLogo"></label>
                                                 <mat-hint *ngIf="file.touched && file.invalid">

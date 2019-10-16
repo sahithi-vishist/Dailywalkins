@@ -14,7 +14,7 @@
                     </h3>
                     <hr>
                     <p>
-                        <span class="bold" style="font-weight:900">CompanyName:</span>
+                        <span class="bold" style="font-weight:900">CompanyName&nbsp;:</span>&nbsp;
                         <label id="lblresumeHeadline" style="color:#0080FF;" class="resumeHeadline-disc label-weight">{{companyName}} </label>
                     </p>
                     <ul class="icons-list icons-item">
@@ -31,8 +31,8 @@
                             <label id="lblLocation" class="label-weight">{{location}} </label>
                         </li>
                         <li>
-                            <i class="icon-li fa fa-calendar"></i>Last Updated :
-                            <label id="lblcontactno" class="label-weight">{{updatedOn}}</label>                            
+                            <i class="icon-li fa fa-calendar"></i>Last Updated<b> :</b>
+                            <label id="lblcontactno" class="label-weight">{{updatedOn|date:'dd-MM-yyyy'}}</label>                            
                         </li>
                     </ul>
                     <hr>
@@ -42,7 +42,7 @@
 
                 <div class="col-md-4">
                     <div class="thumbnail">
-                                <img src="/assets/images/Profile-Avatar.jpg" id="imgProfile">
+                                <img src="data:image/jpeg;base64,{{companyLogo}}"alt="Logo Not Loaded"  id="imgProfile">
                         
                     </div>
                     <div class="form-inline" id="wrapper1">
@@ -72,7 +72,7 @@
                                         <article class="media well listing-item listing-item__jobs listing-item__featured ">
                                             <div class="media-left listing-item__logo mdeia-logo-border">
 
-                                                <img class="media-object profile__img-company" src="/assets/images/de-con.jpg">
+                                                <img class="media-object profile__img-company"src="data:image/jpeg;base64,{{pw.companyLogo}}" alt="Logo Not Loaded" id="imgProfile">
                                             </div>
                                             <div class="media-body">
                                                 <div class="media-heading listing-item__title">
@@ -89,7 +89,7 @@
                                                     </span>
                                                 </div>
                                                 <div class="listing-item__desc hidden-sm hidden-xs">
-                                                    <label>Client:</label>
+                                                    <label>Client &nbsp;:</label>
                                                     {{pw.endClient}}
                                                 </div>
                                                 <div class="listing-item__desc hidden-sm hidden-xs">

@@ -8,6 +8,7 @@ import { PostwalkinComponent } from './postwalkin/postwalkin.component';
 import { WalkincentralComponent } from './walkincentral/walkincentral.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { ViewComponent } from './view/view.component';
+
 import { EditComponent } from './edit/edit.component';
 import { LogoutComponent } from '../recruiter/logout/logout.component';
 import { CreateDriveComponent } from './create-drive/create-drive.component';
@@ -23,6 +24,16 @@ import { UpdateComponent } from './update/update.component';
 import { DrivedetailsComponent } from './drivedetails/drivedetails.component';
 import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.component';
 import { RecruiterguardGuard } from '../recruiterguard.guard';
+import { UploadProfilesComponent } from './upload-profiles/upload-profiles.component';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
+import { ShortlistedCandidatesComponent } from './shortlisted-candidates/shortlisted-candidates.component';
+import { EvaluationFormsComponent } from './evaluation-forms/evaluation-forms.component';
+import { SearchwalkersComponent } from './searchwalkers/searchwalkers.component';
+import { EmailComponent } from './email/email.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { SmsComponent } from './sms/sms.component';
+import { ModifySearchComponent } from './modify-search/modify-search.component';
+
 
 
 const routes: Routes = [
@@ -34,12 +45,17 @@ const routes: Routes = [
   {path:"walkincentral",component:WalkincentralComponent,canActivate:[RecruiterguardGuard]},
   {path:"myprofile",component:MyprofileComponent,canActivate: [RecruiterguardGuard]},
   {path:"view",component:ViewComponent},
+  {path:"searchProfiles",component:SearchwalkersComponent},
   {path:"edit",component:EditComponent},
+  {path:"sendSMS",component:SmsComponent},
+  {path:"modifySearch",component:ModifySearchComponent},
+  {path:"sendEmail",component:EmailComponent},
+  {path:"viewProfile",component:ViewProfileComponent},
   {path:"WalkinCentral/CreateDrive",component:CreateDriveComponent},
   {path:"registration",component:RegistrationRComponent},
   {path:"editdrive/:id",component:EditdriveComponent},
   {path:"selectedjob/:jobId",component:ViewWalkinsComponent},
-  {path:'editWalkin/:id',component:EditWalkinComponent },
+  {path:'editWalkin/:id',component:EditWalkinComponent},
   {path:'WalkinCentral/Drivedetails',component:DrivedetailsComponent},
   {path:'WalkinCentral/CoOrdinatorsManagement',component:HomepageComponent},
 {path:'WalkinCentral/createCoordinator',component:CreateComponent}, 
@@ -47,7 +63,12 @@ const routes: Routes = [
 {path:'WalkinCentral/panel',component:PanelComponent},
 {path:'WalkinCentral/createpanel',component:CreatePanelComponent},
 {path:'WalkinCentral/editpanel',component:EditPanelComponent},
-{path:'WalkinCentral/WalkinDetails/:id',component:WalkinDetailsRComponent}
+{path:'WalkinCentral/WalkinDetails/:id',component:WalkinDetailsRComponent},
+{path:'WalkinCentral/UploadProfiles',component:UploadProfilesComponent},
+{path:'WalkinCentral/CandidateDetails',component:CandidateDetailsComponent},
+{path:'WalkinCentral/ShortlistedCandidates',component:ShortlistedCandidatesComponent},
+{path:'WalkinCentral/EvaluationForms',component:EvaluationFormsComponent},
+{path:'WalkinCentral/EditDrive/:id',component:EditdriveComponent}
 ];
 
 @NgModule({

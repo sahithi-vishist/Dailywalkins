@@ -20,6 +20,7 @@ contactNo;
 updatedOn;
 location;
 result;
+photo;
 recommendedJob;
 totalRecommendedJobs=0;;
   constructor(private router:Router,private http:HttpClient,private service:WalkerAuthService) {
@@ -36,6 +37,7 @@ totalRecommendedJobs=0;;
         this.contactNo=res['contactNo'];
         this.updatedOn=res['updatedOn'];
         this.location=res['location'].location;
+        this.photo=res['photo'];
         this.result=res;
         this.service.getWalkinsBySkills(this.keySkills).subscribe((res)=>{
           this.recommendedJob=res;

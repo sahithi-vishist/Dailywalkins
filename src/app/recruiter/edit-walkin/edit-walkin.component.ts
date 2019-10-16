@@ -20,6 +20,8 @@ experience;
 salary;
 roles;
 result;
+selectedCompanyLogo:File;
+imgURL;
 walkinModel=new  PostWalkinModel();
   constructor(private alert:AlertService,private router:Router,private route:ActivatedRoute,private service:RecruiterauthserviceService) {
 this.jobNo=this.route.snapshot.params.id;
@@ -83,10 +85,22 @@ selectMaxSalary(event){
 selectRole(event){
   this.walkinModel.roleId= this.roles.find(role=>role['roleId'] == event.target['value']);
 }
+selectCompanyLogo(event){
+  this.selectedCompanyLogo=event.target.files[0];
+  var reader = new FileReader();
+  reader.readAsDataURL(event.target.files[0]); 
+  reader.onload = (_event) => { 
+    this.imgURL = reader.result; 
+  }
+}
   ngOnInit() {
   }
   updateWalkin(walkinModel){
-    this.service.updatePostWalkins(this.walkinModel).subscribe((res)=>{
+    const formData=new FormData();
+    formData.append('postWalkinDetails',JSON.stringify(this.walkinModel));
+    formData.append('companyLogo',this.selectedCompanyLogo);
+    console.log(formData.get('companyLogo'));
+    this.service.updatePostWalkins(formData).subscribe((res)=>{
       this.result=res;
       console.log(this.result.jobNo);
       if (res != null) {

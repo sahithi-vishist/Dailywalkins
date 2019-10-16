@@ -37,7 +37,7 @@ console.log(this.regForm.value);
 
 this.facilityService.save(this.regForm.value).subscribe((res)=>
   {console.log(res);
-    this.router.navigate(['/facility/flogin'])
+    this.router.navigate(['/facility/flogin']);
   });
 
 

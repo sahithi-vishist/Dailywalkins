@@ -41,6 +41,7 @@ export class RegistrationRComponent implements OnInit {
   };
   industries;
   selectedCompanyLogo:File;
+  imgURL;
   constructor(private alert:AlertService,private router:Router,
     private service:RecruiterauthserviceService) { 
 this.service.getIndustries().subscribe((res)=>{
@@ -76,6 +77,14 @@ getDropDownValue(){
   document.getElementById('divTime').hidden = false;
 
 }
+selectCompanyLogo(event){
+  this.selectedCompanyLogo=event.target.files[0];
+  var reader = new FileReader();
+  reader.readAsDataURL(event.target.files[0]); 
+  reader.onload = (_event) => { 
+    this.imgURL = reader.result; 
+  }
+}
 sendData(val){
   console.log(val);
 }
@@ -96,14 +105,8 @@ this.service.profileAlerts(values).subscribe((res)=>{
 });
 }
 selectIndustry(event){
-//   console.log("industry called");
-// console.log(event.target.value);
-// this.vm.industry=this.industries.find(indestry=>indestry['industryId'] == event.target['value']);
-// console.log(this.vm.industry);
+
 this.vm.industry=event.target.value;
-}
-selectCompanyLogo(event){
-this.selectedCompanyLogo=event.target.files[0];
 }
   ngOnInit() {
   

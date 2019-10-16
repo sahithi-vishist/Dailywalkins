@@ -23,7 +23,8 @@ export class RegisterComponent implements OnInit {
   roles;
   experience;
   file:File;
-  selectedFile:File
+  resume:File;
+  profilePhoto:File;
   regForm:FormGroup
   constructor(private service: WalkerAuthService,
     private http: HttpClient, private notification: NotificationService) {
@@ -210,32 +211,34 @@ export class RegisterComponent implements OnInit {
   onSelectedMaxExp(event) {
     this.vm.maxExp = event.target.value;
   }
+  selectProfileImage(event){
+    this.profilePhoto=event.target.files[0];
+  }
   selectResume(event){
-this.selectedFile=event.target.files[0];
+this.resume=event.target.files[0];
 
 //console.log(this.selectedFile);
   }
   
   submit(regDetails) {
+ 
+    this.service.register(regDetails,this.profilePhoto,this.resume).subscribe((res) => {
   
-    this.service.register(regDetails).subscribe((res) => {
-   
-      this.notification.showNotification('success', "Registration successfull");
-
+      
     }, (err) => {
-      this.notification.showNotification('error', "Registration failed due to some error");
+     
     })
 
       this.service.registerPanelDetails(regDetails, this.vm.email).subscribe((res) => {
-
+       
       }, (err) => {
-
+       
       })
    
     this.service.saveProfileAlerts(regDetails).subscribe((res) => {
-
+      this.notification.showNotification('success', "Registration successfull");
     }, (err) => {
-
+      this.notification.showNotification('error', "Registration failed due to some error");
     })
     
   

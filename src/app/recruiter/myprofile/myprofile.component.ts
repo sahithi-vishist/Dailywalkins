@@ -15,10 +15,12 @@ export class MyprofileComponent implements OnInit {
 lName;
 companyName;
 email;
+companyLogo;
 contactNo;
 updatedOn;
 location;
-postedJobs;walkinDate;
+postedJobs;
+walkinDate;
 countJobs;
   constructor(private service:RecruiterauthserviceService,
     private http:HttpClient,private route:ActivatedRoute,
@@ -32,11 +34,14 @@ countJobs;
     this.email=res['email'];
     this.contactNo=res['contactNo'];
     this.location=res['location'];
-    this.updatedOn=res['updatedOn'];
+    this.updatedOn=res['updateDate'];
+   this.companyLogo=res['companyLogo'];
     this.result=res;
      this.service.getPostWalkins(this.email).subscribe((res)=>{
       this.postedJobs=res;
       this.postedJobs.walkinDate=res['walkinDate'];
+      this.postedJobs.companyLogo=res['companyLogo'];
+      console.log(this.postedJobs.companyLogo);
       this.countJobs=this.postedJobs.length;
      });
   

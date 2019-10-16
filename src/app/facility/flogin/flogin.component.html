@@ -1,10 +1,41 @@
 
-<div id="header-sticky-wrapper" class="sticky-wrapper" style="height: 89px;">
+    <div class="body-app">
+        <a class="mobile" routerLink="/walker/home"><i class="fa fa-cogs"></i></a>
+        <nav class="nav-click-first">
+            <div class="container container-nav">
+                <ul>
+                    <li>
+                        <a  class="register-text"><i class="fa fa-sign-in"></i>LOGIN</a>
+                        <span class="arrow"></span>
+                        <ul class="nav-links-login">
+                            <li><a routerLink="/walker/login">WALKER</a></li>
+                            <li><a routerLink="/recruitment/login">RECRUITER</a></li>
+                            <li><a routerLink="/facility/flogin">FACILITY</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="register-text"><i class="fa fa-pencil"></i>REGISTER</a>
+                        <span class="arrow"></span>
+                        <ul class="nav-links-reg">
+                            <li><a routerLink="/walker/register">WALKER</a></li>
+                            <li><a routerLink="/recruitment/registration">RECRUITER</a></li>
+                            <li><a routerLink="/facility/fregistration">FACILITY</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a routerLink="/" ng-class="{activeSmall:part == 'projects'}"><i class="fa fa-home"
+                                aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="header-sticky-wrapper" class="sticky-wrapper" style="height: 89px;">
     <header id="header">
         <div class="wrapper row-2">
             <div class="container container-height container-nav">
                 <div class="logo logo-img text-left container-nav">
-                    <a href="/">
+                    <a routerLink="/">
                     </a>
                 </div>
                 <div class="">
@@ -25,7 +56,7 @@
             </div>
         </div>
     </header>
-</div>
+    </div>
 <div class="body-content demo-index">
     <div class="">
         

@@ -60,6 +60,17 @@ import { CreatePanelComponent } from './create-panel/create-panel.component';
 import { EditPanelComponent } from './edit-panel/edit-panel.component';
 import { DrivedetailsComponent } from './drivedetails/drivedetails.component';
 import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.component';
+import { UploadProfilesComponent } from './upload-profiles/upload-profiles.component';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
+import { ShortlistedCandidatesComponent } from './shortlisted-candidates/shortlisted-candidates.component';
+import { EvaluationFormsComponent } from './evaluation-forms/evaluation-forms.component';
+import { NavbarWComponent } from './navbar-w/navbar-w.component';
+import { SearchwalkersComponent } from './searchwalkers/searchwalkers.component';
+import { EmailComponent } from './email/email.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { SmsComponent } from './sms/sms.component';
+import { ModifySearchComponent } from './modify-search/modify-search.component';
+
 
 @NgModule({
   declarations: [LoginRComponent,
@@ -71,7 +82,7 @@ import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.com
    EditWalkinComponent,ViewComponent, EditComponent,LogoutComponent ,
    CreateDriveComponent, LogoutComponent, NavbarRComponent, 
    EditdriveComponent, ViewWalkinsComponent,WalkinDetailsRComponent,
-  
+
    HomepageComponent,
    EditWalkinComponent,
    CreateComponent,
@@ -80,7 +91,16 @@ import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.com
    CreatePanelComponent,
    EditPanelComponent,
    DrivedetailsComponent,
- 
+   UploadProfilesComponent,
+   CandidateDetailsComponent,
+   ShortlistedCandidatesComponent,
+   EvaluationFormsComponent,
+   NavbarWComponent,
+   SearchwalkersComponent,
+   EmailComponent,
+   ViewProfileComponent,
+   SmsComponent,
+   ModifySearchComponent
 ],
   imports: [
     SharedModule,
@@ -126,7 +146,10 @@ import { WalkinDetailsRComponent } from './walkin-details-r/walkin-details-r.com
     WalkincentralComponent,ViewComponent,
   CreateDriveComponent,EditWalkinComponent,
   NavbarRComponent,EditdriveComponent,DrivedetailsComponent,
- WalkinDetailsRComponent,
-  ViewWalkinsComponent,HomepageComponent]
+ WalkinDetailsRComponent,UploadProfilesComponent,NavbarWComponent,
+ CandidateDetailsComponent,ShortlistedCandidatesComponent,
+ EvaluationFormsComponent,ViewWalkinsComponent,HomepageComponent,
+  SearchwalkersComponent,EmailComponent,ViewProfileComponent,
+SmsComponent,ModifySearchComponent]
 })
 export class RecruiterModule { }

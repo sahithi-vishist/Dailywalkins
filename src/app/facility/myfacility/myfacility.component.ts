@@ -10,17 +10,32 @@ import { MyFacilityModel } from './myfacility.model';
 })
 
 export class MyfacilityComponent implements OnInit {
-private objAdd:MyFacilityModel[];
-  constructor(private router:Router,private service:FacilityService) {}
+private objAdd;
+facilityId;
+id;
+loginFacUser;
+  constructor(private router:Router,private service:FacilityService) {
+    this.id=localStorage.getItem("facilityId")
+    this.loginFacUser=this.service.getFacilityLogin();
+ 
+    this.service.getLoginFac(this.loginFacUser).subscribe((res)=>
+    {
+      this.objAdd=res;
+     // console.log(this.objAdd);
+      // this.facilityId = this.objAdd.find(id => id['facilityLoginId'] == id);
+      // console.log(this.facilityId);
+    })
+  
+  }
 
   ngOnInit()
   {
-   this.service.getfac().subscribe((res:MyFacilityModel[])=>{this.objAdd=res})
+ 
   }
     
   updateCo(objAdd){
     this.service.setter(objAdd);
-    this.router.navigate(['/facility/up'])
+    this.router.navigate(['/facility/up']);
   }
   
 }

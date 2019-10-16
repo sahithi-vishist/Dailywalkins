@@ -153,12 +153,12 @@
                     </label><label class="col-sm-1">:</label>
                     <div class="col-sm-8 form-inline">
                       <div class="col-sm-4 form-inline">
-                        <img src="\assets\images\Company-logo\default_company_logo.jpg"
+                        <img src="{{imgURL}}" onerror="this.src='/assets/images/default_company_logo.jpg'"
                           height="80" width="100" id="imgProfile" />
                       </div>
                       <div class="col-sm-4 form-inline" style="margin-top:32px">
-                        <input [(ngModel)]="vm.file" [ngModelOptions]="{standalone: true}"accept="image/*" (change)="selectCompanyLogo($event)" #file="ngModel" type="file"
-                          id="logoFile" name="image" />
+                        <input [(ngModel)]="vm.file" [ngModelOptions]="{standalone: true}" #file="ngModel" type="file"
+                          id="logoFile" name="image" accept="image/*" (change)="selectCompanyLogo($event)" />
                       </div>
 
                     </div>
@@ -238,86 +238,7 @@
                         #des="ngModel" id="Designation" name="Designation" type="text" value="" />
                     </div>
                   </div>
-                  <!--<div class="form-group">
-                    <label for="UpdatePanel1" class="col-sm-3">
-                      Profile Alerts
-                    </label>
-                    <label class="col-sm-1"></label>
-                    <div class="col-sm-8">
-                      <div class="checkbox">
-                        <input class="check" data-val="true" [(ngModel)]="vm.emailalert" #mail="ngModel" required id="chkEmail"
-                          name="EmailAlert" (click)="checkEmail()" type="checkbox" value="true" /><input
-                          name="EmailAlert" type="hidden" value="false" /> Email
-
-                        <label class="checkbox-label">
-                          <input class="check" data-val="true"  required id="chkSMS" name="SmsAlert"
-                            (click)="checkboxSMS()" type="checkbox" value="true" /><input name="SmsAlert" type="hidden"
-                            value="false" /> SMS
-                        </label>
-                        <label class="checkbox-label">
-                          <input class="check" data-val="true" required id="chkChat"
-                            name="ChatAlert" (click)="checkboxChat()" type="checkbox" value="true" /><input
-                            name="ChatAlert" type="hidden" value="false" /> Chat
-                        </label>
-                        <label class="checkbox-label">
-                          <input id="chkNone" type="checkbox" class="check" id="chkNone" value="None"
-                            (change)="checkboxNone()" />None
-                        </label>
-
-                      </div>
-                      <div id="divEmail" style="display: none;">
-
-
-
-                        <input id="WeekDay" name="WeekDay"[(ngModel)]="vm.day" type="hidden" value="" />
-
-                        <label class="check-1">
-                          <input class="check-1" id="WeekDay" name="WeekDay"  (click)="getValue1()"
-                            type="radio" value="Daily" />Daily
-                        </label>
-                        <label class="check-1">
-                          <input class="check-1" id="WeekDay" name="WeekDay" (click)="getvalue2()"
-                            type="radio" value="Weekly" />Weekly
-                        </label>
-                        <label class="check-1">
-                          <input class="check-1" id="WeekDay" name="WeekDay" (click)="getvalue3()"
-                            type="radio" value="Instant" />Instant
-                        </label>
-                      </div>
-                      <div class="form-group" id="divDay" style="display: none">
-                        <label class="control-label col-md-6">
-                          <span class="red"></span>Select day and time :
-                        </label>
-                        <div class="col-md-6" style="margin-top:10px;">
-                          <input id="WeekDay" name="WeekDay" type="hidden" value="" />
-                          <select class="ddlAlert form-control" [(ngModel)]="vm.WeekDay" id="ddlAlertsJob"
-                            name="ddlAlertsJob" (click)="getDropDownValue()">
-                            <option value="">--Select type--</option>
-                            <option value="1">Sunday</option>
-                            <option value="2">Monday</option>
-                            <option value="3">Tuesday</option>
-                            <option value="4">Wednesday</option>
-                            <option value="5">Thursday</option>
-                            <option value="6">Friday</option>
-                            <option value="7">Saturday</option>
-                          </select>
-
-                        </div>
-                      </div>
-
-                      <div class="col-md-8" id="divTime" style="display: none;white-space: nowrap;">
-                        <input id="OnDemandTime" name="OnDemandTime" type="hidden" value="" />
-                        <input checked="checked" class="radiobtn" id="radio_1" name="rd8AM"
-                          (click)="changeTime()" type="radio" value="8:00 AM" /><label for="">8:00 AM</label>
-                        <input class="radiobtn" id="radio_2" name="rd12PM" (click)="changeTime()"
-                          type="radio" value="12:00 PM" /><label for="">12:00 PM</label>
-                        <input class="radiobtn" id="radio_3" name="rd4PM" (click)="changeTime()" type="radio"
-                          value="4:00 PM" /><label for="">4:00 PM</label>
-                        <input class="radiobtn" id="radio_4" name="rd8PM" (click)="changeTime()" type="radio"
-                          value="8:00 PM" /><label for="">8:00 PM</label>
-                      </div>
-                    </div>
-                  </div>-->
+                  
                   <div class="form-group">
                     <label for="UpdatePanel1" class="col-sm-3" style="margin-top: 4px;">
                       Profile Alerts
@@ -427,7 +348,7 @@
                   </div>
                   <label class="col-sm-4 "></label>
                   <div class="col-sm-8">
-                    <input type="submit" value="Submit" (click)="submitRegistration(vm)" class="btn btn-primary" [title]= 'regForm.valid ? "click to submit":"Please update the required fields"' />
+                    <input type="submit" value="Submit" (click)="submitRegistration(vm)" class="btn btn-primary"[title]= 'regForm.valid ? "click to submit":"Please update the required fields"'  />
                   </div>
                 </div>
 

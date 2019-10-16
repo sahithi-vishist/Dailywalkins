@@ -1,5 +1,5 @@
 
-<app-navbar-r></app-navbar-r>
+<app-navbar-w></app-navbar-w>
 <div class="wrapper">
     <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
 
@@ -11,22 +11,14 @@
                     <div id="tab-container">
                         <ul class="admin-list-group" id="main-menu">
                             <li class="quick active bold"><a>Details</a></li>
-                            <li class="liclass" style="color: White"><a routerLink="/WalkinCentral/CreateDrive">Create
-                                    Drive</a></li>
-                            <li class="liclass" style="color: White"><a routerLink="/recruitment/walkincentral">Drive
-                                    details</a></li>
-                            <li class="liclass" style="color: White"><a
-                                    routerLink="/WalkinCentral/UploadProfiles">Upload Profile(s)</a></li>
-                            <li class="liclass " style="color: White"><a
-                                    routerLink="/WalkinCentral/CandidateDetails">Candidate Details</a></li>
-                            <li class="liclass" style="color: White"><a
-                                    routerLink="/WalkinCentral/CoOrdinatorsManagement">Co-Ordinators Management</a></li>
-                            <li class="liclass" style="color: White"><a
-                                    routerLink="/WalkinCentral/PanelManagement">Panel Management</a></li>
-                            <li class="liclass" style="color: White"><a
-                                    routerLink="/WalkinCentral/ShortlistedCandidates">Shortlisted Candidates</a></li>
-                            <li class="liclass" style="color: White"><a
-                                    routerLink="/WalkinCentral/EvaluationForms">Evaluation Forms</a></li>
+                            <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CreateDrive">Create Drive</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/walkincentral">Drive details</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/UploadProfiles">Upload Profile(s)</a></li>
+                                    <li class="liclass " style="color: White"><a routerLink="/recruitment/WalkinCentral/CandidateDetails">Candidate Details</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CoOrdinatorsManagement">Co-Ordinators Management</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/panel">Panel Management</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/ShortlistedCandidates">Shortlisted Candidates</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/EvaluationForms">Evaluation Forms</a></li>
                         </ul>
                     </div>
 
@@ -144,7 +136,7 @@
                                                         <div class="col-sm-8">
                                                             <input class="form-control form-control-width input-width"
                                                                 data-val="true" id="txtWalkinDate"
-                                                                formControlName="WalkinDate" type="text" value="" />
+                                                                formControlName="WalkinDate" type="date" value="" />
                                                              <mat-hint *ngIf="driveForm.controls['WalkinDate'].touched && driveForm.controls['WalkinDate'].invalid">
                                             <mat-error *ngIf="driveForm.controls.WalkinDate.errors.required">Please specify WalkinDate</mat-error>
                                         </mat-hint> 
@@ -244,7 +236,7 @@
                                                                 value="0" />
                                                             <select
                                                                 class="form-control form-control-width-1 input-width"
-                                                                id="RoleName"(change)="selectRole($event)" formControlName="Role">
+                                                                id="RoleName" (change)="selectRole($event)"formControlName="Role">
                                                                 <option value="">--Select Role--</option>
                                                                 <option *ngFor="let rol of roles"
                                                                     value="{{rol.roleId}}">{{rol.roleName}}</option>
@@ -298,8 +290,8 @@
                                                                 <input
                                                                     class="form-control form-control-width input-width"
                                                                     data-val="true" id="txtCoordinators"
-                                                                    formControlName="CoOrdinators"
-                                                                    type="text" value="" />
+                                                                    formControlName="CoOrdinators" disabled
+                                                                    type="text" value="{{edcoOrdinator}}" />
                                                                 <a [routerLink]="" class="btn-primary btn-sm"
                                                                     style="margin-top:-67px;"
                                                                     (click)="displayCoordinators()">CoOrdinators</a>
@@ -634,11 +626,9 @@
                                                                 <input data-val="true" id="CompanyLogo"
                                                                     name="CompanyLogo" type="hidden" value="" />
 
-                                                                <input type="file" formControlName="image"
+                                                                <input type="file" formControlName="companyLogo"(change)="selectCompanyLogo($event)"
                                                                     id="logoFile" /><br />
-                                                                <img src="/assets\images\Company-logo\default_company_logo.jpg"
-                                                                    alt="Logo Not Loaded" height="80" width="100"
-                                                                    id="imgProfile" />
+                                                                <img src="{{imgURL}}" onerror="this.src='/assets/images/default_company_logo.jpg'" id="imgProfile" height="80" width="100"/>
                                                             </figure>
                                                             <label style="color:red;" id="lblLogo"></label>
                                                         </div>
@@ -658,14 +648,14 @@
                                     </div>
                                 </section>
 
-                                <div id='myModal'class='modal' style="margin-top:7px;">
+                                <div id='myModal'class='modal' style="margin-top:7px;display:none">
                                     <div class="modal-dialog">
                                         <input id="CoOrdinators" name="CoOrdinators" type="hidden" value="" />;
-                                        <div class="modal-content">
+                                        <div id="coModel"class="modal-content">
                                             <div id='myModalContent' class="modal-body">
                                                 <div class="form-horizontal">
                                                     <div class="portlet" id="divCoOrdinators"
-                                                        style="margin-left:6px;margin-right:6px;display:none">
+                                                        style="margin-left:6px;margin-right:6px;">
                                                         <div class="portlet-header">
                                                             <span style="font-size: 17px;line-height:38px;color:#fff;">
                                                                 <input type="checkbox" class="check check-box-1"
@@ -674,16 +664,16 @@
                                                             </span>
                                                             <ul class="portlet-tools pull-right">
                                                                 <li>
-                                                                    <a href="#" class="btn btn-primary btn-sm"
+                                                                    <a class="btn btn-primary btn-sm"
                                                                         (click)="addToTextBox()">Submit</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#" class="btn btn-primary btn-sm"
+                                                                    <a class="btn btn-primary btn-sm"
                                                                         (click)="addCoordinator()">Add</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#" class="btn btn-primary btn-sm"
-                                                                        (click)="cancel()">Cancel</a>
+                                                                    <a class="btn btn-primary btn-sm"
+                                                                        (click)="cancel($event)">Cancel</a>
                                                                 </li>
                                                             </ul>
 
@@ -691,22 +681,22 @@
                                                         <div class="table-responsive">
                                                             <table id="gridTbl"
                                                                 class="table table-striped table-bordered dt-responsive nowrap table-th-nowrap"
-                                                                width="100%" cellspacing="0">
-                                                                <thead>
+                                                                width="100%"cellspacing="0">
+                                                                <thead >
                                                                     <tr>
                                                                         <th></th>
                                                                         <th>Name</th>
                                                                         <th>Email</th>
                                                                         <th>Contact Number</th>
                                                                     </tr>
-                                                                    <tr>
+                                                                    <tr *ngFor="let details of coordinatorDetails">
                                                                         <td><input type="checkbox"
                                                                                 class="check check-box-1"
-                                                                                value=sahithisai180@gmail.com
-                                                                                onclick="checkEmail(this)" /></td>
-                                                                        <td>Sravya</td>
-                                                                        <td>sahithisai180@gmail.com</td>
-                                                                        <td>9030150495</td>
+                                                                        
+                                                                                (change)="checkEmail(details.coordinatorId)" /></td>
+                                                                        <td>{{details.name}}</td>
+                                                                        <td>{{details.email}}</td>
+                                                                        <td>{{details.contactNo}}</td>
                                                                     </tr>
 
                                                                 </thead>
@@ -716,57 +706,72 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal-content">
-                                            <div id='divAddCoOrd' class="modal-body" style="display:none">
-                                                <div class="form-horizontal">
-                                                    <div class="form-group from-model">
-                                                        <label class="col-sm-5" style="white-space:nowrap">Name <span
-                                                                style="color:red;">*</span></label>
-                                                        <label class="col-sm-1">:</label>
-                                                        <div class="col-sm-6">
-                                                            <input
-                                                                class="form-control form-control-width input-width input-width-con"
-                                                                id="txtName" name="CoOrdinatorName" type="text"
-                                                                value="" />
+                                        <form #coordinatorForm="ngForm">
+                                                <div id="coModel1" class="modal-content" style="display:none">
+                                                        <div id='divAddCoOrd' class="modal-body" >
+                                                            <div class="form-horizontal">
+                                                                <div class="form-group from-model">
+                                                                    <label class="col-sm-5" style="white-space:nowrap">Name <span
+                                                                            style="color:red;">*</span></label>
+                                                                    <label class="col-sm-1">:</label>
+                                                                    <div class="col-sm-6">
+                                                                        <input
+                                                                            class="form-control form-control-width input-width input-width-con"
+                                                                            id="txtName" [(ngModel)]="obj.name"#name="ngModel" required name="CoOrdinatorName" type="text"
+                                                                            value="" />
+                                                                            <mat-hint *ngIf="name.touched && name.invalid">
+                                                                                <mat-error *ngIf="name.errors.required">Please specify valid name</mat-error>
+                                                                
+                                                                              </mat-hint>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group from-model">
+                                                                    <label class="col-sm-5" style="white-space:nowrap">Contact No
+                                                                        <span style="color:red;">*</span></label>
+                                                                    <label class="col-sm-1">:</label>
+                                                                    <div class="col-sm-6">
+                                                                        <input
+                                                                            class="form-control form-control-width input-width input-width-con"
+                                                                            id="txtCPhone"[(ngModel)]="obj.contactNo" #contactNo="ngModel" required pattern="^[0-9 ]{10}$"name="CoOrdinatorContactNo"
+                                                                            placeholder="7386747422" type="text" value="" />
+                                                                            <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+                                                                                <mat-error *ngIf="contactNo.errors.required">Contact Number is required</mat-error>
+                                                                                <mat-error *ngIf="contactNo.errors.pattern">Enter valid Mobile Number</mat-error>
+                                                                              </mat-hint>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group from-model">
+                                                                    <label class="col-sm-5" style="white-space:nowrap">Email <span
+                                                                            style="color:red;">*</span></label>
+                                                                    <label class="col-sm-1">:</label>
+                                                                    <div class="col-sm-6">
+                                                                        <input
+                                                                            class="form-control form-control-width input-width input-width-con"
+                                                                            id="txtCEmail"[(ngModel)]="obj.email"name="CoOrdinatorEmail"required email #emailId="ngModel" type="text"
+                                                                            value="" />
+                                                                            <mat-hint *ngIf="emailId.touched && emailId.invalid">
+                                                                                <mat-error *ngIf="emailId.errors.required">Email Address is required</mat-error>
+                                                                                <mat-error *ngIf="emailId.errors.email">Enter valid Email Address</mat-error>
+                                                                              </mat-hint>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3" style="white-space:nowrap"> </label>
+                                                                    <label class="col-sm-1"></label>
+                                                                    <div class="col-sm-8">
+                                                                        <a [routerLink]="" (click)="saveCoOrdinator(obj)"
+                                                                            class="btn btn-primary btn-sm"
+                                                                            imagealign="AbsMiddle">Submit</a>&nbsp;
+                                                                        <button class="btn btn-primary btn-sm" name="Submit"
+                                                                            value="Submit" imagealign="AbsMiddle"
+                                                                            (click)="submitCancel()">Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group from-model">
-                                                        <label class="col-sm-5" style="white-space:nowrap">Contact No
-                                                            <span style="color:red;">*</span></label>
-                                                        <label class="col-sm-1">:</label>
-                                                        <div class="col-sm-6">
-                                                            <input
-                                                                class="form-control form-control-width input-width input-width-con"
-                                                                id="txtCPhone" name="CoOrdinatorContactNo"
-                                                                placeholder="7386747422" type="text" value="" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group from-model">
-                                                        <label class="col-sm-5" style="white-space:nowrap">Email <span
-                                                                style="color:red;">*</span></label>
-                                                        <label class="col-sm-1">:</label>
-                                                        <div class="col-sm-6">
-                                                            <input
-                                                                class="form-control form-control-width input-width input-width-con"
-                                                                id="txtCEmail" name="CoOrdinatorEmail" type="text"
-                                                                value="" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3" style="white-space:nowrap"> </label>
-                                                        <label class="col-sm-1"></label>
-                                                        <div class="col-sm-8">
-                                                            <a href="#" onclick="saveCoOrdinator()"
-                                                                class="btn btn-primary btn-sm"
-                                                                imagealign="AbsMiddle">Submit</a>
-                                                            <button class="btn btn-primary btn-sm" name="Submit"
-                                                                value="Submit" imagealign="AbsMiddle"
-                                                                (click)="submit()">Cancel</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </form>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -780,95 +785,4 @@
 
     </div>
 </div>>
-
-
-  
-<!-- <div class="modal-dialog">
-                        <input id="CoOrdinators" name="CoOrdinators" type="hidden" value="">;
-                        <div class="modal-content">
-                            <div id="myModalContent" class="modal-body">
-                                <div class="form-horizontal">
-                                    <div class="portlet" id="divCoOrdinators" style="margin-left: 6px; margin-right: 6px; display: block;">
-                                        <div class="portlet-header">
-                                            <span style="font-size: 17px;line-height:38px;color:#fff;">
-                                                <input type="checkbox" class="check check-box-1" id="chkAll" onclick="checkAllEmails(this)">Select All
-                                            </span>
-                                            <ul class="portlet-tools pull-right">
-                                                <li>
-                                                    <a href="#" class="btn btn-primary btn-sm" onclick="addToTextBox()">Submit</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="btn btn-primary btn-sm" onclick="addCoOrdinator()">Add</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="btn btn-primary btn-sm" onclick="cancel()">Cancel</a>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table id="gridTbl" class="table table-striped table-bordered dt-responsive nowrap table-th-nowrap" width="100%" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Contact Number</th>
-                                                    </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox" class="check check-box-1" value="kumar@gmail.com" onclick="checkEmail(this)"></td>
-                                                            <td>Kumar</td>
-                                                            <td>kumar@gmail.com</td>
-                                                            <td>8978232992</td>                                                            
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox" class="check check-box-1" value="chnagaraju05@gmail.com" onclick="checkEmail(this)"></td>
-                                                            <td>sadad</td>
-                                                            <td>chnagaraju05@gmail.com</td>
-                                                            <td>9032498099</td>                                                            
-                                                        </tr>
-
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-content">
-                            <div id="divAddCoOrd" class="modal-body" style="display:none">
-                                <div class="form-horizontal">
-                                    <div class="form-group from-model">
-                                        <label class="col-sm-5" style="white-space:nowrap">Name <span style="color:red;">*</span></label>
-                                        <label class="col-sm-1">:</label>
-                                        <div class="col-sm-6">
-                                            <input class="form-control form-control-width input-width input-width-con" id="txtName" name="CoOrdinatorName" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group from-model">
-                                        <label class="col-sm-5" style="white-space:nowrap">Contact No <span style="color:red;">*</span></label>
-                                        <label class="col-sm-1">:</label>
-                                        <div class="col-sm-6">
-                                            <input class="form-control form-control-width input-width input-width-con" id="txtCPhone" name="CoOrdinatorContactNo" placeholder="7386747422" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group from-model">
-                                        <label class="col-sm-5" style="white-space:nowrap">Email <span style="color:red;">*</span></label>
-                                        <label class="col-sm-1">:</label>
-                                        <div class="col-sm-6">
-                                            <input class="form-control form-control-width input-width input-width-con" id="txtCEmail" name="CoOrdinatorEmail" type="text" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3" style="white-space:nowrap"> </label>
-                                        <label class="col-sm-1"></label>
-                                        <div class="col-sm-8">
-                                            <a href="#" onclick="saveCoOrdinator()" class="btn btn-primary btn-sm" imagealign="AbsMiddle">Submit</a>
-                                            <button class="btn btn-primary btn-sm" name="Submit" value="Submit" imagealign="AbsMiddle" onclick="return addCancel();">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  -->
-                   <app-footer></app-footer>  
+     <app-footer></app-footer>  

@@ -49,7 +49,7 @@
                             </li>
                             <li>
                                 <i class="icon-li fa fa-calendar"></i>Last Updated :
-                                <label id="lblUpdatedDate" forecolor="#0080FF" text="">{{updatedOn}}</label>
+                                <label id="lblUpdatedDate" forecolor="#0080FF" text="">{{updatedOn|date:'dd-MM-yyyy'}}</label>
                             </li>
                         </ul>
 
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="/assets/images/Profile-Avatar.jpg" alt="Logo Not Loaded" id="imgProfile">
+                            <img src="{{photo}}" alt="Logo Not Loaded" id="imgProfile">
 
                         </div>
                     </div>
