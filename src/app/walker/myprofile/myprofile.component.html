@@ -19,7 +19,7 @@
                             <label id="lblLName">{{lName}}</label>
                         </h2>
                         <p>
-                            <span class="bold">Resume Headline :</span>
+                            <span class="bold">Resume Headline : </span>
                             <label id="lblresumeHeadline" style="color:#0080FF" class="resumeHeadline-disc">{{resumeHeadLine}}</label>
                         </p>
                         <p>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="{{photo}}" alt="Logo Not Loaded" id="imgProfile">
+                            <img src="data:image/jpeg;base64,{{photo}}" alt="Logo Not Loaded" id="imgProfile">
 
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                                     <article class="media well listing-item listing-item__jobs listing-item__featured ">
                                         <div class="media-left listing-item__logo mdeia-logo-border">
 
-                                            <img class="media-object profile__img-company" src="/assets/images/cse.jpg" alt="Sample Employer">
+                                            <img class="media-object profile__img-company" src="data:image/jpeg;base64,{{rJob['companyLogo']}}" alt="Sample Employer">
                                         </div>
                                         <div class="media-body">
                                             <div class="media-heading listing-item__title">

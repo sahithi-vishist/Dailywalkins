@@ -30,6 +30,9 @@ getIndustries(){
   return this.http.get("http://localhost:62222/getIndustries");
     
 }
+updateCreatedDrive(driveformmodel:DriveFormModel){
+  return this.http.put('http://localhost:62222/updateDrive',driveformmodel);
+}
 getJobtype(){
   return this.http.get("http://localhost:62222/getJobTypes");
 }

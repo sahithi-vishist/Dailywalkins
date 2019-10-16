@@ -55,7 +55,8 @@ const routes: Routes = [
 {path:'WalkinCentral/UploadProfiles',component:UploadProfilesComponent},
 {path:'WalkinCentral/CandidateDetails',component:CandidateDetailsComponent},
 {path:'WalkinCentral/ShortlistedCandidates',component:ShortlistedCandidatesComponent},
-{path:'WalkinCentral/EvaluationForms',component:EvaluationFormsComponent}
+{path:'WalkinCentral/EvaluationForms',component:EvaluationFormsComponent},
+{path:'WalkinCentral/EditDrive/:id',component:EditdriveComponent}
 ];
 
 @NgModule({

@@ -187,13 +187,13 @@
                                 <div class="profile-head">
                                     <span class="col-sm-6 walkins-text-right">
                                         <span><span class="counter"><a
-                                                    routerLink="/walker/login">{{rCount}}</a></span></span>
+                                                    routerLink="/walker/login">{{totalWalkins}}</a></span></span>&nbsp;
                                         <span class="c-font-bold-border"
                                             style="color:#000;position:relative;z-index:1">WALKINS</span>
                                     </span>
                                     <span class="col-sm-6 walkers-text-right">
                                         <span class="" data-counter="counterup"><span
-                                                class="counter">{{wCount}}</span></span>
+                                                class="counter">{{wCount}}</span></span>&nbsp;
                                         <span class="c-font-bold-border-walkers"
                                             style="color:#000;position:relative;z-index:1">WALKERS</span>
                                     </span>
@@ -226,7 +226,7 @@
                                                 style="padding:2px !important;border-radius:0px !important;margin-bottom:4px !important">
                                                 <label style="color:green;font:bold;margin-left:10px;"> {{totalWalkins}}
                                                     Walkins(s)
-                                                    found.</label>
+                                                    found in </label>
                                             </div>
                                             <div class="">
                                                 <div class="">
@@ -239,7 +239,7 @@
                                                                         class="media-left listing-item__logo mdeia-logo-border">
 
                                                                         <img class="media-object profile__img-company"
-                                                                            src="/assets/images/cse.jpg"
+                                                                            src="data:image/jpeg;base64,{{displayJob.companyLogo}}"
                                                                             alt="Sample Employer">
                                                                     </div>
                                                                     <div class="media-body">
@@ -316,7 +316,7 @@
                                     </div>
                                     <div class="jobs-list" style="box-shadow: 0 2px 2px rgba(0,0,0,.07);">
                                         <a href="http://www.derivativesconnect.com" target="_blank">
-                                            <img src="../assets/images/de-con.jpg" alt="dailywalkins"
+                                            <img src="../assets/images/DC-logo.png" alt="dailywalkins"
                                                 class="derivatives-connect-img" style="">
                                             <div style="" class="derivatives-connect-txt">Free Techno Functional
                                                 Training</div>
@@ -496,5 +496,5 @@
     <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
         style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions"
         class="ui-helper-hidden-accessible"></span>
-        
+
 </body>

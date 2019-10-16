@@ -32,7 +32,7 @@ countJobs;
     this.email=res['email'];
     this.contactNo=res['contactNo'];
     this.location=res['location'];
-    this.updatedOn=res['updatedOn'];
+    this.updatedOn=res['updateDate'];
     this.result=res;
      this.service.getPostWalkins(this.email).subscribe((res)=>{
       this.postedJobs=res;

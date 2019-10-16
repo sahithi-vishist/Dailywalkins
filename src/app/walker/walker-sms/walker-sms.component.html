@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            
+            <section class="inner-page">
+                <div id="register" class="animate form">
+                    <div class="form-horizontal ">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 wrapper-1">
+                                <h1> Job SMS </h1>
+                                <label style="color:green"></label>
+                                <input data-val="true" data-val-number="The field JobNo must be a number." data-val-required="The JobNo field is required." id="JobNo" name="JobNo" type="hidden" value="54">
+                                <div class="form-group">
+                                    <label class="label-icon-2  col-sm-3">To  <span style="color:red;">*</span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control form-control-width input-width" data-val="true" data-val-required="* Please specify mobile number" id="txtToEmail" name="ToNumbers" type="text" value="">
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="ToNumbers" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>                                    
+                                <div class="form-group">
+                                    <label class="label-icon-2  col-sm-3">Subject <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control form-control-width input-width" id="txtSubject" name="Subject" type="text" value="Java J2E spring">
+                                    </div>
+                                </div>                                   
+                                <div class="form-group">
+                                    <label class="label-icon-2 col-sm-3"> <span style="color:red;"></span></label>
+                                    <label class="col-sm-1"></label>
+                                    <div class="col-sm-8">
+                                        <input type="submit" value="Submit" class="btn btn-primary">
+                                        <input type="submit" value="Cancel" class="btn btn-primary" onclick="return closeEmail();">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+

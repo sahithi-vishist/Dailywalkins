@@ -13,7 +13,7 @@ export class RecruiterguardGuard {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if(localStorage.getItem('userExists')){
+      if(localStorage.getItem('token')&&localStorage.getItem('userExists')){
         return true;
       }else{
         this.router.navigate(['recruitment/login']);

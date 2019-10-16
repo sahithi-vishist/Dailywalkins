@@ -21,6 +21,7 @@ updatedOn;
 location;
 result;
 photo;
+uints;
 recommendedJob;
 totalRecommendedJobs=0;;
   constructor(private router:Router,private http:HttpClient,private service:WalkerAuthService) {
@@ -28,6 +29,7 @@ totalRecommendedJobs=0;;
      this.service.getId().subscribe((id)=>{
        localStorage.setItem("walkerId",id.toString());
        this.service.getWalker(id).subscribe((res)=>{ 
+      
         this.fName=res['firstName'];
         this.lName=res['lastName'];
         this.resumeHeadLine=res['resumeHeadLine'];
@@ -36,7 +38,7 @@ totalRecommendedJobs=0;;
         this.email=res['email'];
         this.contactNo=res['contactNo'];
         this.updatedOn=res['updatedOn'];
-        this.location=res['location'].location;
+        this.location=res['location'].cityName;
         this.photo=res['photo'];
         this.result=res;
         this.service.getWalkinsBySkills(this.keySkills).subscribe((res)=>{

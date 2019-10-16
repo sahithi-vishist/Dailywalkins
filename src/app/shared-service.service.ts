@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SharedServiceService {
 object;
+jobTitle;
 url="http://localhost:62222"
   constructor(private http:HttpClient) { }
   setJSON(searchObj){
@@ -14,6 +15,14 @@ this.object=searchObj;
   }
   getJSON(){
     return this.object;
+  }
+  setEmailAndJobTitle(jobTitle,email){
+this.jobTitle={'jobTitle':jobTitle,
+                'email':email}
+
+  }
+  getEmailAndJobTitle(){
+return this.jobTitle;
   }
   getWalkinsByLocation(toSearchObj){
 return this.http.post(this.url+'/searchByLocation',{"location":toSearchObj.location})

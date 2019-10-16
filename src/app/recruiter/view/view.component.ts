@@ -28,7 +28,7 @@ companyProfile;
       this.companyName=res['companyName'];
       this.email=res['email'];
       this.contactNo=res['contactNo'];
-      this.location=res['location'];
+      this.location=res['location'].cityName;
       this.contactnoLandline=res['contactnoLandline'];
       this.address=res['address'];
       this.companyProfile=res['companyProfile'];

@@ -37,11 +37,15 @@ drives;
 edClient;
 selcteddrive;
 driveId;
+selectedRole;
+roles;
 driveformmodel=new DriveFormModel();
 
   constructor(private service:RecruiterauthserviceService,
     private date:DatePipe,private http:HttpClient,private router:Router) {
-
+      this.service.getRoles().subscribe((res)=>{
+        this.roles=res;
+      });
     this.service.getIndustries().subscribe((res)=>{
 this.industries=res;
     });
@@ -137,7 +141,7 @@ this.driveForm=new FormGroup({
     this.driveformmodel.salaryMax=this.selctedmaxsal;
     this.driveformmodel.noticePeriod=this.selctedperiod;
     this.driveformmodel.companyLogo=this.driveForm.get('image').value;
-   // this.driveformmodel.role=this.driveForm.get('Role').value;
+    this.driveformmodel.role=this.selectedRole;
   console.log(this.driveformmodel);
  this.service.createDrive(this.driveformmodel).subscribe((res)=>{
    console.log(res);
@@ -163,6 +167,9 @@ this.driveForm=new FormGroup({
     document.getElementById('myModal').style.display='block';
    
   }  
+  selectRole(event){
+    this.selectedRole= this.roles.find(role=>role['roleId'] == event.target['value']);
+  }
   checkAllEmails(){
 
   }

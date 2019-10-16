@@ -3,6 +3,8 @@ import { WalkerAuthService } from '../walker-auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
+import { NotificationService } from 'src/app/notification.service';
+import { SharedServiceService } from 'src/app/shared-service.service';
 
 
 @Component({
@@ -18,8 +20,10 @@ timings;
 timeSlots=[];
 jsAppliedJob;
 todaysDate=new Date();
-  constructor(private service:WalkerAuthService,
-    private router:Router,private route:ActivatedRoute,private date:DatePipe) {
+hidden=true;
+
+  constructor(private service:WalkerAuthService,private notification:NotificationService,
+    private router:Router,private route:ActivatedRoute,private date:DatePipe,private sharedService:SharedServiceService) {
     this.jobNo=this.route.snapshot.params.jobId;
  
     this.service.getJobById(this.jobNo).subscribe((res)=>{
@@ -37,7 +41,7 @@ todaysDate=new Date();
         walkinDate:res['walkinDate'],
         walkinTimeSlots:res['walkinTimeSlots'].hoursText,
         walkinLocation:res['walkinLocation'],
-        walkinLocality:res['walkinLocality'],
+        walkinLocality:res['locality'],
         keySkills:res['keySkills'],
         jobDescription:res['jobDescription'],
         qualification:res['qualification'].qualification,
@@ -48,11 +52,14 @@ todaysDate=new Date();
         email:res['email'],
         companyAddress:res['address'],
         clientLocation:res['walkinLocation'],
-        clientLocality:res['walkinLocality'],
-        venueDetails:res['address'],
-        recruiterCompanyName:res['recruiterCompanyname']
+        clientLocality:res['clientLocality'],
+        venueDetails:res['venueDetails'],
+        recruiterCompanyName:res['recruiterCompanyname'],
+        companyLogo:res['companyLogo']
       }
+      this.sharedService.setEmailAndJobTitle(this.jobDetails['jobTitle'],this.jobDetails.email);
     })
+  
     this.service.getTimeSlots().subscribe((res)=>{
       this.timings=res;
     this.selectedTimings={hoursText:''};
@@ -66,6 +73,16 @@ todaysDate=new Date();
         });
     
     })
+
+    this.service.checkAppliedStatus({"jobNo":this.jobNo},localStorage.getItem('email')).subscribe((res)=>{
+      if(!res){
+     
+      }else{
+     
+       document.getElementById('apply').style.display="none";
+      
+      }
+    });
    }
 applyJob(job){
  
@@ -81,76 +98,29 @@ applyJob(job){
       walkinDate:this.date.transform(this.jobDetails.walkinDate,'yyyy-MM-dd')
     
     }
- 
-this.service.appliedJob(this.jsAppliedJob).subscribe((res)=>{
+ this.service.checkAppliedStatus(this.jsAppliedJob.jobNo,this.jsAppliedJob.jobSeekerEmailId).subscribe((res)=>{
+   if(!res){
+    this.service.appliedJob(this.jsAppliedJob).subscribe((res)=>{
+      this.notification.showNotification('success',"Successfully applied for this job");
+    },(err)=>{
+    
+    })
+   }else{
+    document.getElementById('myModal').style.display="none";
+     this.notification.showNotification('error', "Already you have Applied for this job!")
+   }
+ })
 
-},(err)=>{
 
-})
-
-  console.log(this.jsAppliedJob);
+  
 }
   ngOnInit() {
   }
+  closeDialog(){
+    document.getElementById('myModal').style.display="none";
+  }
+  loadApplyDetails(){
+    document.getElementById('myModal').style.display="block";
+  }
   
- 
-  // loadApplyDetails(){
-  //   if(localStorage.getItem('walkerId')!=null){
-  //     Swal.fire({
-  //       position:'top',
-       
-  //       text:'',
-  //       html:`<div class="modal-dialog">
-  //       <div class="modal-content">
-  //           <div id="myModalContent" class="modal-body">
-  //               <div class="form-horizontal">
-  //                   <div class="form-group from-model">
-  //                       <label class="col-sm-5" style="white-space:nowrap">Recruiter Recommended Time slots <span
-  //                               style="color:red;">*</span></label>
-  //                       <label class="col-sm-1">:</label>
-  //                       <div class="col-sm-6">
-  //                           <span class="multiselect-native-select"><select
-  //                                   class="listbox form-control form-control-width-1 input-width" disabled=""
-  //                                   id="WalkinTimeSlots" multiple="True" name="WalkinTimeSlots">
-  //                                   <option value="">{{jobDetails.walkinTimeSlots}}</option>
-                                    
-  //                               </select>
-                               
-  //                           </span>
-  //                       </div>
-  //                   </div>
-  //                   <div class="form-group from-model">
-  //                       <label class="col-sm-5" style="white-space:nowrap">My available Time Slots <span
-  //                               style="color:red;">*</span></label>
-  //                       <label class="col-sm-1">:</label>
-  //                       <div class="col-sm-8">
-  //                           <ejs-multiselect id='timeslots' name="name" #timeslots="ngModel"
-  //                           [(ngModel)]="selectedTimings.hoursText"
-  //                           [dataSource]='timeSlots'
-  //                           placeholder='--select timings--'>
-  //                       </ejs-multiselect>
-  //                       </div>
-  //                   </div>
-  //                   <div class="form-group">
-  //                       <label class="col-sm-3" style="white-space:nowrap"> </label>
-  //                       <label class="col-sm-1"></label>
-  //                       <div class="col-sm-8">
-  //                           <button class="btn btn-primary btn-sm" name="Submit" value="Submit" imagealign="AbsMiddle"
-  //                               (click)="applyJob(selectedTimings)">Submit</button>
-  //                           <button class="btn btn-primary btn-sm" name="Submit" value="cancel" imagealign="AbsMiddle"
-  //                               >Cancel</button>
-  //                       </div>
-  //                   </div>
-  //               </div>
-  //           </div>
-      
-  //       </div>
-  //     </div>`
-  //     })
-  //   }else{
-  //     this.router.navigate(['/walker/login'])
-  //   }
-
-  // }
-
 }

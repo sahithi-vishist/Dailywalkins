@@ -9,7 +9,7 @@ export class DriveFormModel {
     clientLocality:any;
     locality:any;
     industry:{industryId:number};
-   // role:any;
+    role:any;
     jobDescription:any;
     keySkills:any;
     designation:any;

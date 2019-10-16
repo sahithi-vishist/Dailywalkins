@@ -18,6 +18,9 @@ import { DisplaywalkinsBysearchComponent } from './displaywalkins-bysearch/displ
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { DisplayWalkinsComponent } from './display-walkins/display-walkins.component';
 import { DisplayWalkersComponent } from './display-walkers/display-walkers.component';
+import { WalkerEmailComponent } from './walker-email/walker-email.component';
+import { WalkerSmsComponent } from './walker-sms/walker-sms.component';
+import { ModifySearchComponent } from './modify-search/modify-search.component';
 
 const routes: Routes = [{path:'',component:LoginComponent},
   {path:"login",component:LoginComponent},
@@ -35,7 +38,10 @@ const routes: Routes = [{path:'',component:LoginComponent},
 {path:'selected-job/:jobId',component:WalkinDetailsComponent},
 {path:'uploadprofile',component:FileuploadComponent},
 {path:'displaywalkins',component:DisplayWalkinsComponent},
-{path:'displaywalkers',component:DisplayWalkersComponent}];
+{path:'displaywalkers',component:DisplayWalkersComponent},
+{path:'SendJobEmail',component:WalkerEmailComponent},
+{path:'modify-search',component:ModifySearchComponent},
+{path:'SendJobSMS',component:WalkerSmsComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

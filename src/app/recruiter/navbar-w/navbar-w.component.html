@@ -6,7 +6,7 @@
                         <div class="vishist-tb-content vishist-flexible-width-left">
                             <ul class="nospace top-contact">
                                 <li style="float:right">
-                                    <label> <a *ngIf="login" routerLink="/recruitment/logout">Logout</a></label>                                
+                                    <label> <a *ngIf="login && status" routerLink="/recruitment/logout">Logout</a></label>                                
                                 </li>
                                 <li style="float:right">
                                     <label>Dear Recruiter</label>
@@ -37,7 +37,7 @@
                                 <ul>                               
                                     
                                     <li><a routerLink="/recruitment/myprofile" ngClass="{activeSmall:part == 'privacy'}">My Profile</a></li>
-                                    <li><a routerLink="/recruitment/postwalkins" ngClass="{activeSmall:part == 'privacy'}">Post Walikins</a></li>
+                                    <li><a routerLink="/recruitment/postwalkins" ngClass="{activeSmall:part == 'privacy'}">Post Walkins</a></li>
 
                                     <li><a routerLink="/recruitment/searchprofiles" ngClass="{activeSmall:part == 'privacy'}">Advance Search</a></li>
                                     

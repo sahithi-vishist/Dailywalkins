@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
     })
     this.rservice.getdrives().subscribe((res) => {
       this.walkins = res;
+      console.log(this.walkins);
       this.rCount = this.walkins.length;
     })
     this.service.getJobs().subscribe((res) => {
@@ -42,7 +43,8 @@ export class HomeComponent implements OnInit {
         companyName: this.postJobs[0].companyName,
         keySkills: this.postJobs[0].keySkills,
         walkinDate: this.postJobs[0].walkinDate,
-        walkinLocation: this.postJobs[0].walkinLocation
+        walkinLocation: this.postJobs[0].walkinLocation,
+        companyLogo:this.postJobs[0].companyLogo
       };
 
       this.totalWalkins = this.postJobs.length;

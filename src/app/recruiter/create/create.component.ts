@@ -14,7 +14,7 @@ export class CreateComponent implements OnInit {
  
 
   ngOnInit() {
-    this.obj=this.service.getter();
+   // this.obj=this.service.getter();
   }
   create()
   {  

@@ -13,9 +13,12 @@ import { NotificationService } from 'src/app/notification.service';
 export class LoginComponent implements OnInit {
 walker={email:'',password:''};
   constructor(private router:Router,private service:WalkerAuthService,
-    private http:HttpClient,private notification:NotificationService) { }
+    private http:HttpClient,private notification:NotificationService) {
+     
+     }
 
   ngOnInit() {
+  
   }
   login(loginDetails){
    

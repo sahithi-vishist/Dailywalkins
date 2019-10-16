@@ -16,7 +16,8 @@
                                 <div class="col-sm-2">
                                     <div class="pull-left company-icon img-thumbnail">
 
-                                        <!-- <img class="" src="" alt="Employer"> -->
+                                        <img class="" src="data:image/jpeg;base64,{{jobDetails.companyLogo}}"
+                                            alt="Employer">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -28,52 +29,67 @@
                                             <div class="form-group" style="margin-bottom:3px !important">
                                                 <div class="">
                                                     <label class="text-form-color txt-job"
-                                                        for="Vishist_Business_Solutions_Pvt_Ltd">{{jobDetails.standardCurrentCompany}}</label>
+                                                        for="Vishist_Business_Solutions_Pvt_Ltd">{{jobDetails.endClient}}</label>
 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-sm-4">
+                                <div class="col-sm-4">
                                     <div class="pull-right jobsButtonsContainer">
-                                        <ul class="portlet-tools pull-right" style="display:inline-flex;position:relative;top: 10px;">
+                                        <ul class="portlet-tools pull-right"
+                                            style="display:inline-flex;position:relative;top: 10px;">
 
                                             <li style="position:relative;left:10px;top:-3px;">
-                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip" data-placement="bottom" href="#" target="_blank" style="">
+                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip"
+                                                    data-placement="bottom" href="#" target="_blank" style="">
 
 
 
-                                                    <img id="chatImg" src="/assets/images/online.png" alt="online" onclick="return openChat(this);">
+                                                    <img id="chatImg" src="/assets/images/online.png" alt="online"
+                                                        onclick="return openChat(this);">
                                                 </a>
-                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip" data-placement="bottom" href="#">
-                                                    <img id="dialUp" style="" src="/assets/images/dial-up.png" alt="online" onclick="return dialUp();" stye="width:28px">
+                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip"
+                                                    data-placement="bottom" href="#">
+                                                    <img id="dialUp" style="" src="/assets/images/dial-up.png"
+                                                        alt="online" onclick="return dialUp();" stye="width:28px">
                                                 </a>
 
-                                                <a data-toggle="tooltip" class="online-status red-tooltip chat-icon" data-placement="bottom" title="Email" id="A1" href="/walker/SendJobEmail?jobno=4281" target="_blank">
-                                                    <img id="imgMail" src="/assets/images/mail.png" alt="mail" stye="width:28px">
+                                                <a data-toggle="tooltip" class="online-status red-tooltip chat-icon"
+                                                    data-placement="bottom" title="Email" id="A1"
+                                                   routerLink="/walker/SendJobEmail">
+                                                    <img id="imgMail" src="/assets/images/mail.png" alt="mail"
+                                                        stye="width:28px">
                                                 </a>
 
-                                                <a data-toggle="tooltip" class="online-status red-tooltip chat-icon" data-placement="bottom" title="SMS" id="A3" href="/walker/SendJobSMS?jobno=4281" target="_blank">
-                                                    <img id="imgSMS" src="/assets/images/sms.png" alt="sms" stye="width:28px">
+                                                <a data-toggle="tooltip" class="online-status red-tooltip chat-icon"
+                                                    data-placement="bottom" title="SMS" id="A3"
+                                                   routerLink="/walker/SendJobSMS">
+                                                    <img id="imgSMS" src="/assets/images/sms.png" alt="sms"
+                                                        stye="width:28px">
                                                 </a>
-                                                
-                                                 <a class="online-status red-tooltip chat-icon" data-toggle="tooltip" data-placement="bottom" title="Share with facebook">                                                
-                                                    <fb:share-button id="fb-root" href="&quot;https://www.dailywalkins.com/Walker/SelectedJob/&quot;+4281">
-                                                    </fb:share-button>
-                                                    <img id="imgFB" src="/assets/images/fbi.gif" alt="fbi" stye="width:28px">
-                                                
-                                                </a>
-                                                
-                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip" data-placement="bottom" title="Share with Linked-In">
 
-                                                    <img id="linkedinImg" src="/assets/images/linkedin_circle.png" alt="linkedin" stye="width:28px">
+                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Share with facebook">
+                                                    <!-- <fb:share-button id="fb-root" href="&quot;https://www.dailywalkins.com/Walker/SelectedJob/&quot;+4281">
+                                                    </fb:share-button> -->
+                                                    <img id="imgFB" src="/assets/images/fbi.gif" alt="fbi"
+                                                        stye="width:28px">
+
                                                 </a>
-                                                 
+
+                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Share with Linked-In">
+
+                                                    <img id="linkedinImg" src="/assets/images/linkedin_circle.png"
+                                                        alt="linkedin" stye="width:28px">
+                                                </a>
+
                                             </li>
                                         </ul>
                                     </div>
-                                </div> -->
+                                </div>
 
                                 <div class="jd-strip top-strip job-header-strip" style="">
                                     <div class="trio-bucket pull-left">
@@ -109,14 +125,18 @@
                                     <ul>
                                         <li>
                                             <a class="btn btn-primary btn-sm apply-btn-align"
-                                                style="position:relative; left:80px;" id="apply" imagealign="AbsMiddle"
-                                                (click)="loadApplyDetails()">Apply Job</a>
+                                                style="position:relative; left:80px;" id="apply"
+                                                imagealign="AbsMiddle" (click)="loadApplyDetails()">Apply Job</a>
+
+
                                         </li>
-                                        <li>
-                                            <a href="#" class="btn btn-primary btn-sm apply-btn-align"
-                                                style="position: relative; left: 80px; display: none;" id="disabled"
-                                                imagealign="AbsMiddle" disabled="">Already Applied</a>
-                                        </li>
+                                        <!-- <li>
+                                            <a class="btn btn-primary btn-sm apply-btn-align"
+                                               
+                                                style="position: relative; left: 80px;display:none" id="disabled"
+                                                imagealign="AbsMiddle">Already Applied</a>
+                                        </li> -->
+
                                     </ul>
                                 </div>
                             </div>
@@ -604,49 +624,52 @@
     </div>
 </div>
 <!-- apply job -->
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div id="myModalContent" class="modal-body">
-            <div class="form-horizontal">
-                <div class="form-group from-model">
-                    <label class="col-sm-5" style="white-space:nowrap">Recruiter Recommended Time slots <span
-                            style="color:red;">*</span></label>
-                    <label class="col-sm-1">:</label>
-                    <div class="col-sm-6">
-                        <span class="multiselect-native-select"><select
-                                class="listbox form-control form-control-width-1 input-width" disabled=""
-                                id="WalkinTimeSlots" multiple="True" name="WalkinTimeSlots">
-                                <option value="">{{jobDetails.walkinTimeSlots}}</option>
+<div id="myModal" class="modal in" style="margin-top: 7px; display: none; padding-right: 15px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent" class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group from-model">
+                        <label class="col-sm-5" style="white-space:nowrap">Recruiter Recommended Time slots <span
+                                style="color:red;">*</span></label>
+                        <label class="col-sm-1">:</label>
+                        <div class="col-sm-6">
+                            <span class="multiselect-native-select"><select
+                                    class="listbox form-control form-control-width-1 input-width" disabled=""
+                                    id="WalkinTimeSlots" multiple="True" name="WalkinTimeSlots">
+                                    <option value="">{{jobDetails.walkinTimeSlots}}</option>
 
-                            </select>
+                                </select>
 
-                        </span>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group from-model">
-                    <label class="col-sm-5" style="white-space:nowrap">My available Time Slots <span
-                            style="color:red;">*</span></label>
-                    <label class="col-sm-1">:</label>
-                    <div class="col-sm-8">
-                        <ejs-multiselect id='timeslots' name="name" #timeslots="ngModel"
-                            [(ngModel)]="selectedTimings.hoursText" [dataSource]='timeSlots'
-                            placeholder='--select timings--'>
-                        </ejs-multiselect>
+                    <div class="form-group from-model">
+                        <label class="col-sm-5" style="white-space:nowrap">My available Time Slots <span
+                                style="color:red;">*</span></label>
+                        <label class="col-sm-1">:</label>
+                        <div class="col-sm-8">
+                            <ejs-multiselect id='timeslots' name="name" #timeslots="ngModel"
+                                [(ngModel)]="selectedTimings.hoursText" [dataSource]='timeSlots'
+                                placeholder='--select timings--'>
+                            </ejs-multiselect>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3" style="white-space:nowrap"> </label>
-                    <label class="col-sm-1"></label>
-                    <div class="col-sm-8">
-                        <button class="btn btn-primary btn-sm" name="Submit" value="Submit" imagealign="AbsMiddle"
-                            (click)="applyJob(selectedTimings)">Submit</button>
-                        <button class="btn btn-primary btn-sm" name="Submit" value="cancel"
-                            imagealign="AbsMiddle">Cancel</button>
+                    <div class="form-group">
+                        <label class="col-sm-3" style="white-space:nowrap"> </label>
+                        <label class="col-sm-1"></label>
+                        <div class="col-sm-8">
+                            <button class="btn btn-primary btn-sm" name="Submit" value="Submit" imagealign="AbsMiddle"
+                                (click)="applyJob(selectedTimings)">Submit</button>
+                            <button class="btn btn-primary btn-sm" name="Submit" value="cancel" (click)="closeDialog()"
+                                imagealign="AbsMiddle">Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
+
 <app-footer></app-footer>

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { SharedServiceService } from 'src/app/shared-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-advance-search',
@@ -22,9 +23,10 @@ export class AdvanceSearchComponent implements OnInit {
   education;
   roles;
   formData;
+  keySkills;
  locControl=new FormControl();
  eduControl=new FormControl();
- filteredLocations: Observable<string[]>;
+
  search={keySkills:'',
                 location:'',
                 education:'',
@@ -55,7 +57,9 @@ export class AdvanceSearchComponent implements OnInit {
       this.roles=res;
     })
 
-
+this.service.getKeySkills().subscribe((res)=>{
+  this.keySkills=res;
+})
    }
 
  advanceSearch(){
@@ -88,6 +92,7 @@ this.search.expMax=this.experience.find(exp => exp['experienceId'] == event.targ
  }
  
 ngOnInit() {
+  
 this.advSearchForm=new FormGroup({
   keySkills:new FormControl('',Validators.required),
   location:new FormControl('',Validators.required),
@@ -101,5 +106,5 @@ this.advSearchForm=new FormGroup({
 })
 
   }
- 
+  
 }

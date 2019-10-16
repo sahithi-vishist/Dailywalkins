@@ -43,7 +43,7 @@
                                         <label class="control-label col-md-3" for="Gender">Gender</label>
                                         <label class="col-sm-1" style="width:3% !important">:</label>
                                         <div class="col-md-8">
-                                            {{result['gender']}}  
+                                            {{result['gender']}}
                                         </div>
                                     </div>
 
@@ -58,11 +58,12 @@
                                         <label class="control-label col-md-3" for="Location">Location</label>
                                         <label class="col-sm-1" style="width:3% !important">:</label>
                                         <div class="col-md-8">
-                                            {{result['location'].location}}
+                                            {{result['location'].cityName}}
                                         </div>
                                     </div>
                                     <div class="form-group contactNumber">
-                                        <label class="control-label col-md-3" for="Contact_Number">Contact Number</label>
+                                        <label class="control-label col-md-3" for="Contact_Number">Contact
+                                            Number</label>
                                         <label class="col-sm-1" style="width:3% !important">:</label>
 
                                         <div class="col-md-8">
@@ -70,7 +71,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="ContactNo_Landline">ContactNo_Landline</label>
+                                        <label class="control-label col-md-3"
+                                            for="ContactNo_Landline">ContactNo_Landline</label>
                                         <label class="col-sm-1" style="width:3% !important">:</label>
                                         <div class="col-md-8">
                                             {{result['contactNoLandline']}}
@@ -81,12 +83,13 @@
                                         <label class="control-label col-md-3" for="Date_Of_Birth">Date Of Birth</label>
                                         <label class="col-sm-1" style="width:3% !important">:</label>
                                         <div class="col-md-4">
-                                          
-                                            <label class="" for=""> {{result['dateOfBirth']|date:'yyyy-MM-dd'}}</label>                                                                                         
+
+                                            <label class="" for=""> {{result['dateOfBirth']|date:'yyyy-MM-dd'}}</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3" for="Languages_Known">Languages Known</label>
+                                        <label class="control-label col-md-3" for="Languages_Known">Languages
+                                            Known</label>
                                         <label class="col-sm-1" style="width:3% !important">:</label>
                                         <div class="col-md-8">
                                             {{result['languagesKnown']}}
@@ -95,7 +98,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="thumbnail">
-                                                <img src="/assets/images/Profile-Avatar.jpg" alt="Logo Not Loaded" id="imgProfile">
+                                        <img src="data:image/jpeg;base64,{{result['photo']}}" alt="Logo Not Loaded"
+                                            id="imgProfile">
 
                                     </div>
                                 </div>
@@ -135,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2" for="Year_Of_Pass">Year Of Pass</label>                               
+                                <label class="control-label col-md-2" for="Year_Of_Pass">Year Of Pass</label>
                                 <label class="col-sm-1" style="width:3% !important">:</label>
                                 <div class="col-md-8">
                                     {{result['yearOfPass']}}
@@ -164,7 +168,9 @@
                                 <label class="col-sm-1" style="width:3% !important">:</label>
                                 <div class="col-md-8">
                                     <div class="form-inline">
-                                        <input data-val="true" data-val-number="The field Experience must be a number." data-val-required="Experience details are Required" id="Experience" name="Experience" type="hidden" value="2.6">
+                                        <input data-val="true" data-val-number="The field Experience must be a number."
+                                            data-val-required="Experience details are Required" id="Experience"
+                                            name="Experience" type="hidden" value="2.6">
                                         {{result['experience']}} Years
 
                                     </div>
@@ -175,7 +181,9 @@
                                 <label class="col-sm-1" style="width:3% !important">:</label>
                                 <div class="col-sm-8">
                                     <div class="form-inline">
-                                        <input data-val="true" data-val-number="The field Current CTC must be a number." data-val-required="CTC details are Required" id="CurrentCTC" name="CurrentCTC" type="hidden" value="6.6">
+                                        <input data-val="true" data-val-number="The field Current CTC must be a number."
+                                            data-val-required="CTC details are Required" id="CurrentCTC"
+                                            name="CurrentCTC" type="hidden" value="6.6">
                                         {{result['currentCTC']}} lpa
                                     </div>
                                 </div>
@@ -197,7 +205,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2" style="white-space:nowrap">Key Skills </label>
-                               
+
                                 <label class="col-sm-1" style="width:3% !important">:</label>
                                 <div class="col-md-8">
                                     {{result['keySkills']}}
@@ -212,15 +220,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2" style="white-space:nowrap">Current Designation </label>
-                                
+                                <label class="control-label col-md-2" style="white-space:nowrap">Current Designation
+                                </label>
+
                                 <label class="col-sm-1" style="width:3% !important">:</label>
                                 <div class="col-md-8">
                                     {{result['currentDesignation']}}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2" style="white-space:nowrap">Current Company <span style="color:red;"></span></label>                              
+                                <label class="control-label col-md-2" style="white-space:nowrap">Current Company <span
+                                        style="color:red;"></span></label>
                                 <label class="col-sm-1" style="width:3% !important">:</label>
                                 <div class="col-md-8">
                                     {{result['currentCompany']}}
@@ -240,7 +250,7 @@
                                 <label class="control-label col-md-2" for="NoticePeriod">Notice Period</label>
                                 <label class="col-sm-1" style="width:3% !important">:</label>
                                 <div class="col-md-8">
-                                    {{noticePeriod}} 
+                                    {{noticePeriod}}
                                 </div>
                             </div>
 
@@ -259,7 +269,8 @@
                             <span class="portlet-tools pull-right btn btn-primary btn-sm">
                                 <a routerLink="/walker/edit">Edit</a>
                             </span>
-                            <span class="portlet-tools pull-right btn btn-primary btn-sm" style="position: relative;left: -12px;">
+                            <span class="portlet-tools pull-right btn btn-primary btn-sm"
+                                style="position: relative;left: -12px;">
                                 <a href="/Walker/DownloadResume">Download</a>
                             </span>
 
@@ -268,7 +279,7 @@
                     <div class="portlet-content">
                         <div class="clearboth">
                             <div class="iframe-demo">&nbsp;</div>
-                                    <label id="lblresume" style="color:red">No Resume Found..</label>
+                            <label id="lblresume" style="color:red">No Resume Found..</label>
 
                         </div>
                     </div>

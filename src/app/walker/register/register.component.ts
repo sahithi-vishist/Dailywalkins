@@ -19,13 +19,21 @@ export class RegisterComponent implements OnInit {
   qualifications;
   noticePeriods;
   salaries;
-  locations;
+  cities;
   roles;
   experience;
-  file:File;
-  resume:File;
-  profilePhoto:File;
-  regForm:FormGroup
+  file: File;
+  resume: File;
+  profilePhoto: File;
+  regForm: FormGroup
+  localities;
+  institutes;
+  timeSlots;
+  languages;
+  companies;
+  designations;
+  skills;
+  imgURL;
   constructor(private service: WalkerAuthService,
     private http: HttpClient, private notification: NotificationService) {
 
@@ -51,29 +59,88 @@ export class RegisterComponent implements OnInit {
       this.salaries = res;
     })
     this.service.getLocations().subscribe((res) => {
-      this.locations = res;
+      this.cities = res;
     })
     this.service.getRoles().subscribe((res) => {
-      this.roles = res;
+      //this.roles = res;
     })
     this.service.getExperienceData().subscribe((res) => {
       this.experience = res;
     })
+    this.service.getAllInstitutes().subscribe((res) => {
+      this.institutes = res;
+    })
+    this.service.getLanguages().subscribe((res) => {
+      this.languages = res;
+    })
+    this.service.getTimeSlots().subscribe((res) => {
+      this.timeSlots = res;
+    })
+    this.service.getCompanies().subscribe((res)=>{
+      this.companies=res;
+    })
+    this.service.getDesignations().subscribe((res)=>{
+      this.designations=res;
+    })
+    this.service.getKeySkills().subscribe((res)=>{
+      this.skills=res;
+    })
+
   }
 
-
+  // public yearOfPass :{ [key: string]: Object; }[] = [
+  //   { value: "1980", name: "1980" },
+  //   { value: 1981, name: 1981 },
+  //   { value: 1982, name: 1982 },
+  //   { value: 1983, name: 1983 },
+  //   { value: 1984, name: 1984 },
+  //   { value: 1985, name: 1985 },
+  //   { value: 1986, name: 1986 },
+  //   { value: 1987, name: 1987 },
+  //   { value: 1988, name: 1988 },
+  //   { value: 1989, name: 1989 },
+  //   { value: 1990, name: 1990 },
+  //   { value: 1991, name: 1991 },
+  //   { value: 1992, name: 1992 },
+  //   { value: 1993, name: 1993 },
+  //   { value: 1994, name: 1994 },
+  //   { value: 1995, name: 1995 },
+  //   { value: 1996, name: 1996 },
+  //   { value: 1997, name: 1997 },
+  //   { value: 1998, name: 1998 },
+  //   { value: 1999, name: 1999 },
+  //   { value: 2000, name: 2000 },
+  //   { value: 2001, name: 2001 },
+  //   { value: 2002, name: 2002 },
+  //   { value: 2003, name: 2003 },
+  //   { value: 2004, name: 2004 },
+  //   { value: 2005, name: 2005 },
+  //   { value: 2006, name: 2006 },
+  //   { value: 2007, name: 2007 },
+  //   { value: 2008, name: 2008 },
+  //   { value: 2009, name: 2009 },
+  //   { value: 2010, name: 2010 },
+  //   { value: 2011, name: 2011 },
+  //   { value: 2012, name: 2012 },
+  //   { value: 2013, name: 2013 },
+  //   { value: 2014, name: 2014 },
+  //   { value: 2015, name: 2015 },
+  //   { value: 2016, name: 2016 },
+  //   { value: 2017, name: 2017 },
+  //   { value: 2018, name: 2018 },
+  //   { value: 2019, name: 2019 }];
 
   vm = {
     file: '', fname: '', lname: '', email: '', contactNumber: '', landline: '', password: '', confirmPassword: '', dob: '',
-    gender: '', industry: '', role: '', jobtype: '', currentDesignation: '', minExp: '', maxExp: '', CCTCFrom: '', CCTCTo: '', ECTCFrom: '',
-    ECTCTo: '', keySkills: '', resumeHeadLine: '', currentCompany: '', location:'', locality: '', preferredLocation: '', noticePeriod: '',
+    gender: '', industry: '',industryId:'', role: '', jobtype: '', currentDesignation: '', minExp: '', maxExp: '', CCTCFrom: '', CCTCTo: '', ECTCFrom: '',
+    ECTCTo: '', keySkills: '', resumeHeadLine: '', currentCompany: '', location: '', locality: '', preferredLocation: '', noticePeriod: '',
     education: '', institute: '', yop: '', languagesKnown: '', photo: '', panelId: '', majorSkills: '', costPerHour: '',
     costPerDay: '', AvailbleTimeSlotsForFaceToFace: '', costPerHourSkype: '', costPerDaySkype: '',
     AvailbleTimeSlotsForSkype: '', costPerHourTelephonic: '', costPerDayTelephonic: '', AvailbleTimeSlotsForTelephonic: '', daily: '', weekly: '', value: '', day: '', chkTandC: ''
   };
 
   public timings: { [key: string]: Object; }[] = [
-    { value: "8", time: '08.00 AM' },
+
     { value: "9", time: '09.00 AM' },
     { value: "10", time: '10.00 AM' },
     { value: "11", time: '11.00 AM' },
@@ -165,8 +232,12 @@ export class RegisterComponent implements OnInit {
     });
   }
   onSelectIndustry(event) {
-    this.vm.industry = event.target.value;
-    console.log(this.vm.industry);
+    this.vm.industryId = this.industries.find(industry=>industry['industryId'] == event.target['value']);
+   this.vm.industry=this.vm.industryId['industryType'];
+    this.service.getRoleByIndId(this.vm.industryId).subscribe((res) => {
+      this.roles = res;
+    })
+  
   }
   onSelectJobType(event) {
     this.vm.jobtype = event.target.value;
@@ -176,7 +247,8 @@ export class RegisterComponent implements OnInit {
     this.vm.education = event.target.value;
   }
   onSelectNoticePeriod(event) {
-    this.vm.noticePeriod = event.target.value;
+    this.vm.noticePeriod = this.noticePeriods.find(noticePeriod=>noticePeriod['noticePeriodId']==event.target['value']);
+    
   }
   onSelectedCCTCFrom(event) {
     this.vm.CCTCFrom = event.target.value;
@@ -199,8 +271,33 @@ export class RegisterComponent implements OnInit {
 
   }
   onSelectedLocation(event) {
-    this.vm.location = this.locations.find(location => location['locationLatLongId'] == event.target['value']);
+    this.vm.location = this.cities.find(city => city['cityName'] == event.target['value']);
+    this.service.getLocalities(this.vm.location).subscribe((res) => {
+      this.localities = res;
+      console.log(this.localities)
+    })
 
+  }
+  selectCompany(event){
+    this.vm.currentCompany=event.target.value;
+  }
+  selectInstitute(event) {
+    this.vm.institute = event.target.value;
+  }
+  selectDesignation(event){
+    this.vm.currentDesignation=event.target.value;
+  
+  }
+  selectLanguage(event){
+this.vm.languagesKnown=event.target.value;
+  }
+
+  selectLocality(event) {
+    this.vm.locality = event.target.value;
+  }
+  onSkillSelected(event){
+    this.vm.keySkills=event.target.value;
+    
   }
   onSelectedRole(event) {
     this.vm.role = this.roles.find(roleObj => roleObj['roleId'] == event.target['value']);
@@ -211,39 +308,49 @@ export class RegisterComponent implements OnInit {
   onSelectedMaxExp(event) {
     this.vm.maxExp = event.target.value;
   }
-  selectProfileImage(event){
-    this.profilePhoto=event.target.files[0];
-  }
-  selectResume(event){
-this.resume=event.target.files[0];
+  onSelectedSkillSet(event){
+  
+this.vm.majorSkills=event.target.value;
 
-//console.log(this.selectedFile);
   }
-  
+
+  selectProfileImage(event) {
+    this.profilePhoto = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
+  }
+  selectResume(event) {
+    this.resume = event.target.files[0];
+
+    //console.log(this.selectedFile);
+  }
+
   submit(regDetails) {
- 
-    this.service.register(regDetails,this.profilePhoto,this.resume).subscribe((res) => {
-  
-      
+
+    this.service.register(regDetails, this.profilePhoto, this.resume).subscribe((res) => {
+
+
     }, (err) => {
-     
+
     })
 
-      this.service.registerPanelDetails(regDetails, this.vm.email).subscribe((res) => {
-       
-      }, (err) => {
-       
-      })
-   
+    this.service.registerPanelDetails(regDetails, this.vm.email).subscribe((res) => {
+
+    }, (err) => {
+
+    })
+
     this.service.saveProfileAlerts(regDetails).subscribe((res) => {
       this.notification.showNotification('success', "Registration successfull");
     }, (err) => {
       this.notification.showNotification('error', "Registration failed due to some error");
     })
-    
-  
-  }
 
+
+  }
 
 
   ngOnInit() {

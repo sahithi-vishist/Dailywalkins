@@ -136,7 +136,7 @@ import { NavbarWComponent } from './navbar-w/navbar-w.component';
     WalkincentralComponent,ViewComponent,
   CreateDriveComponent,EditWalkinComponent,
   NavbarRComponent,EditdriveComponent,DrivedetailsComponent,
- WalkinDetailsRComponent,UploadProfilesComponent,NavbarWComponent,
+ WalkinDetailsRComponent,UploadProfilesComponent,NavbarWComponent,EditdriveComponent,
  CandidateDetailsComponent,ShortlistedCandidatesComponent,EvaluationFormsComponent,
   ViewWalkinsComponent,HomepageComponent]
 })

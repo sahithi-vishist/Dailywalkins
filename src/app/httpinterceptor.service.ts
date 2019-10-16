@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHeaders, HttpHandler } from '@angular/common/http';
+import { WalkerAuthService } from './walker/walker-auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpinterceptorService implements HttpInterceptor {
-
-  constructor() { }
+tokenString;
+  constructor(private service:WalkerAuthService) { }
   intercept(request:HttpRequest<any>,next:HttpHandler){
    if(localStorage.getItem('token') != null)
    {

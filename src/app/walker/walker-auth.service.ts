@@ -16,6 +16,8 @@ export class WalkerAuthService {
   url = "http://localhost:62222";
   body;
   setSkills;
+  tokenString;
+  updateOn;
   constructor(private http: HttpClient, private date: DatePipe) {
 
   }
@@ -32,6 +34,7 @@ export class WalkerAuthService {
       })
     )
   }
+  
   getWalkers() {
     return this.http.get(this.url + "/totalwalkers");
   }
@@ -66,13 +69,24 @@ export class WalkerAuthService {
     return this.http.get("http://localhost:62222/getSalaryDetails");
   }
   getLocations() {
-    return this.http.get(this.url + '/getLocations');
+    return this.http.get(this.url + '/getcities');
   }
   getExperienceData() {
     return this.http.get(this.url + '/getallexp');
   }
   getRoles() {
     return this.http.get(this.url + '/getRoles');
+  }
+  getLocalities(cityObj){
+    return this.http.post(this.url+'/getLocalities',cityObj);
+  }
+  getRoleByIndId(indObj){
+   
+return this.http.post(this.url+'/getRolesByIndId',{"industryId":indObj});
+  }
+
+  checkAppliedStatus(jobNo,email){
+return this.http.post(this.url+'/checkappliedstatus',{"jobNo":jobNo,"jobSeekerEmailId":email})
   }
   updateWalker(updateInfo) {
     return this.http.put("http://localhost:62222/updatewalker", updateInfo);
@@ -81,7 +95,7 @@ export class WalkerAuthService {
     var experience = reg.maxExp + "." + reg.minExp;
     var currentCTC = reg.CCTCFrom + "." + reg.CCTCTo;
     var expectedCTC = reg.ECTCFrom + "." + reg.ECTCTo;
-    var updateOn = this.date.transform(this.myDate, 'yyyy-MM-dd');
+    this.updateOn = this.date.transform(this.myDate, 'yyyy-MM-dd');
     var dob = this.date.transform(reg.dob, 'yyyy-MM-dd');
     //var photoString = reg.photo.toString();
 
@@ -107,7 +121,7 @@ export class WalkerAuthService {
       "role": reg.role.roleName,
       "yearOfPass": reg.yop,
       "resumeHeadLine": reg.resumeHeadLine,
-      "updatedOn": updateOn,
+      "updatedOn": this.updateOn,
       "resume": reg.resume,
       "textResume": reg.resumeHeadLine,
       "userName": reg.fname,
@@ -120,7 +134,7 @@ export class WalkerAuthService {
       "previousDesignation": reg.currentDesignation,
       "preferredLocation": reg.preferredLocation,
       "standardPreviousCompany": reg.currentCompany,
-      "noticePeriod": { "noticePeriodId": reg.noticePeriod },
+      "noticePeriod": reg.noticePeriod,
       "emailVerified": true,
       "visibleSettings": 1,
       "jsId": 2,
@@ -128,7 +142,8 @@ export class WalkerAuthService {
       "viewedCount": 0,
       "downloadedCount": 0,
       "candidatesActiveInLast": reg.fname,
-      "industryId": { "industryId": reg.industry },
+      "industryId": reg.industryId ,
+      "industry":reg.industry,
       "roleId": reg.role,
       "jobTypeId": { "jobTypeId": reg.jobtype },
       "jobType": reg.jobtype,
@@ -145,16 +160,17 @@ export class WalkerAuthService {
       "profileName": reg.fname,
       "isMobileOnline": true,
       "dateOfBirth": dob,
-      "lastLogin": reg.updateOn,
-      "lastActive": reg.updateOn,
+      "lastLogin": this.updateOn,
+      "lastActive": this.updateOn,
       "uploadedBy": reg.fname,
-      "uploadedDate": reg.updateOn,
-      "onNoticePeriod": reg.noticePeriod,
-      "lastUpdatedNoticePeriod": reg.updateOn,
-      "lastWorkingDay": reg.updateOn,
+      "uploadedDate": this.updateOn,
+      "onNoticePeriod": reg.noticePeriod['noticeText'],
+      "lastUpdatedNoticePeriod": this.updateOn,
+      "lastWorkingDay": this.updateOn,
      
 
     }
+
     const formData=new FormData();
     formData.append('regDetails',JSON.stringify(this.body));
  formData.append('photo',photo);
@@ -202,7 +218,7 @@ export class WalkerAuthService {
     return this.http.get(this.url + '/getAppliedJobs');
   }
 
-  getJobs() {
+  getJobs():Observable<any> {
     return this.http.get(this.url + '/getjobs');
   }
   getJobById(jobId) {
@@ -212,6 +228,18 @@ export class WalkerAuthService {
   getTimeSlots() {
     return this.http.get(this.url + '/gettimeslots');
   }
+  getLanguages(){
+    return this.http.get(this.url+'/getlanguages');
+  }
+  getCompanies(){
+    return this.http.get(this.url+'/getcompanies');
+  }
+  getDesignations(){
+    return this.http.get(this.url+'/getdesignations');
+  }
+  getKeySkills(){
+    return this.http.get(this.url+'/getkeyskills');
+  }
   appliedJob(appliedWalkin) {
     return this.http.post(this.url + '/postjsappliedjob', appliedWalkin);
   }
@@ -220,6 +248,9 @@ this.setSkills=skills;
   }
   getSkills(){
     return this.setSkills;
+  }
+  getAllInstitutes(){
+    return this.http.get(this.url+'/getinstitutes');
   }
   getWalkinsBySkills(skills) {
 

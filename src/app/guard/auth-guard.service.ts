@@ -12,7 +12,7 @@ export class AuthGuardService implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot){
-      if(localStorage.getItem('userExists')){
+      if(localStorage.getItem('token')&&localStorage.getItem('userExists')){
         return true;
        
           }

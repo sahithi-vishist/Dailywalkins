@@ -64,7 +64,7 @@ totalJobs;
   
   });
 }else{
- this.notification.showNotification("error","please enter any search keyword");
+ //this.notification.showNotification("error","please enter any search keyword");
 }
 
   }
