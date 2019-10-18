@@ -1,0 +1,124 @@
+<app-navbar-w></app-navbar-w>
+<div class="container" >
+        <div class="inner-page">
+            <div class="portlet">
+                <div class="portlet-header">
+                    <h3 style="margin-top:0px !important">
+                        Personal Information
+                        <span class="portlet-tools pull-right " id="btnUpdate" style="margin-top:0px !important;"><input type="submit" value="Update" class="btn btn-primary btn-sm" (click)="updateReg(edit)"></span>
+                    </h3>
+                </div>
+                <div class="portlet-content">
+                    <div class="form-horizontal ">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 label-txt-alg" for="First_Name">First Name</label>
+                                    <label class="col-sm-1" style="width:3% !important; padding-top:6px !important;">:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control input-box-alg" data-val="true" [(ngModel)]="edit.firstName"#fname="ngModel"pattern="[a-zA-Z ]*$" required id="txtFirstName" name="FirstName" type="text" >
+                                        <mat-hint *ngIf="fname.touched && fname.invalid">
+                                                <mat-error *ngIf="fname.errors.required">First name is required</mat-error>
+                                                <mat-error *ngIf="fname.errors && fname.errors.pattern">Enter valid Name</mat-error>
+                                              </mat-hint>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 label-txt-alg" for="Last_Name">Last Name</label>
+                                    <label class="col-sm-1" style="width:3% !important; padding-top:6px !important;">:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control input-box-alg" data-val="true" [(ngModel)]="edit.lastName"#lname="ngModel" pattern="[a-zA-Z ]*$"required id="txtLastName" name="LastName" type="text" >
+                                        <mat-hint *ngIf="lname.touched && lname.invalid">
+                                                <mat-error *ngIf="lname.errors.required">Last name is required</mat-error>
+                                                <mat-error *ngIf="lname.errors && name.errors.pattern">Enter valid Name</mat-error>
+                                              </mat-hint>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 label-txt-alg" for="Email">Email</label>
+                                    <label class="col-sm-1" style="width:3% !important; padding-top:6px !important;">:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control input-box-alg" data-val="true" [(ngModel)]="edit.email"#email="ngModel"pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" required id="txtEmail" name="Email" type="text" >
+                                        <mat-hint *ngIf="email.touched && email.invalid">
+                                                <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                                                <mat-error *ngIf="email.errors && email.errors.pattern">Enter valid email</mat-error>
+                                              </mat-hint>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 label-txt-alg" for="Location">Location</label>
+                                    <label class="col-sm-1" style="width:3% !important;">:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control input-box-alg" data-val="true" [(ngModel)]="edit.location"#location="ngModel"required id="txtLocation" name="Location" type="text" >
+                                        <mat-hint *ngIf="location.touched && location.invalid">
+                                                <mat-error *ngIf="location.errors.required">Location is required</mat-error>
+                                                
+                                              </mat-hint>
+                                    </div>
+                                </div>
+                                <div class="form-group contactNumber">
+                                    <label class="control-label col-md-2 label-txt-alg contact_no" for="Contact_Number">Contact Number</label>
+                                    <label class="col-sm-1" style="width:3% !important; padding-top:6px !important;">:</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                +91
+                                            </div>
+                                            <input class="form-control input-box-alg" data-val="true" pattern="^[0-9 ]{10}$" required [(ngModel)]="edit.contactNo"#cperson="ngModel" id="txtContactNo" name="ContactNo" type="text" >
+                                            <mat-hint *ngIf="cperson.touched && cperson.invalid">
+                                                    <mat-error *ngIf="cperson.errors.required">contact number is required</mat-error>
+                                                    <mat-error *ngIf="cperson.errors && cperson.errors.pattern">Enter valid Number</mat-error>
+                                                  </mat-hint>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 label-txt-alg" for="ContactNo_Landline">ContactNo_Landline</label>
+                                    <label class="col-sm-1" style="width:3% !important; padding-top:6px !important;">:</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                +91
+                                            </div>
+                                            <input class="form-control input-box-alg" [(ngModel)]="edit.contactnoLandline" required pattern="^[0-9 ]{10}$"
+                                            id="txtContactNo_Landline" name="ContactNo_Landline" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 label-txt-alg" for="Industry">Industry</label>
+                                    <label class="col-sm-1" style="width:3% !important;">:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="IndustryName"
+                                            placeholder="" ngModel #industry="ngModel"
+                                            (change)=selectIndustry($event) [(ngModel)]="edit.industry"
+                                            name="Industry" type="hidden" value="{{edit.industry}}">
+                                            <option value="">--Select Industry--</option>
+                                            <option *ngFor="let ind of industries" value="{{ind.industryId}}">
+                                            {{ind.industryType}}</option>
+                                        </select>
+                                        <mat-hint *ngIf="industry.touched && industry.invalid">
+                                            <mat-error *ngIf="industry.errors.required">Industry is Required
+                                            </mat-error>
+                                        </mat-hint>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="thumbnail">
+                                            <img src="/assets/images/Profile-Avatar.jpg" id="imgProfile">
+
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="file" [(ngModel)]="edit.companyLogo"id="ImageFile" name="image">
+                                    <label style="color:red;" id="lblLogo"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>

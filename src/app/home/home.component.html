@@ -1,0 +1,500 @@
+<body class="">
+    <div class="body-app">
+        <a class="mobile" routerLink="/walker/home"><i class="fa fa-cogs"></i></a>
+        <nav class="nav-click-first">
+            <div class="container container-nav">
+                <ul>
+                    <li>
+                        <a class="register-text"><i class="fa fa-sign-in"></i>LOGIN</a>
+                        <span class="arrow"></span>
+                        <ul class="nav-links-login">
+                            <li><a routerLink="/walker/login">WALKER</a></li>
+                            <li><a routerLink="/recruitment/login">RECRUITER</a></li>
+                            <li><a routerLink="/facility/flogin">FACILITY</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="register-text"><i class="fa fa-pencil"></i>REGISTER</a>
+                        <span class="arrow"></span>
+                        <ul class="nav-links-reg">
+                            <li><a routerLink="/walker/register">WALKER</a></li>
+                            <li><a routerLink="/recruitment/registration">RECRUITER</a></li>
+                            <li><a routerLink="/facility/fregistration">FACILITY</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a routerLink="/" ng-class="{activeSmall:part == 'projects'}"><i class="fa fa-home"
+                                aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div id="header-sticky-wrapper" class="sticky-wrapper" style="height: 89px;">
+        <header id="header">
+            <div class="wrapper row-2">
+                <div class="container container-height container-nav">
+                    <div class="logo logo-img text-left container-nav">
+                        <a routerLink="/">
+                        </a>
+                    </div>
+                    <div class="">
+                        <a class="mobile_1">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <nav class="nav-click">
+                            <ul>
+                                <li><a routerLink="/facility/flogin"
+                                        ngClass="{activeSmall:part == 'projects'}">FACILITY</a></li>
+                                <li><a routerLink="/walker/login" ngclass="{activeSmall:part == 'projects'}">WALKER</a>
+                                </li>
+                                <li><a routerLink="/recruitment/login"
+                                        ngClass="{activeSmall:part == 'privacy'}">RECRUITER</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="body-content demo-index">
+        <div class="">
+
+
+
+            <title>Daily Walkins - Job Centre</title>
+
+
+
+
+            <div class="wrapper">
+                <div class="wrapper-container">
+                    <section class="banner  container-video container">
+                        <div class="block-1">
+                            <div class="">
+
+                                <!--<div class="wrapper bgded overlay vedio-opaticty" style="background-image:url('assets/images/demo-bg-image.gif');height:400px">
+                            <div id="pageintro" class="hoc clear">
+
+                                <div class="video-content">
+                                    <marquee direction="left" style="position:relative;top:-43px;z-index: 1;"><div style="padding: 2px;font-size: 31px;color: #FF6833;font-family:serif">Celebration Everyday !! </div></marquee>
+                                </div>
+                                <article class="txt-overflow-dis">
+
+                                    <h3 class="heading">Search Today's Walkins & Walkers get good job..!</h3>
+                                    <h5>Get Your Dream Job Here...!</h5>
+
+                                </article>
+
+                            </div>
+                        </div>-->
+                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <!-- <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+                            </ol> -->
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner">
+                                        <div class="item">
+                                            <img src="assets/images/gif-video-imgs-4.jpg" alt="Los Angeles"
+                                                class="images-head-first">
+                                        </div>
+                                        <div class="item">
+                                            <img src="assets/images/gif-video-imgs-5.jpg" class="images-head-first">
+                                        </div>
+                                        <div class="item active">
+                                            <img src="assets/images/images-gif-dw.jpg" class="images-head-first">
+                                        </div>
+                                        <div class="video-content">
+                                            <marquee direction="left" style="position:relative;top:-43px;z-index: 1;">
+                                                <div class="marquee-text">Celebration Everyday !! </div>
+                                            </marquee>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Left and right controls -->
+                                    <a class="left carousel-control " href="#myCarousel" role="button"
+                                        data-slide="prev">
+                                        <i class="fa fa-angle-left fa-6 fa-alig-size" aria-hidden="true"></i>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button"
+                                        data-slide="next">
+                                        <i class="fa fa-angle-right fa-6 fa-alig-size" aria-hidden="true"></i>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <form action="/" enctype="multipart/form-data" method="post">
+                <div class="search_holder">
+                    <div class="sub_holder content_holder">
+                        <div id="search_card" class="card">
+                            <div class="search-card-position">
+                                <ul id="search_forms">
+
+                                    <li id="location">
+                                        <input id="Location" name="Location" type="hidden" value="">
+                                        <input id="LocationType" name="LocationType" type="hidden" value="">
+                                        <a class="selected" onclick="return returnNull();"
+                                            data-search_form="keyword"><button class="btn-location" id="btnLoc"
+                                                onclick="return setLocation(this);">Location</button> </a>
+                                    </li>
+                                    <li id="nearme" class="">
+                                        <input id="Locality" name="Locality" type="hidden" value="">
+                                        <a class="" onclick="return returnNull();" data-search_form="nearme"><button
+                                                class="btn-location" id="btnLoc"
+                                                onclick="return setLocality(this);">Near me</button></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="input-group-search">
+                                <div class="input-group input-group-drop">
+                                    <div class="input-group-btn">
+                                        <select
+                                            class="form-control form-control-width-search input-width select-dropdown"
+                                            id="ddlType" (change)="onSelectCategory($event)" name="Type">
+                                            <option value="WALKINS">WALKINS</option>
+                                            <option value="WALKERS">WALKERS</option>
+                                        </select>
+
+                                    </div>
+                                    <input class="form-control demo-control select-dropdowm-text ui-autocomplete-input"
+                                        id="txtSkills" name="Skills" placeholder="Big data,Java,Marketing,etc..."
+                                        type="text" value="" ngModel [(ngModel)]="search.skill" autocomplete="off">
+                                    <div>
+
+                                    </div>
+                                    <div class="input-group-btn select-dropdowm-search">
+                                        <button class="btn-demo-btn btn-grap-hover" type="submit"
+                                            (click)="checkSkills(search);">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dailywalkins-content jobs-list" style="">
+                                <div class="profile-head">
+                                    <span class="col-sm-6 walkins-text-right">
+                                        <span><span class="counter"><a
+                                                    routerLink="/walker/login">{{rCount}}</a></span></span>
+                                        <span class="c-font-bold-border"
+                                            style="color:#000;position:relative;z-index:1">WALKINS</span>
+                                    </span>
+                                    <span class="col-sm-6 walkers-text-right">
+                                        <span class="" data-counter="counterup"><span
+                                                class="counter">{{wCount}}</span></span>
+                                        <span class="c-font-bold-border-walkers"
+                                            style="color:#000;position:relative;z-index:1">WALKERS</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="body-round-content" style="background: #fff url(/assets/images/bg.jpg) repeat top left;">
+                <div class="container">
+                    <div class="container-txt-h1 text-job-walkins">
+                        <h1><b style="font-size:43px">Active</b> Walkins</h1>
+                    </div>
+                </div>
+                <div class="container">
+
+                    <div class="row row-body-content">
+                        <div class="job-list-con-body">
+
+                            <div class="col-sm-9 ">
+
+                                <div id="divJobs">
+
+
+
+                                    <div role="tabpanel" class="tab-pane active" id="home">
+                                        <div class="portlet portlet-table">
+                                            <div class="alert alert-success"
+                                                style="padding:2px !important;border-radius:0px !important;margin-bottom:4px !important">
+                                                <label style="color:green;font:bold;margin-left:10px;"> {{totalWalkins}}
+                                                    Walkins(s)
+                                                    found.</label>
+                                            </div>
+                                            <div class="">
+                                                <div class="">
+                                                    <div class="jobs-list jobs-list-width">
+                                                        <section class="main-sections listing__featured">
+                                                            <div class="listing-item__list ">
+                                                                <article
+                                                                    class="media well listing-item listing-item__jobs listing-item__featured ">
+                                                                    <div
+                                                                        class="media-left listing-item__logo mdeia-logo-border">
+
+                                                                        <img class="media-object profile__img-company"
+                                                                            src="/assets/images/cse.jpg"
+                                                                            alt="Sample Employer">
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div class="media-heading listing-item__title">
+                                                                            <a
+                                                                                routerLink="/walker/selected-job/{{displayJob.jobNo}}">{{displayJob.jobTitle}}</a>
+                                                                        </div>
+                                                                        <div class="listing-item__info clearfix">
+                                                                            <span
+                                                                                class="listing-item__info--item listing-item__info--item-location">
+                                                                                <i class="fa fa-briefcase"
+                                                                                    aria-hidden="true"></i>
+                                                                                {{displayJob.companyName}}
+                                                                            </span>
+                                                                            <span
+                                                                                class="listing-item__info--item listing-item__info--item-location">
+                                                                                <i class="fa fa-map-marker"
+                                                                                    aria-hidden="true"></i>
+                                                                                {{displayJob.walkinLocation}}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="listing-item__desc hidden-sm ">
+                                                                            <label>Client:</label>
+                                                                            {{displayJob.endClient}}
+                                                                        </div>
+                                                                        <div class="listing-item__desc hidden-sm ">
+                                                                            <label>Key Skills :</label>
+                                                                            {{displayJob.keySkills}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="media-right text-right">
+                                                                        <div class="listing-item__date">
+                                                                            <span
+                                                                                class="listing-item__employment-type">Walkin
+                                                                                Date :
+                                                                                {{displayJob.walkinDate|date:'dd-MM-yyyy'}}
+                                                                            </span>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </article>
+                                                            </div>
+                                                        </section>
+                                                        <div class="view-all text-center ">
+                                                            <a routerLink="/displayalljobs"
+                                                                class="btn view-all__btn btn__white">View all jobs</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-list-con-body">
+                            <div class="col-sm-3 job-alg-top">
+                                <div class="container-txt-h1 container-txt-mobile">
+                                    <h1 style="line-height:48px !important">&nbsp;</h1>
+                                </div>
+                                <div class="jobs-list-block jobs-listblcok">
+                                    <div class="jobs-list" style="box-shadow: 0 2px 2px rgba(0,0,0,.07);">
+                                        <a href="/Home/BOTInterview">
+                                            <img src="../assets/images/virtual-new-logo.jpg"
+                                                class="virtual-inreaview-img">
+                                        </a>
+                                    </div>
+                                    <div class="jobs-list" style="box-shadow: 0 2px 2px rgba(0,0,0,.07);">
+                                        <a href="https://www.talentzing.com/" target="_blank">
+                                            <img src="../assets/images/tz-logo.jpg" alt="dailywalkins" style=""
+                                                class="talent-logo-img">
+                                        </a>
+                                    </div>
+                                    <div class="jobs-list" style="box-shadow: 0 2px 2px rgba(0,0,0,.07);">
+                                        <a href="http://www.derivativesconnect.com" target="_blank">
+                                            <img src="../assets/images/de-con.jpg" alt="dailywalkins"
+                                                class="derivatives-connect-img" style="">
+                                            <div style="" class="derivatives-connect-txt">Free Techno Functional
+                                                Training</div>
+                                        </a>
+                                    </div>
+                                    <div class="jobs-list" style="box-shadow: 0 2px 2px rgba(0,0,0,.07);">
+
+                                        <a href="https://www.vishistbusinesssolutions.com/" target="_blank">
+                                            <div style="top: 10px;margin-left: 20px;font-weight: 600;"
+                                                class="derivatives-connect-txt">Line Up Candidates for Drive?</div>
+                                            <img src="../assets/images/vishist-img-demo-new.png" alt="dailywalkins"
+                                                class="derivatives-connect-img" style="">
+                                            <div style="" class="derivatives-connect-txt"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="" style="">
+                                    <div class="jobs-list-block">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row-table-content">
+                        <div class="job-list-con-body">
+                            <div class="jobs-list-block ">
+                                <div class="container-txt-h1">
+                                    <h1>Walkin Drive Facilities - <b style="font-size:40px">Availability</b></h1>
+                                </div>
+                                <!-- <div class="portlet" portlet-table="" portlet-border"=""> -->
+                                <div class="portlet-content">
+                                    <div class="jobs-list jobs-list-avl">
+                                        <div class="row">
+                                            <div class="from-group" style="margin-top: -14px;">
+                                                <label class="col-sm-1 label-tomorrow"
+                                                    style="margin-top: 9px !important;">Date :</label>
+                                                <div class="col-sm-3">
+                                                    <div class="input-group date date-1" id="datetimepicker1">
+                                                        <input class="form-control" id="txtDate" name="txtDate"
+                                                            type="date" value="" [(ngModel)]="selectedDate">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <a class="btn btn-primary" imagealign="AbsMiddle"
+                                                        (click)="loadFacilities(selectedDate)"
+                                                        style="margin-top: 5px;">Go</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label style="color:green;font:bold"></label>
+                                        <div id="divFacilitites">
+
+
+                                            <div class="Facilities-find form-inline">
+                                                <div class="bg-success success">
+                                                    <label style="font:bold;color:green;margin-left:10px"> {{fcount}}
+                                                        Facilities
+                                                        found.. </label>
+                                                </div>
+                                            </div>
+                                            <div class="table table-responsive table-bordered">
+
+                                                <table class="table ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width:13% !important">Facility</th>
+                                                            <th style="width:13% !important">Status</th>
+                                                            <th style="width:13% !important">Location</th>
+                                                            <th style="width:13% !important"
+                                                                class="txt-add-padding-facilities">Seats</th>
+                                                            <th style="width:13% !important"
+                                                                class="txt-add-padding-facilities">Resources</th>
+                                                            <th style="width:14% !important"
+                                                                class="txt-add-padding-facilities">Co-Ordinators</th>
+                                                            <th style="width:13% !important"
+                                                                class="txt-add-padding-facilities">Panels</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody *ngFor="let fac of facilities;let i=index">
+                                                        <tr *ngIf="i<3">
+                                                            <td><span class="td-space">{{fac.facility}}</span></td>
+                                                            <td>
+                                                                <div class="checkbox">
+                                                                    <button type="button"
+                                                                        routerLink="/facility/bookfacility/{{facility}}"
+                                                                        class="btn btn-info sub-availble btn-size-text box-shadow--4dp"
+                                                                        value="Available">
+                                                                        Available
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                            <td><span class="td-location">{{fac.location}}</span></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-top">
+                                                                    <label>
+                                                                        <input type="checkbox" name="" checked="checked"
+                                                                            value="" class="checkbox-check" disabled="">
+                                                                        <i class="helper-text"></i>
+
+
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-top demo-checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" name="" checked="checked"
+                                                                            value="" class="checkbox-check" disabled="">
+                                                                        <i class="helper-text"></i>
+
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-top checkbox-demo-co">
+                                                                    <label>
+                                                                        <input type="checkbox" name="" checked="checked"
+                                                                            value="" class="checkbox-check" disabled="">
+                                                                        <i class="helper-text"></i>
+
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-top">
+                                                                    <label>
+                                                                        <input type="checkbox" name="" checked="checked"
+                                                                            value="" class="checkbox-check" disabled="">
+                                                                        <i class="helper  helper-pannel"></i>
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+
+                                                <div id="myModal" class="modal" style="margin-top:7px;">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div id="divBookFacility" class="modal-body">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <a routerLink="/facility/Facilities"
+                                            class="btn btn-info button table-btn-click">More...</a>
+                                        <span class="register-btn"><a routerLink="/facility/flogin">Do you have
+                                                a facility to register ?</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <app-footer></app-footer>
+
+
+
+    <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+    </div>
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+        style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions"
+        class="ui-helper-hidden-accessible"></span>
+        
+</body>

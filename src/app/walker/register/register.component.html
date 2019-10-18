@@ -1,0 +1,947 @@
+<app-navbar></app-navbar>
+<form #regForm="ngForm" (ngSubmit)="submit(vm);regForm.reset()">
+    <div class="wrapper">
+        <div class="wrapper-container" style="background: #fff url(assets/img/bg.jpg) repeat top left;">
+            <div class="container">
+                <h1 class="page-title">Walker - Registration</h1>
+                <section class="">
+                    <div id="register" class="animate form" style="background-color: #f7f7f7">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-8 wrapper-1">
+                                    <div class="form-group">
+                                        <label>{{msg}}</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 upload-icon-file"
+                                            style="position: relative; top: -11px;">
+                                            Upload Resume To Fill<span style="color:red;"></span>
+                                        </label><label class="col-sm-1"
+                                            style="position: relative;margin-top: -3px;">:</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" ngModel name="file" id="resumeFile"
+                                                (change)="selectResume($event)" [(ngModel)]="vm.file" accept="image/*,application/pdf,application/msword,
+                                                application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-7 col-sm-3">
+                                            First Name <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" placeholder="First Name" ngModel name="fname"
+                                                #fname="ngModel" [(ngModel)]="vm.fname" type="text"
+                                                pattern="[a-zA-Z ]*$" required>
+                                            <mat-hint *ngIf="fname.touched && fname.invalid">
+                                                <mat-error *ngIf="fname.errors.required">First name is required
+                                                </mat-error>
+                                                <mat-error *ngIf="fname.errors && fname.errors.pattern">Invalid First
+                                                    Name</mat-error>
+                                            </mat-hint>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-8 col-sm-3">
+                                            Last Name <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" id="txtLastName" name="LastName" type="text"
+                                                value="" placeholder="Last Name" #lname="ngModel" [(ngModel)]="vm.lname"
+                                                pattern="[a-zA-Z ]*$" required>
+                                            <mat-hint *ngIf="lname.touched && lname.invalid">
+                                                <mat-error *ngIf="lname.errors.required">Last name is required
+                                                </mat-error>
+                                                <mat-error *ngIf="lname.errors && lname.errors.pattern">Invalid Last
+                                                    Name</mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-8 col-sm-3">
+                                            Email <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control"
+                                                pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" id="txtEmail"
+                                                ngModel #email="ngModel" name="Email" placeholder="mysupermail@mail.com"
+                                                type="text" value="" [(ngModel)]="vm.email" required>
+                                            <mat-hint *ngIf="email.touched && email.invalid">
+                                                <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                                                <mat-error *ngIf="email.errors && email.errors.pattern">Invalid Email
+                                                </mat-error>
+                                            </mat-hint>
+                                            <span>{{msg}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group contactNumber">
+                                        <label class="col-sm-3" style="white-space: nowrap;margin-top:9px;">
+                                            Contact Number <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1" style="margin-top:9px;">:</label>
+                                        <div class="col-sm-8" style="z-index:0 !important">
+                                            <div class="input-group input-group-width">
+                                                <div class="input-group-addon">
+                                                    +91
+                                                </div>
+                                                <input class="form-control" pattern="^[0-9 ]{10}$" id="txtContactNo"
+                                                    ngModel #contactNo="ngModel" name="ContactNo"
+                                                    [(ngModel)]="vm.contactNumber" type="text" value="" minlength="10"
+                                                    maxlength="10" required>
+                                                <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+                                                    <mat-error *ngIf="contactNo.errors.required">ContactNumber is
+                                                        required</mat-error>
+                                                    <mat-error
+                                                        *ngIf="contactNo.errors.minlength || contactNo.errors.pattern">
+                                                        Invalid Contact Number</mat-error>
+                                                </mat-hint>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space: nowrap;">
+                                            ContactNo_Landline <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group input-group-width" style="z-index:0 !important">
+                                                <div class="input-group-addon">
+                                                    +91
+                                                </div>
+                                                <input class="form-control form-control-width input-width" ngModel
+                                                    #landline="ngModel" id="txtContactNo_Landline"
+                                                    name="ContactNo_Landline" placeholder="040-678967" type="text"
+                                                    [(ngModel)]="vm.landline" value="" minlength="10" maxlength="10">
+                                                <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+
+                                                    <mat-error *ngIf="contactNo.errors.minlength">
+                                                        Invalid Contact Number</mat-error>
+                                                </mat-hint>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-3 col-sm-3">
+                                            Password <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" data-val="true"
+                                                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&amp;,\.;'/<>{}^():_|=+~-]{6,}$"
+                                                id="txtPassword" ngModel #password="ngModel" name="Password"
+                                                minlength="8" placeholder="eg. X8df!90EO" type="password"
+                                                [(ngModel)]="vm.password" required>
+                                            <mat-hint *ngIf="password.touched && password.invalid">
+                                                <mat-error *ngIf="password.errors.required">Password is Required
+                                                </mat-error>
+                                                <mat-error *ngIf="password.errors && password.errors.pattern"> Password
+                                                    must contain: Minimum 6 characters and atleast one number and
+                                                    atleast 1 alphabet</mat-error>
+                                            </mat-hint>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-3 col-sm-3" style="white-space: nowrap;">
+                                            Confirm Password <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" data-val="true" id="txtConfirmPassword" ngModel
+                                                #confirmPassowrd="ngModel" name="ConfirmPassword"
+                                                placeholder="eg. X8df!90EO" type="password"
+                                                [(ngModel)]="vm.confirmPassword" required pattern="{{vm.password}}">
+                                            <mat-hint *ngIf="confirmPassowrd.touched && confirmPassowrd.invalid">
+                                                <mat-error *ngIf="confirmPassowrd.errors.required">Confirm Password is
+                                                    Required</mat-error>
+                                                <mat-error
+                                                    *ngIf="confirmPassowrd.errors && confirmPassowrd.errors.pattern">
+                                                    Confirm Password' and 'Password' do not match.</mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Date Of Birth <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width hasDatepicker"
+                                                id="txtDateOfBirth" ngModel #dob="ngModel" name="DateOfBirth"
+                                                placeholder="20/01/2018" type="text" [(ngModel)]="vm.dob" value="">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-8 col-sm-3">
+                                            Gender <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="genderalng col-sm-8">
+
+                                            <select class="form-control" id="txtGender" ngModel #gender="ngModel"
+                                                [(ngModel)]="vm.gender" name="Gender" required>
+                                                <option value="">--Select type--</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                            <mat-hint *ngIf="gender.touched && gender.invalid">
+                                                <mat-error *ngIf="gender.errors.required">Gender is Required</mat-error>
+
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Industry <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <!-- <input data-val="true" data-val-number="The field InId must be a number."
+                                                    id="InId" name="InId" type="hidden" value="">
+                                                <input data-val="true" data-val-required="Industry is Required"
+                                                    id="Industry" name="Industry" type="hidden" value=""> -->
+                                            <select class="form-control" id="IndustryName"
+                                                placeholder="--Select Industry--" ngModel #industry="ngModel"
+                                                (change)=onSelectIndustry($event) [(ngModel)]="vm.industry"
+                                                name="Industry" type="hidden" value="">
+                                                <option value="">--Select Industry--</option>
+                                                <option *ngFor="let ind of industries" value="{{ind.industryId}}">
+                                                    {{ind.industryType}}</option>
+                                            </select>
+                                            <mat-hint *ngIf="industry.touched && industry.invalid">
+                                                <mat-error *ngIf="industry.errors.required">Industry is Required
+                                                </mat-error>
+
+                                            </mat-hint>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Role <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <!-- <input data-val="true" data-val-number="The field RId must be a number."
+                                                        id="RId" name="RId" type="hidden" value="">
+                                                    <input data-val="true" data-val-required="Role is Required" id="Role"
+                                                        name="Role" type="hidden" value=""> -->
+                                            <select class="form-control form-control-width-1 input-width " id="RoleName"
+                                                ngModel #role="ngModel" name="Role" [(ngModel)]="vm.role"
+                                                (change)="onSelectedRole($event)" required>
+                                                <option value="">--Select Role--</option>
+                                                <option *ngFor="let role of roles" value="{{role.roleId}}">
+                                                    {{role.roleName}}</option>
+                                            </select>
+
+                                            <mat-hint *ngIf="role.touched && role.invalid">
+                                                <mat-error *ngIf="role.errors.required">Role is Required</mat-error>
+
+                                            </mat-hint>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Job Type <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <!-- <input data-val="true" data-val-number="The field JTId must be a number."
+                                                            id="JTId" name="JTId" type="hidden" value=""> -->
+                                            <select class="form-control form-control-width-1 input-width" ngModel
+                                                #jobtype="ngModel" id="jobType" name="Jobtype" [(ngModel)]="vm.jobtype"
+                                                (change)="onSelectJobType($event)" required>
+                                                <option value="">--Select type--</option>
+                                                <option *ngFor="let jt of jobTypes" value="{{jt.jobTypeId}}">
+                                                    {{jt.jobType}}</option>
+
+                                            </select>
+
+                                            <mat-hint *ngIf="jobtype.touched && jobtype.invalid">
+                                                <mat-error *ngIf="jobtype.errors.required">Jobtype is Required
+                                                </mat-error>
+
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space: nowrap;">
+                                            Current Designation <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <input class="form-control" id="txtCurrentDesignation" ngModel
+                                                #currentDesignation="ngModel" name="CurrentDesignation" placeholder="UI"
+                                                type="text" value="" [(ngModel)]="vm.currentDesignation"
+                                                autocomplete="off">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Experience <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8" style="white-space: nowrap;">
+                                            <div class="form-inline form-expericence-mobile">
+                                                <!-- <input data-val="true"
+                                                                    data-val-number="The field Experience must be a number."
+                                                                    data-val-required="Experience details are Required" id="Experience"
+                                                                    name="Experience" type="hidden" value=""> -->
+                                                <select class="form-control" id="minExp" ngModel #minExp="ngModel"
+                                                    name="Experience" [(ngModel)]="vm.minExp"
+                                                    (change)="onSelectedMinExp($event)" required>
+                                                    <option value="">--Select Experience--</option>
+                                                    <option *ngFor="let exp of experience" value="{{exp.experienceId}}">
+                                                        {{exp.expValue}}</option>
+
+                                                </select>
+
+                                                Year(s)&nbsp; and
+                                                <mat-hint *ngIf="minExp.touched && minExp.invalid">
+                                                    <mat-error *ngIf="minExp.errors.required">Minimum Experience is
+                                                        Required</mat-error>
+
+                                                </mat-hint>
+                                                <select class="form-control selct-maxexp" id="maxExp" name="Experience"
+                                                    ngModel #maxExp="ngModel" [(ngModel)]="vm.maxExp"
+                                                    (change)="onSelectedMaxExp($event)" required>
+                                                    <option value="">--Select Experience--</option>
+                                                    <option *ngFor="let exp of experience" value="{{exp.experienceId}}">
+                                                        {{exp.expValue}}</option>
+
+                                                </select>
+
+                                                Month(s)
+                                                <mat-hint *ngIf="maxExp.touched && maxExp.invalid">
+                                                    <mat-error *ngIf="maxExp.errors.required">Maximum Experience is
+                                                        Required</mat-error>
+
+                                                </mat-hint>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Current CTC <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8" style="white-space: nowrap;">
+                                            <div class="form-inline form-expericence-mobile">
+
+                                                <select class="form-control selct-maxexp" ngModel #currentCTC="ngModel"
+                                                    id="CCTCFrom" name="CCTCFrom" [(ngModel)]="vm.CCTCFrom"
+                                                    (change)="onSelectedCCTCFrom($event)" required>
+                                                    <option value="">--Select CTC--</option>
+                                                    <option *ngFor="let sal of salaries" value="{{sal.salaryId}}">
+                                                        {{sal.salValue}}</option>
+                                                </select>
+
+                                                Lakh(s)&nbsp; and
+                                                <select class="form-control selct-maxexp" ngModel #CTCTo="ngModel"
+                                                    (change)="onSelectedCCTCTo($event)" id="CCTCTo" name="CCTCTo"
+                                                    [(ngModel)]="vm.CCTCTo" required>
+                                                    <option value="">--Select CTC--</option>
+                                                    <option *ngFor="let sal of salaries" value="{{sal.salaryId}}">
+                                                        {{sal.salValue}}</option>
+                                                </select>
+                                                Thousand(s)
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Expected CTC <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8" style="white-space: nowrap;">
+                                            <div class="form-inline form-expericence-mobile">
+                                                <!-- <input data-val="true"
+                                                                            data-val-number="The field expectedCTC must be a number."
+                                                                            id="expectedCTC" name="expectedCTC" type="hidden" value=""> -->
+                                                <select class="form-control selct-maxexp" ngModel #ECTCFrom="ngModel"
+                                                    id="ECTCFrom" [(ngModel)]="vm.ECTCFrom" name="ECTCFrom"
+                                                    (change)="onSelectedECTCFrom" required>
+                                                    <option value="">--Select CTC--</option>
+                                                    <option *ngFor="let sal of salaries" value="{{sal.salaryId}}">
+                                                        {{sal.salValue}}</option>
+                                                </select>
+                                                Lakh(s)&nbsp; TO
+                                                <select class="form-control selct-maxexp" ngModel #ECTCTo="ngModel"
+                                                    id="ECTCTo" [(ngModel)]="vm.ECTCTo" (change)="onSelectedECTCTo"
+                                                    name="ECTCTo">
+                                                    <option value="">--Select CTC--</option>
+                                                    <option *ngFor="let sal of salaries" value="{{sal.salaryId}}">
+                                                        {{sal.salValue}}</option>
+                                                </select>
+                                                Thousands(s)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Key Skills <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtKeySkills" name="KeySkills"
+                                                placeholder="Java, ASP.Net,Oracle,PHP, CPP etc..." type="text" value=""
+                                                autocomplete="off" ngModel #keySkills="ngModel"
+                                                [(ngModel)]="vm.keySkills" required>
+                                            <mat-hint *ngIf="keySkills.touched && keySkills.invalid">
+                                                <mat-error *ngIf="keySkills.errors.required">KeySkills is required
+                                                </mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-10 col-sm-3" style="white-space: nowrap;">
+                                            Resume Headline <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width" data-val="true"
+                                                id="txtResumeHeadLine" ngModel #resumeHeadLine="ngModel"
+                                                [(ngModel)]="vm.resumeHeadLine" name="ResumeHeadLine"
+                                                placeholder="Resume HeadLine" type="text" value="" required>
+                                            <mat-hint *ngIf="resumeHeadLine.touched && resumeHeadLine.invalid">
+                                                <mat-error *ngIf="resumeHeadLine.errors.required">Resume HeadLine is
+                                                    required
+                                                </mat-error>
+                                            </mat-hint>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-10 col-sm-3" style="white-space:nowrap">
+                                            Current Company <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtCurrentCompany" name="CurrentCompany" placeholder="Vishist"
+                                                type="text" value="" autocomplete="off" ngModel
+                                                #currentCompany="ngModel" [(ngModel)]="vm.currentCompany">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-5 col-sm-3">
+                                            Location <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                data-val="true" id="ddlQualification" ngModel #location="ngModel"
+                                                (change)="onSelectedLocation($event)" [(ngModel)]="vm.location"
+                                                name="Location" placeholder="mca" required>
+                                                <option value="">--Select Location--</option>
+                                                <option *ngFor="let loc of locations" value="{{loc.locationLatLongId}}">
+                                                    {{loc.location}}</option>
+
+                                            </select>
+                                            <mat-hint *ngIf="location.touched && location.invalid">
+                                                <mat-error *ngIf="location.errors.required">Location is required
+                                                </mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-5 col-sm-3">
+                                            Locality <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtLocality" ngModel #locality="ngModel" name="Locality" type="text"
+                                                value="" autocomplete="off" [(ngModel)]="vm.locality">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-5 col-sm-3" style="white-space: nowrap;">
+                                            Preferred Location <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                ngModel #preferredLocation="ngModel" [(ngModel)]="vm.preferredLocation"
+                                                id="txtPreferredLocation" name="PreferredLocation" type="text" value=""
+                                                autocomplete="off" required>
+                                            <mat-hint *ngIf="preferredLocation.touched && preferredLocation.invalid">
+                                                <mat-error *ngIf="preferredLocation.errors.required">PreferredvLocation
+                                                    is required</mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Notice Period <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                data-val-number="The field Notice Period must be a number."
+                                                id="NoticePeriod" ngModel #noticePeriod="ngModel"
+                                                [(ngModel)]="vm.noticePeriod" (change)="onSelectNoticePeriod($event)"
+                                                name="NoticePeriod" required>
+                                                <option value="">--Select NoticePeriod--</option>
+                                                <option *ngFor="let np of noticePeriods" value="{{np.noticePeriodId}}">
+                                                    {{np.noticeText}}</option>
+
+                                            </select>
+                                            <mat-hint *ngIf="noticePeriod.touched && noticePeriod.invalid">
+                                                <mat-error *ngIf="noticePeriod.errors.required">Notice Period is
+                                                    required</mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Education <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                data-val="true" ngModel #education="ngModel" id="ddlQualification"
+                                                name="Education" placeholder="mca" (change)="onSelectEducation($event)"
+                                                [(ngModel)]="vm.education" required>
+                                                <option value="">--Select Qualification--</option>
+                                                <option *ngFor="let education of qualifications"
+                                                    value="{{education.qualificationId}}">{{education.qualification}}
+                                                </option>
+
+                                            </select>
+                                            <mat-hint *ngIf="education.touched && education.invalid">
+                                                <mat-error *ngIf="education.errors.required">Education is required
+                                                </mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Institute <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                data-val="true" ngModel #institute="ngModel" [(ngModel)]="vm.institute"
+                                                id="txtInstitute" name="Institute" type="text" value=""
+                                                autocomplete="off" required>
+                                            <mat-hint *ngIf="institute.touched && institute.invalid">
+                                                <mat-error *ngIf="institute.errors.required">Institute is required
+                                                </mat-error>
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Year of Pass <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control selct-maxYearofPass" id="txtYearOfPass"
+                                                name="YearOfPass" ngModel #yearOfPass="ngModel" [(ngModel)]="vm.yop">
+                                                <option value="">--Select Year--</option>
+                                                <option value="1980">1980</option>
+                                                <option value="1981">1981</option>
+                                                <option value="1982">1982</option>
+                                                <option value="1983">1983</option>
+                                                <option value="1984">1984</option>
+                                                <option value="1985">1985</option>
+
+
+                                                <option value="1986">1986</option>
+                                                <option value="1987">1987</option>
+                                                <option value="1988">1988</option>
+                                                <option value="1989">1989</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1991">1991</option>
+                                                <option value="1992">1992</option>
+                                                <option value="1993">1993</option>
+                                                <option value="1994">1994</option>
+                                                <option value="1995">1995</option>
+                                                <option value="1996">1996</option>
+                                                <option value="1997">1997</option>
+                                                <option value="1998">1998</option>
+                                                <option value="1999">1999</option>
+                                                <option value="2000">2000</option>
+                                                <option value="2001">2001</option>
+                                                <option value="2002">2002</option>
+                                                <option value="2003">2003</option>
+                                                <option value="2004">2004</option>
+                                                <option value="2005">2005</option>
+                                                <option value="2006">2006</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2008">2008</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2019">2019</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space: nowrap;">
+                                            Languages Known <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtlanguagesKnown" ngModel #languagesKnown="ngModel"
+                                                name="languagesKnown" placeholder="Hindi,English" type="text" value=""
+                                                autocomplete="off" [(ngModel)]="vm.languagesKnown">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Photo <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <figure class="form-inline">
+                                                <input type="file" name="image" id="logoFile" ngModel
+                                                    [(ngModel)]="vm.photo" (change)="selectProfileImage($event)" accept="image/*"><br>
+                                                <img src="/assets/images/Profile-Avatar.jpg" alt="Logo Not Loaded"
+                                                    height="80" width="100" id="imgProfile">
+                                            </figure>
+                                            <label style="color:red;" id="lblLogo"></label>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="margin-top:18px;">Work as panel</label>
+                                        <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                        <label class="col-sm-8">
+                                            <input type="radio" (click)="showPanel()" class="form-check-input"
+                                                checked="checked" name="radio" [value]="true">YES
+                                            <input type="radio" (click)="hidePanel()" class="form-check-input"
+                                                checked="checked" name="radio" [value]="false">NO
+
+                                        </label>
+                                    </div>
+                                    <div id="divPanel" hidden="true">
+                                        <div class="form-group">
+                                            <label class="col-sm-3">Panel ID <span style="color:red;"></span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" ngModel
+                                                    #panelId="ngModel" id="txtPanelId" name="PanelId" type="text"
+                                                    [(ngModel)]="vm.panelId" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3">Skills Set<span style="color:red;"></span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    id="txtMajorSkills" ngModel #majorSkills="ngModel"
+                                                    name="MajorSkills" type="text" value="" autocomplete="off"
+                                                    [(ngModel)]="vm.majorSkills">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="divCheckF2F" hidden="true">
+                                        <div class="form-group">
+                                            <label class="col-sm-3" style="margin-top:18px;">For Face to Face</label>
+                                            <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                            <label class="col-sm-8" style="position:relative;top:0px !important">
+                                                <input type="radio" (click)="showF2F()" class="form-check-input"
+                                                    checked="checked" name="radio" [value]="false">YES
+                                                <input type="radio" (click)="hideF2F()" class="form-check-input"
+                                                    checked="checked" name="radio" [value]="true">NO
+                                            </label>
+                                        </div>
+
+                                        <div id="divF2FDetails" hidden="true">
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Hour<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerHourForF2F must be a number."
+                                                        ngModel #costPerHour="ngModel" [(ngModel)]="vm.costPerHour"
+                                                        id="txtCostPerHourForF2F" name="CostPerHourForF2F"
+                                                        placeholder="1000" type="text" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Day<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerDayForF2F must be a number."
+                                                        ngModel #costPerDay="ngModel" [(ngModel)]="vm.costPerDay"
+                                                        id="txtCostPerDayForF2F" name="CostPerDayForF2F"
+                                                        placeholder="3000" type="text" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Availble Time Slots<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <ejs-multiselect id='localData' name="name" #local="ngModel"
+                                                        [(ngModel)]="vm.AvailbleTimeSlotsForFaceToFace"
+                                                        [dataSource]='timings' [fields]='localFields'
+                                                        [placeholder]='localWaterMark'>
+                                                    </ejs-multiselect>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="divCheckSkype" hidden="true">
+                                        <div class="form-group">
+                                            <label class="col-sm-3" style="margin-top:18px;">For Skype</label>
+
+                                            <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                            <label class="col-sm-8" style="position:relative;top:0px !important;">
+                                                <input id="AvailableForSkype" name="AvailableForSkype" type="hidden"
+                                                    value="False">
+                                                <input type="radio" (click)="showSkype()" class="form-check-input"
+                                                    checked="checked" name="radio" [value]="false">YES
+                                                <input type="radio" (click)="hideSkype()" class="form-check-input"
+                                                    checked="checked" name="radio" [value]="true">NO
+                                            </label>
+                                        </div>
+
+                                        <div id="divSkypeDetails" hidden="true">
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Hour <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerHourForSkype must be a number."
+                                                        ngModel #costPerHourSkype="ngModel"
+                                                        [(ngModel)]="vm.costPerHourSkype" id="txtCostPerHourForSkype"
+                                                        name="CostPerHourForSkype" placeholder="1000" type="text"
+                                                        value="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Day <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerDayForSkype must be a number."
+                                                        ngModel #costPerDaySkype="ngModel"
+                                                        [(ngModel)]="vm.costPerDaySkype" id="txtCostPerDayForSkype"
+                                                        name="CostPerDayForSkype" placeholder="1000" type="text"
+                                                        value="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Availble Time Slots<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <ejs-multiselect id='localData' name="name" #local="ngModel"
+                                                        [(ngModel)]="vm.AvailbleTimeSlotsForSkype"
+                                                        [dataSource]='timings' [fields]='localFields'
+                                                        [placeholder]='localWaterMark'>
+                                                    </ejs-multiselect>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="divCheckTele" hidden="true">
+                                        <div class="form-group">
+                                            <label class="col-sm-3" style="margin-top:18px;">For Telephonic</label>
+                                            <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                            <label class="col-sm-8" style="position:relative;top:0px !important">
+                                                <input id="AvailableForTelephonic" name="AvailableForTelephonic"
+                                                    type="hidden" value="False">
+                                                <input type="radio" (click)="showTele()" class="form-check-input"
+                                                    checked="checked" name="radio" [value]="false">YES
+                                                <input type="radio" (click)="hideTele()" class="form-check-input"
+                                                    checked="checked" name="radio" [value]="true">NO
+
+                                            </label>
+                                        </div>
+
+
+                                        <div id="divTelephonicDetails" hidden="true">
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Hour <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true" ngModel #costPerHourTelephonic="ngModel"
+                                                        [(ngModel)]="vm.costPerHourTelephonic"
+                                                        id="txtCostPerHourForTelephonic" name="CostPerHourForTelephonic"
+                                                        placeholder="1000" type="text" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Day <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerDayForTelephonic must be a number."
+                                                        ngModel #costPerDayTelephonic="ngModel"
+                                                        [(ngModel)]="vm.costPerDayTelephonic"
+                                                        id="txtCostPerDayForTelephonic" name="CostPerDayForTelephonic"
+                                                        placeholder="2000" type="text" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Availble Time Slots<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <ejs-multiselect id='localData' name="name" #local="ngModel"
+                                                        [(ngModel)]="vm.AvailbleTimeSlotsForTelephonic"
+                                                        [dataSource]='timings' [fields]='localFields'
+                                                        [placeholder]='localWaterMark'>
+                                                    </ejs-multiselect>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="UpdatePanel1" class="col-sm-3" style="margin-top: 4px;">
+                                            Profile Alerts
+                                        </label>
+                                        <label class="col-sm-1" style="margin-top: 4px;">:</label>
+                                        <div class="col-sm-8" style="white-space:nowrap">
+                                            <div class="checkbox checkbox-alg-none">
+                                                <input class="check" data-val="true" id="EmailAlert" name="EmailAlert"
+                                                    (change)="checkboxEmail()" type="checkbox" value="true"
+                                                    [(ngModel)]="vm.emailAlert"><input name="EmailAlert" type="hidden"
+                                                    value="false"> Email
+                                                <label class="checkbox-label checkbox-alg-none">
+                                                    <input class="check" data-val="true" id="SmsAlert" name="SmsAlert"
+                                                        type="checkbox" value="true" [(ngModel)]="vm.smsAlert"><input
+                                                        name="SmsAlert" type="hidden" value="false"> SMS
+                                                </label>
+                                                <label class="checkbox-label checkbox-alg-none">
+                                                    <input class="check" data-val="true" id="ChatAlert" name="ChatAlert"
+                                                        type="checkbox" value="true" [(ngModel)]="vm.chatAlert"><input
+                                                        name="ChatAlert" type="hidden" value="false"> Chat
+                                                </label>
+                                                <label class="checkbox-label checkbox-alg-none">
+
+                                                    <input type="checkbox" class="check" id="chkNone" value="None"
+                                                        (change)="checkboxNone()">None
+                                                </label>
+                                            </div>
+                                            <div id="divEmail" hidden="true">
+                                                <input id="WeekDay" name="WeekDay" type="hidden" value="">
+
+                                                <label class="check-1">
+                                                    <input class="check-1" id="WeekDay" name="WeekDay"
+                                                        (click)="showDaily()" type="radio" value="Daily"
+                                                        [(ngModel)]="vm.daily">Daily
+                                                </label>
+                                                <label class="check-1">
+                                                    <input class="check-1" id="WeekDay" name="WeekDay"
+                                                        (click)="showWeekly()" type="radio" value="Weekly"
+                                                        [(ngModel)]="vm.weekly">Weekly
+                                                </label>
+                                                <label class="check-1">
+                                                    <input class="check-1" id="WeekDay" name="WeekDay"
+                                                        (click)="hideDW()" type="radio" value="Instant">Instant
+                                                </label>
+                                            </div>
+                                            <div class="form-group" id="divDay" hidden="true">
+                                                <label class="control-label col-md-6">
+                                                    <span class="red"></span>Select day and time :
+                                                </label>
+                                                <div class="col-md-6" style="margin-top:10px;">
+                                                    <input id="WeekDay" name="WeekDay" type="hidden" value="">
+                                                    <select class="ddlAlert form-control" id="ddlAlertsJob"
+                                                        name="ddlAlertsJob" [(ngModel)]="vm.day"
+                                                        (change)="getDropDownValue()">
+                                                        <option value="">--Select type--</option>
+                                                        <option value="1">Sunday</option>
+                                                        <option value="2">Monday</option>
+                                                        <option value="3">Tuesday</option>
+                                                        <option value="4">Wednesday</option>
+                                                        <option value="5">Thursday</option>
+                                                        <option value="6">Friday</option>
+                                                        <option value="7">Saturday</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8 emial-check-box" id="divTime"
+                                                style="white-space: nowrap;" hidden="true">
+                                                <input id="OnDemandTime" name="OnDemandTime" type="hidden" value="">
+                                                <input checked="checked" class="radiobtn" id="radio_1" name="rd8AM"
+                                                    type="radio" value="8:00 AM" [(ngModel)]="vm.value"><label
+                                                    for="">8:00 AM</label>
+                                                <input class="radiobtn" id="radio_2" name="rd12PM" type="radio"
+                                                    value="12:00 PM" [(ngModel)]="vm.value"><label for="">12:00
+                                                    PM</label>
+                                                <input class="radiobtn" id="radio_3" name="rd4PM" type="radio"
+                                                    value="4:00 PM" [(ngModel)]="vm.value"><label for="">4:00 PM</label>
+                                                <input class="radiobtn" id="radio_4" name="rd8PM" type="radio"
+                                                    value="8:00 PM" [(ngModel)]="vm.value"><label for="">8:00 PM</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="ChatAlert" name="ChatAlert" type="hidden" value="False">
+                                    <input id="SmsAlert" name="SmsAlert" type="hidden" value="False">
+                                    <input id="EmailAlert" name="EmailAlert" type="hidden" value="False">
+                                    <div class="form-group">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-8 checkbox-condetion">
+                                            <label class="label-conditions">
+                                                <input type="checkbox" class="check" id="chkTandC" value="" required>
+                                                I have read, understood and agree to the
+                                                <a href="/Home/TermsAndConditions" target="_new"
+                                                    class="terms-conditions"> Terms and Conditions</a>
+
+                                                <br>
+
+                                            </label>
+                                            <!-- <mat-hint *ngIf="chkTandC.touched && chkTandC.invalid">
+                                                <mat-error *ngIf="chkTandC.errors.required">Please check the checkbox</mat-error>
+                                               
+                                              </mat-hint> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-8">
+
+                                            <div class="">
+                                                <button type="submit"
+                                                    [title]='regForm.valid ? "click to submit":"Please update the required fields"'
+                                                    class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</form>
+<app-footer></app-footer>
