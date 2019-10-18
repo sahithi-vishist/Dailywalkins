@@ -1,0 +1,89 @@
+<app-navbar-w></app-navbar-w>
+<div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+  
+        <div class="container">
+        <div class="col-md-12" style="padding-left:0px; padding-right:0px;">
+  
+            <div class="col-md-3">
+  
+                <div id="tab-container">
+                    <ul class="admin-list-group" id="main-menu">
+                        <li class="quick active bold"><a>Details</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CreateDrive">Create Drive</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/walkincentral">Drive details</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/UploadProfiles">Upload Profile(s)</a></li>
+                                    <li class="liclass " style="color: White"><a routerLink="/recruitment/WalkinCentral/CandidateDetails">Candidate Details</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CoOrdinatorsManagement">Co-Ordinators Management</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/panel">Panel Management</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/ShortlistedCandidates">Shortlisted Candidates</a></li>
+                                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/EvaluationForms">Evaluation Forms</a></li>
+                    </ul>
+                </div>
+  
+            </div>
+            <div class="col-md-9" style="padding-right:0px;">
+  
+                <form  (ngSubmit)="update()">
+                    <div class="row">
+            <div id="dvgetCoOrdinatorDetails">
+                <div class="portlet">
+            <div class="portlet-header">
+                <h3>Update Co-Ordinator</h3>
+                <a routerLink="/home" class="pull-right btn btn-primary btn-sm"
+                    style="margin-top:-33px !important">Back to List</a>
+  
+                </div>
+        <div class="portlet-content">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label bold">
+                        Name<span style="float: right">:</span><span
+                            style="color: Red;">*</span>
+                    </label>
+                    <div class="col-sm-7">
+                        <input name="name" class="form-control"
+                        [(ngModel)]="obj.name" type="text"
+                           />
+                     
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label bold">
+                        Contact Number<span style="float: right">:</span><span
+                            style="color: Red;">*</span>
+                    </label>
+                    <div class="col-sm-7">
+                        <input name="contactNo" class="form-control" [(ngModel)]="obj.contactNo"
+                           type="text" >
+                      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label bold">
+                        Email<span style="float: right">:</span><span
+                            style="color: Red;">*</span>
+                    </label>
+                    <div class="col-sm-7">
+        
+                        <input name="email" type="text" class="form-control" [(ngModel)]="obj.email" >
+                       
+                    </div>
+                </div>
+  
+                <div class="form-group">
+                    <input type="submit" value="Update"  class="btn btn-primary pull-right" style="margin-right: 9px;">
+                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+  
+    </div>
+  </div>
+  <app-footer></app-footer>

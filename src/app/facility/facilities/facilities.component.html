@@ -1,0 +1,74 @@
+<app-navbar-fac></app-navbar-fac>
+<div class="table table-responsive table-bordered" style="margin-top: 30px;">
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th style="width:13% !important">Facility</th>
+                <th style="width:13% !important">Date</th>
+                <th style="width:13% !important">Status</th>
+                <th style="width:13% !important">Location</th>
+                <th style="width:13% !important">Seats</th>
+                <th style="width:13% !important">Resources</th>
+                <th style="width:14% !important">Co-Ordinators</th>
+                <th style="width:13% !important">Panels</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fac of facilities">
+                <td><span class="td-space">{{fac.facility}}</span></td>
+                <td><span class="td-location">{{fac.availabilityDates}}</span></td>
+                <td>
+                    <div class="checkbox">
+                        <button type="button" class="btn btn-info sub-availble btn-size-text box-shadow--4dp"
+                            value="Available" (click)="bookfacility()">
+                            Available
+                        </button>
+                    </div>
+                </td>
+
+                <td><span class="td-location">{{fac.location}}</span></td>
+                <td>
+                    <div class="checkbox checkbox-top">
+                        <label>
+                            <input type="checkbox" name="" checked="checked" value="" class="checkbox-check"
+                                disabled="">
+                            <i class="helper-text"></i>
+
+
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-top demo-checkbox">
+                        <label>
+                            <input type="checkbox" name="" checked="checked" value="" class="checkbox-check"
+                                disabled="">
+                            <i class="helper-text"></i>
+
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-top checkbox-demo-co">
+                        <label>
+                            <input type="checkbox" name="" checked="checked" value="" class="checkbox-check"
+                                disabled="">
+                            <i class="helper-text"></i>
+
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="checkbox checkbox-top">
+                        <label>
+                            <input type="checkbox" name="" checked="checked" value="" class="checkbox-check"
+                                disabled="">
+                            <i class="helper  helper-pannel"></i>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
