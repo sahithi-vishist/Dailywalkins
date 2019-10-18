@@ -1,0 +1,220 @@
+<app-navbar-r></app-navbar-r>
+<form [formGroup]="advSearchRec" (ngSubmit)="advanceSearchr()">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <h1 class="page-title">Search Profiles</h1>
+            <section class="inner-page">
+                <div id="register" class="animate form">
+                    <div class="form-horizontal ">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 wrapper-1">
+                                <h2> Advance Search </h2>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Key words <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="txtKeySkills" formControlName="keySkills"
+                                            placeholder="java" type="text" value="" autocomplete="off">
+                                        <div class="checkbox checkbox-alg-none">
+                                            <input id="allkeywords" name="allkeywords" type="hidden" value="">
+                                            <input class="check" id="chkAll" formControlName="chkAll"
+                                                (click)="checkboxAll()" type="checkbox" value="true"><input
+                                                formControlName="chkAll" type="hidden" value="false"> All Keywords
+                                            <label class="checkbox-label checkbox-alg-none">
+                                                    <mat-autocomplete #lauto="matAutocomplete">
+                                                            <mat-option *ngFor="let chkAll of chkAll" value="{{chkAll.fileId}}">
+                                                                {{chkAll.fileName}}
+                                                            </mat-option>
+                                                        </mat-autocomplete>
+                
+            
+                                                <input id="Extendrsme" name="Extendrsme" type="hidden" value="">
+                                                <input class="check" id="chkResume" formControlName="chkResume"
+                                                    (click)="checkboxResume()" type="checkbox" value="true"><input
+                                                    formControlName="chkResume" type="hidden" value="false"> Resume
+                                            </label>
+                                            <mat-autocomplete #lauto="matAutocomplete">
+                                                <mat-option *ngFor="let chkResume of chkResume" value="{{chkResume.fileId}}">
+                                                    {{chkResume.fileName}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+    
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Additional Skills <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control form-control-width input-width" id="txtAddSkills"
+                                            formControlName="AddSkills" placeholder="java" type="text" value="">
+                                            <mat-autocomplete #lauto="matAutocomplete">
+                                                <mat-option *ngFor="let AdditionalSkills of AdditionalSkills" value="{{AdditionalSkills.ModifiedSkilledId}}">
+                                                    {{AdditionalSkills.type}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+    
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Exclude Skills <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control form-control-width input-width" id="txtExdSkills"
+                                            formControlName="ExcludeSkills" placeholder="java" type="text" value="">
+
+                                            <mat-autocomplete #lauto="matAutocomplete">
+                                                <mat-option *ngFor="let ExcludeSkills of ExcludeSkills" value="{{ExcludeSkills.ModifiedSkilledId}}">
+                                                    {{ExcludeSkills.type}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+    
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-3">Location <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control form-control-width input-width ui-autocomplete-input"
+                                            id="txtLocation" formControlName="Location" placeholder="Hyderabad"
+                                            type="text" value="" autocomplete="off">
+                                        <mat-autocomplete #lauto="matAutocomplete">
+                                            <mat-option *ngFor="let Location of Location" value="{{Location.locationId}}">
+                                                {{Location.city}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Preferred Location <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control form-control-width input-width ui-autocomplete-input"
+                                            id="txtPfLocation" formControlName="PreferedLocation"
+                                            placeholder="Hyderabad" type="text" value="" autocomplete="off">
+                                        <mat-autocomplete #lauto="matAutocomplete">
+                                            <mat-option *ngFor="let loc of PreferedLocation"
+                                                value="{{loc.locationId}}">
+                                                {{loc.city}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3">Experience <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8" style="white-space:nowrap">
+                                        <div class="form-inline">
+                                            <select class="form-control" id="minExp" formControlName="MinExp"
+                                                (change)="onSelectMinExp($event)">
+                                                <option value="">--Select type--</option>
+                                                <option *ngFor="let MinExp of MinExp" value="{{MinExp.ExperienceId}}">
+                                                    {{MinExp.expValue}}</option>
+                                               
+                                            </select>
+
+                                            Year(s)&nbsp; to
+
+                                            <select class="form-control" id="maxExp" formControlName="MaxExp"
+                                                (change)="onSelectMaxExp($event)">
+                                                <option value="">--Select type--</option>
+                                                <option *ngFor="let MaxExp of MaxExp" value="{{MaxExp.ExperienceId}}">
+                                                    {{MaxExp.expValue}}</option>
+                                               
+                                            </select>
+
+                                            Years(s)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Industry <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control form-control-width-1 input-width" id="IndustryNae"
+                                            formControlName="Industry" (change)="onSelectIndustry($event)">
+                                            <option value="">--Select type--</option>
+                                            <option *ngFor="let Industry of Industry" value="{{Industry.industryId}}">
+                                                {{Industry.industryType}}</option>
+                                            
+                                        </select><span class="field-validation-valid text-danger"
+                                            data-valmsg-for="Industry" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Role <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control form-control-width-1 input-width" id="RoleName"
+                                            formControlName="Role" (change)="onSelectRole($event)">
+                                            <option>Select</option>
+                                            
+                                        </select>
+                                        <option *ngFor="let RoleName of RoleName" value="{{RoleName.roleId}}">
+                                            {{RoleName.roleName}}</option>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Highest Degree <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control form-control-width-1 input-width" id="ddlEducation"
+                                            formControlName="Education"
+                                            (change)="onSelectEducation($event)">
+                                            <option> Select Education </option>
+                                           <option *ngFor=" let Education of Education"
+                                            value="{{Education.qualificationId}}">{{Education.qualification}}</option>
+                                            
+                                            <!-- <mat-autocomplete #eauto="matAutocomplete">
+                                                <mat-option *ngFor="let edu of education" value="{{edu.qualification}}">
+                                                  {{edu.qualification}}
+                                                </mat-option>
+                                              </mat-autocomplete> -->
+
+                                          
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Notice Period <span style="color:red;"></span></label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control form-control-width-1 input-width" id="NoticePeriod"
+                                            formControlName="NoticePeriod">
+                                            <option value="">--Select NoticePeriod--</option>
+                                            <option *ngFor="let np of NoticePeriod" value="{{np.noticePeriodId}}">
+                                                {{np.noticeText}}</option>
+                                         
+                                            
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-8">
+
+                                        <div class="">
+                                            <input type="submit"(click)="advanceSearchr()" value="Search" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</form>
+<app-footer></app-footer>

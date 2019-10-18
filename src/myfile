@@ -1,0 +1,1783 @@
+<div class="col-md-8 col-sm-8 wrapper-1">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 upload-icon-file"
+                                            style="position: relative; top: -11px;">
+                                            Upload Resume To Fill<span style="color:red;"></span>
+                                        </label><label class="col-sm-1"
+                                            style="position: relative;margin-top: -3px;">:</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" ngModel name="file" id="resumeFile" [(ngModel)]="vm.file">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-7 col-sm-3">
+                                            First Name <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                                <input class="form-control" placeholder="First Name" ngModel name="fname"  #fname="ngModel" [(ngModel)]="vm.fname" type="text"  pattern="[a-zA-Z ]*$" required>
+                                                <mat-hint *ngIf="fname.touched && fname.invalid">
+                                                    <mat-error *ngIf="fname.errors.required">First name is required</mat-error>
+                                                    <mat-error *ngIf="fname.errors && fname.errors.pattern">Invalid First Name</mat-error>
+                                                  </mat-hint>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-8 col-sm-3">
+                                            Last Name <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" 
+                                              
+                                                id="txtLastName"
+                                                name="LastName" type="text" value=""  #lname="ngModel" [(ngModel)]="vm.LastName"  pattern="[a-zA-Z ]*$" required>
+                                                <mat-hint *ngIf="lname.touched && lname.invalid">
+                                                    <mat-error *ngIf="lname.errors.required">Last name is required</mat-error>
+                                                    <mat-error *ngIf="lname.errors && lname.errors.pattern">Invalid Last Name</mat-error>
+                                                  </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-8 col-sm-3">
+                                            Email <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" 
+                                            pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                            id="txtEmail" ngModel #email="ngModel" name="Email"
+                                            placeholder="mysupermail@mail.com"
+                                           type="text" value="" [(ngModel)]="vm.email" required>
+                                           <mat-hint *ngIf="email.touched && email.invalid">
+                                            <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                                            <mat-error *ngIf="email.errors && email.errors.pattern">Invalid Email</mat-error>
+                                          </mat-hint>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group contactNumber">
+                                        <label class="col-sm-3" style="white-space: nowrap;margin-top:9px;">
+                                            Contact Number <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1" style="margin-top:9px;">:</label>
+                                        <div class="col-sm-8" style="z-index:0 !important">
+                                            <div class="input-group input-group-width">
+                                                <div class="input-group-addon">
+                                                    +91
+                                                </div>
+                                                <input class="form-control"
+                                                    pattern="^[0-9 ]{10}$"
+                                                   id="txtContactNo"
+                                                    ngModel #contactNo="ngModel" name="ContactNo" [(ngModel)]="vm.contactNumber" type="text" value="" required>
+                                                    <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+                                                        <mat-error *ngIf="contactNo.errors.required">ContactNumber is required</mat-error>
+                                                        <mat-error *ngIf="contactNo.errors && contactNo.errors.pattern">Invalid Contact Number</mat-error>
+                                                      </mat-hint>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space: nowrap;">
+                                            ContactNo_Landline <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group input-group-width" style="z-index:0 !important">
+                                                <div class="input-group-addon">
+                                                    +91
+                                                </div>
+                                                <input class="form-control form-control-width input-width"
+                                                    ngModel #landline="ngModel" id="txtContactNo_Landline" name="ContactNo_Landline"
+                                                    placeholder="040-678967" type="text" [(ngModel)]="vm.ContactNo_Landline" value="">
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-3 col-sm-3">
+                                            Password <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width" data-val="true"
+                                               
+                                                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&amp;,\.;'/<>{}^():_|=+~-]{6,}$"
+                                                id="txtPassword" ngModel #password="ngModel"
+                                                name="Password" minlength="8" placeholder="eg. X8df!90EO" type="password" [(ngModel)]="vm.password" required>
+                                                <mat-hint *ngIf="password.touched && password.invalid">
+                                                    <mat-error *ngIf="password.errors.required">Password is Required</mat-error>
+                                                    <mat-error *ngIf="password.errors && password.errors.pattern"> Password must contain: Minimum 6 characters and atleast one number and atleast 1 alphabet</mat-error>
+                                                </mat-hint>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-3 col-sm-3" style="white-space: nowrap;">
+                                            Confirm Password <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width" data-val="true"
+                                    
+                                                id="txtConfirmPassword" ngModel #confirmPassowrd="ngModel" name="ConfirmPassword"
+                                                placeholder="eg. X8df!90EO" type="password" [(ngModel)]="vm.confirmPassword" required pattern="{{vm.password}}">
+                                                <mat-hint *ngIf="confirmPassowrd.touched && confirmPassowrd.invalid">
+                                                    <mat-error *ngIf="confirmPassowrd.errors.required">Confirm Password is Required</mat-error>
+                                                    <mat-error *ngIf="confirmPassowrd.errors && confirmPassowrd.errors.pattern"> Confirm Password' and 'Password' do not match.</mat-error>
+                                                </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Date Of Birth <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width hasDatepicker"
+                                                id="txtDateOfBirth" ngModel #dob="ngModel" name="DateOfBirth" placeholder="20/01/2018"
+                                                type="text" [(ngModel)]="vm.dob" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-8 col-sm-3">
+                                            Gender <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="genderalng col-sm-8">
+
+                                            <select class="form-control form-control-width-1 input-width"
+                                                id="txtGender" ngModel #gender="ngModel" [(ngModel)]="vm.gender"
+                                                name="Gender" required>
+                                                <option value="">--Select type--</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                            <mat-hint *ngIf="gender.touched && gender.invalid">
+                                                <mat-error *ngIf="gender.errors.required">Gender is Required</mat-error>
+                                                
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Industry <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <!-- <input data-val="true" data-val-number="The field InId must be a number."
+                                                id="InId" name="InId" type="hidden" value="">
+                                            <input data-val="true" data-val-required="Industry is Required"
+                                                id="Industry" name="Industry" type="hidden" value=""> -->
+                                            <select class="form-control form-control-width-1 input-width"
+                                                id="IndustryName" ngModel #industry="ngModel" [(ngModel)]="vm.industry" name="Industry" type="hidden" value="">
+                                                <option value="">--Select Industry--</option>
+                                                <option value="8">Accounting/Finance</option>
+                                                <option value="28">Admin/ secretory</option>
+                                                <option value="4">Advertising/Event Management</option>
+                                                <option value="36">Agriculture and Forestry</option>
+                                                <option value="29">Analytics/ Business Intelligence</option>
+                                                <option value="9">Banking</option>
+                                                <option value="15">Call Centre/ Customer Service/ITEs/BPO</option>
+                                                <option value="25">Construction/ Production/ Manufacturing</option>
+                                                <option value="40">Courier / Transportation / Freight / Warehousing
+                                                </option>
+                                                <option value="21">Courier/Freight/Transpotation</option>
+                                                <option value="31">Education/ Teaching</option>
+                                                <option value="35">Energy and Utilities</option>
+                                                <option value="22">Export/ Import</option>
+                                                <option value="33">Fashion/ Art/ Design</option>
+                                                <option value="38">FMCG / Foods / Beverage</option>
+                                                <option value="37">Food &amp; Catering/Bar</option>
+                                                <option value="18">Hotels/ Restaurants</option>
+                                                <option value="6">Human Resource,Recruitment</option>
+                                                <option value="41">Industrial Products / Heavy Machinery</option>
+                                                <option value="10">Insurance</option>
+                                                <option value="1">IT Software &amp; Hardware</option>
+                                                <option value="12">Legal/ Law</option>
+                                                <option value="3">Marketing &amp; Communications</option>
+                                                <option value="5">Media/ Entertainment</option>
+                                                <option value="17">Medical/ HealthCare/Hospitals</option>
+                                                <option value="39">MKPO / Research / Analytics</option>
+                                                <option value="24">Oil &amp; Gas</option>
+                                                <option value="26">Others</option>
+                                                <option value="14">Pharmaceutical/Bio Technology&amp; Life Sciences
+                                                </option>
+                                                <option value="13">Production/ Engg/ R&amp;D</option>
+                                                <option value="7">Purchase/ Supply Chain</option>
+                                                <option value="34">Recruitment</option>
+                                                <option value="20">Retailing</option>
+                                                <option value="2">Sales/ Sales Persons</option>
+                                                <option value="32">Sports &amp; Leisure /Lifestyle</option>
+                                                <option value="16">Telecommunication</option>
+                                                <option value="19">Travels</option>
+                                            </select>
+                                            <mat-hint *ngIf="industry.touched && industry.invalid">
+                                                <mat-error *ngIf="industry.errors.required">Industry is Required</mat-error>
+                                                
+                                            </mat-hint>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Role <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <!-- <input data-val="true" data-val-number="The field RId must be a number."
+                                                id="RId" name="RId" type="hidden" value="">
+                                            <input data-val="true" data-val-required="Role is Required" id="Role"
+                                                name="Role" type="hidden" value=""> -->
+                                            <select class="form-control form-control-width-1 input-width " id="RoleName"
+                                                ngModel #role="ngModel" name="Role" [(ngModel)]="vm.role" required>
+                                                <option value="">--Select Role--</option>
+                                                <option>Select</option>
+                                            </select>
+                                            
+                                            <mat-hint *ngIf="role.touched && role.invalid">
+                                                <mat-error *ngIf="role.errors.required">Role is Required</mat-error>
+                                                
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Job Type <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <!-- <input data-val="true" data-val-number="The field JTId must be a number."
+                                                id="JTId" name="JTId" type="hidden" value=""> -->
+                                            <select class="form-control form-control-width-1 input-width"
+                                                ngModel #jobtype="ngModel" id="jobType"
+                                                name="Jobtype" [(ngModel)]="vm.jobtype" required>
+                                                <option value="">--Select type--</option>
+                                                <option value="1">Permanent</option>
+                                                <option value="2">Contract</option>
+                                                <option value="3">Any</option>
+                                            </select>
+                                           
+                                            <mat-hint *ngIf="jobtype.touched && jobtype.invalid">
+                                                <mat-error *ngIf="jobtype.errors.required">Jobtype is Required</mat-error>
+                                                
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space: nowrap;">
+                                            Current Designation <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtCurrentDesignation" ngModel #currentDesignation="ngModel" name="CurrentDesignation" placeholder="UI"
+                                                type="text" value="" [(ngModel)]="vm.currentDesignation" autocomplete="off">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Experience <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8" style="white-space: nowrap;">
+                                            <div class="form-inline form-expericence-mobile">
+                                                <!-- <input data-val="true"
+                                                    data-val-number="The field Experience must be a number."
+                                                    data-val-required="Experience details are Required" id="Experience"
+                                                    name="Experience" type="hidden" value=""> -->
+                                                <select class="form-control" id="minExp" ngModel #minExp="ngModel" name="Experience" [(ngModel)]="vm.minExp" required>
+                                                    <option value="">--Select Experience--</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                </select>
+
+                                                Year(s)&nbsp; and
+                                                <mat-hint *ngIf="minExp.touched && minExp.invalid">
+                                                    <mat-error *ngIf="minExp.errors.required">Minimum Experience is Required</mat-error>
+                                                    
+                                                </mat-hint>
+                                                <select class="form-control selct-maxexp" id="maxExp" name="Experience" ngModel #maxExp="ngModel" [(ngModel)]="vm.maxExp" required>
+                                                    <option value="">--Select Experience--</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                </select>
+
+                                                Month(s)
+                                                <mat-hint *ngIf="maxExp.touched && maxExp.invalid">
+                                                    <mat-error *ngIf="maxExp.errors.required">Maximum Experience is Required</mat-error>
+                                                    
+                                                </mat-hint>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Current CTC <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8" style="white-space: nowrap;">
+                                            <div class="form-inline form-expericence-mobile">
+                                                <!-- <input data-val="true"
+                                                    data-val-number="The field Current CTC must be a number."
+                                                    data-val-required="CTC details are Required" id="CurrentCTC"
+                                                    name="CurrentCTC" type="hidden" value=""> -->
+                                                <select class="form-control selct-maxexp" ngModel #currentCTC="ngModel" id="CCTCFrom" name="CCTCFrom" [(ngModel)]="vm.CTCFrom" required>
+                                                    <option value="">--Select CTC--</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                    <option value="32">32</option>
+                                                    <option value="33">33</option>
+                                                    <option value="34">34</option>
+                                                    <option value="35">35</option>
+                                                    <option value="36">36</option>
+                                                    <option value="37">37</option>
+                                                    <option value="38">38</option>
+                                                    <option value="39">39</option>
+                                                    <option value="40">40</option>
+                                                    <option value="41">41</option>
+                                                    <option value="42">42</option>
+                                                    <option value="43">43</option>
+                                                    <option value="44">44</option>
+                                                    <option value="45">45</option>
+                                                    <option value="46">46</option>
+                                                    <option value="47">47</option>
+                                                    <option value="48">48</option>
+                                                    <option value="49">49</option>
+                                                    <option value="50">50</option>
+                                                    <option value="51">51</option>
+                                                    <option value="52">52</option>
+                                                    <option value="53">53</option>
+                                                    <option value="54">54</option>
+                                                    <option value="55">55</option>
+                                                    <option value="56">56</option>
+                                                    <option value="57">57</option>
+                                                    <option value="58">58</option>
+                                                    <option value="59">59</option>
+                                                    <option value="60">60</option>
+                                                    <option value="61">61</option>
+                                                    <option value="62">62</option>
+                                                    <option value="63">63</option>
+                                                    <option value="64">64</option>
+                                                    <option value="65">65</option>
+                                                    <option value="66">66</option>
+                                                    <option value="67">67</option>
+                                                    <option value="68">68</option>
+                                                    <option value="69">69</option>
+                                                    <option value="70">70</option>
+                                                    <option value="71">71</option>
+                                                    <option value="72">72</option>
+                                                    <option value="73">73</option>
+                                                    <option value="74">74</option>
+                                                    <option value="75">75</option>
+                                                    <option value="76">76</option>
+                                                    <option value="77">77</option>
+                                                    <option value="78">78</option>
+                                                    <option value="79">79</option>
+                                                    <option value="80">80</option>
+                                                    <option value="81">81</option>
+                                                    <option value="82">82</option>
+                                                    <option value="83">83</option>
+                                                    <option value="84">84</option>
+                                                    <option value="85">85</option>
+                                                    <option value="86">86</option>
+                                                    <option value="87">87</option>
+                                                    <option value="88">88</option>
+                                                    <option value="89">89</option>
+                                                    <option value="90">90</option>
+                                                    <option value="91">91</option>
+                                                    <option value="92">92</option>
+                                                    <option value="93">93</option>
+                                                    <option value="94">94</option>
+                                                    <option value="95">95</option>
+                                                    <option value="96">96</option>
+                                                    <option value="97">97</option>
+                                                    <option value="98">98</option>
+                                                    <option value="99">99</option>
+                                                </select>
+
+                                                Lakh(s)&nbsp; and
+                                                <select class="form-control selct-maxexp" ngModel #CTCTo="ngModel" id="CCTCTo" name="CCTCTo" [(ngModel)]="vm.CTCTo" required>
+                                                    <option value="">--Select CTC--</option>
+                                                    <option value="0">0</option>
+                                                    <option value="10">10</option>
+                                                    <option value="20">20</option>
+                                                    <option value="30">30</option>
+                                                    <option value="40">40</option>
+                                                    <option value="50">50</option>
+                                                    <option value="60">60</option>
+                                                    <option value="70">70</option>
+                                                    <option value="80">80</option>
+                                                    <option value="90">90</option>
+                                                </select>
+                                                Thousand(s)
+                                            </div>
+                                            <span class="field-validation-valid text-danger"
+                                                data-valmsg-for="CurrentCTC" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Expected CTC <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8" style="white-space: nowrap;">
+                                            <div class="form-inline form-expericence-mobile">
+                                                <!-- <input data-val="true"
+                                                    data-val-number="The field expectedCTC must be a number."
+                                                    id="expectedCTC" name="expectedCTC" type="hidden" value=""> -->
+                                                <select class="form-control selct-maxexp" ngModel #ECTCFrom="ngModel" id="ECTCFrom" [(ngModel)]="vm.ECTCFrom" name="ECTCFrom" required>
+                                                    <option value="">--Select type--</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                    <option value="32">32</option>
+                                                    <option value="33">33</option>
+                                                    <option value="34">34</option>
+                                                    <option value="35">35</option>
+                                                    <option value="36">36</option>
+                                                    <option value="37">37</option>
+                                                    <option value="38">38</option>
+                                                    <option value="39">39</option>
+                                                    <option value="40">40</option>
+                                                    <option value="41">41</option>
+                                                    <option value="42">42</option>
+                                                    <option value="43">43</option>
+                                                    <option value="44">44</option>
+                                                    <option value="45">45</option>
+                                                    <option value="46">46</option>
+                                                    <option value="47">47</option>
+                                                    <option value="48">48</option>
+                                                    <option value="49">49</option>
+                                                    <option value="50">50</option>
+                                                    <option value="51">51</option>
+                                                    <option value="52">52</option>
+                                                    <option value="53">53</option>
+                                                    <option value="54">54</option>
+                                                    <option value="55">55</option>
+                                                    <option value="56">56</option>
+                                                    <option value="57">57</option>
+                                                    <option value="58">58</option>
+                                                    <option value="59">59</option>
+                                                    <option value="60">60</option>
+                                                    <option value="61">61</option>
+                                                    <option value="62">62</option>
+                                                    <option value="63">63</option>
+                                                    <option value="64">64</option>
+                                                    <option value="65">65</option>
+                                                    <option value="66">66</option>
+                                                    <option value="67">67</option>
+                                                    <option value="68">68</option>
+                                                    <option value="69">69</option>
+                                                    <option value="70">70</option>
+                                                    <option value="71">71</option>
+                                                    <option value="72">72</option>
+                                                    <option value="73">73</option>
+                                                    <option value="74">74</option>
+                                                    <option value="75">75</option>
+                                                    <option value="76">76</option>
+                                                    <option value="77">77</option>
+                                                    <option value="78">78</option>
+                                                    <option value="79">79</option>
+                                                    <option value="80">80</option>
+                                                    <option value="81">81</option>
+                                                    <option value="82">82</option>
+                                                    <option value="83">83</option>
+                                                    <option value="84">84</option>
+                                                    <option value="85">85</option>
+                                                    <option value="86">86</option>
+                                                    <option value="87">87</option>
+                                                    <option value="88">88</option>
+                                                    <option value="89">89</option>
+                                                    <option value="90">90</option>
+                                                    <option value="91">91</option>
+                                                    <option value="92">92</option>
+                                                    <option value="93">93</option>
+                                                    <option value="94">94</option>
+                                                    <option value="95">95</option>
+                                                    <option value="96">96</option>
+                                                    <option value="97">97</option>
+                                                    <option value="98">98</option>
+                                                    <option value="99">99</option>
+                                                </select>
+                                                Lakh(s)&nbsp; TO
+                                                <select class="form-control selct-maxexp" ngModel #ECTCTo="ngModel" id="ECTCTo" [(ngModel)]="vm.ECTCTo" name="ECTCTo">
+                                                    <option value="">--Select type--</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                    <option value="32">32</option>
+                                                    <option value="33">33</option>
+                                                    <option value="34">34</option>
+                                                    <option value="35">35</option>
+                                                    <option value="36">36</option>
+                                                    <option value="37">37</option>
+                                                    <option value="38">38</option>
+                                                    <option value="39">39</option>
+                                                    <option value="40">40</option>
+                                                    <option value="41">41</option>
+                                                    <option value="42">42</option>
+                                                    <option value="43">43</option>
+                                                    <option value="44">44</option>
+                                                    <option value="45">45</option>
+                                                    <option value="46">46</option>
+                                                    <option value="47">47</option>
+                                                    <option value="48">48</option>
+                                                    <option value="49">49</option>
+                                                    <option value="50">50</option>
+                                                    <option value="51">51</option>
+                                                    <option value="52">52</option>
+                                                    <option value="53">53</option>
+                                                    <option value="54">54</option>
+                                                    <option value="55">55</option>
+                                                    <option value="56">56</option>
+                                                    <option value="57">57</option>
+                                                    <option value="58">58</option>
+                                                    <option value="59">59</option>
+                                                    <option value="60">60</option>
+                                                    <option value="61">61</option>
+                                                    <option value="62">62</option>
+                                                    <option value="63">63</option>
+                                                    <option value="64">64</option>
+                                                    <option value="65">65</option>
+                                                    <option value="66">66</option>
+                                                    <option value="67">67</option>
+                                                    <option value="68">68</option>
+                                                    <option value="69">69</option>
+                                                    <option value="70">70</option>
+                                                    <option value="71">71</option>
+                                                    <option value="72">72</option>
+                                                    <option value="73">73</option>
+                                                    <option value="74">74</option>
+                                                    <option value="75">75</option>
+                                                    <option value="76">76</option>
+                                                    <option value="77">77</option>
+                                                    <option value="78">78</option>
+                                                    <option value="79">79</option>
+                                                    <option value="80">80</option>
+                                                    <option value="81">81</option>
+                                                    <option value="82">82</option>
+                                                    <option value="83">83</option>
+                                                    <option value="84">84</option>
+                                                    <option value="85">85</option>
+                                                    <option value="86">86</option>
+                                                    <option value="87">87</option>
+                                                    <option value="88">88</option>
+                                                    <option value="89">89</option>
+                                                    <option value="90">90</option>
+                                                    <option value="91">91</option>
+                                                    <option value="92">92</option>
+                                                    <option value="93">93</option>
+                                                    <option value="94">94</option>
+                                                    <option value="95">95</option>
+                                                    <option value="96">96</option>
+                                                    <option value="97">97</option>
+                                                    <option value="98">98</option>
+                                                    <option value="99">99</option>
+                                                </select>
+                                                Lakh(s)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Key Skills <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                
+                                                id="txtKeySkills" name="KeySkills" onblur="fillHeadLine();"
+                                                placeholder="Java, ASP.Net,Oracle,PHP, CPP etc..." type="text" value=""
+                                                autocomplete="off" ngModel #keySkills="ngModel" [(ngModel)]="vm.keySkills" required>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-10 col-sm-3" style="white-space: nowrap;">
+                                            Resume Headline <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width" data-val="true"
+                                                id="txtResumeHeadLine" ngModel #resumeHeadLine="ngModel" [(ngModel)]="vm.resumeHeadLine"
+                                                name="ResumeHeadLine" placeholder="Resume HeadLine" type="text"
+                                                value="" required>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-10 col-sm-3" style="white-space:nowrap">
+                                            Current Company <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtCurrentCompany" name="CurrentCompany" placeholder="Vishist"
+                                                type="text" value="" autocomplete="off" ngModel #currentCompany="ngModel" [(ngModel)]="vm.currentCompany">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-5 col-sm-3">
+                                            Location <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                data-val="true" 
+                                                id="ddlQualification" ngModel #location="ngModel" [(ngModel)]="vm.location" name="Location" placeholder="mca" required>
+                                                <option value="">--Select Location--</option>
+                                                <option value="Agartala">Agartala</option>
+                                                <option value="Agra">Agra</option>
+                                                <option value="Ahmedabad">Ahmedabad</option>
+                                                <option value="Ahmednagar">Ahmednagar</option>
+                                                <option value="Ajmer">Ajmer</option>
+                                                <option value="Akola">Akola</option>
+                                                <option value="Alappuzha">Alappuzha</option>
+                                                <option value="Aligarh">Aligarh</option>
+                                                <option value="Alipurduar">Alipurduar</option>
+                                                <option value="Allahabad">Allahabad</option>
+                                                <option value="Almora">Almora</option>
+                                                <option value="Alwar">Alwar</option>
+                                                <option value="Amaravati">Amaravati</option>
+                                                <option value="Ambala">Ambala</option>
+                                                <option value="Amreli">Amreli</option>
+                                                <option value="Amritsar">Amritsar</option>
+                                                <option value="Anantapur">Anantapur</option>
+                                                <option value="Angul">Angul</option>
+                                                <option value="Asansol">Asansol</option>
+                                                <option value="Aurangabad">Aurangabad</option>
+                                                <option value="Bagalkot">Bagalkot</option>
+                                                <option value="Baghpat">Baghpat</option>
+                                                <option value="Bahadurgarh">Bahadurgarh</option>
+                                                <option value="Balaghat">Balaghat</option>
+                                                <option value="Baleswar">Baleswar</option>
+                                                <option value="Ballia">Ballia</option>
+                                                <option value="Banaskantha">Banaskantha</option>
+                                                <option value="Bangalore">Bangalore</option>
+                                                <option value="Bankura">Bankura</option>
+                                                <option value="Banswara">Banswara</option>
+                                                <option value="Bapatla">Bapatla</option>
+                                                <option value="Barabanki">Barabanki</option>
+                                                <option value="Bardhaman">Bardhaman</option>
+                                                <option value="Bareilly">Bareilly</option>
+                                                <option value="Barmer">Barmer</option>
+                                                <option value="Barnala">Barnala</option>
+                                                <option value="Barwani">Barwani</option>
+                                                <option value="Bathinda">Bathinda</option>
+                                                <option value="Beawar">Beawar</option>
+                                                <option value="Belgaum">Belgaum</option>
+                                                <option value="Bhadrak">Bhadrak</option>
+                                                <option value="Bhagalpur">Bhagalpur</option>
+                                                <option value="Bhagyanagar">Bhagyanagar</option>
+                                                <option value="Bhandara">Bhandara</option>
+                                                <option value="Bharatpur">Bharatpur</option>
+                                                <option value="Bharuch">Bharuch</option>
+                                                <option value="Bhavnagar">Bhavnagar</option>
+                                                <option value="Bhilai">Bhilai</option>
+                                                <option value="Bhilwara">Bhilwara</option>
+                                                <option value="Bhimavaram">Bhimavaram</option>
+                                                <option value="Bhiwadi">Bhiwadi</option>
+                                                <option value="Bhojpur">Bhojpur</option>
+                                                <option value="Bhopal">Bhopal</option>
+                                                <option value="Bhubaneswar">Bhubaneswar</option>
+                                                <option value="Bijapur">Bijapur</option>
+                                                <option value="Bikaner">Bikaner</option>
+                                                <option value="Bilaspur">Bilaspur</option>
+                                                <option value="Birbhum">Birbhum</option>
+                                                <option value="Bokaro">Bokaro</option>
+                                                <option value="Bulandshahar">Bulandshahar</option>
+                                                <option value="Burdwan">Burdwan</option>
+                                                <option value="Buxar">Buxar</option>
+                                                <option value="Cachar">Cachar</option>
+                                                <option value="Calicut">Calicut</option>
+                                                <option value="Chamba">Chamba</option>
+                                                <option value="Chanchal">Chanchal</option>
+                                                <option value="Chandigarh">Chandigarh</option>
+                                                <option value="Chandrapur">Chandrapur</option>
+                                                <option value="Chennai">Chennai</option>
+                                                <option value="Chhindwara">Chhindwara</option>
+                                                <option value="Chikkamaglur">Chikkamaglur</option>
+                                                <option value="Chitiradurga">Chitiradurga</option>
+                                                <option value="Chittoor">Chittoor</option>
+                                                <option value="Coimbatore">Coimbatore</option>
+                                                <option value="Cooch Behar">Cooch Behar</option>
+                                                <option value="Cuttack">Cuttack</option>
+                                                <option value="Daman">Daman</option>
+                                                <option value="Darbhanga">Darbhanga</option>
+                                                <option value="Darjeeling">Darjeeling</option>
+                                                <option value="Dehradun">Dehradun</option>
+                                                <option value="Delhi">Delhi</option>
+                                                <option value="Deoghar">Deoghar</option>
+                                                <option value="Dewas">Dewas</option>
+                                                <option value="Dhanbad">Dhanbad</option>
+                                                <option value="Dharuhera">Dharuhera</option>
+                                                <option value="Dinajpur">Dinajpur</option>
+                                                <option value="Dindigul">Dindigul</option>
+                                                <option value="Durgapur">Durgapur</option>
+                                                <option value="Erode">Erode</option>
+                                                <option value="Faizabad">Faizabad</option>
+                                                <option value="Faridabad">Faridabad</option>
+                                                <option value="Fatehabad">Fatehabad</option>
+                                                <option value="Firozabad">Firozabad</option>
+                                                <option value="Gadag">Gadag</option>
+                                                <option value="Gandhinagar">Gandhinagar</option>
+                                                <option value="Ganjam">Ganjam</option>
+                                                <option value="Gariahat">Gariahat</option>
+                                                <option value="Gaya">Gaya</option>
+                                                <option value="Ghaziabad">Ghaziabad</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gondiya">Gondiya</option>
+                                                <option value="Gorakhpur">Gorakhpur</option>
+                                                <option value="Gulbarga">Gulbarga</option>
+                                                <option value="Guntur">Guntur</option>
+                                                <option value="Gurgaon">Gurgaon</option>
+                                                <option value="Guruvayoor">Guruvayoor</option>
+                                                <option value="Guwahati">Guwahati</option>
+                                                <option value="Gwalior">Gwalior</option>
+                                                <option value="Hapur">Hapur</option>
+                                                <option value="Hardoi">Hardoi</option>
+                                                <option value="Haridwar">Haridwar</option>
+                                                <option value="Harimpur">Harimpur</option>
+                                                <option value="Hassan">Hassan</option>
+                                                <option value="Hathras">Hathras</option>
+                                                <option value="Hazaribagh">Hazaribagh</option>
+                                                <option value="Hoshangabad">Hoshangabad</option>
+                                                <option value="Hoshiarpur">Hoshiarpur</option>
+                                                <option value="Hosur">Hosur</option>
+                                                <option value="Howrah">Howrah</option>
+                                                <option value="Hubli-Dharwad">Hubli-Dharwad</option>
+                                                <option value="Hyderabad">Hyderabad</option>
+                                                <option value="Idukki">Idukki</option>
+                                                <option value="Indore">Indore</option>
+                                                <option value="Jabalpur">Jabalpur</option>
+                                                <option value="Jaipur">Jaipur</option>
+                                                <option value="Jaisalmer">Jaisalmer</option>
+                                                <option value="Jajapur">Jajapur</option>
+                                                <option value="Jalandhar">Jalandhar</option>
+                                                <option value="Jalore">Jalore</option>
+                                                <option value="Jalpaiguri">Jalpaiguri</option>
+                                                <option value="Jammu">Jammu</option>
+                                                <option value="Jamnagar">Jamnagar</option>
+                                                <option value="Jamshedpur">Jamshedpur</option>
+                                                <option value="Jamui">Jamui</option>
+                                                <option value="Jaunpur">Jaunpur</option>
+                                                <option value="Jhansi">Jhansi</option>
+                                                <option value="Jharsuguda">Jharsuguda</option>
+                                                <option value="Jodhpur">Jodhpur</option>
+                                                <option value="Juhnjhunun">Juhnjhunun</option>
+                                                <option value="Junagadh">Junagadh</option>
+                                                <option value="Kadapa">Kadapa</option>
+                                                <option value="Kaithal">Kaithal</option>
+                                                <option value="Kakinada">Kakinada</option>
+                                                <option value="Kanchipuram">Kanchipuram</option>
+                                                <option value="Kangra">Kangra</option>
+                                                <option value="Kannauj">Kannauj</option>
+                                                <option value="Kannur">Kannur</option>
+                                                <option value="Kanpur">Kanpur</option>
+                                                <option value="Kanyakumari">Kanyakumari</option>
+                                                <option value="Kapurthala">Kapurthala</option>
+                                                <option value="Karimganj">Karimganj</option>
+                                                <option value="Karimnagar">Karimnagar</option>
+                                                <option value="Karur">Karur</option>
+                                                <option value="Karwar">Karwar</option>
+                                                <option value="Kasaragod">Kasaragod</option>
+                                                <option value="Katni">Katni</option>
+                                                <option value="Kendujhar">Kendujhar</option>
+                                                <option value="Khammam">Khammam</option>
+                                                <option value="Kharagpur">Kharagpur</option>
+                                                <option value="Khargone">Khargone</option>
+                                                <option value="Kheda">Kheda</option>
+                                                <option value="Kochi">Kochi</option>
+                                                <option value="Kolar">Kolar</option>
+                                                <option value="Kolhapur">Kolhapur</option>
+                                                <option value="Kolkata">Kolkata</option>
+                                                <option value="Kollam">Kollam</option>
+                                                <option value="Korba">Korba</option>
+                                                <option value="Kota">Kota</option>
+                                                <option value="Kottayam">Kottayam</option>
+                                                <option value="Kozhikode">Kozhikode</option>
+                                                <option value="Krishnagiri">Krishnagiri</option>
+                                                <option value="Kullu">Kullu</option>
+                                                <option value="Kurnool">Kurnool</option>
+                                                <option value="Kurukshetra">Kurukshetra</option>
+                                                <option value="Kutch">Kutch</option>
+                                                <option value="Lakhisarai">Lakhisarai</option>
+                                                <option value="Latur">Latur</option>
+                                                <option value="Lonavala">Lonavala</option>
+                                                <option value="Lucknow">Lucknow</option>
+                                                <option value="Ludhiana">Ludhiana</option>
+                                                <option value="Machilipatnam">Machilipatnam</option>
+                                                <option value="Madurai">Madurai</option>
+                                                <option value="Mahabubnagar">Mahabubnagar</option>
+                                                <option value="Mahendragarh">Mahendragarh</option>
+                                                <option value="Malappuram">Malappuram</option>
+                                                <option value="Malda">Malda</option>
+                                                <option value="Mandapeta">Mandapeta</option>
+                                                <option value="Mandi">Mandi</option>
+                                                <option value="Mandya">Mandya</option>
+                                                <option value="Mangalore">Mangalore</option>
+                                                <option value="Mansa">Mansa</option>
+                                                <option value="Mathura">Mathura</option>
+                                                <option value="Medak">Medak</option>
+                                                <option value="Meerut">Meerut</option>
+                                                <option value="Mehsana">Mehsana</option>
+                                                <option value="Mirzapur">Mirzapur</option>
+                                                <option value="Mohali">Mohali</option>
+                                                <option value="Moradabad">Moradabad</option>
+                                                <option value="Mumbai">Mumbai</option>
+                                                <option value="Mumbai Suburbs">Mumbai Suburbs</option>
+                                                <option value="Muzaffarpur">Muzaffarpur</option>
+                                                <option value="Mysore">Mysore</option>
+                                                <option value="Nabarangpur">Nabarangpur</option>
+                                                <option value="Nagpur">Nagpur</option>
+                                                <option value="Nainital">Nainital</option>
+                                                <option value="Nalgonda">Nalgonda</option>
+                                                <option value="Namakkal">Namakkal</option>
+                                                <option value="Namdevada">Namdevada</option>
+                                                <option value="Nanded">Nanded</option>
+                                                <option value="Narsapur">Narsapur</option>
+                                                <option value="Narsinghpur">Narsinghpur</option>
+                                                <option value="Nashik">Nashik</option>
+                                                <option value="Navsari">Navsari</option>
+                                                <option value="Neemrana">Neemrana</option>
+                                                <option value="Nellore">Nellore</option>
+                                                <option value="Nizamabad">Nizamabad</option>
+                                                <option value="Noida">Noida</option>
+                                                <option value="Ongole">Ongole</option>
+                                                <option value="Ooty">Ooty</option>
+                                                <option value="Osmanabad">Osmanabad</option>
+                                                <option value="Other">Other</option>
+                                                <option value="Palakkad">Palakkad</option>
+                                                <option value="Palakollu">Palakollu</option>
+                                                <option value="Palamu">Palamu</option>
+                                                <option value="Pali">Pali</option>
+                                                <option value="Palwal">Palwal</option>
+                                                <option value="Panchmahal">Panchmahal</option>
+                                                <option value="Panipat">Panipat</option>
+                                                <option value="Patan">Patan</option>
+                                                <option value="Pathanamthitta">Pathanamthitta</option>
+                                                <option value="Pathankot">Pathankot</option>
+                                                <option value="Patiala">Patiala</option>
+                                                <option value="Patna">Patna</option>
+                                                <option value="Pondicherry">Pondicherry</option>
+                                                <option value="Porbandar">Porbandar</option>
+                                                <option value="Pudukkottai">Pudukkottai</option>
+                                                <option value="Pune">Pune</option>
+                                                <option value="Puri">Puri</option>
+                                                <option value="Purnea">Purnea</option>
+                                                <option value="Raebareli">Raebareli</option>
+                                                <option value="Raichur">Raichur</option>
+                                                <option value="Raipur">Raipur</option>
+                                                <option value="Raisen">Raisen</option>
+                                                <option value="Rajahmundry">Rajahmundry</option>
+                                                <option value="Rajgarh">Rajgarh</option>
+                                                <option value="Rajkot">Rajkot</option>
+                                                <option value="Rajnandgaon">Rajnandgaon</option>
+                                                <option value="Rajsamand">Rajsamand</option>
+                                                <option value="Ramachandrapuram">Ramachandrapuram</option>
+                                                <option value="Rampur">Rampur</option>
+                                                <option value="Ranchi">Ranchi</option>
+                                                <option value="Ratlam">Ratlam</option>
+                                                <option value="Ratnagiri">Ratnagiri</option>
+                                                <option value="Raurkela">Raurkela</option>
+                                                <option value="Rewa">Rewa</option>
+                                                <option value="Rewari">Rewari</option>
+                                                <option value="Rohtak">Rohtak</option>
+                                                <option value="Roorkee">Roorkee</option>
+                                                <option value="Rudraprayag">Rudraprayag</option>
+                                                <option value="Rudrapur">Rudrapur</option>
+                                                <option value="Rupnagar">Rupnagar</option>
+                                                <option value="Sabarkantha">Sabarkantha</option>
+                                                <option value="Sagar">Sagar</option>
+                                                <option value="Saharanpur">Saharanpur</option>
+                                                <option value="Salem">Salem</option>
+                                                <option value="Samastipur">Samastipur</option>
+                                                <option value="Sambalpur">Sambalpur</option>
+                                                <option value="Sangli">Sangli</option>
+                                                <option value="Satara">Satara</option>
+                                                <option value="Satna">Satna</option>
+                                                <option value="Sehore">Sehore</option>
+                                                <option value="Shahdol">Shahdol</option>
+                                                <option value="Shahjahanpur">Shahjahanpur</option>
+                                                <option value="Shillong">Shillong</option>
+                                                <option value="Shimla">Shimla</option>
+                                                <option value="Shimoga">Shimoga</option>
+                                                <option value="Shohratgarh">Shohratgarh</option>
+                                                <option value="Sikar">Sikar</option>
+                                                <option value="Siliguri">Siliguri</option>
+                                                <option value="Sindhudurg">Sindhudurg</option>
+                                                <option value="Singrauli">Singrauli</option>
+                                                <option value="Sirsa">Sirsa</option>
+                                                <option value="Sitapur">Sitapur</option>
+                                                <option value="Solan">Solan</option>
+                                                <option value="Solapur">Solapur</option>
+                                                <option value="Sonipat">Sonipat</option>
+                                                <option value="Srikakulam">Srikakulam</option>
+                                                <option value="Surat">Surat</option>
+                                                <option value="Surendranagar">Surendranagar</option>
+                                                <option value="Tenali">Tenali</option>
+                                                <option value="Thane">Thane</option>
+                                                <option value="Thanjavur">Thanjavur</option>
+                                                <option value="Theni">Theni</option>
+                                                <option value="Thiruvallur">Thiruvallur</option>
+                                                <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                                                <option value="Thoothukudi">Thoothukudi</option>
+                                                <option value="Thrissur">Thrissur</option>
+                                                <option value="Tikamgarh">Tikamgarh</option>
+                                                <option value="Tinsukia">Tinsukia</option>
+                                                <option value="Tirunelveli">Tirunelveli</option>
+                                                <option value="Tirupati">Tirupati</option>
+                                                <option value="Tiruppur">Tiruppur</option>
+                                                <option value="Tiruvallur">Tiruvallur</option>
+                                                <option value="Tiruvannamalai">Tiruvannamalai</option>
+                                                <option value="Tonk">Tonk</option>
+                                                <option value="Trichy">Trichy</option>
+                                                <option value="Trivandrum">Trivandrum</option>
+                                                <option value="Tumkur">Tumkur</option>
+                                                <option value="Udaipur">Udaipur</option>
+                                                <option value="Udupi">Udupi</option>
+                                                <option value="Ujjain">Ujjain</option>
+                                                <option value="Umbergaon">Umbergaon</option>
+                                                <option value="Una">Una</option>
+                                                <option value="Unnao">Unnao</option>
+                                                <option value="Vadodara">Vadodara</option>
+                                                <option value="Valsad">Valsad</option>
+                                                <option value="Vapi">Vapi</option>
+                                                <option value="Varanasi">Varanasi</option>
+                                                <option value="Vellore">Vellore</option>
+                                                <option value="Vidisha">Vidisha</option>
+                                                <option value="Vijayawada">Vijayawada</option>
+                                                <option value="Villupuram">Villupuram</option>
+                                                <option value="Virudhunagar">Virudhunagar</option>
+                                                <option value="Visakhapatnam">Visakhapatnam</option>
+                                                <option value="Vizianagaram">Vizianagaram</option>
+                                                <option value="Warangal">Warangal</option>
+                                                <option value="Wardha">Wardha</option>
+                                                <option value="Wayanad">Wayanad</option>
+                                                <option value="Yamunanagar">Yamunanagar</option>
+                                                <option value="Yavatmal">Yavatmal</option>
+                                                <option value="Zirakpur">Zirakpur</option>
+                                            </select>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-5 col-sm-3">
+                                            Locality <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtLocality" ngModel #locality="ngModel" name="Locality" type="text" value=""
+                                                autocomplete="off" [(ngModel)]="vm.locality">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-icon-5 col-sm-3" style="white-space: nowrap;">
+                                            Preferred Location <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                ngModel #preferredLocation="ngModel" [(ngModel)]="vm.PreferredLocation"
+                                                id="txtPreferredLocation" name="PreferredLocation" type="text" value=""
+                                                autocomplete="off" required>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Notice Period <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                
+                                               data-val-number="The field Notice Period must be a number."
+                                                id="NoticePeriod" ngModel #noticePeriod="ngModel" [(ngModel)]="vm.noticePeriod"
+                                                name="NoticePeriod" required>
+                                                <option value="">--Select NoticePeriod--</option>
+                                                <option value="0">On Notice Period</option>
+                                                <option value="7">1 Week</option>
+                                                <option value="15">2 Weeks</option>
+                                                <option value="21">3 Weeks</option>
+                                                <option value="30">1 Month</option>
+                                                <option value="60">2 Months</option>
+                                                <option value="90">3 Months</option>
+                                            </select>
+                                            <span class="field-validation-valid text-danger"
+                                                data-valmsg-for="NoticePeriod" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Education <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                data-val="true" ngModel #education="ngModel"
+                                                id="ddlQualification" name="Education" placeholder="mca" [(ngModel)]="vm.education" required>
+                                                <option value="">--Select Qualification--</option>
+                                                <option value="12th">12th</option>
+                                                <option value="Aviation">Aviation</option>
+                                                <option value="B.A">B.A</option>
+                                                <option value="B.Arch">B.Arch</option>
+                                                <option value="B.Com">B.Com</option>
+                                                <option value="B.Ed">B.Ed</option>
+                                                <option value="B.Pharm">B.Pharm</option>
+                                                <option value="B.Plan">B.Plan</option>
+                                                <option value="B.Sc">B.Sc</option>
+                                                <option value="BBA">BBA</option>
+                                                <option value="BCA">BCA</option>
+                                                <option value="BDS">BDS</option>
+                                                <option value="BE/B.Tech">BE/B.Tech</option>
+                                                <option value="BGL">BGL</option>
+                                                <option value="BHM">BHM</option>
+                                                <option value="BL/LLB">BL/LLB</option>
+                                                <option value="BVSC">BVSC</option>
+                                                <option value="CA">CA</option>
+                                                <option value="CS">CS</option>
+                                                <option value="Degree">Degree</option>
+                                                <option value="Diploma">Diploma</option>
+                                                <option value="Doctorate(Phd)">Doctorate(Phd)</option>
+                                                <option value="ICWA">ICWA</option>
+                                                <option value="Information Technology">Information Technology</option>
+                                                <option value="M.A">M.A</option>
+                                                <option value="M.Arch">M.Arch</option>
+                                                <option value="M.Com">M.Com</option>
+                                                <option value="M.Ed">M.Ed</option>
+                                                <option value="M.Pharm">M.Pharm</option>
+                                                <option value="M.Phil">M.Phil</option>
+                                                <option value="M.Plan">M.Plan</option>
+                                                <option value="M.Sc">M.Sc</option>
+                                                <option value="MBA/PGDM">MBA/PGDM</option>
+                                                <option value="MBBS">MBBS</option>
+                                                <option value="MCA/PGDCA">MCA/PGDCA</option>
+                                                <option value="MD/MS">MD/MS</option>
+                                                <option value="MDS">MDS</option>
+                                                <option value="ME/M.Tech">ME/M.Tech</option>
+                                                <option value="ML/LLM">ML/LLM</option>
+                                                <option value="MSIT">MSIT</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Institute <span style="color:red;">*</span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                data-val="true" ngModel #institute="ngModel" [(ngModel)]="vm.institute"
+                                                id="txtInstitute" name="Institute" type="text" value=""
+                                                autocomplete="off" required>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Year of Pass <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control selct-maxYearofPass" id="txtYearOfPass"
+                                                name="YearOfPass" ngModel #yearOfPass="ngModel" [(ngModel)]="vm.yop">
+                                                <option value="">--Select Year--</option>
+                                                <option value="1980">1980</option>
+                                                <option value="1981">1981</option>
+                                                <option value="1982">1982</option>
+                                                <option value="1983">1983</option>
+                                                <option value="1984">1984</option>
+                                                <option value="1985">1985</option>
+                                                <option value="1986">1986</option>
+                                                <option value="1987">1987</option>
+                                                <option value="1988">1988</option>
+                                                <option value="1989">1989</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1991">1991</option>
+                                                <option value="1992">1992</option>
+                                                <option value="1993">1993</option>
+                                                <option value="1994">1994</option>
+                                                <option value="1995">1995</option>
+                                                <option value="1996">1996</option>
+                                                <option value="1997">1997</option>
+                                                <option value="1998">1998</option>
+                                                <option value="1999">1999</option>
+                                                <option value="2000">2000</option>
+                                                <option value="2001">2001</option>
+                                                <option value="2002">2002</option>
+                                                <option value="2003">2003</option>
+                                                <option value="2004">2004</option>
+                                                <option value="2005">2005</option>
+                                                <option value="2006">2006</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2008">2008</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2019">2019</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="white-space: nowrap;">
+                                            Languages Known <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtlanguagesKnown" ngModel #languagesKnown="ngModel" name="languagesKnown" placeholder="Hindi,English"
+                                                type="text" value="" autocomplete="off" [(ngModel)]="vm.languagesKnown">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">
+                                            Photo <span style="color:red;"></span>
+                                        </label><label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <figure class="form-inline">
+                                                <input type="file" name="image" id="logoFile" ngModel [(ngModel)]="vm.file"><br>
+                                                <img src="assets/images/Profile-Avatar.jpg" alt="Logo Not Loaded"
+                                                    height="80" width="100" id="imgProfile">
+                                            </figure>
+                                            <label style="color:red;" id="lblLogo"></label>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3" style="margin-top:18px;">Work as panel</label>
+                                        <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                        <label class="col-sm-8">
+                                            <input type="radio" (click)="showPanel()" class="form-check-input"  checked="checked" name="radio"  [(ngModel)]="radio" [value]="false">YES
+                                            <input type="radio"  (click)="hidePanel()"class="form-check-input"  checked="checked" name="radio"  [(ngModel)]="radio" [value]="true">NO
+
+                                        </label>
+                                    </div>
+                                    
+                                        <div id="divPanel" hidden="true">
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Panel ID <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        ngModel #panelId="ngModel" id="txtPanelId" name="PanelId" type="text" [(ngModel)]="vm.panelId" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Skills Set<span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input
+                                                        class="form-control form-control-width input-width ui-autocomplete-input"
+                                                        id="txtMajorSkills" ngModel #majorSkills="ngModel" name="MajorSkills" type="text" value=""
+                                                        autocomplete="off" [(ngModel)]="vm.majorSkills">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                    <div id="divCheckF2F" hidden="true">
+                                        <div class="form-group">
+                                            <label class="col-sm-3" style="margin-top:18px;">For Face to Face</label>
+                                            <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                            <label class="col-sm-8" style="position:relative;top:0px !important">
+                                                <input type="radio" (click)="showF2F()" class="form-check-input"  checked="checked" name="radio"  [(ngModel)]="radio" [value]="false">YES
+                                            <input type="radio"  (click)="hideF2F()"class="form-check-input"  checked="checked" name="radio"  [(ngModel)]="radio" [value]="true">NO
+                                            </label>
+                                        </div>
+
+                                        <div id="divF2FDetails" hidden="true">
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Hour<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerHourForF2F must be a number."
+                                                       ngModel #costPerHour="ngModel" [(ngModel)]="vm.costPerHour"
+                                                        id="txtCostPerHourForF2F" name="CostPerHourForF2F"
+                                                        placeholder="1000" type="text" value="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Day<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerDayForF2F must be a number."
+                                                       ngModel #costPerDay="ngModel" [(ngModel)]="vm.costPerDay"
+                                                        id="txtCostPerDayForF2F" name="CostPerDayForF2F"
+                                                        placeholder="3000" type="text" value="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Availble Time Slots<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <span class="multiselect-native-select"><select
+                                                            class="listbox form-control form-control-width input-width"
+                                                            id="AvailbleTimeSlotsForFaceToFace" multiple="True"
+                                                            name="AvailbleTimeSlotsForFaceToFace" ngModel #AvailbleTimeSlotsForFaceToFace="ngModel" [(ngModel)]="vm.AvailbleTimeSlotsForFaceToFace">
+                                                            <option value="8">08.00 AM</option>
+                                                            <option value="9">09.00 AM</option>
+                                                            <option value="10">10.00 AM</option>
+                                                            <option value="11">11.00 AM</option>
+                                                            <option value="12">12.00 PM</option>
+                                                            <option value="13">01.00 PM</option>
+                                                            <option value="14">02.00 PM</option>
+                                                            <option value="15">03.00 PM</option>
+                                                            <option value="16">04.00 PM</option>
+                                                            <option value="17">05.00 PM</option>
+                                                            <option value="18">06.00 PM</option>
+                                                            <option value="19">07.00 PM</option>
+                                                        </select>
+                                                        <div class="btn-group"><button type="button"
+                                                                class="multiselect dropdown-toggle btn btn-default"
+                                                                data-toggle="dropdown" title="None selected"><span
+                                                                    class="multiselect-selected-text">None
+                                                                    selected</span> <b class="caret"></b></button>
+                                                            <ul class="multiselect-container dropdown-menu">
+                                                                <li class="multiselect-item multiselect-all"><a
+                                                                        tabindex="0" class="multiselect-all"><label
+                                                                            class="checkbox"><input type="checkbox"
+                                                                                value="multiselect-all"> Select
+                                                                            all</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="08.00 AM"><input type="checkbox"
+                                                                                value="8"> 08.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="09.00 AM"><input type="checkbox"
+                                                                                value="9"> 09.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="10.00 AM"><input type="checkbox"
+                                                                                value="10"> 10.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="11.00 AM"><input type="checkbox"
+                                                                                value="11"> 11.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="12.00 PM"><input type="checkbox"
+                                                                                value="12"> 12.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="01.00 PM"><input type="checkbox"
+                                                                                value="13"> 01.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="02.00 PM"><input type="checkbox"
+                                                                                value="14"> 02.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="03.00 PM"><input type="checkbox"
+                                                                                value="15"> 03.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="04.00 PM"><input type="checkbox"
+                                                                                value="16"> 04.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="05.00 PM"><input type="checkbox"
+                                                                                value="17"> 05.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="06.00 PM"><input type="checkbox"
+                                                                                value="18"> 06.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="07.00 PM"><input type="checkbox"
+                                                                                value="19"> 07.00 PM</label></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="divCheckSkype" hidden="true">
+                                        <div class="form-group">
+                                            <label class="col-sm-3" style="margin-top:18px;">For Skype</label>
+
+                                            <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                            <label class="col-sm-8" style="position:relative;top:0px !important;">
+                                                <input data-val="true"
+                                                    data-val-required="The AvailableForSkype field is required."
+                                                    id="AvailableForSkype" name="AvailableForSkype" type="hidden"
+                                                    value="False">
+                                                    <input type="radio" (click)="showSkype()" class="form-check-input"  checked="checked" name="radio"  [(ngModel)]="radio" [value]="false">YES
+                                                    <input type="radio"  (click)="hideSkype()"class="form-check-input"  checked="checked" name="radio"  [(ngModel)]="radio" [value]="true">NO
+                                            </label>
+                                        </div>
+
+                                        <div id="divSkypeDetails" hidden="true">
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Hour <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerHourForSkype must be a number."
+                                                        ngModel #costPerHourSkype="ngModel" [(ngModel)]="vm.costPerHourSkype"
+                                                        id="txtCostPerHourForSkype" name="CostPerHourForSkype"
+                                                        placeholder="1000" type="text" value="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Day <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerDayForSkype must be a number."
+                                                        ngModel #costPerDaySkype="ngModel" [(ngModel)]="vm.costPerDaySkype"
+                                                        id="txtCostPerDayForSkype" name="CostPerDayForSkype"
+                                                        placeholder="1000" type="text" value="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Availble Time Slots<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <span class="multiselect-native-select"><select
+                                                            class="listbox form-control form-control-width input-width"
+                                                            id="AvailbleTimeSlotsForSkype" multiple="True"
+                                                            name="AvailbleTimeSlotsForSkype" ngModel #AvailbleTimeSlotsForSkype="ngModel" [(ngModel)]="vm.AvailbleTimeSlotsForSkype">
+                                                            <option value="8">08.00 AM</option>
+                                                            <option value="9">09.00 AM</option>
+                                                            <option value="10">10.00 AM</option>
+                                                            <option value="11">11.00 AM</option>
+                                                            <option value="12">12.00 PM</option>
+                                                            <option value="13">01.00 PM</option>
+                                                            <option value="14">02.00 PM</option>
+                                                            <option value="15">03.00 PM</option>
+                                                            <option value="16">04.00 PM</option>
+                                                            <option value="17">05.00 PM</option>
+                                                            <option value="18">06.00 PM</option>
+                                                            <option value="19">07.00 PM</option>
+                                                        </select>
+                                                        <div class="btn-group"><button type="button"
+                                                                class="multiselect dropdown-toggle btn btn-default"
+                                                                data-toggle="dropdown" title="None selected"><span
+                                                                    class="multiselect-selected-text">None
+                                                                    selected</span> <b class="caret"></b></button>
+                                                            <ul class="multiselect-container dropdown-menu">
+                                                                <li class="multiselect-item multiselect-all"><a
+                                                                        tabindex="0" class="multiselect-all"><label
+                                                                            class="checkbox"><input type="checkbox"
+                                                                                value="multiselect-all"> Select
+                                                                            all</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="08.00 AM"><input type="checkbox"
+                                                                                value="8"> 08.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="09.00 AM"><input type="checkbox"
+                                                                                value="9"> 09.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="10.00 AM"><input type="checkbox"
+                                                                                value="10"> 10.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="11.00 AM"><input type="checkbox"
+                                                                                value="11"> 11.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="12.00 PM"><input type="checkbox"
+                                                                                value="12"> 12.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="01.00 PM"><input type="checkbox"
+                                                                                value="13"> 01.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="02.00 PM"><input type="checkbox"
+                                                                                value="14"> 02.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="03.00 PM"><input type="checkbox"
+                                                                                value="15"> 03.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="04.00 PM"><input type="checkbox"
+                                                                                value="16"> 04.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="05.00 PM"><input type="checkbox"
+                                                                                value="17"> 05.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="06.00 PM"><input type="checkbox"
+                                                                                value="18"> 06.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="07.00 PM"><input type="checkbox"
+                                                                                value="19"> 07.00 PM</label></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="divCheckTele" hidden="true">
+                                        <div class="form-group">
+                                            <label class="col-sm-3" style="margin-top:18px;">For Telephonic</label>
+                                            <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                            <label class="col-sm-8" style="position:relative;top:0px !important">
+                                                <input data-val="true"
+                                                    data-val-required="The AvailableForTelephonic field is required."
+                                                    id="AvailableForTelephonic" name="AvailableForTelephonic"
+                                                    type="hidden" value="False">
+                                                    <input type="radio" (click)="showTele()" class="form-check-input"  checked="checked" name="radio"  [(ngModel)]="radio" [value]="false">YES
+                                                    <input type="radio"  (click)="hideTele()"class="form-check-input"  checked="checked" name="radio"  [(ngModel)]="radio" [value]="true">NO
+
+                                            </label>
+                                        </div>
+
+
+                                        <div id="divTelephonicDetails" hidden="true">
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Hour <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        ngModel #costPerHourTelephonic="ngModel" [(ngModel)]="vm.costPerHourTelephonic"
+                                                        
+                                                        id="txtCostPerHourForTelephonic" name="CostPerHourForTelephonic"
+                                                        placeholder="1000" type="text" value="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Charge Per Day <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        data-val="true"
+                                                        data-val-number="The field CostPerDayForTelephonic must be a number."
+                                                        ngModel #costPerDayTelephonic="ngModel" [(ngModel)]="vm.costPerDayTelephonic"
+                                                        id="txtCostPerDayForTelephonic" name="CostPerDayForTelephonic"
+                                                        placeholder="2000" type="text" value="0" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Availble Time Slots<span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <span class="multiselect-native-select"><select
+                                                            class="listbox form-control form-control-width-1 input-width"
+                                                            id="AvailbleTimeSlotsForTelephonic" multiple="True"
+                                                            name="AvailbleTimeSlotsForTelephonic" ngModel [(ngModel)]="vm.AvailbleTimeSlotsForTelephonic">
+                                                            <option value="8">08.00 AM</option>
+                                                            <option value="9">09.00 AM</option>
+                                                            <option value="10">10.00 AM</option>
+                                                            <option value="11">11.00 AM</option>
+                                                            <option value="12">12.00 PM</option>
+                                                            <option value="13">01.00 PM</option>
+                                                            <option value="14">02.00 PM</option>
+                                                            <option value="15">03.00 PM</option>
+                                                            <option value="16">04.00 PM</option>
+                                                            <option value="17">05.00 PM</option>
+                                                            <option value="18">06.00 PM</option>
+                                                            <option value="19">07.00 PM</option>
+                                                        </select>
+                                                        <div class="btn-group"><button type="button"
+                                                                class="multiselect dropdown-toggle btn btn-default"
+                                                                data-toggle="dropdown" title="None selected"><span
+                                                                    class="multiselect-selected-text">None
+                                                                    selected</span> <b class="caret"></b></button>
+                                                            <ul class="multiselect-container dropdown-menu">
+                                                                <li class="multiselect-item multiselect-all"><a
+                                                                        tabindex="0" class="multiselect-all"><label
+                                                                            class="checkbox"><input type="checkbox"
+                                                                                value="multiselect-all"> Select
+                                                                            all</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="08.00 AM"><input type="checkbox"
+                                                                                value="8"> 08.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="09.00 AM"><input type="checkbox"
+                                                                                value="9"> 09.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="10.00 AM"><input type="checkbox"
+                                                                                value="10"> 10.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="11.00 AM"><input type="checkbox"
+                                                                                value="11"> 11.00 AM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="12.00 PM"><input type="checkbox"
+                                                                                value="12"> 12.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="01.00 PM"><input type="checkbox"
+                                                                                value="13"> 01.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="02.00 PM"><input type="checkbox"
+                                                                                value="14"> 02.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="03.00 PM"><input type="checkbox"
+                                                                                value="15"> 03.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="04.00 PM"><input type="checkbox"
+                                                                                value="16"> 04.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="05.00 PM"><input type="checkbox"
+                                                                                value="17"> 05.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="06.00 PM"><input type="checkbox"
+                                                                                value="18"> 06.00 PM</label></a></li>
+                                                                <li><a tabindex="0"><label class="checkbox"
+                                                                            title="07.00 PM"><input type="checkbox"
+                                                                                value="19"> 07.00 PM</label></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="UpdatePanel1" class="col-sm-3" style="margin-top: 4px;">
+                                            Profile Alerts
+                                        </label>
+                                        <label class="col-sm-1" style="margin-top: 4px;">:</label>
+                                        <div class="col-sm-8" style="white-space:nowrap">
+                                            <div class="checkbox checkbox-alg-none">
+                                                <input class="check" data-val="true"
+                                                    
+                                                    id="EmailAlert" name="EmailAlert" (change)="checkboxEmail()"
+                                                    type="checkbox" value="true"><input name="EmailAlert" type="hidden"
+                                                    value="false" rquired > Email
+                                                <label class="checkbox-label checkbox-alg-none">
+                                                    <input class="check" data-val="true"
+                                                      
+                                                        id="SmsAlert" name="SmsAlert" 
+                                                        type="checkbox" value="true"><input name="SmsAlert"
+                                                        type="hidden" value="false" required> SMS
+                                                </label>
+                                                <label class="checkbox-label checkbox-alg-none">
+                                                    <input class="check" data-val="true"
+                                                        
+                                                        id="ChatAlert" name="ChatAlert" 
+                                                        type="checkbox" value="true"><input name="ChatAlert"
+                                                        type="hidden" value="false" required> Chat
+                                                </label>
+                                                <label class="checkbox-label checkbox-alg-none">
+
+                                                    <input type="checkbox" class="check" id="chkNone" value="None"
+                                                        (change)="checkboxNone()">None
+                                                </label>
+                                            </div>
+                                            <div id="divEmail" hidden="true">
+                                                <input id="WeekDay" name="WeekDay" type="hidden" value="">
+
+                                                <label class="check-1">
+                                                    <input class="check-1" id="WeekDay" name="WeekDay"
+                                                        (click)="showDaily()" type="radio" value="Daily">Daily
+                                                </label>
+                                                <label class="check-1">
+                                                    <input class="check-1" id="WeekDay" name="WeekDay"
+                                                    (click)="showWeekly()"  type="radio" value="Weekly">Weekly
+                                                </label>
+                                                <label class="check-1">
+                                                    <input class="check-1" id="WeekDay" name="WeekDay"
+                                                    (click)="hideDW()" type="radio" value="Instant">Instant
+                                                </label>
+                                            </div>
+                                            <div class="form-group" id="divDay" hidden="true">
+                                                <label class="control-label col-md-6">
+                                                    <span class="red"></span>Select day and time :
+                                                </label>
+                                                <div class="col-md-6" style="margin-top:10px;">
+                                                    <input id="WeekDay" name="WeekDay" type="hidden" value="" [(ngModel)]="vm.weekDay">
+                                                    <select class="ddlAlert form-control" id="ddlAlertsJob"
+                                                        name="ddlAlertsJob" (change)="getDropDownValue()">
+                                                        <option value="">--Select type--</option>
+                                                        <option value="1">Sunday</option>
+                                                        <option value="2">Monday</option>
+                                                        <option value="3">Tuesday</option>
+                                                        <option value="4">Wednesday</option>
+                                                        <option value="5">Thursday</option>
+                                                        <option value="6">Friday</option>
+                                                        <option value="7">Saturday</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8 emial-check-box" id="divTime"
+                                                style="white-space: nowrap;" hidden="true">
+                                                <input id="OnDemandTime" name="OnDemandTime" type="hidden" value="">
+                                                <input checked="checked" class="radiobtn" id="radio_1" name="rd8AM"
+                                                     type="radio"
+                                                    value="8:00 AM" [(ngModel)]="vm.value"><label for="">8:00 AM</label>
+                                                <input class="radiobtn" id="radio_2" name="rd12PM"
+                                                    type="radio"
+                                                    value="12:00 PM" [(ngModel)]="vm.value"><label for="">12:00 PM</label>
+                                                <input class="radiobtn" id="radio_3" name="rd4PM"
+                                                     type="radio"
+                                                    value="4:00 PM" [(ngModel)]="vm.value"><label for="">4:00 PM</label>
+                                                <input class="radiobtn" id="radio_4" name="rd8PM"
+                                                     type="radio"
+                                                    value="8:00 PM" [(ngModel)]="vm.value"><label for="">8:00 PM</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="ChatAlert" name="ChatAlert" type="hidden" value="False">
+                                    <input id="SmsAlert" name="SmsAlert" type="hidden" value="False">
+                                    <input id="EmailAlert" name="EmailAlert" type="hidden" value="False">
+                                    <div class="form-group">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-8 checkbox-condetion">
+                                            <label class="label-conditions">
+                                                <input type="checkbox" class="check" id="chkTandC" value="chkTandC"
+                                                    (click)="checkTandC(this)" ngModel #chkTandC="ngModel" required> 
+                                                I have read, understood and agree to the
+                                                <a href="/Home/TermsAndConditions" target="_new"
+                                                    class="terms-conditions"> Terms and Conditions</a>
+
+                                                <br>
+                                                
+                                            </label>
+                                            <mat-hint *ngIf="fname.touched && fname.invalid">
+                                                <mat-error *ngIf="fname.errors.required">First name is required</mat-error>
+                                               
+                                              </mat-hint>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-8">
+
+                                            <div class="">
+                                                <input type="submit" value="Submit" class="btn btn-primary"
+                                                    onclick="return checkTerms();">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>

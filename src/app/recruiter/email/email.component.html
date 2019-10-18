@@ -1,0 +1,299 @@
+<app-navbar-r></app-navbar-r>
+<div class="wrapper-container" style="background: #fff url(../../assets/images/bg.jpg) repeat top left;">
+    <div class="container">
+        <div class="portlet">
+            <div class="validation-summary-valid text-danger" data-valmsg-summary="true">
+                <ul>
+                    <li style="display:none"></li>
+                </ul>
+            </div>
+            <div class="portlet-header" style="margin-top:-10px !important;">
+                <h3 style="line-height:52px !important;">
+                    Send Email
+                    <span class="portlet-tools pull-right">
+                        <button class="btn btn-primary btn-sm" id="btnClose" value="close"
+                            onclick="return closeEmail();">Close</button>
+                    </span>
+                </h3>
+            </div>
+            <form [formGroup]="EmailForm" (ngSubmit)="Email()">
+                <input name="__RequestVerificationToken" type="hidden"
+                    value="Hu1eF6pd9VbSo7i9Cr0_HnFWWopDqy0LPcB77nSyDdFbBXO92e8TBdw3KnnH2JmLt4U0BS2LWeEon7F2-Vuar6VTWJwRu1H-amLp0I_Z-Qg1">
+                <div class="portlet-content">
+                    <div class="form-horizontal custom-form">
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                Select the job <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+
+                                <select class="form-control" (change)="JobNo($event)" data-val="true" id="ddlJobNo" formControlName="JobNo">
+                                    <option value="">--Select type--</option>
+                                    <option *ngFor="let JobNo of JobNo" value="{{JobNo.JobNo}}">{{JobNo.JobNo}}</option>
+                                </select>
+
+                                <mat-hint
+                                *ngIf="EmailForm.controls['JobNo'].touched && EmailForm.controls['JobNo'].invalid">
+                                <mat-error
+                                    *ngIf="EmailForm.controls.JobNo.errors.required">
+                                    Please specify JobNo</mat-error>
+                            </mat-hint>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                From <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" data-val="true" id="txtFrom" formControlName="From" type="text" value="">
+                                <mat-hint
+                                *ngIf="EmailForm.controls['From'].touched && EmailForm.controls['From'].invalid">
+                                <mat-error
+                                    *ngIf="EmailForm.controls.From.errors.required">
+                                    Please specify From</mat-error>
+                            </mat-hint>
+                               
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                Subject / Job Title <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" data-val="true" id="txtJobTitle" formControlName="EmailSubject" type="text" value="">
+                                <mat-hint
+                                *ngIf="EmailForm.controls['EmailSubject'].touched && EmailForm.controls['EmailSubject'].invalid">
+                                <mat-error
+                                    *ngIf="EmailForm.controls.EmailSubject.errors.required">
+                                    Please specify EmailSubject</mat-error>
+                            </mat-hint>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Experience
+                            </label><label class="col-sm-1">:</label>
+
+                            <div class="col-sm-8" style="white-space: nowrap;">
+                                <div class="form-inline">
+                                    <select class="form-control" data-val="true" id="minExp"  (change)="selectExpmin($event)" formControlName="ExpMin">
+                                        <option value="">--Select type--</option>
+                                        <option *ngFor="let minExp of minExp" value="{{exp.experience}}">{{exp.experience}}</option>
+                                       
+                                    </select>
+                                    <mat-hint
+                                    *ngIf="EmailForm.controls['ExpMin'].touched && EmailForm.controls['ExpMin'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.ExpMin.errors.required">
+                                        Please specify ExpMin</mat-error>
+                                </mat-hint>
+                                    
+
+                                    Year(s)&nbsp; and
+                                    <select class="form-control" data-val="true"  id="maxExp"
+                                    (change)="selectExpmin($event)" formControlName="ExpMax">
+                                        <option value="">--Select type--</option>
+                                        <option *ngFor="let maxExp of maxExp" value="{{exp.experience}}">{{exp.experience}}</option>
+                                       
+                                    </select>
+                                    <mat-hint
+                                    *ngIf="EmailForm.controls['ExpMax'].touched && EmailForm.controls['ExpMax'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.ExpMax.errors.required">
+                                        Please specify ExpMax</mat-error>
+                                </mat-hint>
+
+                                    Month(s)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                CTC
+                            </label><label class="col-sm-1">:</label>
+
+                            <div class="col-sm-8" style="white-space: nowrap;">
+                                <div class="form-inline">
+                                    <select class="form-control" id="CCTCFrom"  (change)="selectCCTCFrom($event)" formControlName="CTCMin">
+                                        <option value="">--Select type--</option>
+                                        <option *ngFor="let CTCMin of CTCMin"
+                                        value="{{CTCMin.CTCMin}}">
+                                        {{CTCMin.CTCMin}}</option>
+                                       
+                                    </select>
+                                    <mat-hint
+                                    *ngIf="EmailForm.controls['CTCMin'].touched && EmailForm.controls['CTCMin'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.CTCMin.errors.required">
+                                        Please specify CTCMin</mat-error>
+                                </mat-hint>
+
+                                    Lakh(s)&nbsp; To
+                                    <select class="form-control" id="CCTCTo" (change)="selectCCTCFrom($event)" formControlName="CTCMax">
+                                        <option value="">--Select type--</option>
+                                        <option *ngFor="let CTCMax of CTCMax"
+                                        value="{{CTCMax.CTCMax}}">
+                                        {{CTCMax.CTCMax}}</option>
+                                      
+                                    </select>
+                                    <mat-hint
+                                    *ngIf="EmailForm.controls['CTCMax'].touched && EmailForm.controls['CTCMax'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.CTCMax.errors.required">
+                                        Please specify CTCMax</mat-error>
+                                </mat-hint>
+
+                                    Lakh(s)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Location <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+
+                            <div class="col-sm-8">
+                                <input class="form-control" data-val="true" id="txtLocation" formControlName="Location" type="text" value="">
+                                <mat-hint
+                                *ngIf="EmailForm.controls['Location'].touched && EmailForm.controls['Location'].invalid">
+                                <mat-error
+                                    *ngIf="EmailForm.controls.Location.errors.required">
+                                    Please specify Location</mat-error>
+                            </mat-hint>
+                           
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Notice Period
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control form-control-width-1 input-width" id="NoticePeriod" formControlName="NoticePeriod">
+                                    <option value="">--Select Notice Period--</option>
+                                    <option *ngFor="let NoticePeriod of NoticePeriod"
+                                    value="{{NoticePeriod.noticePeriodId}}">
+                                    {{NoticePeriod.NoticePeriod}}</option>
+                                    
+                                </select>
+                                <mat-hint
+                                    *ngIf="EmailForm.controls['NoticePeriod'].touched && EmailForm.controls['NoticePeriod'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.NoticePeriod.errors.required">
+                                        Please specify NoticePeriod</mat-error>
+                                </mat-hint>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Key Skills <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" data-val="true" id="txtKeySkills" formControlName="KeySkills"
+                                    placeholder="Java, ASP.Net,Oracle,PHP, CPP etc..." type="text" value="">
+                                    <mat-hint
+                                    *ngIf="EmailForm.controls['NoticePeriod'].touched && EmailForm.controls['NoticePeriod'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.NoticePeriod.errors.required">
+                                        Please specify KeySkills</mat-error>
+                                </mat-hint>
+                              
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Job Description <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" data-val="true" id="txtJobDescription" formControlName="JobDescription" type="text"
+                                    value="">
+                                    <mat-hint
+                                    *ngIf="EmailForm.controls['JobDescription'].touched && EmailForm.controls['JobDescription'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.JobDescription.errors.required">
+                                        Please specify JobDescription</mat-error>
+                                </mat-hint>
+                              
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                End Client <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" data-val="true" id="txtEndClient" formControlName="EndClient" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="EndClient"
+                                    data-valmsg-replace="true"></span>
+                                    <mat-hint
+                                    *ngIf="EmailForm.controls['EndClient'].touched && EmailForm.controls['EndClient'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.EndClient.errors.required">
+                                        Please specify EndClient</mat-error>
+                                </mat-hint>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Job Type <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" data-val="true" id="jobType" formControlName="JobType">
+                                    <option value="">--Select type--</option>
+                                    <option *ngFor="let jobType of jobType"
+                                    value="{{jobType.jobTypeId}}">
+                                    {{jobType.jobType}}</option>
+                                   
+                                </select>
+                                <mat-hint
+                                    *ngIf="EmailForm.controls['JobType'].touched && EmailForm.controls['JobType'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.JobType.errors.required">
+                                        Please specify JobType</mat-error>
+                                </mat-hint>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                To <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" data-val="true" id="ToEmail" formControlName="ToEmail" type="text" value="abc@gmail.com">
+                             
+                                    <mat-hint
+                                    *ngIf="EmailForm.controls['ToEmail'].touched && EmailForm.controls['ToEmail'].invalid">
+                                    <mat-error
+                                        *ngIf="EmailForm.controls.ToEmail.errors.required">
+                                        Please specify Email</mat-error>
+                                </mat-hint>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                CC <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="EmailCC" formControlName="EmailCC" type="text" value="">
+                                <mat-hint
+                                *ngIf="EmailForm.controls['EmailCC'].touched && EmailForm.controls['EmailCC'].invalid">
+                                <mat-error
+                                    *ngIf="EmailForm.controls.EmailCC.errors.required">
+                                    Please specify Email</mat-error>
+                            </mat-hint>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                            </label>
+                            <div class="col-md-8">
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </form>
+        </div>
+    </div>
+
+    <app-footer></app-footer>

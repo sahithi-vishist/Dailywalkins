@@ -1,0 +1,126 @@
+
+    <div class="body-app">
+            <a class="mobile" routerLink="/walker/home"><i class="fa fa-cogs"></i></a>
+            <nav class="nav-click-first">
+                <div class="container container-nav">
+                    <ul>
+                        <li>
+                            <a  class="register-text"><i class="fa fa-sign-in"></i>LOGIN</a>
+                            <span class="arrow"></span>
+                            <ul class="nav-links-login">
+                                <li><a routerLink="/walker/login">WALKER</a></li>
+                                <li><a routerLink="/recruitment/login">RECRUITER</a></li>
+                                <li><a routerLink="/facility/flogin">FACILITY</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="register-text"><i class="fa fa-pencil"></i>REGISTER</a>
+                            <span class="arrow"></span>
+                            <ul class="nav-links-reg">
+                                <li><a routerLink="/walker/register">WALKER</a></li>
+                                <li><a routerLink="/recruitment/registration">RECRUITER</a></li>
+                                <li><a routerLink="/facility/fregistration">FACILITY</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a routerLink="/" ng-class="{activeSmall:part == 'projects'}"><i class="fa fa-home"
+                                    aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div id="header-sticky-wrapper" class="sticky-wrapper" style="height: 89px;">
+        <header id="header">
+            <div class="wrapper row-2">
+                <div class="container container-height container-nav">
+                    <div class="logo logo-img text-left container-nav">
+                        <a routerLink="/">
+                        </a>
+                    </div>
+                    <div class="">
+                        <a class="mobile_1" href="#">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <nav class="nav-click">
+                            <ul>
+                                <li><a routerLink="/facility/flogin"
+                                        ngClass="{activeSmall:part == 'projects'}">FACILITY</a></li>
+                                <li><a routerLink="/walker/login" ngclass="{activeSmall:part == 'projects'}">WALKER</a>
+                                </li>
+                                <li><a routerLink="/recruitment/login"
+                                        ngClass="{activeSmall:part == 'privacy'}">RECRUITER</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        </div>
+    <div class="body-content demo-index">
+        <div class="">
+            
+      <div class="wrapper">
+      <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <h1 class="page-title" style="text-align: center;line-height: 84px;">Facility</h1>
+            <section class="inner-page inner-page-login">
+                <div id="login" class="animate form">
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <div class="form-group ">
+                                <div class="text-danger ">
+                                    
+                                </div>
+                            </div>
+                            <div id="wrapper1">
+                                <h1>Login</h1>
+                                <section id="loginForm">
+                                    <form [formGroup]="loginForm" (ngSubmit)="login()">   <input name="__RequestVerificationToken" type="hidden" value="GnIGP99gN_6Yf3XdvBANhom3-bb4OL64pKNi4eb8YK-fYOeRm7Ghp4fqOc1Et092vdOBkiNbZdg7HR0nSlFFMiZBCyEpvBRgnzoa1En2Fks1">                                        <div class="form-group">
+                                            <label class="col-md-3 control-label data-icon-u" for="Email">Email</label>
+                                            <label class="col-sm-1" style="margin-top:6px">:</label>
+                                            <div class="col-md-8">
+                                                <input class="form-control form-control-text" id="Email" formControlName="email"name="Email" placeholder="mymail@mail.com" type="text" value="">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label data-icon-i" for="Password">Password</label>
+                                            <label class="col-sm-1" style="margin-top:6px">:</label>
+                                            <div class="col-md-8">
+                                                <input class="form-control form-control-text" id="Password" formControlName="password" name="Password" placeholder="eg. X8df!90EO" type="password">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <span class="forget-password">
+                                                    <a routerLink="#" onclick="return getPassword();">
+                                                        Forgot password?
+                                                    </a>
+                                                    
+                                                </span>
+                                                <span class="login button">
+                                                    <input type="submit" value="Login">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <p class="change_link">
+                                            <a routerLink="/facility/fregistration" data-search_form="keyword"> Register as a new user </a>
+                                        </p>
+      </form>                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+      </div>
+      </div>
+      
+      
+      
+        </div>
+       
+      </div>
+      <app-footer></app-footer>

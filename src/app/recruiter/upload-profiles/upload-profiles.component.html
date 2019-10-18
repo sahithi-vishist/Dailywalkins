@@ -1,0 +1,99 @@
+<app-navbar-r></app-navbar-r>
+<div class="container">
+    <div class="col-md-12" style="padding-left:0px; padding-right:0px;">
+
+        <div class="col-md-3">
+
+            <div id="tab-container">
+                <ul class="admin-list-group" id="main-menu">
+                    <li class="quick active bold"><a>Details</a></li>
+                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CreateDrive">Create Drive</a></li>
+                    <li class="liclass" style="color: White"><a routerLink="/recruitment/walkincentral">Drive details</a></li>
+                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/UploadProfiles">Upload Profile(s)</a></li>
+                    <li class="liclass " style="color: White"><a routerLink="/recruitment/WalkinCentral/CandidateDetails">Candidate Details</a></li>
+                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CoOrdinatorsManagement">Co-Ordinators Management</a></li>
+                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/panel">Panel Management</a></li>
+                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/ShortlistedCandidates">Shortlisted Candidates</a></li>
+                    <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/EvaluationForms">Evaluation Forms</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-9" style="padding-right:0px;">
+
+
+
+            <form action="/WalkinCentral/UploadProfiles" enctype="multipart/form-data" method="post">
+                <div class="container">
+                    <h2 class="page-title">Upload Profiles </h2>
+                </div>
+                <div class="row">
+                    <div id="dvgetPanelDetails">
+                        <div class="portlet">
+                            <div class="portlet-header">
+                                <h5></h5>
+                            </div>
+                            <div class="portlet-content">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label bold">
+                                            Select Drive<span style="float: right">:</span><span
+                                                style="color: Red;">*</span>
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input id="DriveId" name="DriveId" type="hidden" value="">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                id="driveDetails" name="driveDetails">
+                                                <option value="">--Select type--</option>
+                                                <option value="4280">JobsMela</option>
+                                            </select>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="DriveId"
+                                                data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label bold">
+                                            Skill Set <span style="float: right">:</span>
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <label for="Skills">Skills</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label bold">
+                                        </label>
+                                        <div class="col-sm-8">
+                                            Upload Profiles : <input id="fileUpload" name="upload" type="radio"
+                                                value="1">
+                                            Import From Excel : <input id="fileUploadExcel" name="upload" type="radio"
+                                                value="2">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="divFileUpload" style="display:none">
+                                        <label class="col-sm-4 control-label bold">
+                                            Upload Profiles :
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="file" name="file" multiple="multiple">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="divfileUploadExcel" style="display:none">
+                                        <label class="col-sm-4 control-label bold">
+                                            Upload from Excel :
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="file" name="excel">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Upload" class="btn btn-default">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,220 @@
+<div class="wrapper-container" style="background: #fff url(../../assets/images/bg.jpg) repeat top left;">
+    <div class="container">
+        <form [formGroup]="SmsForm" (ngSubmit)="sendSms()">
+            <div class="portlet">
+                <input name="__RequestVerificationToken" type="hidden"
+                    value="UwGkStGZNiEKrItMMIeKhCh_Sddm8JOMrg-nvDvw7Wi9ZrnM0ZT6MQhrbVOXpu2gtEhPA5NgYYXhQu03WXu7cLWH2Nr18lB5uiIJ4MqPDQM1">
+                <div class="validation-summary-valid text-danger" data-valmsg-summary="true">
+                    <ul>
+                        <li style="display:none"></li>
+                    </ul>
+                </div>
+                <div class="portlet-header" style="margin-top:-10px !important;">
+                    <h3 style="line-height:52px !important;">
+                        Send SMS
+                        <span class="portlet-tools pull-right">
+                            <button class="btn btn-primary btn-sm" onclick="return closeSMS();">Close</button>
+                        </span>
+                    </h3>
+                </div>
+
+                <div class="portlet-content">
+                    <div class="form-horizontal custom-form">
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                Select the job <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+                                <input data-val="true" data-val-required="The JobNo field is required." id="JobNo"
+                                    formControlName="JobNo" type="hidden" value="">
+                                <select class="form-control" id="ddlJobNo" name="JobNo">
+                                    <option value="">--Select type--</option>
+
+                                </select>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="JobNo"
+                                    data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                From <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" data-val="true"
+                                    data-val-required="The From field is required." id="txtFrom" formControlName="From"
+                                    type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="From"
+                                    data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                Subject / Job Title <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" data-val="true"
+                                    data-val-required="The Subject field is required." id="txtJobTitle"
+                                    formControlName="EmailSubject" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="EmailSubject"
+                                    data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Experience
+                            </label><label class="col-sm-1">:</label>
+
+                            <div class="col-sm-8" style="white-space: nowrap;">
+                                <div class="form-inline">
+                                    <select class="form-control" data-val="true"
+                                        data-val-number="The field ExpMin must be a number."
+                                        data-val-required="The ExpMin field is required." id="minExp"
+                                        formControlName="ExpMin">
+                                        <option value="">--Select type--</option>
+                                        <option selected="selected" value="0">0</option>
+
+                                    </select>
+
+                                    Year(s)&nbsp; and
+                                    <select class="form-control" data-val="true"
+                                        data-val-number="The field ExpMax must be a number."
+                                        data-val-required="The ExpMax field is required." id="maxExp"
+                                        formControlName="ExpMax">
+                                        <option value="">--Select type--</option>
+                                        <option selected="selected" value="0">0</option>
+
+                                    </select>
+
+                                    Month(s)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                CTC
+                            </label><label class="col-sm-1">:</label>
+
+                            <div class="col-sm-8" style="white-space: nowrap;">
+                                <div class="form-inline">
+                                    <select class="form-control" id="CCTCFrom" formControlName="CTCMin">
+                                        <option value="">--Select type--</option>
+
+                                    </select>
+
+                                    Lakh(s)&nbsp; To
+                                    <select class="form-control" id="CCTCTo" formControlName="CTCMax">
+                                        <option value="">--Select type--</option>
+
+                                    </select>
+
+                                    Lakh(s)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Location <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+
+                            <div class="col-sm-8">
+                                <input class="form-control" data-val="true"
+                                    data-val-required="The Location field is required." id="txtLocation"
+                                    formControlName="Location" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Location"
+                                    data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Notice Period
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <input id="NoticePeriod" name="NoticePeriod" type="hidden" value="">
+                                <select class="form-control" id="Period" formControlName="NoticePeriod">
+                                    <option value="">--Select type--</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Key Skills <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" data-val="true"
+                                    data-val-required="The KeySkills field is required." id="txtKeySkills"
+                                    formControlName="KeySkills" placeholder="Java, ASP.Net,Oracle,PHP, CPP etc..."
+                                    type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="KeySkills"
+                                    data-valmsg-replace="true"
+                                    placeholder="Java, ASP.Net,Oracle,PHP, CPP etc..."></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Job Description <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" data-val="true"
+                                    data-val-required="The JobDescription field is required." id="txtJobDescription"
+                                    formControlName="JobDescription" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="JobDescription"
+                                    data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                End Client <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" data-val="true"
+                                    data-val-required="The EndClient field is required." id="txtEndClient"
+                                    formControlName="EndClient" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="EndClient"
+                                    data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">
+                                Job Type <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-sm-8">
+                                <input data-val="true" data-val-required="The JobType field is required." id="JobType"
+                                    formControlName="JobType" type="hidden" value="">
+                                <select class="form-control" id="jobType" name="JobType">
+                                    <option value="">--Select type--</option>
+
+                                </select>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="JobType"
+                                    data-valmsg-replace="true"></span>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">
+                                To <span style="color:red;">*</span>
+                            </label><label class="col-sm-1">:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" data-val="true"
+                                    data-val-required="The To field is required." id="ToNumbers"
+                                    formControlName="ToNumbers" type="text" value="9999999999">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="ToNumbers"
+                                    data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-4">
+                            </label>
+                            <div class="col-md-8">
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+    </div>
+</div>

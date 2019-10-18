@@ -1,0 +1,295 @@
+<app-navbar></app-navbar><div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <h1 class="content-header-title page-title" style="font-size:27px;">Walkin Details</h1>
+            <div>
+                <div class="alert alert-success" style="height: 46px; display: none;" id="divsucc">
+                    <label></label>
+                </div>
+            </div>
+            <div class="row box-shadow-cell">
+                <div class="addBoxShadow" style="background-color:white;">
+                    <div class="content">
+                        <div class="col-sm-9" style="background-color:#fff;min-height: 595px; height: auto;">
+                            <div class="row job-description-top">
+                                <div class="col-sm-2">
+                                    <div class="pull-left company-icon img-thumbnail">
+
+                                        <img class="" src="data:image/gif;base64,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" alt="Employer">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="pull-left job-meta-top ">
+                                        <div class="company-info">
+                                            <h3 class="h3-align-portlet ">
+                                                Angular Developer
+                                            </h3>
+                                            <div class="form-group" style="margin-bottom:3px !important">
+                                                <div class="">
+                                                    <label class="text-form-color txt-job" for="Cogent_Data_Solutions">Cogent Data Solutions</label>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="pull-right jobsButtonsContainer">
+                                        <ul class="portlet-tools pull-right" style="display:inline-flex;position:relative;top: 10px;">
+
+                                            <li style="position:relative;left:10px;top:-3px;">
+                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip" data-placement="bottom" href="#" target="_blank">
+
+
+
+                                                    <img id="chatImg" src="/assets/images/online.png" alt="online" onclick="return openChat(this);">
+                                                </a>
+                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip" data-placement="bottom" href="#">
+                                                    <img id="dialUp" style="" src="/assets/images/dial-up.png" alt="online" onclick="return dialUp();" stye="width:28px">
+                                                </a>
+
+                                                <a data-toggle="tooltip" class="online-status red-tooltip chat-icon" data-placement="bottom" title="Email" id="A1" href="/walker/SendJobEmail?jobno=59" target="_blank">
+                                                    <img id="imgMail" src="/assets/images/mail.png" alt="mail" stye="width:28px">
+                                                </a>
+
+                                                <a data-toggle="tooltip" class="online-status red-tooltip chat-icon" data-placement="bottom" title="SMS" id="A3" href="/walker/SendJobSMS?jobno=59" target="_blank">
+                                                    <img id="imgSMS" src="/assets/images/sms.png" alt="sms" stye="width:28px">
+                                                </a>
+                                                
+                                                 <a class="online-status red-tooltip chat-icon" data-toggle="tooltip" data-placement="bottom" title="Share with facebook">                                                
+                                                    <!-- <fb:share-button id="fb-root" href="&quot;https://www.dailywalkins.com/Walker/SelectedJob/&quot;+59">
+                                                    </fb:share-button> -->
+                                                    <img id="imgFB" src="/assets/images/fbi.gif" alt="fbi" stye="width:28px">
+                                                
+                                                </a>
+                                                <script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                                                <a class="online-status red-tooltip chat-icon" data-toggle="tooltip" data-placement="bottom" title="Share with Linked-In">
+
+                                                    <script type="unparsed-IN/Share" data-url="&quot;https://www.dailywalkins.com/Walker/SelectedJob/&quot;+59">
+                                                    </script>
+                                                    <img id="linkedinImg" src="/assets/images/linkedin_circle.png" alt="linkedin" stye="width:28px">
+                                                </a>
+                                                 
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="jd-strip top-strip job-header-strip" style="">
+                                    <div class="trio-bucket pull-left">
+                                        <span class="experience">
+                                            <img src="../../assets/images/Experience.png" alt="" style="margin-top:-5px">
+                                            <span class="jobText">1 - 3 years</span>
+
+                                            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                        </span>
+                                        <span class="salary">
+                                            <img src="../../assets/images/Salary.png" alt="">
+                                            <span class="jobText">
+                                                <label for="">0 lpa to </label>
+                                                <label for="">0  lpa</label>
+                                            </span>
+                                            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                        </span>
+                                        <span class="salary">
+                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                            <span class="jobText">
+                                                <label class="text-form-color" for="">30 days</label>
+                                            </span>
+                                            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                        </span>
+                                        <span class="location" id="jobLocation" itemprop="jobLocation" itemscope="" itemtype="http://schema.org/Place">
+                                            <img src="../../assets/images/Location.png" alt="">
+                                            <span class="jobText" title="Chennai"><label for="Hyderabad">Hyderabad</label></span>
+                                            <span class="jobText">( <label class="text-form-color txt-job" for="Hi_Tech_City">Hi Tech City</label>)</span>
+                                        </span>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="#" class="btn btn-primary btn-sm apply-btn-align" style="position: relative; left: 80px; visibility: hidden;" id="apply" imagealign="AbsMiddle" onclick="loadApplyDetails()">Apply Job</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="btn btn-primary btn-sm apply-btn-align" style="position: relative; left: 80px;" id="disabled" imagealign="AbsMiddle" disabled="">Already Applied</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal wrapper-1 txt-wrapper">
+                                <div class="row ">
+                                    <div class="col-sm-6 border-panel-job job-shadow">
+
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="End_Client_">End Client </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job" for="Cogent_Data_Solutions">Cogent Data Solutions</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 label-txt-alg" for="Role_">Role </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job" for="IT_Developer">IT Developer</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Walkin_date_">Walkin date </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">08-12-2018</label>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Walkin_slots">Walkin slots</label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">4:00pm</label>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Walkin_location">Walkin location</label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">Hyderabad</label>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Walkin_locality">Walkin locality</label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">madhapur</label>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 border-panel-job job-shadow-2">
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Company_Name_">Company Name </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">vishist business solutions</label>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Contact_Person_">Contact Person </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job" for="suri">suri</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Contact_Number_">Contact Number </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">9550797827</label>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Email_">Email </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">surendracheemakurthy@gmail.com</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Company_Address">Company Address</label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">6B, 6th Floor, Melange Towers, 
+                                                SY. NO. 80-84, Patrikanagar, 
+                                                Madhapur, Hitech City, Hyderabad-500081, Telangana</label>
+                                                
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                                <div class="row" style="border-bottom:1px solid #ccc;">
+
+                                    <div class="col-sm-6 border-panel-job job-shadow-3">
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Key_Skills_">Key Skills </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job" for="Java_Script_HTML_Css_Angular2_UI_UX_Designer">Java Script,HTML,Css,Angular2,UI/UX Designer</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Job_Description_">Job Description </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Qualification_">Qualification </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job"> BE/B.Tech</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 label-txt-alg" for="No_of_Positions_">No of Positions </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job" for="">4</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4 label-txt-alg" for="Job_Type_">Job Type </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job" for="Any">Any</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 border-panel-job job-shadow-4">
+                                        <div class="form-group" >
+                                            <label class="control-label col-md-4 label-txt-alg" for="Client_Location_">Client Location </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">Hyderabad</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="">
+                                            <label class="control-label col-md-4 label-txt-alg" for="Client_Locality_">Client Locality </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job">Hi Tech City</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="">
+                                            <label class="control-label col-md-4 label-txt-alg" for="Venue_details_">Venue details </label>
+                                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                                            <div class="col-md-7">
+                                                <label class="text-form-color txt-job" for="NA">NA</label>
+                                            </div>
+                                        </div>
+
+                                    </div>  
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                       
+                    </div>
+
+                </div>
+
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,284 @@
+<app-navbar-r></app-navbar-r>
+<div class="container">
+    <div class="col-md-12" style="padding-left:0px; padding-right:0px;">
+
+        <div class="col-md-3">
+
+            <div id="tab-container">
+                <ul class="admin-list-group" id="main-menu">
+                        <li class="quick active bold"><a>Details</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CreateDrive">Create Drive</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/walkincentral">Drive details</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/UploadProfiles">Upload Profile(s)</a></li>
+                        <li class="liclass " style="color: White"><a routerLink="/recruitment/WalkinCentral/CandidateDetails">Candidate Details</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CoOrdinatorsManagement">Co-Ordinators Management</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/panel">Panel Management</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/ShortlistedCandidates">Shortlisted Candidates</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/EvaluationForms">Evaluation Forms</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-9" style="padding-right:0px;">
+
+
+
+
+
+
+        
+
+            <div class="container">
+                <h2 class="page-title">Candidate Details </h2>
+            </div>
+            <section class="inner-page" style="min-height:10px !important">
+                <div id="register" class="animate form">
+                    <div class="form-horizontal ">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 ">
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-4"> Walkin Drive <span style="color:red;">*</span> </label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-7">
+                                        <input id="SelectedDrive" name="SelectedDrive" type="hidden" value="4280">
+                                        <select class="form-control form-control-width-1 input-width" id="driveDetails"
+                                            name="driveDetails">
+                                            <option value="">--Select Drive--</option>
+                                            <option value="4280">JobsMela</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4"> Skills <span style="color:red;">*</span> </label>
+                                    <label class="col-sm-1">:</label>
+                                    <div class="col-sm-7">
+                                        <label for="SkillSet">java,c,c++</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4"> Type <span style="color:red;">*</span> </label>
+                                    <label class="col-sm-1">:</label>
+
+                                    <div class="col-sm-7">
+                                        <input id="SelectedType" name="SelectedType" type="hidden" value="all">
+                                        <select class="form-control form-control-width-1 input-width" id="profileType"
+                                            name="profileType">
+                                            <option value="">--Select type--</option>
+                                            <option value="uploaded">Uploaded Profiles</option>
+                                            <option value="applied">Applied Profiles</option>
+                                            <option value="all">All</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="divCandidatesDisplay" style="display: block;">
+                <div class="container">
+                    <h3 class="page-title">Candidate Details </h3>
+                </div>
+                <section class="inner-page">
+                    <div id="" class="animate form">
+                        <div class="form-horizontal ">
+                            <div class="row">
+                                <div id="divCandidates">
+
+
+
+
+
+
+                                    <input id="SelectedEmails" name="SelectedEmails" type="hidden" value="">
+                                    <input id="RecruiterEmail" name="RecruiterEmail" type="hidden"
+                                        value="something@gmail.com">
+
+                                    <div class="portlet" style="margin-left:6px;margin-right:6px;">
+                                        <div class="portlet-header">
+                                            <span style="font-size: 17px;line-height:38px;color:#fff;">
+                                                <input type="checkbox" class="check check-box-1" id="chkAll"
+                                                    onclick="checkAllEmails(this)">Select All
+                                            </span>
+
+                                            <ul class="portlet-tools pull-right">
+
+                                                <li>
+                                                    <a href="#" class="btn btn-primary btn-sm"
+                                                        onclick="loadEmailDetails()">Email</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="btn  btn-primary btn-sm"
+                                                        onclick="loadSMSDetails()">SMS</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/WalkinCentral/ViewProfile"
+                                                        class="btn  btn-primary btn-sm">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <label style="color:green;" id="lblLogo"></label>
+
+                                        <div class="table-responsive">
+                                            <table id="gridTbl"
+                                                class="table table-striped table-bordered dt-responsive nowrap table-th-nowrap"
+                                                width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Email</th>
+                                                        <th>Contact Number</th>
+                                                        <th>Name</th>
+                                                        <th>Skills</th>
+                                                        <th>Company</th>
+                                                        <th>Location</th>
+                                                        <th>Preferred Location</th>
+                                                        <th>Notice Period</th>
+                                                        <th>CTC</th>
+                                                        <th>ECTC</th>
+                                                        <th></th>
+                                                    </tr>
+
+                                                </thead>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                    <div id="myModalEmail" class="modal" style="margin-top:7px;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div id="myModalContent" class="modal-body">
+                                                    <div class="form-horizontal">
+                                                        <div class="form-group from-model">
+                                                            <label class="col-sm-3" style="white-space:nowrap">Email
+                                                                <span style="color:red;">*</span></label>
+                                                            <label class="col-sm-1">:</label>
+                                                            <div class="col-sm-8">
+                                                                <input
+                                                                    class="form-control form-control-width input-width"
+                                                                    id="txtEmails" name="SelectedEmails"
+                                                                    placeholder="Miyapur" type="text" value="">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group from-model">
+                                                            <label class="col-sm-3" style="white-space:nowrap">Job Title
+                                                                <span style="color:red;">*</span></label>
+                                                            <label class="col-sm-1">:</label>
+                                                            <div class="col-sm-8">
+                                                                <input
+                                                                    class="form-control form-control-width input-width"
+                                                                    id="JobTitle" name="JobTitle"
+                                                                    placeholder="ex: Java Developer" type="text"
+                                                                    value="">
+                                                                <label style="color:red;" id="lblForEmail"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group from-model">
+                                                            <label class="col-sm-3" style="white-space:nowrap">Venue
+                                                                Details <span style="color:red;"></span></label>
+                                                            <label class="col-sm-1">:</label>
+                                                            <div class="col-sm-8">
+                                                                <input
+                                                                    class="form-control form-control-width input-width"
+                                                                    id="VenueDetails" name="VenueDetails"
+                                                                    placeholder="Miyapur" type="text" value="">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3" style="white-space:nowrap"> </label>
+                                                            <label class="col-sm-1"></label>
+                                                            <div class="col-sm-8">
+                                                                <a href="#" onclick="sendEmail(this.href);"
+                                                                    class="btn btn-primary btn-sm"
+                                                                    imagealign="AbsMiddle">Submit</a>
+                                                                <button class="btn btn-primary btn-sm" name="Submit"
+                                                                    value="Submit" imagealign="AbsMiddle"
+                                                                    onclick="return cancelEmail();">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="myModalSMS" class="modal" style="margin-top:7px;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div id="myModalContent" class="modal-body">
+                                                    <div class="form-horizontal">
+                                                        <div class="form-group from-model">
+                                                            <label class="col-sm-3" style="white-space:nowrap"> Phone
+                                                                No.(s) <span style="color:red;">*</span></label>
+                                                            <label class="col-sm-1">:</label>
+                                                            <div class="col-sm-8">
+                                                                <input
+                                                                    class="form-control form-control-width input-width"
+                                                                    id="txtPhoneNumbers" name="SelectedPhoneNos"
+                                                                    type="text" value="">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group from-model">
+                                                            <label class="col-sm-3" style="white-space:nowrap">Job Title
+                                                                <span style="color:red;">*</span></label>
+                                                            <label class="col-sm-1">:</label>
+                                                            <div class="col-sm-8">
+                                                                <input
+                                                                    class="form-control form-control-width input-width"
+                                                                    id="txtJobTitleForSMS" name="JobTitle"
+                                                                    placeholder="ex: Java Developer" type="text"
+                                                                    value="">
+                                                                <label style="color:red;" id="lblForSMS"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group from-model">
+                                                            <label class="col-sm-3" style="white-space:nowrap">Venue
+                                                                Details <span style="color:red;"></span></label>
+                                                            <label class="col-sm-1">:</label>
+                                                            <div class="col-sm-8">
+                                                                <input
+                                                                    class="form-control form-control-width input-width"
+                                                                    id="txtVenueDetailsForSMS" name="VenueDetails"
+                                                                    placeholder="Miyapur" type="text" value="">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3" style="white-space:nowrap"> </label>
+                                                            <label class="col-sm-1"></label>
+                                                            <div class="col-sm-8">
+                                                                <a href="#" onclick="sendSMS(this.href);"
+                                                                    class="btn btn-primary btn-sm"
+                                                                    imagealign="AbsMiddle">Submit</a>
+                                                                <button class="btn btn-primary btn-sm" name="Submit"
+                                                                    value="Submit" imagealign="AbsMiddle"
+                                                                    onclick="return cancelSMS();">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
