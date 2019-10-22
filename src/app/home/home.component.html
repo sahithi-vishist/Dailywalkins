@@ -171,7 +171,13 @@
                                     </div>
                                     <input class="form-control demo-control select-dropdowm-text ui-autocomplete-input"
                                         id="txtSkills" name="Skills" placeholder="Big data,Java,Marketing,etc..."
-                                        type="text" value="" ngModel [(ngModel)]="search.skill" autocomplete="off">
+                                        type="text" value="" ngModel [(ngModel)]="search.skill" (ngModelChange)="onSkillChange()" [matAutocomplete]="skillAuto">
+                                        <mat-autocomplete #skillAuto="matAutocomplete">
+                                            <mat-option *ngFor="let skill of skills|async"
+                                                value="{{skill.requiredKeySkills}}">
+                                                {{skill.requiredKeySkills}}
+                                            </mat-option>
+                                        </mat-autocomplete>
                                     <div>
 
                                     </div>

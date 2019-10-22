@@ -13,6 +13,7 @@ industryType;
 role;
 noticePeriod;
 education;
+url;
   constructor(private http:HttpClient,private service:WalkerAuthService) {
    
     this.service.getWalkerById().subscribe((res)=>{
@@ -21,6 +22,7 @@ education;
       this.role=res['roleId'].roleName;
       this.noticePeriod=res['noticePeriod'].noticeText;
       this.education=res['education'].qualification;
+     
     },(err)=>{
 
     }) 

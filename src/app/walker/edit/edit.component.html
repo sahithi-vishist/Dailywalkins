@@ -78,15 +78,16 @@
                                             style="width:3% !important; padding-top:6px !important;">:</label>
                                         <div class="col-md-8">
                                             <input class="form-control"
-                                            pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" id="txtEmail"
-                                            ngModel #email="ngModel" name="Email" value=""
-                                            type="text" value="" [(ngModel)]="update.email" required>
-                                        <mat-hint *ngIf="email.touched && email.invalid">
-                                            <mat-error *ngIf="email.errors.required">Email is required</mat-error>
-                                            <mat-error *ngIf="email.errors && email.errors.pattern">Please enter valid Email
-                                            </mat-error>
-                                        </mat-hint>
-                                               
+                                                pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" id="txtEmail"
+                                                ngModel #email="ngModel" name="Email" value="" type="text" value=""
+                                                [(ngModel)]="update.email" required>
+                                            <mat-hint *ngIf="email.touched && email.invalid">
+                                                <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                                                <mat-error *ngIf="email.errors && email.errors.pattern">Please enter
+                                                    valid Email
+                                                </mat-error>
+                                            </mat-hint>
+
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -95,17 +96,23 @@
 
                                         <label class="col-sm-1" style="width:3% !important;">:</label>
                                         <div class="col-md-8">
-                                            
-                                                <select class="form-control" 
-                                                ngModel #location="ngModel" [(ngModel)]="update.location" id="txtLocation"
-                                                   (change)="onSelectLocation($event)" name="locId" required>
-                                               
-                                                  <option *ngFor="let loc of locations" value="{{loc.cityId}}">{{loc.cityName}}</option>
-                                              </select>
-                                                <mat-hint *ngIf="location.touched && location.invalid">
-                                                    <mat-error *ngIf="location.errors.required">Location is Required</mat-error>
-                                                    
-                                                </mat-hint>
+
+                                            <!-- <select class="form-control" ngModel #location="ngModel" id="txtLocation"
+                                                (change)="onSelectLocation($event)" name="locId" required>
+
+                                                <option *ngFor="let loc of locations" value="{{loc.cityId}}">
+                                                    {{loc.cityName}}</option>
+                                            </select> -->
+                                            <ng-select [items]="locations" bindLabel="cityName"
+                                                (change)="onSelectLocation($event)" placeholder="Select Location"
+                                                ngModel #location="ngModel" appendTo="body"
+                                                [(ngModel)]="update.location">
+                                            </ng-select>
+                                            <mat-hint *ngIf="location.touched && location.invalid">
+                                                <mat-error *ngIf="location.errors.required">Location is Required
+                                                </mat-error>
+
+                                            </mat-hint>
                                         </div>
                                     </div>
                                     <div class="form-group contactNumber">
@@ -119,15 +126,15 @@
                                                 <div class="input-group-addon">
                                                     +91
                                                 </div>
-                                                <input class="form-control" data-val="true"
-                                                
-                                                    pattern="^[0-9 ]{10}$"
-                                                  id="txtContactNo" ngModel #contactNo="ngModel"
-                                                    name="ContactNo" type="text" value="" [(ngModel)]="update.contactNo" required>
-                                                    <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
-                                                        <mat-error *ngIf="contactNo.errors.required">Mobile Number is Required</mat-error>
-                                                        <mat-error *ngIf="contactNo.errors&&contactNo.errors.pattern">Please enter valid mobile number</mat-error>
-                                                    </mat-hint>
+                                                <input class="form-control" data-val="true" pattern="^[0-9 ]{10}$"
+                                                    id="txtContactNo" ngModel #contactNo="ngModel" name="ContactNo"
+                                                    type="text" value="" [(ngModel)]="update.contactNo" required>
+                                                <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+                                                    <mat-error *ngIf="contactNo.errors.required">Mobile Number is
+                                                        Required</mat-error>
+                                                    <mat-error *ngIf="contactNo.errors&&contactNo.errors.pattern">Please
+                                                        enter valid mobile number</mat-error>
+                                                </mat-hint>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +150,8 @@
                                                     +91
                                                 </div>
                                                 <input class="form-control input-box-alg" id="txtContactNo_Landline"
-                                                    name="ContactNo_Landline" type="text" ngModel #contactNo_Landline="ngModel" [(ngModel)]="update.contactNoLandline" 
+                                                    name="ContactNo_Landline" type="text" ngModel
+                                                    #contactNo_Landline="ngModel" [(ngModel)]="update.contactNoLandline"
                                                     value="">
 
                                             </div>
@@ -157,7 +165,8 @@
                                         <div class="col-md-4">
                                             <input
                                                 class="form-control form-control-width input-width   input-box-alg hasDatepicker"
-                                                id="txtDateOfBirth" ngModel #dob="ngModel" name="DateOfBirth" type="date" value="" [(ngModel)]="update.dateOfBirth">
+                                                id="txtDateOfBirth" ngModel #dob="ngModel" name="DateOfBirth"
+                                                type="date" value="" [(ngModel)]="update.dateOfBirth">
 
                                         </div>
                                     </div>
@@ -169,27 +178,28 @@
                                             style="width:3% !important; padding-top:6px !important;">:</label>
                                         <div class="col-md-8">
                                             <input class="form-control input-box-alg ui-autocomplete-input"
-                                                id="txtlanguagesKnown" ngModel #languagesKnown="ngModel" name="languagesKnown" 
-                                                type="text" value="" [(ngModel)]="update.languagesKnown" (change)="selectLanguage($event)"
+                                                id="txtlanguagesKnown" ngModel #languagesKnown="ngModel"
+                                                name="languagesKnown" type="text" value=""
+                                                [(ngModel)]="update.languagesKnown" (ngModelChange)="selectLanguage()"
                                                 [matAutocomplete]="langauto">
-                                                <mat-autocomplete #langauto="matAutocomplete">
-                                                    <mat-option *ngFor="let lang of languages"
-                                                        value="{{lang.language}}">
-                                                        {{lang.language}}
-                                                    </mat-option>
-                                                </mat-autocomplete>
+                                            <mat-autocomplete #langauto="matAutocomplete">
+                                                <mat-option *ngFor="let lang of languages|async"
+                                                    value="{{lang.language}}">
+                                                    {{lang.language}}
+                                                </mat-option>
+                                            </mat-autocomplete>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 col-sm-4">
                                     <div class="thumbnail">
-                                        <img src="{{imageURL}}" id="imgProfile">
+                                        <img src="{{profilePhoto}}" id="imgProfile">
 
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="file" id="ImageFile" ngModel #image="ngModel"
-                                         name="image" (change)="selectProfileImage($event)" accept="image/*">
+                                        <input type="file" id="ImageFile" ngModel #image="ngModel" name="image"
+                                            (change)="selectProfileImage($event)" accept="image/*">
                                     </div>
                                 </div>
                             </div>
@@ -212,16 +222,21 @@
 
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
-                                    <select class="form-control form-control-width-1 input-width"
-                                    data-val="true" ngModel #education="ngModel" id="ddlQualification"
-                                    name="Education" placeholder="mca" (change)="onSelectEducation($event)" [(ngModel)]="update.education" required>
-                
-                                    <option *ngFor="let education of qualifications" value="{{education.qualificationId}}">{{education.qualification}}</option>
-                                    
-                                </select>
-                                        <mat-hint *ngIf="education.touched && education.invalid">
-                                            <mat-error *ngIf="education.errors.required">Education is required</mat-error>
-                                        </mat-hint>
+                                    <!-- <select class="form-control form-control-width-1 input-width" data-val="true"
+                                        ngModel #education="ngModel" id="ddlQualification" name="Education"
+                                        placeholder="mca" (change)="onSelectEducation($event)" required>
+
+                                        <option *ngFor="let education of qualifications"
+                                            value="{{education.qualificationId}}">{{education.qualification}}</option>
+
+                                    </select> -->
+                                    <ng-select [items]="qualifications" bindLabel="qualification"
+                                        (change)="onSelectEducation($event)" placeholder="Select Education" ngModel
+                                        #education="ngModel" appendTo="body" [(ngModel)]="update.education">
+                                    </ng-select>
+                                    <mat-hint *ngIf="education.touched && education.invalid">
+                                        <mat-error *ngIf="education.errors.required">Education is required</mat-error>
+                                    </mat-hint>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -230,18 +245,18 @@
 
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" data-val="true"
-                                        id="txtInstitute" name="Institute" ngModel #institute="ngModel" [(ngModel)]="update.institute"
-                                        type="text" value="" [matAutocomplete]="iauto" (change)="selectInstitute($event)" required>
-                                        <mat-autocomplete #iauto="matAutocomplete">
-                                            <mat-option *ngFor="let inst of institutes"
-                                                value="{{inst.instituteName}}">
-                                                {{inst.instituteName}}
-                                            </mat-option>
-                                        </mat-autocomplete>
-                                        <mat-hint *ngIf="institute.touched && institute.invalid">
-                                            <mat-error *ngIf="institute.errors.required">Institute is required</mat-error>
-                                        </mat-hint>
+                                    <input class="form-control" data-val="true" id="txtInstitute" name="Institute"
+                                        ngModel #institute="ngModel" [(ngModel)]="update.institute" type="text" value=""
+                                        [matAutocomplete]="iauto" (ngModelChange)="selectInstitute()" required>
+                                    <mat-autocomplete #iauto="matAutocomplete">
+                                        <mat-option *ngFor="let inst of institutes|async"
+                                            value="{{inst.instituteName}}">
+                                            {{inst.instituteName}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-hint *ngIf="institute.touched && institute.invalid">
+                                        <mat-error *ngIf="institute.errors.required">Institute is required</mat-error>
+                                    </mat-hint>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -249,12 +264,11 @@
                                     Year of Pass <span style="color:red;">*</span>
                                 </label><label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" id="txtYearOfPass" ngModel
-                                    #yop="ngModel" [(ngModel)]="update.yearOfPass" name="YearOfPass" type="text"
-                                        value="" required>
-                                        <mat-hint *ngIf="yop.touched && yop.invalid">
-                                            <mat-error *ngIf="yop.errors.required">YearOfPass is required</mat-error>
-                                        </mat-hint>
+                                    <input class="form-control" id="txtYearOfPass" ngModel #yop="ngModel"
+                                        [(ngModel)]="update.yearOfPass" name="YearOfPass" type="text" value="" required>
+                                    <mat-hint *ngIf="yop.touched && yop.invalid">
+                                        <mat-error *ngIf="yop.errors.required">YearOfPass is required</mat-error>
+                                    </mat-hint>
                                 </div>
                             </div>
                         </div>
@@ -277,27 +291,42 @@
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
                                     <div class="form-inline">
-                                
-                                        <select class="form-control" data-val="true" pattern="[0-9 ]*$" id="Experience" ngModel 
-                                        #minExp="ngModel"
-                                             id="minExp" (change)="onSelectedMinExp($event)"
+
+                                        <!-- <select class="form-control" data-val="true" pattern="[0-9 ]*$" id="Experience"
+                                            ngModel #minExp="ngModel" id="minExp" (change)="onSelectedExpYears($event)"
                                             name="ExpYears" required>
                                             <option value="">--Select type--</option>
                                             <option *ngFor="let exp of experiences" value="{{exp.experienceId}}">
                                                 {{exp.expValue}}</option>
-                                        </select>
+                                        </select> -->
+                                        <ng-select bindLabel="expValue" placeholder="Select Experience" appendTo="body"
+                                        [searchable]="true" [clearable]="true" (change)="onSelectedExpYears($event)" [(ngModel)]="expYears"
+                                        style="width:137px;display: inline-block;">
+                                        <ng-option [value]="exp.experienceId" 
+                                            *ngFor="let exp of experiences">
+                                            {{exp.expValue}}
+                                        </ng-option>
+                                    </ng-select>
                                         Year(s)&nbsp;
-                                       
+
                                         and
-                                        <select class="form-control selct-maxexp" data-val="true"
-                                          ngModel #maxExp="ngModel" id="maxExp" 
-                                            name="ExpMonths"  (change)="onSelectedMaxExp($event)" required>
+                                        <!-- <select class="form-control selct-maxexp" data-val="true" ngModel
+                                            #maxExp="ngModel" id="maxExp" name="ExpMonths"
+                                            (change)="onSelectedExpMonths($event)" required>
                                             <option value="">--Select type--</option>
                                             <option *ngFor="let exp of experiences" value="{{exp.experienceId}}">
                                                 {{exp.expValue}}</option>
-                                        </select>
+                                        </select> -->
+                                        <ng-select bindLabel="expValue" placeholder="Select Experience" appendTo="body"
+                                        [searchable]="true" [clearable]="true" (change)="onSelectedExpMonths($event)" [(ngModel)]="expMonths"
+                                        style="width:137px;display: inline-block;">
+                                        <ng-option [value]="exp.experienceId" 
+                                            *ngFor="let exp of experiences">
+                                            {{exp.expValue}}
+                                        </ng-option>
+                                    </ng-select>
                                         Month(s)
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -309,24 +338,43 @@
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-sm-8">
                                     <div class="form-inline">
-                                        
-                                        <select class="form-control selct-maxexp" data-val="true"
-                                            ngModel #CCTCFrom="ngModel"  id="CCTCFrom"
-                                            name="CTCLakhs"  (change)="onSelectedCCTCFrom($event)" required>
+
+                                        <!-- <select class="form-control selct-maxexp" data-val="true" ngModel
+                                            #CCTCFrom="ngModel" id="CCTCFrom" name="CTCLakhs"
+                                            (change)="onSelectedCCTCFrom($event)" required>
                                             <option value="">--Select type--</option>
                                             <option *ngFor="let sal of salaries" value="{{sal.salaryId}}">
                                                 {{sal.salValue}}</option>
-                                        </select>
+                                        </select> -->
+                                        <ng-select bindLabel="salValue" placeholder="Select CTC" appendTo="body"
+                                            [searchable]="true" [clearable]="true" (change)="onSelectedCCTCFrom($event)" [(ngModel)]="CCTCFrom"
+                                            style="width:137px;display: inline-block;">
+                                            <ng-option [value]="sal.salaryId" 
+                                                *ngFor="let sal of salaries">
+
+                                                {{sal.salValue}}
+                                            </ng-option>
+                                        </ng-select>
                                         Lakh(s)&nbsp;
 
                                         and
-                                        <select class="form-control selct-maxexp" data-val="true"
-                                           ngModel #CCTCTo="ngModel" id="CCTCTo"
-                                            name="CTCThs"   (change)="onSelectedCCTCTo($event)">
+                                        <!-- <select class="form-control selct-maxexp" data-val="true" ngModel
+                                            #CCTCTo="ngModel" id="CCTCTo" name="CTCThs"
+                                            (change)="onSelectedCCTCTo($event)">
                                             <option value="">--Select type--</option>
                                             <option *ngFor="let sal of salaries" value="{{sal.salaryId}}">
                                                 {{sal.salValue}}</option>
-                                        </select>
+                                        </select> -->
+                        
+                                        <ng-select bindLabel="salValue" placeholder="Select CTC" appendTo="body"
+                                            [searchable]="true" [clearable]="true" (change)="onSelectedCCTCTo($event)" [(ngModel)]="CCTCTo"
+                                            style="width:137px;display:inline-block">
+                                            <ng-option [value]="sal.salaryId" 
+                                                *ngFor="let sal of salaries">
+
+                                                {{sal.salValue}}
+                                            </ng-option>
+                                        </ng-select>
                                         Thousand(s)
 
                                     </div>
@@ -341,15 +389,19 @@
 
                                     <!-- <input data-val="true" data-val-required="Industry is Required" id="Industry"
                                         name="Industry" type="hidden" value="IT Software &amp; Hardware"> -->
-                                    <select class="form-control" data-val="true"
-                                      ngModel #industry="ngModel" [(ngModel)]="update.industry" id="IndustryName"
-                                         (change)="onSelectIndustry($event)" name="InId" required>
-                                     
-                                        <option *ngFor="let ind of industries" value="{{ind.industryId}}">{{ind.industryType}}</option>
-                                    </select>
+                                    <!-- <select class="form-control" data-val="true" ngModel #industry="ngModel"
+                                        id="IndustryName" (change)="onSelectIndustry($event)" name="InId" required>
+
+                                        <option *ngFor="let ind of industries" value="{{ind.industryId}}">
+                                            {{ind.industryType}}</option>
+                                    </select> -->
+                                    <ng-select [items]="industries" bindLabel="industryType"
+                                        (change)="onSelectIndustry($event)" placeholder="Select Industry" ngModel
+                                        #industry="ngModel" appendTo="body" [(ngModel)]="update.industryId">
+                                    </ng-select>
                                     <mat-hint *ngIf="industry.touched && industry.invalid">
                                         <mat-error *ngIf="industry.errors.required">Industry is required</mat-error>
-                                      </mat-hint>
+                                    </mat-hint>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -361,16 +413,21 @@
 
                                     <!-- <input data-val="true" data-val-required="Role is Required" id="Role" name="Role"
                                         type="hidden" value="Developer"> -->
-                                    <select class="form-control" data-val="true" 
-                                        ngModel #role="ngModel" [(ngModel)]="update.role" id="RoleName" name="RId" 
+                                    <!-- <select class="form-control" data-val="true" ngModel #role="ngModel"
+                                        [(ngModel)]="update.role" id="RoleName" name="RId"
                                         (change)="onSelectedRole($event)" required>
-                                     
-                                        <option *ngFor="let role of roles" value="{{role.roleId}}">{{role.roleName}}</option>
-                                       
-                                    </select>
+
+                                        <option *ngFor="let role of roles" value="{{role.roleId}}">{{role.roleName}}
+                                        </option>
+
+                                    </select> -->
+                                    <ng-select [items]="roles" bindLabel="roleName" (change)="onSelectedRole($event)"
+                                        placeholder="Select Role" ngModel #role="ngModel" appendTo="body"
+                                        [(ngModel)]="update.roleId">
+                                    </ng-select>
                                     <mat-hint *ngIf="role.touched && role.invalid">
                                         <mat-error *ngIf="role.errors.required">Role is required</mat-error>
-                                      </mat-hint>
+                                    </mat-hint>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -381,15 +438,18 @@
                                 <div class="col-sm-8">
                                     <!-- <input data-val="true" data-val-required="Job Type is Required" id="Jobtype"
                                         name="Jobtype" type="hidden" value="1"> -->
-                                    <select class="form-control" data-val="true" (change)="onSelectJobType($event)"
-                                        ngModel #jobType="ngModel" [(ngModel)]="update.jobType" id="jobType" name="JTId" required>
-                                        
-                                        <option *ngFor="let jt of jobTypes" value="{{jt.jobTypeId}}">{{jt.jobType}}</option>
-                                       
-                                    </select>
+                                    <!-- <select class="form-control" (change)="onSelectJobType($event)"
+                                        ngModel #jobType="ngModel" id="jobType" name="JTId" required>
+                                        <option *ngFor="let jt of jobTypes" value="{{jt.jobTypeId}}" selected="jt.jobType == 'Permanent'">{{jt.jobType}}</option>
+                                    </select> -->
+                                    <ng-select [items]="jobTypes" bindLabel="jobType" (change)="onSelectJobType($event)"
+                                        placeholder="Select JobType" ngModel #jobType="ngModel" appendTo="body"
+                                        [(ngModel)]="update.jobTypeId">
+                                    </ng-select>
+
                                     <mat-hint *ngIf="jobType.touched && jobType.invalid">
                                         <mat-error *ngIf="jobType.errors.required">JobType is required</mat-error>
-                                      </mat-hint>
+                                    </mat-hint>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -399,17 +459,23 @@
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
 
                                 <div class="col-md-8">
-                                    <input class="form-control" data-val="true"
-                                         ngModel #keySkills="ngModel" [(ngModel)]="update.keySkills" id="txtKeySkills" name="KeySkills"
+                                    <input class="form-control" data-val="true" ngModel #keySkills="ngModel"
+                                        [(ngModel)]="update.keySkills" id="txtKeySkills" name="KeySkills"
                                         onblur="fillHeadLine();" type="text" value=""
-                                        autocomplete="off">
-                                        
+                                        (ngModelChange)="selectKeySkills()" [matAutocomplete]="kauto">
+
                                     <div class="example">
                                         KeySkill(s) examples : Java, ASP.Net,Oracle,PHP, CPP etc...
                                     </div>
+                                    <mat-autocomplete #kauto="matAutocomplete">
+                                        <mat-option *ngFor="let skill of skills|async"
+                                            value="{{skill.requiredKeySkills}}">
+                                            {{skill.requiredKeySkills}}
+                                        </mat-option>
+                                    </mat-autocomplete>
                                     <mat-hint *ngIf="keySkills.touched && keySkills.invalid">
                                         <mat-error *ngIf="keySkills.errors.required">Key Skills is required</mat-error>
-                                      </mat-hint>
+                                    </mat-hint>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -417,12 +483,13 @@
                                     Resume Headline <span style="color:red;">*</span>
                                 </label><label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" data-val="true"
-                                       ngModel #resumeHeadLine="ngModel" [(ngModel)]="update.resumeHeadLine" id="txtResumeHeadLine"
-                                        name="ResumeHeadLine" type="text" value="" required>
-                                        <mat-hint *ngIf="resumeHeadLine.touched && resumeHeadLine.invalid">
-                                            <mat-error *ngIf="resumeHeadLine.errors.required">Resume HeadLine is required</mat-error>
-                                          </mat-hint>
+                                    <input class="form-control" data-val="true" ngModel #resumeHeadLine="ngModel"
+                                        [(ngModel)]="update.resumeHeadLine" id="txtResumeHeadLine" name="ResumeHeadLine"
+                                        type="text" value="" required>
+                                    <mat-hint *ngIf="resumeHeadLine.touched && resumeHeadLine.invalid">
+                                        <mat-error *ngIf="resumeHeadLine.errors.required">Resume HeadLine is required
+                                        </mat-error>
+                                    </mat-hint>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -431,10 +498,12 @@
 
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" ngModel #currentDesignation="ngModel" id="txtCurrentDesignation"
-                                       [(ngModel)]="update.currentDesignation" name="CurrentDesignation" type="text" value="" [matAutocomplete]="desgauto">
-                                       <mat-autocomplete #desgauto="matAutocomplete">
-                                        <mat-option *ngFor="let desg of designations"
+                                    <input class="form-control" ngModel #currentDesignation="ngModel"
+                                        id="txtCurrentDesignation" [(ngModel)]="update.currentDesignation"
+                                        name="CurrentDesignation" type="text" value=""
+                                        (ngModelChange)="selectDesignation()" [matAutocomplete]="desgauto">
+                                    <mat-autocomplete #desgauto="matAutocomplete">
+                                        <mat-option *ngFor="let desg of designations|async"
                                             value="{{desg.designationName}}">
                                             {{desg.designationName}}
                                         </mat-option>
@@ -448,14 +517,14 @@
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
                                     <input class="form-control" id="txtCurrentCompany" ngModel #currentCompany="ngModel"
-                                       [(ngModel)]="update.currentCompany" name="CurrentCompany" type="text" value=""
-                                        [matAutocomplete]="cmpauto" (change)="selectCompany($event)">
-                                        <mat-autocomplete #cmpauto="matAutocomplete">
-                                            <mat-option *ngFor="let cmp of companies"
-                                                value="{{cmp.userCompanyNames}}">
-                                                {{cmp.userCompanyNames}}
-                                            </mat-option>
-                                        </mat-autocomplete>
+                                        [(ngModel)]="update.currentCompany" name="CurrentCompany" type="text" value=""
+                                        [matAutocomplete]="cmpauto" (ngModelChange)="selectCompany()">
+                                    <mat-autocomplete #cmpauto="matAutocomplete">
+                                        <mat-option *ngFor="let cmp of companies|async"
+                                            value="{{cmp.userCompanyNames}}">
+                                            {{cmp.userCompanyNames}}
+                                        </mat-option>
+                                    </mat-autocomplete>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -464,19 +533,20 @@
 
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" data-val="true"
-                                       ngModel #preLocation="ngModel" [(ngModel)]="update.preferredLocation
-                                       " id="txtPreferredLocation" (change)="selectPreferredLocation($event)"
-                                        name="PreferredLocation" type="text" value="" [matAutocomplete]="lauto" required>
-                                        <mat-autocomplete #lauto="matAutocomplete">
-                                            <mat-option *ngFor="let loc of locations"
-                                                value="{{loc.cityName}}">
-                                                {{loc.cityName}}
-                                            </mat-option>
-                                        </mat-autocomplete>
-                                        <mat-hint *ngIf="preLocation.touched && preLocation.invalid">
-                                            <mat-error *ngIf="preLocation.errors.required">Preferred Location is required</mat-error>
-                                        </mat-hint>
+                                    <input class="form-control" data-val="true" ngModel #preLocation="ngModel"
+                                        [(ngModel)]="update.preferredLocation
+                                       " id="txtPreferredLocation" (ngModelChange)="selectPreferredLocation()"
+                                        name="PreferredLocation" type="text" value="" [matAutocomplete]="lauto"
+                                        required>
+                                    <mat-autocomplete #lauto="matAutocomplete">
+                                        <mat-option *ngFor="let loc of cities|async" value="{{loc.cityName}}" multiple>
+                                            {{loc.cityName}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-hint *ngIf="preLocation.touched && preLocation.invalid">
+                                        <mat-error *ngIf="preLocation.errors.required">Preferred Location is required
+                                        </mat-error>
+                                    </mat-hint>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -486,15 +556,20 @@
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
 
                                 <div class="col-md-8">
-                                    <select class="form-control" data-val="true"
-                                       (change)="onSelectNoticePeriod($event)"
-                                       ngModel #noticePeriod="ngModel" [(ngModel)]="update.noticePeriod" id="NoticePeriod"
-                                        name="NoticePeriod" required>
-                                     
-                                        <option *ngFor="let np of noticePeriods" value="{{np.noticePeriodId}}">{{np.noticeText}}</option>
-                                        
-                                    </select>
-                                   
+                                    <!-- <select class="form-control" data-val="true" (change)="onSelectNoticePeriod($event)"
+                                        ngModel #noticePeriod="ngModel" id="NoticePeriod" name="NoticePeriod" required
+                                        [(ngModel)]="update.noticePeriod">
+
+                                        <option *ngFor="let np of noticePeriods" value="{{np.noticePeriodId}}">
+                                            {{np.noticeText}}</option>
+
+                                    </select> -->
+                                    <ng-select [items]="noticePeriods" bindLabel="noticeText"
+                                        (change)="onSelectNoticePeriod($event)" placeholder="Select NoticePeriod"
+                                        ngModel #noticePeriod="ngModel" appendTo="body"
+                                        [(ngModel)]="update.noticePeriod">
+                                    </ng-select>
+
                                 </div>
                             </div>
                         </div>
@@ -514,7 +589,8 @@
                                     <label class="control-label col-md-3 label-txt-alg" for="Resume">Resume</label>
                                     <label class="col-sm-1" style="width:3% !important;">:</label>
                                     <div class="col-md-8">
-                                        <input type="file" name="file" ngModel #resume="ngModel" id="resumeFile" (change)="onSelectResume($event)" accept="image/*,application/pdf,application/msword,
+                                        <input type="file" name="file" ngModel #resume="ngModel" id="resumeFile"
+                                            (change)="onSelectResume($event)" accept="image/*,application/pdf,application/msword,
                                         application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                                     </div>
                                 </div>

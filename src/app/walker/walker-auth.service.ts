@@ -18,6 +18,13 @@ export class WalkerAuthService {
   setSkills;
   tokenString;
   updateOn;
+  designations=[];
+  keySkills=[];
+  companies=[];
+  localities=[];
+  institutes=[];
+  languages=[];
+  locations=[];
   constructor(private http: HttpClient, private date: DatePipe) {
 
   }
@@ -69,7 +76,10 @@ export class WalkerAuthService {
     return this.http.get("http://localhost:62222/getSalaryDetails");
   }
   getLocations() {
-    return this.http.get(this.url + '/getcities');
+    return this.http.get<any>(this.url + '/getcities').pipe(map((data)=>{
+this.locations=data;
+return this.locations;
+    }))
   }
   getExperienceData() {
     return this.http.get(this.url + '/getallexp');
@@ -78,7 +88,10 @@ export class WalkerAuthService {
     return this.http.get(this.url + '/getRoles');
   }
   getLocalities(cityObj){
-    return this.http.post(this.url+'/getLocalities',cityObj);
+    return this.http.post<any>(this.url+'/getLocalities',cityObj).pipe(map((data)=>{
+      this.localities=data;
+      return this.localities;
+    }));
   }
   getRoleByIndId(indObj){
    
@@ -187,9 +200,9 @@ return this.http.post(this.url+'/checkappliedstatus',{"jobNo":jobNo,"jobSeekerEm
       "availableForF2F": true,
       "availableForSkype": true,
       "availableForTelephonic": true,
-      "availbleTimeSlotsForFaceToFace": panel.AvailbleTimeSlotsForFaceToFace[0],
-      "availbleTimeSlotsForSkype": panel.AvailbleTimeSlotsForSkype[0],
-      "availbleTimeSlotsForTelephonic": panel.AvailbleTimeSlotsForTelephonic[0],
+      "availableTimeSlotsForFaceToFace": panel.AvailableTimeSlotsForFaceToFace,
+      "availableTimeSlotsForSkype": panel.AvailableTimeSlotsForSkype,
+      "availableTimeSlotsForTelephonic": panel.AvailableTimeSlotsForTelephonic,
       "costPerHourForF2F": panel.costPerHour,
       "costPerDayForF2F": panel.costPerDay,
       "costPerHourForTelephonic": panel.costPerHourTelephonic,
@@ -214,8 +227,8 @@ return this.http.post(this.url+'/checkappliedstatus',{"jobNo":jobNo,"jobSeekerEm
     return this.http.post(this.url + "/postjsdetails", jsPrivacyDetails);
   }
 
-  displayAppliedWalkins() {
-    return this.http.get(this.url + '/getAppliedJobs');
+  displayAppliedWalkins(email) {
+    return this.http.get(this.url + '/getAppliedJobs?walkerEmail=' + email);
   }
 
   getJobs():Observable<any> {
@@ -229,16 +242,28 @@ return this.http.post(this.url+'/checkappliedstatus',{"jobNo":jobNo,"jobSeekerEm
     return this.http.get(this.url + '/gettimeslots');
   }
   getLanguages(){
-    return this.http.get(this.url+'/getlanguages');
+    return this.http.get<any>(this.url+'/getlanguages').pipe(map((data)=>{
+      this.languages=data;
+      return this.languages;
+    }));
   }
   getCompanies(){
-    return this.http.get(this.url+'/getcompanies');
+    return this.http.get<any>(this.url+'/getcompanies').pipe(map((data)=>{
+this.companies=data;
+return this.companies;
+    }));
   }
   getDesignations(){
-    return this.http.get(this.url+'/getdesignations');
+    return this.http.get<any>(this.url+'/getdesignations').pipe(map((data)=>{
+      this.designations=data;
+      return this.designations;
+    }));
   }
   getKeySkills(){
-    return this.http.get(this.url+'/getkeyskills');
+    return this.http.get<any>(this.url+'/getkeyskills').pipe(map((data)=>{
+this.keySkills=data;
+return this.keySkills;
+    }));
   }
   appliedJob(appliedWalkin) {
     return this.http.post(this.url + '/postjsappliedjob', appliedWalkin);
@@ -250,7 +275,10 @@ this.setSkills=skills;
     return this.setSkills;
   }
   getAllInstitutes(){
-    return this.http.get(this.url+'/getinstitutes');
+    return this.http.get<any>(this.url+'/getinstitutes').pipe(map((data)=>{
+      this.institutes=data;
+      return this.institutes;
+    }));
   }
   getWalkinsBySkills(skills) {
 

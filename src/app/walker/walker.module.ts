@@ -63,6 +63,7 @@ import { DisplayWalkersComponent } from './display-walkers/display-walkers.compo
 import { WalkerEmailComponent } from './walker-email/walker-email.component';
 import { WalkerSmsComponent } from './walker-sms/walker-sms.component';
 import { ModifySearchComponent } from './modify-search/modify-search.component';
+import { EditWalkerComponent } from './edit-walker/edit-walker.component';
 
 @NgModule({
   declarations: [LoginComponent,HomeComponent,
@@ -72,7 +73,7 @@ import { ModifySearchComponent } from './modify-search/modify-search.component';
      LogoutComponent, ViewComponent, EditComponent, 
      JobtypeComponent, WalkinDetailsComponent, 
      NavbarComponent,SelectedJobComponent, DisplaywalkinsBysearchComponent,
-      FileuploadComponent, DisplayWalkinsComponent, DisplayWalkersComponent, WalkerEmailComponent, WalkerSmsComponent, ModifySearchComponent],
+      FileuploadComponent, DisplayWalkinsComponent, DisplayWalkersComponent, WalkerEmailComponent, WalkerSmsComponent, ModifySearchComponent, EditWalkerComponent],
   imports: [
     SharedModule,
     ReactiveFormsModule,

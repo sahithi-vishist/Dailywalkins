@@ -21,6 +21,8 @@ import { DisplayWalkersComponent } from './display-walkers/display-walkers.compo
 import { WalkerEmailComponent } from './walker-email/walker-email.component';
 import { WalkerSmsComponent } from './walker-sms/walker-sms.component';
 import { ModifySearchComponent } from './modify-search/modify-search.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms'; 
 
 const routes: Routes = [{path:'',component:LoginComponent},
   {path:"login",component:LoginComponent},
@@ -44,7 +46,7 @@ const routes: Routes = [{path:'',component:LoginComponent},
 {path:'SendJobSMS',component:WalkerSmsComponent}];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes),NgSelectModule,FormsModule],
+  exports: [RouterModule,NgSelectModule,FormsModule]
 })
 export class WalkerRoutingModule { }

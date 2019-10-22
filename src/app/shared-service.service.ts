@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { first } from 'rxjs/operators';
 
 
 @Injectable({
@@ -8,8 +9,17 @@ import { HttpClient } from '@angular/common/http';
 export class SharedServiceService {
 object;
 jobTitle;
+fName:String;
 url="http://localhost:62222"
   constructor(private http:HttpClient) { }
+  setFirstName(firstName){
+this.fName=firstName;
+
+  }
+  getfName(){
+    
+    return this.fName;
+  }
   setJSON(searchObj){
 this.object=searchObj;
   }

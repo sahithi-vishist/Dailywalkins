@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { NotificationService } from 'src/app/notification.service';
 import { Router } from '@angular/router';
 import { WalkerAuthService } from '../walker-auth.service';
+import { map } from 'rxjs/operators';
 
 
 
@@ -16,14 +17,12 @@ export class EditComponent implements OnInit {
   result;
   id;
   updateWalker;
-  experience;
-  currentCTC;
   update;
-  industries;
-  jobTypes;
-  noticePeriods;
+  industries: any[];
+  jobTypes: any[];
+  noticePeriods: any[];
   qualifications;
-  roles;
+  roles: any[];
   locations;
   languages;
   institutes;
@@ -32,64 +31,60 @@ export class EditComponent implements OnInit {
   experiences;
   salaries;
   selectedPhoto: File;
-  selectedResume:File;
+  selectedResume: File;
   imageURL;
   resume;
   profilePhoto;
-  updatedOn=new Date();
+  skills;
+  cities;
+  CCTCFrom;
+  CCTCTo;
+  expYears;
+  expMonths;
+  updatedOn = new Date();
+
   constructor(private http: HttpClient, private date: DatePipe, private service: WalkerAuthService,
     private router: Router, private notification: NotificationService) {
 
-    this.service.getIndustries().subscribe((res) => {
+    this.service.getIndustries().subscribe((res: any) => {
       this.industries = res;
     }, (err) => {
 
     })
 
-    this.service.getJobType().subscribe((res) => {
+    this.service.getJobType().subscribe((res: any) => {
       this.jobTypes = res;
     })
     this.service.getQualifications().subscribe((res) => {
       this.qualifications = res;
     })
 
-    this.service.getNoticePeriod().subscribe((res) => {
+    this.service.getNoticePeriod().subscribe((res: any) => {
 
       this.noticePeriods = res;
-      console.log(res);
+    
     })
     this.service.getLocations().subscribe((res) => {
       this.locations = res;
     })
-    this.service.getRoles().subscribe((res) => {
-      // this.roles=res;
+    this.service.getRoles().subscribe((res: any) => {
+      this.roles = res;
     })
-    this.service.getLanguages().subscribe((res) => {
-      this.languages = res;
-    })
-    this.service.getDesignations().subscribe((res) => {
-      this.designations = res;
-    })
-    this.service.getCompanies().subscribe((res) => {
-      this.companies = res;
-    })
+
     this.service.getSalaries().subscribe((res) => {
       this.salaries = res;
     })
     this.service.getExperienceData().subscribe((res) => {
       this.experiences = res;
     })
-    this.service.getAllInstitutes().subscribe((res) => {
-      this.institutes = res;
-    })
     this.id = localStorage.getItem('walkerId');
     this.service.getWalkerDetails(this.id).subscribe((res) => {
 
       this.update = {
-        jobSeekerId: '', firstName: '', lastName: '', email: '', gender: '', location: res['location'].cityName, contactNo: '', contactNoLandline: '',
-        dateOfBirth: '', languagesKnown: '', education: '', institute: '', yearOfPass: '', 
+        jobSeekerId: '', firstName: '', lastName: '', email: '', gender: '', location: res['location'], contactNo: '', contactNoLandline: '',
+        dateOfBirth: '', languagesKnown: '', education: '', institute: '', yearOfPass: '',
         industry: '', role: '', jobType: '', keySkills: '', resumeHeadLine: '', currentDesignation: '',
-        currentCompany: '', preferredLocation: '', noticePeriod: '', 
+        currentCompany: '', preferredLocation: '', noticePeriod: '', photo: '',
         "password": res['password'],
         "confirmPassword": res['confirmPassword'],
         "experience": res['experience'],
@@ -98,8 +93,8 @@ export class EditComponent implements OnInit {
         "standardKeySkills": res['keySkills'],
         "locality": res['locality'],
         "updateResume": res['file'],
-        "updatedOn": this.date.transform(this.updatedOn,'yyyy-MM-dd'),
-       // "resume": res['file'],
+        "updatedOn": this.date.transform(this.updatedOn, 'yyyy-MM-dd'),
+        // "resume": res['file'],
         "textResume": res['resumeHeadLine'],
         "userName": res['firstName'],
         "status": "Active",
@@ -108,15 +103,15 @@ export class EditComponent implements OnInit {
         "previousDesignation": res['currentDesignation'],
         "standardPreviousCompany": res['currentCompany'],
         "emailVerified": true,
-      //  "visibleSetting": 1,
+        //  "visibleSetting": 1,
         "jsId": 2,
         "isOnline": true,
         "viewedCount": 0,
         "downloadedCount": 0,
         "candidatesActiveInLast": res['firstName'],
-        "industryId": '',
-        "roleId": '',
-        "jobTypeId": '',
+        "industryId": res['industryId'],
+        "roleId": res['roleId'],
+        "jobTypeId": res['jobTypeId'],
         "createdBy": res['firstName'],
         "similarCount": 0,
         "matchedPercent": 0,
@@ -128,13 +123,13 @@ export class EditComponent implements OnInit {
         "deviceId": res['firstName'],
         "profileName": res['firstName'],
         "isMobileOnline": true,
-        "lastLogin": this.date.transform(this.updatedOn,'yyyy-MM-dd'),
-        "lastActive": this.date.transform(this.updatedOn,'yyyy-MM-dd'),
+        "lastLogin": this.date.transform(this.updatedOn, 'yyyy-MM-dd'),
+        "lastActive": this.date.transform(this.updatedOn, 'yyyy-MM-dd'),
         "uploadedBy": res['firstName'],
-        "uploadedDate":this.date.transform(this.updatedOn,'yyyy-MM-dd'),
+        "uploadedDate": this.date.transform(this.updatedOn, 'yyyy-MM-dd'),
         "onNoticePeriod": '',
-        "lastUpdatedNoticePeriod": this.date.transform(this.updatedOn,'yyyy-MM-dd'),
-        "lastWorkingDay": this.date.transform(this.updatedOn,'yyyy-MM-dd'),
+        "lastUpdatedNoticePeriod": this.date.transform(this.updatedOn, 'yyyy-MM-dd'),
+        "lastWorkingDay": this.date.transform(this.updatedOn, 'yyyy-MM-dd'),
         "resumeFile": res['resumeFile']
       };
       this.update.jobSeekerId = this.id;
@@ -157,73 +152,78 @@ export class EditComponent implements OnInit {
       this.update.currentDesignation = res['currentDesignation'];
       this.update.currentCompany = res['currentCompany'];
       this.update.preferredLocation = res['preferredLocation'];
- 
-      this.profilePhoto=res['photo']
+      this.update.education = res['education'];
+      this.update.noticePeriod = res['noticePeriod'];
 
 
-      //this.result=res;
+      this.selectedPhoto = res['photo']
+      this.profilePhoto = 'data:image/png;base64,' + res['photo'];
+      var strCTC=new String(this.update.currentCTC)
+      var splitsCTC=strCTC.split(".");
+      this.CCTCFrom=splitsCTC[0];
+      this.CCTCTo=splitsCTC[1];
+      var strExp=new String(this.update.experience)
+      var splitsExp=strExp.split(".");
+      this.expYears=splitsExp[0];
+      this.expMonths=splitsExp[1];
+    
     }, (err) => {
 
     })
+
   }
+
   selectProfileImage(event) {
-   this.selectedPhoto = event.target.files[0];
+    this.selectedPhoto = event.target.files[0];
+ 
     var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]); 
-    reader.onload = (_event) => { 
-      this.imageURL= reader.result; 
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+      this.profilePhoto = reader.result;
+
     }
   }
   onSelectIndustry(event) {
 
-    this.update.industryId = this.industries.find(ind => ind['industryId'] == event.target['value']);
+    this.update.industryId = this.industries.find(ind => ind['industryId'] == event['industryId']);
     this.update.industry = this.update.industryId.industryType
-    this.service.getRoleByIndId(this.update.industryId).subscribe((res) => {
+
+    this.service.getRoleByIndId(this.update.industryId).subscribe((res: any) => {
       this.roles = res;
     })
   }
   onSelectJobType(event) {
-    this.update.jobTypeId = this.jobTypes.find(jt => jt['jobTypeId'] == event.target['value']);
+
+    this.update.jobTypeId = this.jobTypes.find(jt => jt['jobTypeId'] == event['jobTypeId']);
+
     this.update.jobType = this.update.jobTypeId.jobType
+
   }
   onSelectEducation(event) {
-    this.update.education = this.qualifications.find(edu => edu['qualificationId'] == event.target['value'])
+    this.update.education = this.qualifications.find(edu => edu['qualificationId'] == event['qualificationId'])
   }
   onSelectNoticePeriod(event) {
-    this.update.noticePeriod = this.noticePeriods.find(np => np['noticePeriodId'] == event.target['value'])
-    this.update.onNoticePeriod=this.update.noticePeriod['noticeText'];
+    this.update.noticePeriod = this.noticePeriods.find(np => np['noticePeriodId'] == event['noticePeriodId'])
+    this.update.onNoticePeriod = this.update.noticePeriod['noticeText'];
   }
   onSelectLocation(event) {
-    this.update.location = this.locations.find(city => city['cityId'] == event.target['value'])
+    this.update.location = this.locations.find(city => city['cityId'] == event['cityId'])
   }
   onSelectedRole(event) {
-    this.update.roleId = this.roles.find(role => role['roleId'] == event.target['value'])
+    this.update.roleId = this.roles.find(role => role['roleId'] == event['roleId'])
   }
-  selectInstitute(event) {
-    this.update.institute = event.target.value;
-  }
-  selectLanguage(event) {
-    this.update.languagesKnown = event.target.value;
-  }
-  selectDesignation(event) {
-    this.update.currentDesignation = event.target.value;
-  }
-  selectCompany(event) {
-    this.update.currentCompany = event.target.value;
-  }
-  selectPreferredLocation(event) {
-    this.update.preferredLocation = event.target.value;
-  }
-  // onSelectedCCTCFrom(event) {
-  //   this.update.CCTCFrom = event.target.value;
-  //   //this.salaries.find(sal=>sal['salaryId'] == event.target['value']);
 
-  // }
-  // onSelectedCCTCTo(event) {
-  //   this.update.CCTCTo = event.target.value;
-  //   //this.salaries.find(sal=>sal['salaryId'] == event.target['value']);
+  onSelectedCCTCFrom(event) {
+   
+    this.CCTCFrom = event;
+   this.update.currentCTC=this.CCTCFrom+"."+this.CCTCTo;
 
-  // }
+  }
+  onSelectedCCTCTo(event) {
+    this.CCTCTo = event;
+    this.update.currentCTC=this.CCTCFrom+"."+this.CCTCTo;
+
+  }
   // onSelectedECTCFrom(event) {
   //   this.update.ECTCFrom = event.target.value;
   //   //this.salaries.find(sal=>sal['salaryId'] == event.target['value']);
@@ -234,29 +234,31 @@ export class EditComponent implements OnInit {
   //   //this.salaries.find(sal=>sal['salaryId'] == event.target['value']);
 
   // }
-  // onSelectedMinExp(event) {
-  //   this.update.minExp = event.target.value;
-  // }
-  // onSelectedMaxExp(event) {
-  //   this.update.maxExp = event.target.value;
-  // }
-  onSelectResume(event){
-    this.selectedResume=event.target.files[0];
+  onSelectedExpYears(event) {
+    this.expYears = event;
+    this.update.experience=this.expYears+"."+this.expMonths;
+  }
+  onSelectedExpMonths(event) {
+    this.expMonths = event;
+    this.update.experience=this.expYears+"."+this.expMonths;
+  }
+  onSelectResume(event) {
+    this.selectedResume = event.target.files[0];
     var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]); 
-    reader.onload = (_event) => { 
-      this.resume = reader.result; 
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+      this.resume = reader.result;
     }
   }
   ngOnInit() {
   }
   updateDetails(obj) {
-
+console.log(this.update.experience);
     const formData = new FormData();
     formData.append('updateDetails', JSON.stringify(this.update));
     formData.append('photo', this.selectedPhoto);
-    formData.append('resume',this.selectedResume)
- 
+    formData.append('resume', this.selectedResume)
+
     this.service.updateWalker(formData).subscribe((res) => {
       if (res != null) {
         this.notification.showNotification('success', "updated successfully");
@@ -265,5 +267,53 @@ export class EditComponent implements OnInit {
     }, (err) => {
       this.notification.showNotification('error', 'updation failed due to some error');
     })
+  }
+  selectLanguage() {
+    this.languages = this.service.getLanguages().pipe(map(languages =>
+      this.langFilter(languages)),
+    )
+  }
+  langFilter(values) {
+    return values.filter(lang => lang.language.toLowerCase().includes(this.update.languagesKnown))
+
+  }
+  selectInstitute() {
+    this.institutes = this.service.getAllInstitutes().pipe(map(institutes =>
+      this.insFilter(institutes)),
+    )
+  }
+  insFilter(values) {
+    return values.filter(institute => institute.instituteName.toLowerCase().includes(this.update.institute))
+
+  }
+  selectKeySkills() {
+    this.skills = this.service.getKeySkills().pipe(map(skills => this.skillFilter(skills)),
+    )
+  }
+  skillFilter(values) {
+    return values.filter(skill => skill.requiredKeySkills.toLowerCase().includes(this.update.keySkills))
+  }
+  selectDesignation() {
+    this.designations = this.service.getDesignations().pipe(map(designations => this.desfilter(designations)),
+    )
+  }
+  desfilter(values) {
+
+    return values.filter(designation => designation.designationName.toLowerCase().includes(this.update.currentDesignation))
+  }
+  selectCompany() {
+    this.companies = this.service.getCompanies().pipe(map(companies => this.cmpFilter(companies)),
+    )
+  }
+  cmpFilter(values) {
+    return values.filter(company => company.userCompanyNames.toLowerCase().includes(this.update.currentCompany))
+  }
+  selectPreferredLocation() {
+    this.cities = this.service.getLocations().pipe(map(cities =>
+      this.cityFilter(cities)),
+    )
+  }
+  cityFilter(values) {
+    return values.filter(city => city.cityName.toLowerCase().includes(this.update.preferredLocation))
   }
 }

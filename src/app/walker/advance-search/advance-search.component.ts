@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { WalkerAuthService } from '../walker-auth.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { SharedServiceService } from 'src/app/shared-service.service';
 import { Location } from '@angular/common';
@@ -26,6 +26,15 @@ export class AdvanceSearchComponent implements OnInit {
   keySkills;
  locControl=new FormControl();
  eduControl=new FormControl();
+ skillControl=new FormControl();
+
+locationOptions: Observable<string[]>;
+educationOptions:Observable<string[]>;
+
+keySkillsOptions:Observable<string[]>;
+locOptions: string[] = [];
+skillsOptions:string[]=[];
+eduOptions:string[]=[];
 
  search={keySkills:'',
                 location:'',
@@ -36,6 +45,7 @@ export class AdvanceSearchComponent implements OnInit {
               industryId:'',
             roleId:'',
           jobTypeId:''}
+  
   constructor(private service:WalkerAuthService,private router:Router,private sharedService:SharedServiceService) {
     this.service.getExperienceData().subscribe((res)=>{
       this.experience=res;
@@ -47,11 +57,17 @@ export class AdvanceSearchComponent implements OnInit {
       this.industries=res;
     })
     this.service.getLocations().subscribe((res)=>{
-      this.locations=res;
-   
+      this.locations=res;   
+      this.locations.forEach(locObj => {
+        this.locOptions.push(locObj['cityName'])
+      });
+ 
     })
     this.service.getQualifications().subscribe((res)=>{
       this.education=res;
+      this.education.forEach(eduObj=>{
+        this.eduOptions.push(eduObj['qualification'])
+      })
     })
     this.service.getRoles().subscribe((res)=>{
       this.roles=res;
@@ -59,13 +75,14 @@ export class AdvanceSearchComponent implements OnInit {
 
 this.service.getKeySkills().subscribe((res)=>{
   this.keySkills=res;
+  this.keySkills.forEach(skillObj=>{
+    this.skillsOptions.push(skillObj['requiredKeySkills'])
+  })
 })
    }
 
  advanceSearch(){
-  
-  
-   this.search.keySkills=this.advSearchForm.value.keySkills;
+   this.search.keySkills=this.skillControl.value;
    this.search.location=this.locControl.value;
    //this.search.education=this.eduControl.value;
    this.search.education=this.education.find(edu => edu['qualification'] ==this.eduControl.value);
@@ -92,7 +109,23 @@ this.search.expMax=this.experience.find(exp => exp['experienceId'] == event.targ
  }
  
 ngOnInit() {
-  
+
+  this.locationOptions = this.locControl.valueChanges
+.pipe(
+  startWith(''),
+  map(val => this.locfilter(val))
+);
+this.educationOptions = this.eduControl.valueChanges
+.pipe(
+  startWith(''),
+  map(val => this.edufilter(val))
+);
+
+this.keySkillsOptions = this.skillControl.valueChanges
+.pipe(
+  startWith(''),
+  map(val => this.skillfilter(val))
+);
 this.advSearchForm=new FormGroup({
   keySkills:new FormControl('',Validators.required),
   location:new FormControl('',Validators.required),
@@ -106,5 +139,19 @@ this.advSearchForm=new FormGroup({
 })
 
   }
-  
+  locfilter(val: string): string[] {
+    
+    return  this.locOptions.filter(option =>
+      option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+  }
+  edufilter(val: string): string[] {
+    
+    return  this.eduOptions.filter(option =>
+      option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+  }
+  skillfilter(val: string): string[] {
+    
+    return  this.skillsOptions.filter(option =>
+      option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+  }
 }

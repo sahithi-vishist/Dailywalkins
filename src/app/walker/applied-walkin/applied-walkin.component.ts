@@ -11,7 +11,7 @@ vm={};
 appliedWalkins;
 appliedWalkinsCount;
   constructor(private service:WalkerAuthService) {
-    this.service.displayAppliedWalkins().subscribe((res)=>{
+    this.service.displayAppliedWalkins(localStorage.getItem('email')).subscribe((res)=>{
       this.appliedWalkins=res;
       this.appliedWalkinsCount=this.appliedWalkins.length;
     })

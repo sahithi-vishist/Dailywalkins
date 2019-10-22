@@ -16,7 +16,7 @@ totalJobs;
     private sharedService:SharedServiceService) {
     this.toSearch=this.sharedService.getJSON();
     console.log(this.toSearch);
-    if(this.toSearch.keySkills!=""){
+    if(this.toSearch.keySkills!=null){
       this.service.getWalkinsBySkills(this.toSearch.keySkills).subscribe((res)=>{
         this.postJobs=res;
         this.totalJobs=this.postJobs.length;

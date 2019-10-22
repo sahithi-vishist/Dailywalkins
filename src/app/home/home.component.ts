@@ -3,6 +3,7 @@ import { WalkerAuthService } from '../walker/walker-auth.service';
 import { FacilityService } from '../facility/facilityservice.service';
 import { RecruiterauthserviceService } from '../recruiterauthservice.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
   search={skill:''}
   selectedDate = new Date();
   selectedCategory;
+  skills;
   constructor(private service: WalkerAuthService,private router:Router ,private rservice: RecruiterauthserviceService, private fservice: FacilityService) {
     this.service.getWalkers().subscribe((res) => {
       this.walkers = res;
@@ -86,4 +88,12 @@ this.selectedCategory=event.target.value;
 
 
   }
+  onSkillChange(){
+    this.skills = this.service.getKeySkills().pipe(map(skills => this.skillFilter(skills)),
+    )
+  }
+  skillFilter(values) {
+    return values.filter(skill => skill.requiredKeySkills.toLowerCase().includes(this.search.skill))
+  }
+
 }

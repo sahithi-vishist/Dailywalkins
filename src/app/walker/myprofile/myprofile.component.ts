@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { WalkerAuthService } from '../walker-auth.service';
+import { SharedServiceService } from 'src/app/shared-service.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ photo;
 uints;
 recommendedJob;
 totalRecommendedJobs=0;;
-  constructor(private router:Router,private http:HttpClient,private service:WalkerAuthService) {
+  constructor(private router:Router,private http:HttpClient,private service:WalkerAuthService,private sharedService:SharedServiceService) {
    
      this.service.getId().subscribe((id)=>{
        localStorage.setItem("walkerId",id.toString());
@@ -41,6 +42,7 @@ totalRecommendedJobs=0;;
         this.location=res['location'].cityName;
         this.photo=res['photo'];
         this.result=res;
+     this.sharedService.setFirstName(this.fName);
         this.service.getWalkinsBySkills(this.keySkills).subscribe((res)=>{
           this.recommendedJob=res;
           this.totalRecommendedJobs=this.recommendedJob.length;

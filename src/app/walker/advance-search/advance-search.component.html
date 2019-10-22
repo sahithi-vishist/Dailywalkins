@@ -15,10 +15,10 @@
                                         <label class="col-sm-1">:</label>
                                         <div class="col-sm-8">
                                             <input class="form-control" id="txtKeySkills" formControlName="keySkills"
-                                                placeholder="java" type="text" value="" [matAutocomplete]="kauto">
+                                                placeholder="java" type="text" value="" [formControl]="skillControl" [matAutocomplete]="kauto">
                                                 <mat-autocomplete #kauto="matAutocomplete">
-                                                    <mat-option *ngFor="let skill of keySkills" value="{{skill.requiredKeySkills}}">
-                                                      {{skill.requiredKeySkills}}
+                                                    <mat-option *ngFor="let skill of keySkillsOptions|async" value="{{skill}}">
+                                                      {{skill}}
                                                     </mat-option>
                                                   </mat-autocomplete>
                                         </div>
@@ -31,8 +31,8 @@
                                             <input class="form-control" id="txtLocation" formControlName="location" 
                                                 placeholder="Hyderabad" [formControl]="locControl" type="text" [matAutocomplete]="lauto">
                                                 <mat-autocomplete #lauto="matAutocomplete">
-                                                    <mat-option *ngFor="let loc of locations" value="{{loc.cityName}}">
-                                                      {{loc.cityName}}
+                                                    <mat-option *ngFor="let loc of locationOptions|async" value="{{loc}}">
+                                                        {{loc}}
                                                     </mat-option>
                                                   </mat-autocomplete>
                                         </div>
@@ -42,10 +42,10 @@
                                         <label class="col-sm-1">:</label>
                                         <div class="col-sm-8">
                                             <input class="form-control" id="txtEducation" formControlName="education"
-                                                type="text" value="" [formControl]="eduControl" [matAutocomplete]="eauto">
+                                                type="text" value="" [formControl]="eduControl" [matAutocomplete]="eauto" [multiple]="true">
                                                 <mat-autocomplete #eauto="matAutocomplete">
-                                                    <mat-option *ngFor="let edu of education" value="{{edu.qualification}}">
-                                                      {{edu.qualification}}
+                                                    <mat-option *ngFor="let edu of educationOptions|async" value="{{edu}}">
+                                                      {{edu}}
                                                     </mat-option>
                                                   </mat-autocomplete>
                                         </div>

@@ -4,7 +4,8 @@ import { NotificationService } from '../../notification.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { formatDate } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -34,6 +35,10 @@ export class RegisterComponent implements OnInit {
   designations;
   skills;
   imgURL;
+  locations;
+  //   currentDesignation:FormControl;
+  //  designationOptions:Observable<string[]>;
+  //  designationArray:string[]=[];
   constructor(private service: WalkerAuthService,
     private http: HttpClient, private notification: NotificationService) {
 
@@ -67,97 +72,24 @@ export class RegisterComponent implements OnInit {
     this.service.getExperienceData().subscribe((res) => {
       this.experience = res;
     })
-    this.service.getAllInstitutes().subscribe((res) => {
-      this.institutes = res;
-    })
-    this.service.getLanguages().subscribe((res) => {
-      this.languages = res;
-    })
+
     this.service.getTimeSlots().subscribe((res) => {
       this.timeSlots = res;
     })
-    this.service.getCompanies().subscribe((res)=>{
-      this.companies=res;
-    })
-    this.service.getDesignations().subscribe((res)=>{
-      this.designations=res;
-    })
-    this.service.getKeySkills().subscribe((res)=>{
-      this.skills=res;
-    })
+
 
   }
 
-  // public yearOfPass :{ [key: string]: Object; }[] = [
-  //   { value: "1980", name: "1980" },
-  //   { value: 1981, name: 1981 },
-  //   { value: 1982, name: 1982 },
-  //   { value: 1983, name: 1983 },
-  //   { value: 1984, name: 1984 },
-  //   { value: 1985, name: 1985 },
-  //   { value: 1986, name: 1986 },
-  //   { value: 1987, name: 1987 },
-  //   { value: 1988, name: 1988 },
-  //   { value: 1989, name: 1989 },
-  //   { value: 1990, name: 1990 },
-  //   { value: 1991, name: 1991 },
-  //   { value: 1992, name: 1992 },
-  //   { value: 1993, name: 1993 },
-  //   { value: 1994, name: 1994 },
-  //   { value: 1995, name: 1995 },
-  //   { value: 1996, name: 1996 },
-  //   { value: 1997, name: 1997 },
-  //   { value: 1998, name: 1998 },
-  //   { value: 1999, name: 1999 },
-  //   { value: 2000, name: 2000 },
-  //   { value: 2001, name: 2001 },
-  //   { value: 2002, name: 2002 },
-  //   { value: 2003, name: 2003 },
-  //   { value: 2004, name: 2004 },
-  //   { value: 2005, name: 2005 },
-  //   { value: 2006, name: 2006 },
-  //   { value: 2007, name: 2007 },
-  //   { value: 2008, name: 2008 },
-  //   { value: 2009, name: 2009 },
-  //   { value: 2010, name: 2010 },
-  //   { value: 2011, name: 2011 },
-  //   { value: 2012, name: 2012 },
-  //   { value: 2013, name: 2013 },
-  //   { value: 2014, name: 2014 },
-  //   { value: 2015, name: 2015 },
-  //   { value: 2016, name: 2016 },
-  //   { value: 2017, name: 2017 },
-  //   { value: 2018, name: 2018 },
-  //   { value: 2019, name: 2019 }];
-
   vm = {
     file: '', fname: '', lname: '', email: '', contactNumber: '', landline: '', password: '', confirmPassword: '', dob: '',
-    gender: '', industry: '',industryId:'', role: '', jobtype: '', currentDesignation: '', minExp: '', maxExp: '', CCTCFrom: '', CCTCTo: '', ECTCFrom: '',
+    gender: '', industry: '', industryId: '', role: '', jobtype: '', currentDesignation: '', minExp: '', maxExp: '', CCTCFrom: '', CCTCTo: '', ECTCFrom: '',
     ECTCTo: '', keySkills: '', resumeHeadLine: '', currentCompany: '', location: '', locality: '', preferredLocation: '', noticePeriod: '',
     education: '', institute: '', yop: '', languagesKnown: '', photo: '', panelId: '', majorSkills: '', costPerHour: '',
-    costPerDay: '', AvailbleTimeSlotsForFaceToFace: '', costPerHourSkype: '', costPerDaySkype: '',
-    AvailbleTimeSlotsForSkype: '', costPerHourTelephonic: '', costPerDayTelephonic: '', AvailbleTimeSlotsForTelephonic: '', daily: '', weekly: '', value: '', day: '', chkTandC: ''
+    costPerDay: '', AvailableTimeSlotsForFaceToFace: '', costPerHourSkype: '', costPerDaySkype: '',
+    AvailableTimeSlotsForSkype: '', costPerHourTelephonic: '', costPerDayTelephonic: '', AvailableTimeSlotsForTelephonic: '', daily: '', weekly: '', value: '', day: '', chkTandC: ''
   };
 
-  public timings: { [key: string]: Object; }[] = [
-
-    { value: "9", time: '09.00 AM' },
-    { value: "10", time: '10.00 AM' },
-    { value: "11", time: '11.00 AM' },
-    { value: "12", time: '12.00 PM' },
-    { value: "13", time: '01.00 PM' },
-    { value: "14", time: '02.00 PM' },
-    { value: "15", time: '03.00 PM' },
-    { value: "16", time: '04.00 PM' },
-    { value: "17", time: '05.00 PM' },
-    { value: "18", time: '06.00 PM' },
-    { value: "19", time: '07.00 PM' }
-  ];
-  // maps the local data column to fields property
-  public localFields: Object = { text: 'time', value: 'value' };
-  // set the placeholder to MultiSelect Dropdown input element
-  public localWaterMark: string = 'Select Timings';
-
+ 
   radio = true;
   photo: any;
 
@@ -232,12 +164,12 @@ export class RegisterComponent implements OnInit {
     });
   }
   onSelectIndustry(event) {
-    this.vm.industryId = this.industries.find(industry=>industry['industryId'] == event.target['value']);
-   this.vm.industry=this.vm.industryId['industryType'];
+    this.vm.industryId = this.industries.find(industry => industry['industryId'] == event.target['value']);
+    this.vm.industry = this.vm.industryId['industryType'];
     this.service.getRoleByIndId(this.vm.industryId).subscribe((res) => {
       this.roles = res;
     })
-  
+
   }
   onSelectJobType(event) {
     this.vm.jobtype = event.target.value;
@@ -247,8 +179,8 @@ export class RegisterComponent implements OnInit {
     this.vm.education = event.target.value;
   }
   onSelectNoticePeriod(event) {
-    this.vm.noticePeriod = this.noticePeriods.find(noticePeriod=>noticePeriod['noticePeriodId']==event.target['value']);
-    
+    this.vm.noticePeriod = this.noticePeriods.find(noticePeriod => noticePeriod['noticePeriodId'] == event.target['value']);
+
   }
   onSelectedCCTCFrom(event) {
     this.vm.CCTCFrom = event.target.value;
@@ -272,33 +204,9 @@ export class RegisterComponent implements OnInit {
   }
   onSelectedLocation(event) {
     this.vm.location = this.cities.find(city => city['cityName'] == event.target['value']);
-    this.service.getLocalities(this.vm.location).subscribe((res) => {
-      this.localities = res;
-      console.log(this.localities)
-    })
-
-  }
-  selectCompany(event){
-    this.vm.currentCompany=event.target.value;
-  }
-  selectInstitute(event) {
-    this.vm.institute = event.target.value;
-  }
-  selectDesignation(event){
-    this.vm.currentDesignation=event.target.value;
-  
-  }
-  selectLanguage(event){
-this.vm.languagesKnown=event.target.value;
+    this.selectLocality();
   }
 
-  selectLocality(event) {
-    this.vm.locality = event.target.value;
-  }
-  onSkillSelected(event){
-    this.vm.keySkills=event.target.value;
-    
-  }
   onSelectedRole(event) {
     this.vm.role = this.roles.find(roleObj => roleObj['roleId'] == event.target['value']);
   }
@@ -308,18 +216,22 @@ this.vm.languagesKnown=event.target.value;
   onSelectedMaxExp(event) {
     this.vm.maxExp = event.target.value;
   }
-  onSelectedSkillSet(event){
-  
-this.vm.majorSkills=event.target.value;
-
+  onSelectedSlotForFaceToFace(event){
+   
+this.vm.AvailableTimeSlotsForFaceToFace=event;
   }
-
+  onSelectedSlotForSkype(event){
+this.vm.AvailableTimeSlotsForSkype=event;
+  }
+  onSelectedSlotForTelephonic(event){
+this.vm.AvailableTimeSlotsForTelephonic=event;
+  }
   selectProfileImage(event) {
     this.profilePhoto = event.target.files[0];
     var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
     }
   }
   selectResume(event) {
@@ -329,14 +241,53 @@ this.vm.majorSkills=event.target.value;
   }
 
   submit(regDetails) {
+  let FacetoFace="";
+    if(regDetails.AvailableTimeSlotsForFaceToFace.length>1){
+      regDetails.AvailableTimeSlotsForFaceToFace.forEach(ftof => {
+       FacetoFace=ftof+","+FacetoFace;
+      
+      });
+      regDetails.AvailableTimeSlotsForFaceToFace=FacetoFace;
+    }else{
+   
+      regDetails.AvailableTimeSlotsForFaceToFace=regDetails.AvailableTimeSlotsForFaceToFace[0];
+    }
+   
+    let skype="";
+    if(regDetails.AvailableTimeSlotsForSkype.length>1){
+      regDetails.AvailableTimeSlotsForSkype.forEach(sk => {
+        skype=sk+","+skype;
+      
+      });
+      regDetails.AvailableTimeSlotsForSkype=skype;
+    }else{
+   
+      regDetails.AvailableTimeSlotsForSkype=regDetails.AvailableTimeSlotsForSkype[0];
+    }
 
+    let telephonic="";
+    if(regDetails.AvailableTimeSlotsForTelephonic.length>1){
+      regDetails.AvailableTimeSlotsForTelephonic.forEach(tele => {
+        telephonic=tele+","+telephonic;
+      
+      });
+      regDetails.AvailableTimeSlotsForTelephonic=telephonic;
+    }else{
+   
+      regDetails.AvailableTimeSlotsForTelephonic=regDetails.AvailableTimeSlotsForTelephonic[0];
+    }
     this.service.register(regDetails, this.profilePhoto, this.resume).subscribe((res) => {
 
 
     }, (err) => {
 
     })
-
+  //   let loginDetails={"email":regDetails.email,
+  //                     "password":regDetails.password,
+  //                   "role":1}
+  //  this.service.saveLoginDetails(loginDetails).subscribe((res)=>{
+     
+  //  })
     this.service.registerPanelDetails(regDetails, this.vm.email).subscribe((res) => {
 
     }, (err) => {
@@ -354,6 +305,76 @@ this.vm.majorSkills=event.target.value;
 
 
   ngOnInit() {
+
+  }
+  designationsFilter() {
+    this.designations = this.service.getDesignations().pipe(map(designations => this.desfilter(designations)),
+    )
+
+  }
+  desfilter(values) {
+
+    return values.filter(designation => designation.designationName.toLowerCase().includes(this.vm.currentDesignation))
   }
 
+  onSkillSelected() {
+    //this.vm.keySkills=event.target.value;
+    this.skills = this.service.getKeySkills().pipe(map(skills => this.skillFilter(skills)),
+    )
+  }
+  skillFilter(values) {
+    return values.filter(skill => skill.requiredKeySkills.toLowerCase().includes(this.vm.keySkills))
+  }
+  selectCompany() {
+
+    //this.vm.currentCompany=event.target.value;
+    this.companies = this.service.getCompanies().pipe(map(companies => this.cmpFilter(companies)),
+    )
+
+  }
+  cmpFilter(values) {
+    return values.filter(company => company.userCompanyNames.toLowerCase().includes(this.vm.currentCompany))
+  }
+  selectLocality() {
+
+    this.localities = this.service.getLocalities(this.vm.location).pipe(map(localities =>
+      this.locFilter(localities)),
+    )
+  }
+  locFilter(values) {
+    return values.filter(locality => locality.location.toLowerCase().includes(this.vm.locality))
+  }
+  selectInstitute() {
+    this.institutes = this.service.getAllInstitutes().pipe(map(institutes =>
+      this.insFilter(institutes)),
+    )
+  }
+  insFilter(values) {
+    return values.filter(institute => institute.instituteName.toLowerCase().includes(this.vm.institute))
+
+  }
+  selectLanguage() {
+    this.languages = this.service.getLanguages().pipe(map(languages =>
+      this.langFilter(languages)),
+    )
+  }
+  langFilter(values) {
+    return values.filter(lang => lang.language.toLowerCase().includes(this.vm.languagesKnown))
+  }
+  onSelectedSkillSet(){
+    this.skills = this.service.getKeySkills().pipe(map(skills =>
+      this.skillSetFilter(skills)),
+    )
+  }
+  skillSetFilter(values){
+    return values.filter(skill => skill.requiredKeySkills.toLowerCase().includes(this.vm.majorSkills))
+  }
+  onSelectedPreferredLocation(){
+    this.locations = this.service.getLocations().pipe(map(locations =>
+      this.cityFilter(locations)),
+    )
+  }
+  cityFilter(values){
+    return values.filter(city => city.cityName.toLowerCase().includes(this.vm.preferredLocation))
+  }
 }
