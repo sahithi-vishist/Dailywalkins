@@ -103,7 +103,7 @@
                                                 <option *ngFor="let loc of locations" value="{{loc.cityId}}">
                                                     {{loc.cityName}}</option>
                                             </select> -->
-                                            <ng-select [items]="locations" bindLabel="cityName"
+                                            <ng-select [items]="locations" bindLabel="city"
                                                 (change)="onSelectLocation($event)" placeholder="Select Location"
                                                 ngModel #location="ngModel" appendTo="body"
                                                 [(ngModel)]="update.location">
@@ -539,8 +539,8 @@
                                         name="PreferredLocation" type="text" value="" [matAutocomplete]="lauto"
                                         required>
                                     <mat-autocomplete #lauto="matAutocomplete">
-                                        <mat-option *ngFor="let loc of cities|async" value="{{loc.cityName}}" multiple>
-                                            {{loc.cityName}}
+                                        <mat-option *ngFor="let loc of cities|async" value="{{loc.city}}" multiple>
+                                            {{loc.city}}
                                         </mat-option>
                                     </mat-autocomplete>
                                     <mat-hint *ngIf="preLocation.touched && preLocation.invalid">

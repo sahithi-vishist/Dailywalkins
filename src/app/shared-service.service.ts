@@ -42,7 +42,7 @@ return this.http.post(this.url+'/searchByLocation',{"location":toSearchObj.locat
     return this.http.post(this.url+'/searchByIndustry',{"industryId":toSearchObj.industryId})
   }
   getWalkinsByminExp(toSearchObj){
-    return this.http.post(this.url+'/searchByMinExp',{"expMin":toSearchObj.expMin});
+    return this.http.post(this.url+'/searchByMinExp',{"expMin":toSearchObj.expMin,expMax:toSearchObj.expMax});
   }
   getWalkinsBymaxExp(toSearchObj){
     return this.http.post(this.url+'/searchByMaxExp',{"expMax":toSearchObj.expMax});
@@ -54,6 +54,6 @@ return this.http.post(this.url+'/searchByLocation',{"location":toSearchObj.locat
     return this.http.post(this.url+'/searchByJobType',{"jobTypeId":toSearchObj.jobTypeId})
   }
   getWalkinsByQualification(toSearchObj){
-    return this.http.post(this.url+'/searchByQualification',{"qualification":toSearchObj.education})
+    return this.http.post(this.url+'/searchByQualification',{"qualification":toSearchObj.qualification.qualification})
   }
 }

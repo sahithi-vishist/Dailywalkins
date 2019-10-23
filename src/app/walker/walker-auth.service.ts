@@ -88,6 +88,7 @@ return this.locations;
     return this.http.get(this.url + '/getRoles');
   }
   getLocalities(cityObj){
+    console.log(cityObj)
     return this.http.post<any>(this.url+'/getLocalities',cityObj).pipe(map((data)=>{
       this.localities=data;
       return this.localities;
@@ -283,6 +284,9 @@ this.setSkills=skills;
   getWalkinsBySkills(skills) {
 
     return this.http.post(this.url + '/getjobsbykeyskills', { "keySkills": skills })
+  }
+  getWalkinsByAdvSearch(searchObj){
+return this.http.post(this.url + '/advancesearch',searchObj)
   }
   getWalkersBySkills(skills){
     return this.http.post(this.url+'/getWalkersByKeySkills',{"keySkills":skills})

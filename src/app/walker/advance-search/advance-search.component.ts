@@ -38,7 +38,7 @@ eduOptions:string[]=[];
 
  search={keySkills:'',
                 location:'',
-                education:'',
+                qualification:'',
               expMin:'',
               expMax:'',
               experience:"",
@@ -59,7 +59,7 @@ eduOptions:string[]=[];
     this.service.getLocations().subscribe((res)=>{
       this.locations=res;   
       this.locations.forEach(locObj => {
-        this.locOptions.push(locObj['cityName'])
+        this.locOptions.push(locObj['city'])
       });
  
     })
@@ -69,10 +69,7 @@ eduOptions:string[]=[];
         this.eduOptions.push(eduObj['qualification'])
       })
     })
-    this.service.getRoles().subscribe((res)=>{
-      this.roles=res;
-    })
-
+    
 this.service.getKeySkills().subscribe((res)=>{
   this.keySkills=res;
   this.keySkills.forEach(skillObj=>{
@@ -85,7 +82,7 @@ this.service.getKeySkills().subscribe((res)=>{
    this.search.keySkills=this.skillControl.value;
    this.search.location=this.locControl.value;
    //this.search.education=this.eduControl.value;
-   this.search.education=this.education.find(edu => edu['qualification'] ==this.eduControl.value);
+   this.search.qualification=this.education.find(edu => edu['qualification'] ==this.eduControl.value);
    this.search.experience=this.search.expMax+""+this.search.expMin;
  this.sharedService.setJSON(this.search);
   this.router.navigate(['/walker/displayjobsbysearch'])
@@ -99,6 +96,10 @@ this.service.getKeySkills().subscribe((res)=>{
  }
  onSelectIndustry(event){
   this.search.industryId = this.industries.find(ind => ind['industryId'] == event.target['value']);
+  this.service.getRoleByIndId(this.search.industryId).subscribe((res)=>{
+    this.roles=res;
+  })
+
  }
  onSelectMinExp(event){
 this.search.expMin=this.experience.find(exp => exp['experienceId'] == event.target['value']);

@@ -207,7 +207,7 @@ export class EditComponent implements OnInit {
     this.update.onNoticePeriod = this.update.noticePeriod['noticeText'];
   }
   onSelectLocation(event) {
-    this.update.location = this.locations.find(city => city['cityId'] == event['cityId'])
+    this.update.location = this.locations.find(location => location['locationsFormsId'] == event['locationsFormsId'])
   }
   onSelectedRole(event) {
     this.update.roleId = this.roles.find(role => role['roleId'] == event['roleId'])
@@ -314,6 +314,6 @@ console.log(this.update.experience);
     )
   }
   cityFilter(values) {
-    return values.filter(city => city.cityName.toLowerCase().includes(this.update.preferredLocation))
+    return values.filter(location => location.city.toLowerCase().includes(this.update.preferredLocation))
   }
 }

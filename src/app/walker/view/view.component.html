@@ -58,7 +58,7 @@
                                         <label class="control-label col-md-3" for="Location">Location</label>
                                         <label class="col-sm-1" style="width:3% !important">:</label>
                                         <div class="col-md-8">
-                                            {{result['location'].cityName}}
+                                            {{result['location'].city}}
                                         </div>
                                     </div>
                                     <div class="form-group contactNumber">
@@ -280,8 +280,9 @@
                         <div class="clearboth">
                             <div class="iframe-demo">&nbsp;</div>
                             <label id="lblresume" style="color:red"></label>
-                            <!-- <iframe width='100%' height='100%' src="data:application/doc;base64,{{result['resume']}}"></iframe> -->
-                            <img width='100%' height='100%' src="data:image/doc;base64,{{result['resume']}}"/>
+                           
+                            <iframe src="{{resume}}" type="application/pdf" width="100%" height="100%"></iframe>
+                            <!-- <img width='100%' height='100%' src="data:image/doc;base64,{{result['resume']}}"/> -->
                         </div>
                     </div>
                 </div>

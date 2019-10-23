@@ -203,7 +203,8 @@ export class RegisterComponent implements OnInit {
 
   }
   onSelectedLocation(event) {
-    this.vm.location = this.cities.find(city => city['cityName'] == event.target['value']);
+    console.log(event.target.value)
+    this.vm.location = this.cities.find(location => location['city'] == event.target['value']);
     this.selectLocality();
   }
 
@@ -241,7 +242,14 @@ this.vm.AvailableTimeSlotsForTelephonic=event;
   }
 
   submit(regDetails) {
-  let FacetoFace="";
+ 
+    this.service.register(regDetails, this.profilePhoto, this.resume).subscribe((res) => {
+
+
+    }, (err) => {
+
+    })
+    let FacetoFace="";
     if(regDetails.AvailableTimeSlotsForFaceToFace.length>1){
       regDetails.AvailableTimeSlotsForFaceToFace.forEach(ftof => {
        FacetoFace=ftof+","+FacetoFace;
@@ -276,18 +284,6 @@ this.vm.AvailableTimeSlotsForTelephonic=event;
    
       regDetails.AvailableTimeSlotsForTelephonic=regDetails.AvailableTimeSlotsForTelephonic[0];
     }
-    this.service.register(regDetails, this.profilePhoto, this.resume).subscribe((res) => {
-
-
-    }, (err) => {
-
-    })
-  //   let loginDetails={"email":regDetails.email,
-  //                     "password":regDetails.password,
-  //                   "role":1}
-  //  this.service.saveLoginDetails(loginDetails).subscribe((res)=>{
-     
-  //  })
     this.service.registerPanelDetails(regDetails, this.vm.email).subscribe((res) => {
 
     }, (err) => {
@@ -336,7 +332,7 @@ this.vm.AvailableTimeSlotsForTelephonic=event;
     return values.filter(company => company.userCompanyNames.toLowerCase().includes(this.vm.currentCompany))
   }
   selectLocality() {
-
+console.log(location)
     this.localities = this.service.getLocalities(this.vm.location).pipe(map(localities =>
       this.locFilter(localities)),
     )
@@ -375,6 +371,6 @@ this.vm.AvailableTimeSlotsForTelephonic=event;
     )
   }
   cityFilter(values){
-    return values.filter(city => city.cityName.toLowerCase().includes(this.vm.preferredLocation))
+    return values.filter(location => location.city.toLowerCase().includes(this.vm.preferredLocation))
   }
 }

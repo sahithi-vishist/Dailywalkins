@@ -455,8 +455,8 @@
                                                 (change)="onSelectedLocation($event)" name="Location" placeholder="mca"
                                                 required>
                                                 <option value="">--Select Location--</option>
-                                                <option *ngFor="let loc of cities" value="{{loc.cityName}}">
-                                                    {{loc.cityName}}</option>
+                                                <option *ngFor="let loc of cities" value="{{loc.city}}">
+                                                    {{loc.city}}</option>
 
                                             </select>
                                             <mat-hint *ngIf="location.touched && location.invalid">
@@ -496,8 +496,8 @@
                                                 (ngModelChange)="onSelectedPreferredLocation()" [ngModelOptions]="{standalone: true}" required>
                                             <mat-autocomplete #lauto="matAutocomplete">
                                                 <mat-option *ngFor="let loc of locations|async"
-                                                    value="{{loc.cityName}}">
-                                                    {{loc.cityName}}
+                                                    value="{{loc.city}}">
+                                                    {{loc.city}}
                                                 </mat-option>
                                             </mat-autocomplete>
                                             <mat-hint *ngIf="preferredLocation.touched && preferredLocation.invalid">

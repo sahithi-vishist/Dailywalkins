@@ -39,7 +39,7 @@ totalRecommendedJobs=0;;
         this.email=res['email'];
         this.contactNo=res['contactNo'];
         this.updatedOn=res['updatedOn'];
-        this.location=res['location'].cityName;
+        this.location=res['location'].city;
         this.photo=res['photo'];
         this.result=res;
      this.sharedService.setFirstName(this.fName);
