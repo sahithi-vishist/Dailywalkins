@@ -70,7 +70,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                         <label class="col-sm-1">:</label>
                                         <div class="col-sm-8">
                                             <input class="form-control form-control-width input-width" data-val="true"
-                                                [(ngModel)]="walkinModel.jobTitle" #jtitle="ngModel" required id="txtJobTitle"
+                                            [(ngModel)]="walkinModel.jobTitle" #jtitle="ngModel" required id="txtJobTitle"
                                                 name="JobTitle" type="text" value="">
                                             <mat-hint *ngIf="jtitle.touched && jtitle.invalid">
                                                 <mat-error *ngIf="jtitle.errors.required">Job title is required
@@ -101,14 +101,29 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                     style="color:red;">*</span></label>
                                             <label class="col-sm-1">:</label>
                                             <div class="col-sm-8">
-                                                <span class="multiselect-native-select">
-                                                    <select class="listbox form-control form-control-width-1 input-width"
+                                                    <ng-select bindLabel="hoursText" 
+                                                    appendTo="body" [searchable]="true" multiple="true" name="time"
+                                                    [clearable]="true" (change)="selectedTimeSlots($event)"
+                                                    [(ngModel)]="walkinModel.walkinTimeSlots" #timeslot="ngModel">
+                                                    <ng-option [value]="slot.hoursText"
+                                                        *ngFor="let slot of timeSlots">
+                                                        {{slot.hoursText}}
+                                                    </ng-option>
+                                                </ng-select>
+                                                        <!-- <ng-select [items]="timeSlots"
+                                                        bindLabel="hoursText" (change)="selectedTimeSlots($event)"
+                                                        placeholder="Select timeslot" ngModel #timeslot="ngModel"
+                                                        appendTo="body" name="timeslot1"
+                            
+                                                        [(ngModel)]="walkinModel.walkinTimeSlots">
+                                             </ng-select> -->
+                                                    <!-- <select class="listbox form-control form-control-width-1 input-width"
                                                         data-val="true" [(ngModel)]="walkinModel.walkinTimeSlots" #timeslot="ngModel"
                                                         required id="WalkinTimeSlots"
                                                         name="WalkinTimeSlots"(change)="selectedTimeSlots($event)">
                                                         <option value="">--Select TimeSlot--</option>
                                                         <option *ngFor="let period of timeSlots"value="{{period.timeSlotsId}}">{{period.hoursText}}</option>
-                                                    </select>
+                                                    </select> -->
                                                     <!-- <div class="btn-group">
                                                         <button type="button"
                                                             class="multiselect dropdown-toggle btn btn-default"
@@ -158,7 +173,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                                         07.00 PM</label></a></li>
                                                         </ul>
                                                     </div> -->
-                                                </span>
+                                               
                                                 <mat-hint *ngIf="timeslot.touched && timeslot.invalid">
                                                     <mat-error *ngIf="timeslot.errors.required"> Please specify walkin
                                                         WalkinTimeSlots</mat-error>
@@ -171,24 +186,24 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                         <label class="col-sm-1">:</label>
                                         <div class="col-sm-8" style="white-space:nowrap">
                                             <div class="form-inline">
-                                                <select class="form-control" data-val="true" [(ngModel)]="walkinModel.expMin"
-                                                    required #expMin id="minExp" name="ExpMin"(change)="selectMinExp($event)">
-                                                    <option value="">--Select Years--</option>
-                                                    <option *ngFor="let exp of experience"
-                                                    value="{{exp.experienceId}}">{{exp.expValue}}
-                                                </option>
-                                                </select>
+                                                    <ng-select [items]="experience"
+                                                    bindLabel="expValue" (change)="selectMinExp($event)"
+                                                    placeholder="Select minimum" ngModel #expMin="ngModel"
+                                                    appendTo="body" name="expmin"
+                        
+                                                    [(ngModel)]="walkinModel.expMin">
+                                            </ng-select>
     
                                                 Year(s)
     
                                                 &nbsp; to
-                                                <select class="form-control" data-val="true" [(ngModel)]="walkinModel.expMax"
-                                                    required #expMax id="maxExp" name="ExpMax"(change)="selectMaxExp($event)">
-                                                    <option value="">--Select Years--</option>
-                                                    <option *ngFor="let expe of experience"
-                                                    value="{{expe.experienceId}}">{{expe.expValue}}
-                                                </option>
-                                                </select> Year(s)
+                                                <ng-select [items]="experience"
+                                                bindLabel="expValue" (change)="selectMaxExp($event)"
+                                                placeholder="Select minimum" ngModel #expMax="ngModel"
+                                                appendTo="body" name="expmax"
+                    
+                                                [(ngModel)]="walkinModel.expMax">
+                                        </ng-select> Year(s)
                                                 <mat-hint
                                                 *ngIf="expMin.touched && expMin.invalid">
                                                 <mat-error
@@ -213,8 +228,12 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 <input
                                                     class="form-control form-control-width input-width ui-autocomplete-input"
                                                     [(ngModel)]="walkinModel.walkinLocation" #wlocation="ngModel" id="txtLocation"
-                                                    name="WalkinLocation" type="text" value="" autocomplete="off">
-                                                
+                                                    name="WalkinLocation" type="text" value=""(ngModelChange)="selectWalkinLocation()" [matAutocomplete]="wlocauto">
+                                                    <mat-autocomplete #wlocauto="matAutocomplete">
+                                                            <mat-option *ngFor="let loc of locations" value="{{loc.city}}">
+                                                              {{loc.city}}
+                                                            </mat-option>
+                                                          </mat-autocomplete>
                                                     <mat-hint *ngIf="wlocation.touched && wlocation.invalid">
                                                             <mat-error *ngIf="wlocation.errors.required"> Please specify walkin Location
                                                             </mat-error>
@@ -246,13 +265,13 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                             id="InId" name="InId" type="hidden" value="0">
                                                         <input data-val="true" required 
                                                             id="Industry" name="Industry" type="hidden" value="">
-                                                        <select class="form-control form-control-width-1 input-width"
-                                                            [(ngModel)]="walkinModel.industryId" #industry="ngModel"(change)="selectIndustry($event)" required id="IndustryName" name="Industry">
-                                                            <option value="">--Select Industry--</option>
-                                                            <option *ngFor="let ind of industries"
-                                                                    value="{{ind.industryId}}">{{ind.industryType}}
-                                                                </option>
-                                                        </select>
+                                                            <ng-select [items]="industries"
+                                                            bindLabel="industryType" (change)="selectIndustry($event)"
+                                                            placeholder="Select Industry" ngModel #industry="ngModel"
+                                                            appendTo="body" name="Industryname"
+                                s
+                                                            [(ngModel)]="walkinModel.industryId">
+                                                 </ng-select>
                                                         <mat-hint *ngIf="industry.touched && industry.invalid">
                                                                 <mat-error *ngIf="industry.errors.required"> Please specify industry
                                                                 </mat-error>
@@ -349,15 +368,13 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                             <label class="col-sm-3"> Notice Period <span style="color:red;">*</span></label>
                                             <label class="col-sm-1">:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control form-control-width-1 input-width"
-                                                    data-val="true" [(ngModel)]="walkinModel.noticePeriod" #noticeperiod="ngModel"
-                                                    required id="NoticePeriod"(change)="selectNoticePeriod($event)"
-                                                    name="noticeperiod">
-                                                    <option value="">--Notice Period--</option> 
-                                                    <option *ngFor="let noperiod of noticeperiodList"
-                                                    value="{{noperiod.noticePeriodId}}">
-                                                    {{noperiod.noticeText}}</option>
-                                                </select>
+                                                    <ng-select [items]="noticeperiodList"
+                                                    bindLabel="noticeText" (change)="selectNoticePeriod($event)"
+                                                    placeholder="Select period" ngModel #noticeperiod="ngModel"
+                                                    appendTo="body" name="noticename"
+                        
+                                                    [(ngModel)]="walkinModel.noticePeriod">
+                                         </ng-select>
                                                 <mat-hint *ngIf="noticeperiod.touched &&noticeperiod.invalid">
                                                         <mat-error *ngIf="noticeperiod.errors.required"> Please specify NoticePeriod
                                                         </mat-error>
@@ -369,13 +386,13 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                             <label class="col-sm-3">Job Type <span style="color:red;">*</span></label>
                                             <label class="col-sm-1">:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control form-control-width-1 input-width"
-                                                    [(ngModel)]="walkinModel.jobTypeId" #jobtype="ngModel" (change)="selectJobType($event)"
-                                                    required id="JTId" name="JTId">
-                                                    <option value="">--Select type--</option>
-                                                    <option *ngFor="let job of jobtypeList"
-                                                    value="{{job.jobTypeId}}">{{job.jobType}}</option>
-                                                </select>
+                                                    <ng-select [items]="jobtypeList"
+                                                    bindLabel="jobType" (change)="selectJobType($event)"
+                                                     ngModel #jobtype="ngModel"
+                                                    appendTo="body" name="jobname"
+                        
+                                                    [(ngModel)]="walkinModel.jobTypeId">
+                                         </ng-select>
                                                 <mat-hint *ngIf="jobtype.touched &&jobtype.invalid">
                                                         <mat-error *ngIf="jobtype.errors.required"> Please specify jobType
                                                         </mat-error>
@@ -388,16 +405,15 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 Qualification <span style="color:red;">*</span>
                                             </label><label class="col-sm-1">:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control form-control-width-1 input-width"
-                                                    data-val="true" ngModel #qualification="ngModel" id="ddlQualification"
-                                                    name="qualification" placeholder="mca" 
-                                                    [(ngModel)]="walkinModel.qualification"(change)="selectQualification($event)" required>
-                                                    <option value="">--Select Qualification--</option>
-                                                    <option *ngFor="let qual of qualifications"
-                                                        value="{{qual.qualificationId}}">{{qual.qualification}}
-                                                    </option>
-    
-                                                </select>
+                                                    <ng-select bindLabel="hoursText" 
+                                                                appendTo="body" [searchable]="true" multiple="true" name="qualname"
+                                                                [clearable]="true" (change)="selectQualification($event)" required
+                                                                [(ngModel)]="walkinModel.qualification" #qualification="ngModel" >
+                                                                <ng-option [value]="qual.qualification"
+                                                                    *ngFor="let qual of qualifications">
+                                                                    {{qual.qualification}}
+                                                                </ng-option>
+                                                            </ng-select>
                                                 <mat-hint *ngIf="qualification.touched && qualification.invalid">
                                                     <mat-error *ngIf="qualification.errors.required">Qualification is required
                                                     </mat-error>
@@ -410,23 +426,21 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                             <label class="col-sm-1">:</label>
                                             <div class="col-sm-8" style="white-space:nowrap">
                                                 <div class="form-inline">
-                                                    <select class="form-control" data-val="true" [(ngModel)]="walkinModel.minSal"
-                                                        required id="MinSalary"
-                                                        name="MinSal" (change)="selectMinSalary($event)"
-                                                        #salMin="ngModel">
-                                                        <option value="">--Select--</option>
-                                                        <option *ngFor="let sal of salary"
-                                                        value="{{sal.salaryId}}">{{sal.salValue}}
-                                                    </option>
-                                                    </select>
+                                                        <ng-select [items]="salary"
+                                                        bindLabel="salValue" (change)="selectMinSalary($event)"
+                                                         ngModel #salMin="ngModel"
+                                                        appendTo="body" name="salarymin"
+                            
+                                                        [(ngModel)]="walkinModel.minSal">
+                                                </ng-select>
                                                     Lakh(s)&nbsp; to
-                                                    <select class="form-control" data-val="true" [(ngModel)]="walkinModel.maxSal"
-                                                       required #salMax="ngModel" id="MaxSalary" (change)="selectMaxSalary($event)"
-                                                        name="MaxSal">
-                                                        <option value="">--Select--</option>
-                                                        <option *ngFor="let sal of salary"
-                                                        value="{{sal.salaryId}}">{{sal.salValue}}
-                                                    </select>
+                                                    <ng-select [items]="salary"
+                                                    bindLabel="salValue" (change)="selectMaxSalary($event)"
+                                                     ngModel #salMax="ngModel"
+                                                    appendTo="body" name="salarymax"
+                        
+                                                    [(ngModel)]="walkinModel.maxSal">
+                                            </ng-select>
                                                     Lakh(s)
                                         
                                                         <mat-hint *ngIf="salMin.touched && salMin.invalid">

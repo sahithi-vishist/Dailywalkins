@@ -66,7 +66,15 @@ selctedperiod;
 selctedQualification;
 salary;
 industries;
+selectedWalkinLocation;
+locations;
+localities;
+designations;
+companyNames;
+selectedClientLocation;
   selectedCompanyLogo:File;
+  clocalities;
+  keySkills;
   constructor(private dates:DatePipe,private service:RecruiterauthserviceService) {
 this.service.getTimeslots().subscribe((res)=>{
   this.timeSlots=res;
@@ -96,6 +104,21 @@ this.service.getTimeslots().subscribe((res)=>{
         this.service.getSalary().subscribe((res)=>{
           this.salary=res;
         });
+        this.service.getAllLocations().subscribe((res)=>{
+          this.locations=res;
+        });
+        this.service.getCompanyNames().subscribe((res)=>{
+          this.companyNames=res;
+          });
+          this.service.getDesignation().subscribe((res)=>{
+            this.designations=res;
+          
+          });
+          this.service.getKeyskills().subscribe((res)=>{
+            this.keySkills=res;
+          });
+          
+         
       }
    changeClientName(){
     
@@ -114,8 +137,22 @@ this.vm.EndClient=this.vm.companyname;
   chkFTP(){
     
   }
-  selectedTimeSlots(event){
-    this.selectedTimeslot= this.timeSlots.find(time=>time['timeSlotsId'] == event.target['value']);
+  selectWalkinLocation(){
+    
+    this.selectedWalkinLocation=this.locations.find(loca=>loca['city'] == this.vm.wlocation)
+     this.service.getALLLocalities(this.vm.wlocation).subscribe((res)=>{
+     this.localities=res;
+   });
+  }
+  selectClientLocation(){
+    this.selectedClientLocation=this.locations.find(locat=>locat['city'] == this.vm.clocation)
+     this.service.getALLLocalities(this.vm.clocation).subscribe((res)=>{
+     this.clocalities=res;
+   });
+  }
+  selectTimeslots(event){
+    this.selectedTimeslot= event;
+    //console.log(this.selectedTimeslot);
   }
   selectMinExp(event){
     this.selctedMinExp= this.experience.find(expr=>expr['experienceId'] == event.target['value']);
@@ -133,7 +170,7 @@ this.vm.EndClient=this.vm.companyname;
     this.selctedJobtype= this.jobtypeList.find(jobtypes=>jobtypes['jobTypeId'] == event.target['value']);
   }
   selectQualification(event){
-    this.selctedQualification= this.qualifications.find(quals=>quals['qualificationId'] == event.target['value']);
+    this.selctedQualification= event;
   }
   selectMinSalary(event){
     this.selctedMinSal= this.salary.find(salary1=>salary1['salaryId'] == event.target['value']);
@@ -155,6 +192,28 @@ this.selectedRole=this.roles.find(role=>role['roleId'] == event.target['value'])
 
   createWalkin(data){
     //console.log(data);
+    let driveSlots="";
+    if(this.selectedTimeslot.length>1){
+      this.selectedTimeslot.forEach(ftof => {
+        driveSlots=ftof+","+driveSlots;
+      
+      });
+      this.selectedTimeslot=driveSlots;
+    }else{
+   
+      this.selectedTimeslot= this.selectedTimeslot[0];
+    }
+    let walkinQual="";
+    if(this.selctedQualification.length>1){
+      this.selctedQualification.forEach(ftof => {
+        walkinQual=ftof+","+walkinQual;
+      
+      });
+      this.selctedQualification=walkinQual;
+    }else{
+   
+      this.selctedQualification= this.selctedQualification[0];
+    }
     this.walkinModel.jobTitle=data.jobtitle;
     this.walkinModel.walkinDate=this.dates.transform(data.date,'yyyy-MM-dd');
     this.walkinModel.walkinTimeSlots=this.selectedTimeslot;

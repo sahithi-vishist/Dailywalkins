@@ -45,16 +45,25 @@ driveId;
 coordinatorDetails;
 driveformmodel=new DriveFormModel();
 id;
+companyNames;
 imgURL;
 edcoOrdinator;
 selectedCompanyLogo:File;
 selectedCoordinator;
+designations;
+locations;
 obj={
   name:'',
   contactNo:'',
   email:''
 }
 coId;
+keySkills;
+clocalities;
+selectedWlkinLocation;
+selectedClientLocation;
+clocalities1;
+driveDetails;
   constructor(private service:RecruiterauthserviceService,
     private date:DatePipe,private http:HttpClient,
     private router:Router,private coservice:HomepageService,
@@ -90,7 +99,23 @@ this.jobtype=res;
     this.service.getCoordinators().subscribe((res)=>{
       this.coordinatorDetails=res;
        });
-       
+       this.service.getCompanyNames().subscribe((res)=>{
+        this.companyNames=res;
+        });
+        this.service.getDesignation().subscribe((res)=>{
+          this.designations=res;
+        
+        });
+        this.service.getAllLocations().subscribe((res)=>{
+          this.locations=res;
+        });
+        this.service.getKeyskills().subscribe((res)=>{
+          this.keySkills=res;
+        });
+      this.service.getCompanyNames().subscribe((res)=>{
+this.companyNames=res;
+      });
+    
    }
 
   ngOnInit() {
@@ -135,6 +160,20 @@ this.driveForm=new FormGroup({
   
   create(){
     console.log(this.driveForm.value);
+
+    let driveSlots="";
+    if(this.selctedTimeslots.length>1){
+      this.selctedTimeslots.forEach(ftof => {
+        driveSlots=ftof+","+driveSlots;
+      
+      });
+      this.selctedTimeslots=driveSlots;
+    }else{
+   
+      this.selctedTimeslots= this.selctedTimeslots[0];
+    }
+
+
     this.driveformmodel.driveName=this.driveForm.get('drivename').value;
    this.driveformmodel.walkinDate=this.date.transform(this.driveForm.get('WalkinDate').value,'yyyy-MM-dd');
     this.driveformmodel.industry=this.selctedIndustry;
@@ -165,10 +204,14 @@ this.driveForm=new FormGroup({
     this.driveformmodel.noticePeriod=this.selctedperiod;
     //this.driveformmodel.companyLogo=this.driveForm.get('companyLogo').value;
     this.driveformmodel.role=this.selectedRole;
+   
  const formData=new FormData();
     formData.append('driveDetails',JSON.stringify(this.driveformmodel));
     formData.append('companyLogo',this.selectedCompanyLogo);
     console.log(formData.get('companyLogo'));
+   
+    
+   
  this.service.createDrive(formData).subscribe((res)=>{
   
    this.driveForm.reset();
@@ -234,6 +277,19 @@ this.service.postCoordinatorDetails(values).subscribe((res)=>{
   submit(driveForm){
     
   }
+  selectWalkinLocation(){
+  this.selectedWlkinLocation=this.locations.find(locat=>locat['city'] == this.driveForm.get('Location').value)
+  this.service.getALLLocalities(this.driveForm.get('Location').value).subscribe((res)=>{
+  this.clocalities=res;
+});
+
+  }
+  selectClientLocation(){
+    this.selectedClientLocation=this.locations.find(local=>local['city'] == this.driveForm.get('CLocation').value)
+    this.service.getALLLocalities(this.driveForm.get('CLocation').value).subscribe((res)=>{
+    this.clocalities1=res;
+  });
+}
   selectDrive(event){
    
     this.driveId=event.target.value;
@@ -263,8 +319,8 @@ this.service.postCoordinatorDetails(values).subscribe((res)=>{
   }
   selectTimeslots(event){
     //console.log(event.target.value);
-    this.selctedTimeslots= this.walkintimeslots.find(time=>time['timeSlotsId'] == event.target['value']);
-    //console.log(this.selctedTimeslots);
+    this.selctedTimeslots=event;
+    console.log(this.selctedTimeslots);
   }
   selectNotice(event){
     //console.log(event.target.value);

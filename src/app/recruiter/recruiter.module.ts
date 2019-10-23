@@ -70,6 +70,7 @@ import { EmailComponent } from './email/email.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SmsComponent } from './sms/sms.component';
 import { ModifySearchComponent } from './modify-search/modify-search.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -136,7 +137,8 @@ import { ModifySearchComponent } from './modify-search/modify-search.component';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgSelectModule
   ],
   exports:[LoginRComponent,
     SharedModule,

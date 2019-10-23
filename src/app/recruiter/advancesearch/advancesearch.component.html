@@ -47,16 +47,25 @@
                                     <label class="col-sm-3">Location <span style="color:red;"></span></label>
                                     <label class="col-sm-1">:</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width ui-autocomplete-input" [(ngModel)]="vm.location"id="txtLocation" name="Location" placeholder="Hyderabad" type="text" value="" autocomplete="off">
-
+                                        <input class="form-control form-control-width input-width ui-autocomplete-input" [(ngModel)]="vm.location"id="txtLocation" 
+                                       name="Location" placeholder="Hyderabad" type="text" value="" [matAutocomplete]="lauto">
+                                        <mat-autocomplete #lauto="matAutocomplete">
+                                            <mat-option *ngFor="let loc of locations" value="{{loc.city}}">
+                                              {{loc.city}}
+                                            </mat-option>
+                                          </mat-autocomplete>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3">Preferred Location <span style="color:red;"></span></label>
                                     <label class="col-sm-1">:</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control form-control-width input-width ui-autocomplete-input"[(ngModel)]="vm.preflocation" id="txtPfLocation" name="PreferedLocation" placeholder="Hyderabad" type="text" value="" autocomplete="off">
-
+                                        <input class="form-control form-control-width input-width ui-autocomplete-input"[(ngModel)]="vm.preflocation" id="txtPfLocation" name="PreferedLocation" placeholder="Hyderabad" type="text" value="" [matAutocomplete]="plauto">
+                                        <mat-autocomplete #plauto="matAutocomplete">
+                                            <mat-option *ngFor="let loc of locations" value="{{loc.city}}">
+                                              {{loc.city}}
+                                            </mat-option>
+                                          </mat-autocomplete>
                                     </div>
                                 </div>
 
@@ -65,14 +74,14 @@
                                     <label class="col-sm-1">:</label>
                                     <div class="col-sm-8" style="white-space:nowrap">
                                         <div class="form-inline">
-                                            <select class="form-control" [(ngModel)]="vm.minExp"data-val="true" id="minExp" name="MinExp"><option value="">--Select value --</option>
+                                            <select class="form-control" [(ngModel)]="vm.minExp"data-val="true"(change)="onSelectMinExp($event)" id="minExp" name="MinExp"><option value="">--Select value --</option>
 
 <option *ngFor="let exp of experience"value="{{exp.experienceId}}">{{exp.expValue}}</option>
 </select>
 
                                             Year(s)&nbsp; to
 
-                                            <select class="form-control" [(ngModel)]="vm.maxExp"data-val="true"  id="maxExp" name="MaxExp"><option value="">--Select value--</option>
+                                            <select class="form-control" [(ngModel)]="vm.maxExp"data-val="true" (change)="onSelectMaxExp($event)"ss id="maxExp" name="MaxExp"><option value="">--Select value--</option>
                                                 
                                                 <option *ngFor="let expe of experience"value="{{expe.experienceId}}">{{expe.expValue}}</option>
 </select>

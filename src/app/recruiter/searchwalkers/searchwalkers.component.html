@@ -199,13 +199,13 @@
 
 
 
-    <label> {{totalWalkers}}Profiles(s) found..</label>
+    <label> {{totalWalkers}}&nbsp;Profiles(s) found..</label>
 
     <label style="color:red;" id="lblSelectEmails"></label>
 
     <div class="portlet" style="margin-left:6px;margin-right:6px;">
 
-        <div class="portlet-header" style="padding: 14px 15px; !important;">
+        <div class="portlet-header" style="padding: 14px 15px;">
             <span style="font-size: 17px;line-height:38px;color:#fff;">
                 <label></label>
             </span>
@@ -258,7 +258,7 @@
                                                             </div>
                                                             <h3 class="loop-title">
                                                                 <input type="checkbox" class="check check-box-1 checkbox-txx-top checkbox-txx-left" value="asha@gmail.com" onclick="checkSelectedEmail(this)">
-                                                                <a routerLink="/recruitment/DisplaySe">{{walkers.experience}}+ years of experience on java.</a>
+                                                                <a routerLink="/recruitment/selected-job/{{walkers.jobSeekerId}}">{{walkers.experience}}+ years of experience on java.</a>
 
                                                             </h3>
                                                             <div class="form-group">

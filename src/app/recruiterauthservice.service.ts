@@ -25,7 +25,9 @@ authenticate(loginDetails):Observable<any>{
   return this.http.post("http://localhost:62222/loginCheck",loginDetails);
     
  }
-
+getRecruiterById(recId){
+  return this.http.get("http://localhost:62222/getRecruiterById?recruiterId=" +recId);
+}
 getIndustries(){
   return this.http.get("http://localhost:62222/getIndustries");
     
@@ -102,6 +104,30 @@ getWalkersBySkills(skills){
   return this.http.post('http://localhost:62222/getWalkersByKeySkills',{"keySkills":skills})
 }
 
+getWalkerById(id){
+  return this.http.get('http://localhost:62222/getwalkerbyid?walkerId='+id);
+}
+getLocations(){
+  return this.http.get('http://localhost:62222/getLocations');
+} 
+getWalkersByPrefLocation(prefLocations){
+  return this.http.post('http://localhost:62222/searchWalkerByPreferedLocation',{"preferredLocation":prefLocations})
+}
+getCompanyNames(){
+  return this.http.get('http://localhost:62222/getcompanies');
+}
+getDesignation(){
+  return this.http.get('http://localhost:62222/getdesignationService');
+}
+getAllLocations(){
+  return this.http.get('http://localhost:62222/getAllLocations');
+}
+getALLLocalities(location){
+  return this.http.get('http://localhost:62222/localities1',location);
+}
+getKeyskills(){
+  return this.http.get('http://localhost:62222/getkeyskills');
+}
 recruiterRegsiter(regdata,logo){
   var regDate=this.date.transform(this.myDate,'yyyy-MM-dd');
   var updateDate=this.date.transform(this.myDate,'yyyy-MM-dd');
@@ -114,7 +140,7 @@ recruiterRegsiter(regdata,logo){
     "lastName":regdata.lastName,
     "password":regdata.password,
     "confirmPassword":regdata.ConfirmPassword,
-    "companyName":regdata.comapnyName,
+    "companyName":regdata.companyName,
     "standardCurrentCompany":regdata.comapnyName,
     "email":regdata.Email,
     "companyURL":regdata.URL, 

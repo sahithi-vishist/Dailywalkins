@@ -8,13 +8,13 @@
 
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" media="all" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="../assets/css/jquery.ui.timepicker.css" type="text/css">
+<link rel="stylesheet" href="../assets/css/jquery.ui.timepicker.css" type="text/css"> -->
 
 
 
-<style>
+<!-- <style>
 .dropdown-menu > .active > a {
     background-color: none !important;
     color: #fff !important;
@@ -50,7 +50,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
     text-decoration: none;
     background-color: #017163 !important;
 }
-</style>
+</style> -->
 
  
 <form #walkinForm="ngForm" (ngSubmit)="postWalkins(vm);walkinForm.reset()">     
@@ -102,62 +102,23 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                             <label class="col-sm-1">:</label>
                                             <div class="col-sm-8">
                                                 <span class="multiselect-native-select">
-                                                    <select class="listbox form-control form-control-width-1 input-width"
+                                                    <!-- <select class="listbox form-control form-control-width-1 input-width"
                                                         data-val="true" [(ngModel)]="vm.timeslot" #timeslot="ngModel"
                                                         required id="WalkinTimeSlots"
                                                         name="WalkinTimeSlots"(change)="selectedTimeSlots($event)">
                                                         <option value="">--Select TimeSlot--</option>
                                                         <option *ngFor="let period of timeSlots"value="{{period.timeSlotsId}}">{{period.hoursText}}</option>
-                                                    </select>
-                                                    <!-- <div class="btn-group">
-                                                        <button type="button"
-                                                            class="multiselect dropdown-toggle btn btn-default"
-                                                            data-toggle="dropdown" title="None selected"><span
-                                                                class="multiselect-selected-text">None selected</span> <b
-                                                                class="caret"></b></button>
-                                                        <ul class="multiselect-container dropdown-menu">
-                                                            <li class="multiselect-item multiselect-all"><a tabindex="0"
-                                                                    class="multiselect-all"><label class="checkbox"><input
-                                                                            type="checkbox" value="multiselect-all"> Select
-                                                                        all</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="08.00 AM"><input type="checkbox" value="8">
-                                                                        08.00 AM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="09.00 AM"><input type="checkbox" value="9">
-                                                                        09.00 AM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="10.00 AM"><input type="checkbox" value="10">
-                                                                        10.00 AM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="11.00 AM"><input type="checkbox" value="11">
-                                                                        11.00 AM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="12.00 PM"><input type="checkbox" value="12">
-                                                                        12.00 PM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="01.00 PM"><input type="checkbox" value="13">
-                                                                        01.00 PM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="02.00 PM"><input type="checkbox" value="14">
-                                                                        02.00 PM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="03.00 PM"><input type="checkbox" value="15">
-                                                                        03.00 PM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="04.00 PM"><input type="checkbox" value="16">
-                                                                        04.00 PM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="05.00 PM"><input type="checkbox" value="17">
-                                                                        05.00 PM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="06.00 PM"><input type="checkbox" value="18">
-                                                                        06.00 PM</label></a></li>
-                                                            <li><a tabindex="0"><label class="checkbox"
-                                                                        title="07.00 PM"><input type="checkbox" value="19">
-                                                                        07.00 PM</label></a></li>
-                                                        </ul>
-                                                    </div> -->
+                                                    </select> -->
+                                                    <ng-select 
+                                                    bindLabel="hoursText" placeholder="Select Slot"
+                                                                appendTo="body" [searchable]="true" multiple="true" name="time"
+                                                                [clearable]="true" (change)="selectTimeslots($event)"
+                                                                [(ngModel)]="vm.timeslot" #timeslot="ngModel">
+                                                                <ng-option [value]="slot.hoursText"
+                                                                    *ngFor="let slot of walkintimeslots">
+                                                                    {{slot.hoursText}}
+                                                                </ng-option>
+                                                            </ng-select>
                                                 </span>
                                                 <mat-hint *ngIf="timeslot.touched && timeslot.invalid">
                                                     <mat-error *ngIf="timeslot.errors.required"> Please specify walkin
@@ -212,9 +173,13 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                             <div class="col-sm-8" style="white-space:nowrap">
                                                 <input
                                                     class="form-control form-control-width input-width ui-autocomplete-input"
-                                                    [(ngModel)]="vm.wlocation" #wlocation="ngModel" id="txtLocation"
-                                                    name="WalkinLocation" type="text" value="" autocomplete="off">
-                                                
+                                                    [(ngModel)]="vm.wlocation" #wlocation="ngModel" id="txtLocation" (ngModelChange)="selectWalkinLocation()"
+                                                    name="WalkinLocation" type="text" value="" [matAutocomplete]="lauto">
+                                                    <mat-autocomplete #lauto="matAutocomplete">
+                                                        <mat-option *ngFor="let loc of locations" value="{{loc.city}}">
+                                                          {{loc.city}}
+                                                        </mat-option>
+                                                      </mat-autocomplete>
                                                     <mat-hint *ngIf="wlocation.touched && wlocation.invalid">
                                                             <mat-error *ngIf="wlocation.errors.required"> Please specify walkin Location
                                                             </mat-error>
@@ -229,8 +194,13 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 <div class="col-sm-8">
                                                     <input
                                                         class="form-control form-control-width input-width ui-autocomplete-input"
-                                                        [(ngModel)]="vm.locality" #locality="ngModel" id="txtLocality"
-                                                        name="WalkinLocality" type="text" value="" autocomplete="off">
+                                                        [(ngModel)]="vm.locality" #locality="ngModel" id="txtLocality"[matAutocomplete]="locaauto"
+                                                        name="WalkinLocality" type="text" value="">
+                                                        <mat-autocomplete #locaauto="matAutocomplete">
+                                                            <mat-option *ngFor="let loc1 of localities" value="{{loc1.location}}">
+                                                              {{loc1.location}}
+                                                            </mat-option>
+                                                          </mat-autocomplete>
                                                         <mat-hint *ngIf="locality.touched && locality.invalid">
                                                                 <mat-error *ngIf="locality.errors.required"> Please specify Locality
                                                                 </mat-error>
@@ -304,11 +274,15 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                             <label class="col-sm-1">:</label>
                                             <div class="col-sm-8">
                                                 <input
-                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                   class="form-control form-control-width input-width ui-autocomplete-input"
                                                     data-val="true" [(ngModel)]="vm.jobskills" #jobskills="ngModel"
-                                                    required id="txtKeySkills"
-                                                    name="KeySkills" placeholder="java,c++" type="text" value=""
-                                                    autocomplete="off">
+                                                    required id="txtKeySkills"[matAutocomplete]="keyauto" name="keyskills"
+                                                    name="KeySkills" placeholder="java,c++" type="text" value="">
+                                                    <mat-autocomplete #keyauto="matAutocomplete">
+                                                            <mat-option *ngFor="let key of KeySkills" value="{{key.requiredKeySkills}}">
+                                                                    {{key.requiredKeySkills}}
+                                                            </mat-option>
+                                                          </mat-autocomplete>
                                                     <mat-hint *ngIf="jobskills.touched && jobskills.invalid">
                                                             <mat-error *ngIf="jobskills.errors.required"> Please specify KeySkills
                                                             </mat-error>
@@ -341,9 +315,13 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 <input
                                                     class="form-control form-control-width input-width ui-autocomplete-input"
                                                     [(ngModel)]="vm.Designation" #designation="ngModel" id="txtDesignation"
-                                                    name="Designation" placeholder="UI" type="text" value=""
-                                                    autocomplete="off">
-                                            </div>
+                                                    name="Designation" placeholder="UI" type="text" value=""[matAutocomplete]="dauto">
+                                                    <mat-autocomplete #dauto="matAutocomplete">
+                                                        <mat-option *ngFor="let des of designations" value="{{des.designationName}}">
+                                                          {{des.designationName}}
+                                                        </mat-option>
+                                                      </mat-autocomplete>
+                                                </div>
                                     </div>
                                  <div class="form-group">
                                             <label class="col-sm-3"> Notice Period <span style="color:red;">*</span></label>
@@ -388,7 +366,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 Qualification <span style="color:red;">*</span>
                                             </label><label class="col-sm-1">:</label>
                                             <div class="col-sm-8">
-                                                <select class="form-control form-control-width-1 input-width"
+                                                <!-- <select class="form-control form-control-width-1 input-width"
                                                     data-val="true" ngModel #qualification="ngModel" id="ddlQualification"
                                                     name="qualification" placeholder="mca" 
                                                     [(ngModel)]="vm.qualification"(change)="selectQualification($event)" required>
@@ -397,7 +375,16 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                         value="{{qual.qualificationId}}">{{qual.qualification}}
                                                     </option>
     
-                                                </select>
+                                                </select> -->
+                                                <ng-select bindLabel="hoursText" placeholder="Select type"
+                                                                appendTo="body" [searchable]="true" multiple="true" name="qualname"
+                                                                [clearable]="true" (change)="selectQualification($event)" required
+                                                                [(ngModel)]="vm.qualification" #qualification="ngModel" >
+                                                                <ng-option [value]="qual.qualification"
+                                                                    *ngFor="let qual of qualifications">
+                                                                    {{qual.qualification}}
+                                                                </ng-option>
+                                                            </ng-select>
                                                 <mat-hint *ngIf="qualification.touched && qualification.invalid">
                                                     <mat-error *ngIf="qualification.errors.required">Qualification is required
                                                     </mat-error>
@@ -449,7 +436,12 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                     class="form-control form-control-width input-width ui-autocomplete-input"
                                                     data-val="true" [(ngModel)]="vm.companyname" #cname="ngModel"
                                                     required id="txtCompanyName"
-                                                    name="CompanyName" type="text" value="" autocomplete="off">
+                                                    name="CompanyName" type="text" value=""[matAutocomplete]="cauto">
+                                                    <mat-autocomplete #cauto="matAutocomplete">
+                                                        <mat-option *ngFor="let names of companyNames" value="{{names.userCompanyNames}}">
+                                                          {{names.userCompanyNames}}
+                                                        </mat-option>
+                                                      </mat-autocomplete>
                                                     <mat-hint *ngIf="cname.touched && cname.invalid">
                                                             <mat-error *ngIf="cname.errors.required">Please Specify Company Name
                                                             </mat-error>
@@ -481,9 +473,13 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 <span style="color:red;">*</span></label>
                                             <label class="col-sm-1">:</label>
                                             <div class="col-sm-8" style="white-space:nowrap">
-                                                <input class="form-control form-control-width input-width"
-                                                    [(ngModel)]="vm.clocation" #clocation="ngModel" id="txtClientLocation"
-                                                    name="WalkinLocation" type="text" value="">
+                                                <input class="form-control form-control-width input-width"[matAutocomplete]="cloauto"
+                                                    [(ngModel)]="vm.clocation"name="clientLocation" #clocation="ngModel"(ngModelChange)="selectClientLocation()" id="txtClientLocation">
+                                                    <mat-autocomplete #cloauto="matAutocomplete">
+                                                        <mat-option *ngFor="let cloc of locations" value="{{cloc.city}}">
+                                                          {{cloc.city}}
+                                                        </mat-option>
+                                                      </mat-autocomplete>
                                                     <mat-hint *ngIf="clocation.touched && clocation.invalid">
                                                             <mat-error *ngIf="clocation.errors.required">Please specify Client Location
                                                             </mat-error>
@@ -498,7 +494,12 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                             <div class="col-sm-8">
                                                 <input class="form-control form-control-width input-width"required
                                                     [(ngModel)]="vm.clocality" #clocality="ngModel" id="txtClientLocality"
-                                                    name="WalkinLocality" type="text" value="">
+                                                    name="WalkinLocality" type="text" value=""[matAutocomplete]="clocalauto">
+                                                    <mat-autocomplete #clocalauto="matAutocomplete">
+                                                        <mat-option *ngFor="let cloca1 of clocalities" value="{{cloca1.location}}">
+                                                          {{cloca1.location}}
+                                                        </mat-option>
+                                                      </mat-autocomplete>
                                                     <mat-hint *ngIf="clocality.touched && clocality.invalid">
                                                             <mat-error *ngIf="clocality.errors.required">Please specify Client Locality
                                                             </mat-error>

@@ -29,5 +29,5 @@ export class DriveFormModel {
     contactNoLandline:any;
     companyAddress:any;
     companyLogo:any;
-    timeslot:{timeSlotsId:number};
+    timeslot:any;
 }

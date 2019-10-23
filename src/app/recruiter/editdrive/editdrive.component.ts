@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { DriveFormModel } from '../create-drive/createdrive.model';
 import { AlertService } from 'src/app/alert.service';
 import { RecruiterauthserviceService } from 'src/app/recruiterauthservice.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -41,14 +42,30 @@ coId;
 driveformmodel=new DriveFormModel();
 constructor(private service:RecruiterauthserviceService,
   private route:ActivatedRoute,private alert:AlertService,
+  private builder:FormBuilder,private date:DatePipe,
   private router:Router,
   private http:HttpClient) { 
 this.driveId=this.route.snapshot.params.id;
 this.http.get("http://localhost:62222/getdriveById?driveId=" + this.driveId).subscribe((res)=>{
   this.drivedetails=res;
+
 });
 this.service.getDriveById(this.driveId).subscribe((res:DriveFormModel)=>{
   this.driveformmodel=res;
+  this.driveformmodel.driveName=res['driveName'];
+  console.log(this.driveformmodel.driveName);
+  this.driveformmodel.walkinDate=this.date.transform(res['walkinDate'],'yyyy-MM-dd');
+  // console.log( "coordinatror = "+JSON.stringify(res)['coordinators'].email);
+  // this.driveformmodel.coordinators=res['coordinators']['coordinatorIdcoordinatorId']['email'];
+  this.driveformmodel.coordinators=res['coordinators'];
+ // console.log(this.driveformmodel.coordinators);
+  this.driveformmodel.coordinators['email']=res['coordinators']['email'];
+  //console.log(this.driveformmodel.coordinators['email']);
+  this.driveformmodel.coordinators=this.driveformmodel.coordinators['email'];
+  this.driveformmodel.timeslot=res['timeslot'];
+  //console.log( this.driveformmodel.timeslot);
+   this.driveformmodel.timeslot=this.driveformmodel.timeslot.split(',');
+   //console.log(this.driveformmodel.timeslot[0]);
 });
 this.service.getTimeslots().subscribe((res)=>{
   this.timeSlots=res;
@@ -78,11 +95,12 @@ this.service.getJobtype().subscribe((res)=>{
       this.service.getCoordinators().subscribe((res)=>{
         this.coordinatorDetails=res;
          });
+         
   }
 
   ngOnInit() {
     this.driveForm=new FormGroup({
-      drivename:new FormControl('',[Validators.required]),
+      driveName:new FormControl('',Validators.required),
       WalkinDate:new FormControl('',[Validators.required]),
       Industry:new FormControl('',[Validators.required]),
       checkIn:new FormControl(''),
@@ -163,36 +181,36 @@ submitCancel(){
 
 }
 selectTimeslots(event){
-  this.driveformmodel.timeslot=this.timeSlots.find(time=>time['timeSlotsId'] == event.target['value']);
+  this.driveformmodel.timeslot=event;
 }
 selectExpmin(event){
-  this.driveformmodel.experienceMin= this.experience.find(expr=>expr['experienceId'] == event.target['value']);
+  this.driveformmodel.experienceMin= this.experience.find(expr=>expr['experienceId'] == event.experienceId);
 }
 selectExpmax(event){
-  this.driveformmodel.experienceMax= this.experience.find(expr1=>expr1['experienceId'] == event.target['value']);
+  this.driveformmodel.experienceMax= this.experience.find(expr1=>expr1['experienceId'] == event.experienceId);
 }
 selectIndustry(event){
-  this.driveformmodel.industry= this.industries.find(indestry=>indestry['industryId'] == event.target['value']);
+  this.driveformmodel.industry= this.industries.find(indestry=>indestry['industryId'] == event.industryId);
 }
 selectNotice(event){
-  this.driveformmodel.noticePeriod= this.noticeperiodList.find(notice=>notice['noticePeriodId'] == event.target['value']);
+  this.driveformmodel.noticePeriod= this.noticeperiodList.find(notice=>notice['noticePeriodId'] == event.noticePeriodId);
 }
-selectJobtype(event){
-  this.driveformmodel.jobType= this.jobtypeList.find(jobtypes=>jobtypes['jobTypeId'] == event.target['value']);
+selectJobType(event){
+  this.driveformmodel.jobType= this.jobtypeList.find(jobtypes=>jobtypes['jobTypeId'] == event.jobTypeId);
 }
 selectQualification(event){
-  this.driveformmodel.qualification= this.qualifications.find(quals=>quals['qualificationId'] == event.target['value']);
+  this.driveformmodel.qualification= this.qualifications.find(quals=>quals['qualificationId'] == event.qualificationId);
 }
-selectSalmin(event){
-  this.driveformmodel.salaryMin= this.salary.find(salary1=>salary1['salaryId'] == event.target['value']);
+selectMinSalary(event){
+  this.driveformmodel.salaryMin= this.salary.find(salary1=>salary1['salaryId'] == event.salaryId);
 }
-selectSalmax(event){
+selectMaxSalary(event){
   
-  this.driveformmodel.salaryMax= this.salary.find(salary2=>salary2['salaryId'] == event.target['value']);
-console.log(this.driveformmodel.salaryMax)
+  this.driveformmodel.salaryMax= this.salary.find(salary2=>salary2['salaryId'] == event.salaryId);
+//console.log(this.driveformmodel.salaryMax)
 }
 selectRole(event){
-  this.driveformmodel.role= this.roles.find(role=>role['roleId'] == event.target['value']);
+  this.driveformmodel.role= this.roles.find(role=>role['roleId'] == event.roleId);
 }
 selectCompanyLogo(event){
   this.selectedCompanyLogo=event.target.files[0];
@@ -203,6 +221,19 @@ selectCompanyLogo(event){
   }
 }
 updateDrive(driveformmodel){
+  let driveSlots="";
+  console.log(this.driveformmodel.timeslot)
+    if(this.driveformmodel.timeslot.length>1){
+      this.driveformmodel.timeslot.forEach(ftof => {
+        driveSlots=ftof+","+driveSlots;
+      
+      });
+      this.driveformmodel.timeslot=driveSlots;
+    }else{
+   
+      this.driveformmodel.timeslot= this.driveformmodel.timeslot[0];
+    }
+
   const formData=new FormData();
   formData.append('driveDetails',JSON.stringify(this.driveformmodel));
   formData.append('companyLogo',this.selectedCompanyLogo);

@@ -89,14 +89,21 @@
                                     <label class="control-label col-md-2 label-txt-alg" for="Industry">Industry</label>
                                     <label class="col-sm-1" style="width:3% !important;">:</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control" id="IndustryName"
-                                            placeholder="" ngModel #industry="ngModel"
-                                            (change)=selectIndustry($event) [(ngModel)]="edit.industry"
+                                        <!-- <select class="form-control" id="IndustryName"
+                                            placeholder=""ngModel #industry="ngModel"
+                                            (change)=selectIndustry($event)
                                             name="Industry" type="hidden" value="{{edit.industry}}">
                                             <option value="">--Select Industry--</option>
                                             <option *ngFor="let ind of industries" value="{{ind.industryId}}">
                                                 {{ind.industryType}}</option>
-                                        </select>
+                                        </select> -->
+                                        <ng-select [items]="industries"
+                                        bindLabel="industryType" (change)="selectIndustry($event)"
+                                        placeholder="Select item" ngModel #industry="ngModel"
+                                        appendTo="body"
+            s
+                                        [(ngModel)]="edit.industry">
+                             </ng-select>
                                         <mat-hint *ngIf="industry.touched && industry.invalid">
                                             <mat-error *ngIf="industry.errors.required">Industry is Required
                                             </mat-error>

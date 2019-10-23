@@ -39,15 +39,24 @@ return this.http.post(this.url+'/searchByLocation',{"location":toSearchObj.locat
   }
   getWalkerByIndustry(toSearchObj){
     
-    return this.http.post(this.url+'/searchWalkerByIndustry',{"industryId":toSearchObj.industryId})
+    return this.http.post(this.url+'/searchWalkerByIndustry',{"industryId":toSearchObj})
   }
   getWalkerByRole(toSearchObj){
-    return this.http.post(this.url+'/searchWalkerRole',{"roleId":toSearchObj.roleId})
+    return this.http.post(this.url+'/searchWalkerRole',{"roleId":toSearchObj})
   }
   getWalkerByNoticePeriod(toSearchObj){
-    return this.http.post(this.url+'/searchWalkerNoticePeriod',{"noticePeriodId":toSearchObj.noticePeriod})
+    return this.http.post(this.url+'/searchWalkerNoticePeriod',{"noticePeriod":toSearchObj})
   }
   getWalkerByQualification(toSearchObj){
-    return this.http.post(this.url+'/searchByWalkerQualification',{"qualification":toSearchObj.education})
+    return this.http.post(this.url+'/searchByWalkerQualification',{"education":toSearchObj})
   }
+  getwalkerByExperience(minExp,maxExp){
+    return this.http.get(this.url+'/getbyexperience?minExp='+minExp+'&'+'maxExp='+maxExp);
+  }
+  getwalkerByLocation(toSearchObj){
+    return this.http.post(this.url+'/searchWalkerByLocation',{"location":toSearchObj})
+  }
+ getwalkerByAll(toSearchObj){
+  return this.http.post(this.url+'/searchByAll',toSearchObj);
+ }
 }

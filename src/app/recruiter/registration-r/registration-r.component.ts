@@ -14,7 +14,7 @@ import { AlertService } from 'src/app/alert.service';
 export class RegistrationRComponent implements OnInit {
   msg;
   vm={
-    comapnyName:'',
+    companyName:'',
     Email:'',
     URL:'',
     password:'',
@@ -42,10 +42,25 @@ export class RegistrationRComponent implements OnInit {
   industries;
   selectedCompanyLogo:File;
   imgURL;
+  companyNames;
+  designations;
+  locations;
+  localities;
+  selectedLocations;
   constructor(private alert:AlertService,private router:Router,
     private service:RecruiterauthserviceService) { 
 this.service.getIndustries().subscribe((res)=>{
   this.industries=res;
+});
+this.service.getCompanyNames().subscribe((res)=>{
+this.companyNames=res;
+});
+this.service.getDesignation().subscribe((res)=>{
+  this.designations=res;
+
+});
+this.service.getAllLocations().subscribe((res)=>{
+  this.locations=res;
 });
   }
 checkboxEmail(){
@@ -88,6 +103,12 @@ selectCompanyLogo(event){
 sendData(val){
   console.log(val);
 }
+// selectLocation(event){
+//   this.vm.location=this.locations.find(loca=>loca['city'] == event.target['value'])
+// this.service.getALLLocalities(event.target['value']).subscribe((res)=>{
+//   this.localities=res;
+// });
+// }
 submitRegistration(values){
 this.service.recruiterRegsiter(values,this.selectedCompanyLogo).subscribe((res)=>{
    

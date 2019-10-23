@@ -28,15 +28,19 @@ industries;
 roles; 
 noticeperiod;
 qualifications;
+expMin;
+expMax;
+locations;
 search={keySkills:'',
         location:'',
+        preferredLocation:'',
         education:'',
+        experience:'',
         expMin:'',
         expMax:'',
-        experience:"",
         industryId:'',
         roleId:'',
-        noticePeriodId:''}
+        noticePeriod:''}
   constructor(private service:RecruiterauthserviceService,
     private router:Router,private sharedservice:SharedServiceService) {
     this.service.getExperience().subscribe((res)=>{
@@ -57,6 +61,9 @@ this.service.getNoticePeriod().subscribe((res)=>{
 this.service.getAllWakers().subscribe((res)=>{
   this.walkerDetails=res;
 });
+this.service.getAllLocations().subscribe((res)=>{
+this.locations=res;
+});
 
    }
   submitForm(val){
@@ -72,24 +79,43 @@ this.service.getAllWakers().subscribe((res)=>{
   }
   advanceSearch(){
     this.search.keySkills=this.vm.KeySkills;
-    this.search.education=this.vm.degree;
-    this.search.industryId=this.vm.industryname;
-    this.search.roleId=this.vm.role;
-    this.search.noticePeriodId=this.vm. period;
+   // this.search.experience=this.expMin+ "."+this.expMax;
+    //this.search.education=this.vm.degree;
+   // this.search.industryId=this.vm.industryname;
+    //this.search.roleId=this.vm.role;
+    //this.search.noticePeriodId=this.vm. period;
+    this.search.location=this.locations.find(locs=>locs['city']==this.vm.location);
+    this.search.preferredLocation=this.vm.preflocation;
+  //  console.log(this.search.location);  
     this.sharedservice.setJSON(this.search);
+
     this.router.navigate(['recruitment/searchProfiles']);
   }
   selectNoticePeriod(event){
-    this.search.noticePeriodId=this.noticeperiod.find(jobtype => jobtype['jobTypeId'] == event.target['value']);
+    this.search.noticePeriod=this.noticeperiod.find(notice=> notice['noticePeriodId'] == event.target['value']);
+    console.log(this.search.noticePeriod);
   }
 selectQualification(event){
-  this.search.education=this.qualifications.find(role => role['qualificationId'] == event.target['value']);
+  this.search.education=this.qualifications.find(quals => quals['qualificationId'] == event.target['value']);
+
 }
 selectRole(event){
   this.search.roleId=this.roles.find(role => role['roleId'] == event.target['value']);
 }
 selectIndustry(event){
-  this.search.industryId = this.industries.find(ind => ind['industryId'] == event.target['value']);
+  this.search.industryId = this.industries.find(industry=> industry['industryId'] == event.target['value']);
+
 }
+onSelectMinExp(event){
+  this.search.expMin=this.experience.find(exp => exp['experienceId'] == event.target['value']);
+  }
+   
+   onSelectMaxExp(event){
+  this.search.expMax=this.experience.find(exp => exp['experienceId'] == event.target['value']);
+   }
+  
+  
+
+
 
 }

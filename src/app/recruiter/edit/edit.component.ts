@@ -18,13 +18,13 @@ export class EditComponent implements OnInit {
   imgURL;
   myDate = new Date();
   logoString;
-  industries;
+  industries:any[];
   selectedCompanyLogo:File;
   logo;
   constructor(private http: HttpClient, private date: DatePipe,
     private alert: AlertService, private router: Router,private service:RecruiterauthserviceService) {
    
-this.service.getIndustries().subscribe((res)=>{
+this.service.getIndustries().subscribe((res:any)=>{
   this.industries=res;
 });
     var regDate = this.date.transform(this.myDate, 'yyyy-MM-dd');
@@ -34,12 +34,12 @@ this.service.getIndustries().subscribe((res)=>{
 
     var status = "Active";
     this.id = localStorage.getItem('recruiterId');
-    this.http.get("http://localhost:62222/getRecruiterById?recruiterId=" + this.id).subscribe((res) => {
+    this.service.getRecruiterById(this.id).subscribe((res) => {
 this.logo=res['companyLogo'];
 //console.log(res);
       this.edit = {
         recruiterId: '', firstName: '',
-        lastName: '', email: '', contactNo: '', contactnoLandline: '', industry: '',
+        lastName: '', email: '', contactNo: '', contactnoLandline: '', industry:res['industry'],
         "password": res['password'], "confirmPassword": res['confirmPassword'],
         "companyName": res['companyName'], "standardCurrentCompany": res['standardCurrentCompany'],
         "companyURL": res['companyURL'], "address": res['address'], "companyProfile": res['companyProfile'],
@@ -56,10 +56,10 @@ this.logo=res['companyLogo'];
       this.edit.contactNo = res['contactNo'];
       this.edit.contactnoLandline = res['contactnoLandline'];
 
-      this.edit.industry = res['industry'].industryType;
+ //    this.edit.industry = res['industry'];
       
 
-      console.log(this.edit);
+      console.log("++++++++++++++++" + this.edit.industry);
      
     }, (err) => {
       console.log("error");
@@ -75,7 +75,9 @@ this.logo=res['companyLogo'];
    }
     }
   selectIndustry(event){
-    this.edit.industry=this.industries.find(industry=>industry['industryId']==event.target['value']);
+    this.edit.industry=this.industries.find(ind=>ind['industryId']==event.industryId);
+    //console.log("--------------" + this.edit.industry);
+    
    
   }
 

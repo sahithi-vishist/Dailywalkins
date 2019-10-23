@@ -48,63 +48,63 @@
                                 <label class="control-label col-md-2 label-txt-alg" for="FirstName">First Name</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    abc
+                                    {{wDetails.firstName}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="LastName">Last Name</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    abc
+                                    {{wDetails.lastName}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Gender">Gender</label>
                                 <label class="col-sm-1 " style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    <label class="Gender-alg" for="Male______">Male      </label>
+                                    <label class="Gender-alg" for="Male______">{{wDetails.gender}}</label>
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Email">Email</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    abc@gmail.com
+                                    {{wDetails.email}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Location">Location</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    Alwar
+                                    {{wDetails.location.location}}
                                 </div>
                             </div>
                             <div class="form-group contactNumber" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg contact_no" for="Contact_Number">Contact Number</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    9999999999
+                                    {{wDetails.contactNo}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="ContactNo_Landline">ContactNo_Landline</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8">
-                                    <label class="text-form-color" for="NA">NA</label>
+                                    <label class="text-form-color" for="NA">{{wDetails.contactNoLandline}}</label>
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Date_Of_Birth">Date Of Birth</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    11/09/2019
+                                    {{wDetails.dateOfBirth|date:'dd-MM-yyyy'}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Languages_Known">Languages Known</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    abc
+                                    {{wDetails.languagesKnown}}
                                 </div>
                             </div>
                         </div>
@@ -124,21 +124,21 @@
                                 <label class="control-label col-md-2 label-txt-alg" for="Education">Education</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    CA
+                                    {{wDetails.education.qualification}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Institute">Institute</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    abc
+                                    {{wDetails.institute}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Year_Of_Pass">Year Of Pass</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    1995
+                                    {{wDetails.yearOfPass}}
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                                 <div class="col-md-8 text-form-txtalg">
                                     <div class="form-inline">
                                         <input data-val="true" data-val-number="The field Experience must be a number." data-val-required="Experience details are Required" id="Experience" name="Experience" type="hidden" value="17.11">
-                                        17.11
+                                        {{wDetails.experience}}
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                                 <div class="col-sm-8 text-form-txtalg">
                                     <div class="form-inline">
                                         <input data-val="true" data-val-number="The field Current CTC must be a number." data-val-required="CTC details are Required" id="CurrentCTC" name="CurrentCTC" type="hidden" value="9.9">
-                                        9.9
+                                        {{wDetails.currentCTC}}
                                     </div>
                                 </div>
                             </div>
@@ -176,56 +176,56 @@
                                 <label class="control-label col-md-2 label-txt-alg" for="Industry">Industry</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    Hotels/ Restaurants
+                                    {{wDetails.industryId.industryType}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Role">Role</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    Guest Relations Executive
+                                    {{wDetails.role}}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2 label-txt-alg" for="Key_Skills">Key Skills</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    Java,C,C#
+                                    {{wDetails.keySkills}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Resume_HeadLine">Resume HeadLine</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    17.11+ years of experience on Java,C,C#,
+                                    {{wDetails.resumeHeadLine}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Current_Designation">Current Designation</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    abc
+                                    {{wDetails.currentDesignation}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Current_Company">Current Company</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    ABC Gas Intl Ltd
+                                    {{wDetails.currentCompany}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Preferred_Location">Preferred Location</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    Agartala
+                                    {{wDetails.preferredLocation}}
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom:8px !important">
                                 <label class="control-label col-md-2 label-txt-alg" for="Notice_Period">Notice Period</label>
                                 <label class="col-sm-1" style="width:3% !important;">:</label>
                                 <div class="col-md-8 text-form-txtalg">
-                                    30
+                                    {{wDetails.noticePeriod.noticeText}}
                                 </div>
                             </div>
                         </div>

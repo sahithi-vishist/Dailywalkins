@@ -13,7 +13,7 @@ export class EmailComponent implements OnInit {
   ngOnInit() {
   }
   closeEmail(){
-this.router.navigate(['/recruitment/viewProfile']);
+this.router.navigate(['/recruitment/selected-job/:walkerId']);
   }
 
 }

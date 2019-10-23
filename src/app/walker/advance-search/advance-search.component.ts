@@ -53,6 +53,7 @@ export class AdvanceSearchComponent implements OnInit {
     })
     this.service.getRoles().subscribe((res)=>{
       this.roles=res;
+      
     })
 
 
@@ -71,6 +72,7 @@ export class AdvanceSearchComponent implements OnInit {
  }
  onSelectRole(event){
    this.search.roleId=this.roles.find(role => role['roleId'] == event.target['value']);
+  
   }
  
  onSelectJobType(event){

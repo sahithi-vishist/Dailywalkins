@@ -22,8 +22,13 @@
                     </label><label class="col-sm-1">:</label>
                     <div class="col-sm-8">
                       <input class="form-control" id="txtLastName1" name="companyName" type="text" value=""
-                        #cname="ngModel" [(ngModel)]="vm.comapnyName" pattern="[a-zA-Z ]*$" required>
-                      <mat-hint *ngIf="cname.touched && cname.invalid">
+                        #cname="ngModel" [(ngModel)]="vm.companyName" [matAutocomplete]="cauto"pattern="[a-zA-Z0-9 ]*$" required>
+                        <mat-autocomplete #cauto="matAutocomplete">
+                          <mat-option *ngFor="let names of companyNames" value="{{names.userCompanyNames}}">
+                            {{names.userCompanyNames}}
+                          </mat-option>
+                        </mat-autocomplete>
+                        <mat-hint *ngIf="cname.touched && cname.invalid">
                         <mat-error *ngIf="cname.errors.required">Company name is required</mat-error>
                         <mat-error *ngIf="cname.errors && cname.errors.pattern">Invalid Name</mat-error>
                       </mat-hint>
@@ -95,8 +100,13 @@
                     </label><label class="col-sm-1">:</label>
                     <div class="col-sm-8">
                       <input class="form-control form-control-width input-width" [(ngModel)]="vm.location"
-                        #location="ngModel" required id="txtLocation" name="Location" type="text" value="" />
-                      <mat-hint *ngIf="location.touched && location.invalid">
+                        #location="ngModel" required id="txtLocation" name="Location" [matAutocomplete]="locauto" type="text" value="" />
+                        <mat-autocomplete #locauto="matAutocomplete">
+                          <mat-option *ngFor="let loc of locations" value="{{loc.city}}">
+                            {{loc.city}}
+                          </mat-option>
+                        </mat-autocomplete>
+                        <mat-hint *ngIf="location.touched && location.invalid">
                         <mat-error *ngIf="location.errors.required">Location is required</mat-error>
 
                       </mat-hint>
@@ -235,8 +245,13 @@
                     </label><label class="col-sm-1">:</label>
                     <div class="col-sm-8">
                       <input class="form-control form-control-width input-width" [(ngModel)]="vm.Designation"
-                        #des="ngModel" id="Designation" name="Designation" type="text" value="" />
-                    </div>
+                        #des="ngModel" id="Designation" [matAutocomplete]="dauto"name="Designation" type="text" value="" />
+                        <mat-autocomplete #dauto="matAutocomplete">
+                          <mat-option *ngFor="let des of designations" value="{{des.designationName}}">
+                            {{des.designationName}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </div>
                   </div>
                   
                   <div class="form-group">

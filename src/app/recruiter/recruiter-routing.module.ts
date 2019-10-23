@@ -50,7 +50,7 @@ const routes: Routes = [
   {path:"sendSMS",component:SmsComponent},
   {path:"modifySearch",component:ModifySearchComponent},
   {path:"sendEmail",component:EmailComponent},
-  {path:"viewProfile",component:ViewProfileComponent},
+  {path:"selected-job/:walkerId",component:ViewProfileComponent},
   {path:"WalkinCentral/CreateDrive",component:CreateDriveComponent},
   {path:"registration",component:RegistrationRComponent},
   {path:"editdrive/:id",component:EditdriveComponent},

@@ -13,6 +13,6 @@ export class SmsComponent implements OnInit {
   ngOnInit() {
   }
   closeSMS(){
-this.router.navigate(['/recruitment/viewProfile']);
+this.router.navigate(['/recruitment/selected-job/:walkerId']);
   }
 }
