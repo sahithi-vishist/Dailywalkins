@@ -1,0 +1,33 @@
+export class DriveFormModel {
+   // coordinators:any;
+    companyEmail:any;
+    driveName:any;
+    experienceMin:{experienceId:number};
+    experienceMax:{experienceId:number};
+    walkinDate:any;
+    walkinLocation:any;
+    clientLocality:any;
+    locality:any;
+    industry:{industryId:number};
+    role:any;
+    jobDescription:any;
+    keySkills:any;
+    designation:any;
+    noticePeriod:{noticePeriodId:number};
+    jobType:{jobtypeId:number};
+    qualification:{qualificationId:number};
+    salaryMin:{salaryId:number};
+    salaryMax:{salaryId:number};
+    rolesResposibilities:any;
+    companyName:any;
+    endClient:any;
+    clientLocation:any;
+    companyProfile:any;
+    contactEmail:any;
+    contactPerson:any;
+    contactNo:any;
+    contactNoLandline:any;
+    companyAddress:any;
+    companyLogo:any;
+    timeslot:{timeSlotsId:number};
+}

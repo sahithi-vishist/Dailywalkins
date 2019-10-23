@@ -1,0 +1,31 @@
+<app-navbar-r></app-navbar-r>
+<div class="container">
+        <h1 class="page-title" style="text-align: center;line-height: 84px;">Forgot password</h1>
+        <section class="inner-page inner-page-login">
+            <div id="login" class="animate form">
+                <div id="wrapper1">
+                    <section id="loginForm">
+<form ngForm (ngSubmit)="sendform(vm)"><input name="__RequestVerificationToken" type="hidden" value="RCWoBSGMKS_SSfUvKthK64xQXWtyDNb-TPL7JSoCvvC-w1h2uRJyiynjOctEUeBTl9x3tYWid50z10wxvIQPzK9vKcaewwJ3QH1UY9-fYQ81"><div class="validation-summary-valid text-danger" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>                                <div class="form-group">
+                                <label class="" for="Please_enter_Registered_Email_:">Please enter Registered Email :</label>
+                                <div class="">
+                                    <input class="form-control" data-val="true"[(ngModel)]="vm.mails"#mail1="ngModel" pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" required email id="Email" name="Email" placeholder="derivatives@mail.com" type="text" value="">
+                                    <mat-hint *ngIf="mail1.touched && mail1.invalid">
+                                            <mat-error *ngIf="mail1.errors.required">Email Address is required</mat-error>
+                                            <mat-error *ngIf="mail1.errors.email &&mail1.errors.pattern">Enter Registered Email Address</mat-error>
+                                          </mat-hint>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="">
+                                    <span class="login button btn-forget-pass">
+                                        <input type="submit" (click)="submi"value="Forgot Password">
+                                    </span>
+                                </div>
+                            </div>
+</form>                        </section>
+                </div>
+            </div>
+        </section>
+    </div>
+    <app-footer></app-footer>

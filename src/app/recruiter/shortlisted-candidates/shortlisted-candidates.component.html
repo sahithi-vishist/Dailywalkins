@@ -1,0 +1,107 @@
+<app-navbar-w></app-navbar-w>
+<div class="container">
+    <div class="col-md-12" style="padding-left:0px; padding-right:0px;">
+
+        <div class="col-md-3">
+
+            <div id="tab-container">
+                <ul class="admin-list-group" id="main-menu">
+                        <li class="quick active bold"><a>Details</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CreateDrive">Create Drive</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/walkincentral">Drive details</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/UploadProfiles">Upload Profile(s)</a></li>
+                        <li class="liclass " style="color: White"><a routerLink="/recruitment/WalkinCentral/CandidateDetails">Candidate Details</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/CoOrdinatorsManagement">Co-Ordinators Management</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/panel">Panel Management</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/ShortlistedCandidates">Shortlisted Candidates</a></li>
+                        <li class="liclass" style="color: White"><a routerLink="/recruitment/WalkinCentral/EvaluationForms">Evaluation Forms</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-9" style="padding-right:0px;">
+
+            <div class="container">
+                <h2 class="page-title">Shortlisted Candidates</h2>
+            </div>
+            <div id="dvgetCandidateDetails">
+                <section class="inner-page" style="min-height:10px !important">
+                    <div id="register" class="animate form">
+
+
+                        <div class="form-horizontal  labelSize">
+                            <div class="form-group">
+                                <label for="lblCCAdd" class="col-sm-3 control-label bold">
+                                    Drive Name <span style="float: right">:</span><span style="color: Red;">*</span>
+                                </label>
+                                <div class="col-sm-4">
+                                    <input id="DriveName" name="DriveName" type="hidden" value="">
+                                    <select class="form-control form-control-width-1 input-width" id="ddlWalkindrive"
+                                        name="ddlWalkindrive">
+                                        <option value="">--Select Drive--</option>
+                                        <option value="4280">JobsMela</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lblCCAdd" class="col-sm-3 control-label bold">
+                                    Skill Set <span style="float: right">:</span><span style="color: Red;">*</span>
+                                </label>
+                                <div class="col-sm-4">
+                                    <label for="Skill">Skill</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lblCCAdd" class="col-sm-3 control-label bold">
+                                </label>
+                                <div class="col-sm-4">
+                                    <input id="btnGetCandidates" type="button" class="btn btn-primary btn-sm"
+                                        value="Get Details">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+            <div id="dvGrddriveDetails" style="display: none" class="">
+                <div class="portlet portlet-table">
+                    <div class="portlet-header">
+                        <h5>Drive Details</h5>
+                    </div>
+                    <div class="portlet-content">
+                        <br>
+                        <div style="width:90%; margin:0 auto;" class="form-group">
+                            <table id="gridTbl" class="table table-striped table-bordered dt-responsive nowrap"
+                                width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Drive Date</th>
+                                        <th>Total Applied</th>
+                                        <th>Total Selected</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table id="gridTblCandidate" class="table table-striped table-bordered dt-responsive nowrap"
+                                width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Candidate Name(Email)</th>
+                                        <th>Recruiter Email</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

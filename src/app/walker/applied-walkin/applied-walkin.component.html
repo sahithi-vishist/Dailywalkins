@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <h2 class="page-title">Applied Walkins </h2>
+        </div>
+        <div class="container inner-page">
+
+            <div>
+                <label>{{appliedWalkinsCount}} Applied job(s) found..</label>
+            </div>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+
+                    <div *ngFor="let aw of appliedWalkins" class="portlet portlet-table">
+
+                        <div class="">
+                            <div class="jobs-list jobs-list-width">
+
+                                    <section  class="main-sections listing__featured">
+
+                                        <div  class="listing-item__list ">
+                                            <article class="media well listing-item listing-item__jobs listing-item__featured ">
+                                                <div class="media-left listing-item__logo mdeia-logo-border">
+
+                                                    <img class="media-object profile__img-company" src="data:image/jpeg;base64,{{aw.jobNo.companyLogo}}" alt="Sample Employer">
+                                                </div>
+                                                <div  class="media-body">
+                                                    <div class="media-heading listing-item__title">
+                                                        <a routerLink="/walker/selected-job/{{aw.jobNo.jobNo}}">{{aw.jobNo.jobTitle}}</a>
+                                                    </div>
+                                                    <div class="listing-item__info clearfix">
+                                                        <span class="listing-item__info--item listing-item__info--item-location">
+                                                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                                          {{aw.jobNo.companyName}}
+                                                        </span>
+                                                        <span class="listing-item__info--item listing-item__info--item-location">
+                                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                            {{aw.jobNo.walkinLocation}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="listing-item__desc hidden-sm hidden-xs">
+                                                        <label>Client:</label>
+                                                       {{aw.jobNo.endClient}}
+
+                                                    </div>
+                                                    <div class="listing-item__desc hidden-sm hidden-xs">
+                                                        <label>Key Skills :</label>
+                                                      {{aw.jobNo.keySkills}}
+                                                    </div>
+                                                </div>
+                                                <div class="media-right text-right">
+                                                    <div class="listing-item__date">
+                                                        <span class="listing-item__employment-type">Walkin Date : {{aw.jobNo.walkinDate|date:'dd-MM-yyyy'}}</span>
+                                                    </div>
+                                                    
+
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </section>
+                                  
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

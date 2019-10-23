@@ -1,0 +1,306 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <h2 class="page-title"></h2>
+        </div>
+        <div class="container inner-page">
+            <div>
+
+            </div>
+            <input id="SelectedLocations" name="SelectedLocations" type="hidden" value="">
+            <input id="SelectedEducations" name="SelectedEducations" type="hidden" value="">
+            <input id="SelectedIndustries" name="SelectedIndustries" type="hidden" value="">
+            <input id="SelectedExperience" name="SelectedExperience" type="hidden" value="">
+            <input id="SelectedJobTypes" name="SelectedJobTypes" type="hidden" value="">
+
+            <div class="row">
+                <div class="col-md-3">
+
+                    <div class="panel panel-info panel-txt-bg">
+                        <div class="panel-heading panel-heading-txt form-group">
+                            <div class="form-inline">
+                                <span class="panel-title heading-inline mts" style="">
+                                    <input class="form-control form-control-width input-width ui-autocomplete-input"
+                                        id="txtSkills" name="Skills" placeholder="Type key skills here..." type="text"
+                                        value="" autocomplete="off">
+                                </span>
+                                <span class="pull-right">
+                                    <a href="" onclick="return loadJobs();"
+                                        class="btn  btn-primary btn-sm panel-key-skill">Refine</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading clearfix">
+                            <span class="panel-title heading-inline mts" style="font-weight: 600;">Jobs By
+                                Locations</span>
+                            <span class="pull-right">
+                                <a href="" onclick="return loadJobs();" class="btn  btn-primary btn-sm">Refine</a>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="rf-jobs-locations">
+                                <div class="table-responsive">
+                                    <input type="checkbox" class="check check-box-1 " id="chkAll"
+                                        onclick="checkAllLocations(this)"><span class="text-select-txt">Select
+                                        All</span>
+                                    <table id="gridLocations"
+                                        class="tableloc table table-striped table-bordered dt-responsive nowrap table-th-nowrap table-brdr-rm"
+                                        width="100%" cellspacing="0">
+                                        <thead>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading clearfix">
+                            <span class="panel-title heading-inline mts" style="font-weight: 600;">Jobs By
+                                Education</span>
+                            <span class="pull-right">
+                                <a href="" onclick="return loadJobs();" class="btn  btn-primary btn-sm">Refine</a>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="rf-jobs-locations">
+                                <div class="table-responsive">
+                                    <input type="checkbox" class="check check-box-1 " id="chkAll"
+                                        onclick="checkAllEducations(this)"><span class="text-select-txt">Select
+                                        All</span>
+                                    <table id="gridEducations"
+                                        class="tableedu table table-striped table-bordered dt-responsive nowrap table-th-nowrap table-brdr-rm"
+                                        width="100%" cellspacing="0">
+                                        <thead>
+
+                                            <tr>
+                                                <td><input type="checkbox"
+                                                        class="check check-box-1 checkbox-txx-top checkbox-txx-left"
+                                                        value="BE/B.Tech" onclick="checkEducation(this)">BE/B.Tech (1)
+                                                </td>
+                                            </tr>
+
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading clearfix">
+                            <span class="panel-title heading-inline mts" style="font-weight: 600;">Jobs By Industry
+                            </span>
+                            <span class="pull-right">
+                                <a href="" onclick="return loadJobs();" class="btn  btn-primary btn-sm">Refine</a>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="rf-jobs-locations">
+                                <div class="table-responsive">
+                                    <input type="checkbox" class="check check-box-1 " id="chkAll"
+                                        onclick="checkAllIndustries(this)"><span class="text-select-txt">Select
+                                        All</span>
+                                    <table id="gridIndustry"
+                                        class="tableind table table-striped table-bordered dt-responsive nowrap table-th-nowrap table-brdr-rm"
+                                        width="100%" cellspacing="0">
+                                        <thead>
+
+                                            <tr>
+                                                <td><input type="checkbox"
+                                                        class="check check-box-1 checkbox-txx-top checkbox-txx-left"
+                                                        value="1" onclick="checkIndustry(this)">IT Software &amp;
+                                                    Hardware (1)</td>
+                                            </tr>
+
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading clearfix">
+                            <span class="panel-title heading-inline mts" style="font-weight: 600;">Jobs By
+                                Experience</span>
+                            <span class="pull-right">
+                                <a href="" onclick="return loadJobs();" class="btn  btn-primary btn-sm">Refine</a>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="rf-jobs-locations">
+                                <div class="table-responsive">
+                                    <input type="checkbox" class="check check-box-1 " id="chkAll"
+                                        onclick="checkAllExperiences(this)"><span class="text-select-txt">Select
+                                        All</span>
+                                    <table id="gridExperience"
+                                        class="tableexp table table-striped table-bordered dt-responsive nowrap table-th-nowrap table-brdr-rm"
+                                        width="100%" cellspacing="0">
+                                        <thead>
+
+                                            <tr>
+                                                <td><input type="checkbox"
+                                                        class="check check-box-1 checkbox-txx-top checkbox-txx-left"
+                                                        value="3-5" onclick="checkExperience(this)">3 to 5 Years (1)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"
+                                                        class="check check-box-1 checkbox-txx-top checkbox-txx-left"
+                                                        value="5-7" onclick="checkExperience(this)">5 to 7 Years (1)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"
+                                                        class="check check-box-1 checkbox-txx-top checkbox-txx-left"
+                                                        value="7-10" onclick="checkExperience(this)">7 to 10 Years (1)
+                                                </td>
+                                            </tr>
+
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading clearfix">
+                            <span class="panel-title heading-inline mts" style="font-weight: 600;">Jobs By
+                                JobType</span>
+                            <span class="pull-right">
+                                <a href="" onclick="return loadJobs();" class="btn  btn-primary btn-sm">Refine</a>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="rf-jobs-locations">
+                                <div class="table-responsive">
+                                    <input type="checkbox" class="check check-box-1 " id="chkAll"
+                                        onclick="checkAllJobTypes(this)"><span class="text-select-txt">Select All</span>
+                                    <table id="gridJobType"
+                                        class="tablejob table table-striped table-bordered dt-responsive nowrap table-th-nowrap  table-brdr-rm"
+                                        width="100%" cellspacing="0">
+                                        <thead>
+
+                                            <tr>
+                                                <td><input type="checkbox"
+                                                        class="check check-box-1 checkbox-txx-top checkbox-txx-left"
+                                                        value="1" onclick="checkJobType(this)">Permanent (1)</td>
+                                            </tr>
+
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-9" id="divJobs">
+
+                    <label>{{totalJobs}} walkins(s) found..</label>
+                    <div class="portlet" style="margin-left:6px;margin-right:6px;">
+                        <div class="portlet-header">
+                            <span style="font-size: 17px;line-height:38px;color:#fff;">
+                                <label></label>
+                            </span>
+
+                            <ul class="portlet-tools pull-right">
+                                <li>
+                                    <a routerLink="/walker/advance-search" class="btn btn-primary btn-sm">Advance Search</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/walker/modify-search" class="btn  btn-primary btn-sm">Modify Search</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <div class="portlet portlet-table">
+                                    <div class="">
+                                        <div class="jobs-list jobs-list-width">
+                                            <section *ngFor="let job of postJobs" class="main-sections listing__featured">
+                                                <div class="listing-item__list ">
+                                                    <article
+                                                        class="media well listing-item listing-item__jobs listing-item__featured ">
+
+                                                        <div class="media-body">
+                                                            <div class="media-heading listing-item__title">
+                                                                <a routerLink="/walker/selected-job/{{job.jobNo}}">
+                                                                    {{job.jobTitle}}</a>
+                                                            </div>
+                                                            <div class="listing-item__info clearfix">
+                                                                <span
+                                                                    class="listing-item__info--item listing-item__info--item-location">
+                                                                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                                                   {{job.companyName}}
+                                                                </span>
+                                                                <span
+                                                                    class="listing-item__info--item listing-item__info--item-location">
+                                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                                {{job.walkinLocation}}
+                                                                </span>
+                                                            </div>
+                                                            <div class="listing-item__desc hidden-sm hidden-xs">
+                                                                <label>Client:</label>
+                                                             {{job.endClient}}
+
+                                                            </div>
+                                                            <div class="listing-item__desc hidden-sm hidden-xs">
+                                                                <label>Key Skills :</label>
+                                                                {{job.keySkills}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-right text-right">
+                                                            <!-- <div class="pull-right share-jobs">
+                                                    
+                                                    <div class="share red-tooltip online-status" data-toggle="tooltip" data-placement="bottom" title="Share with facebook">
+                                                        <fb:share-button id="fb-root" href="&quot;https://www.dailywalkins.com/Walker/SelectedJob/&quot;+4281" class=" fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=24&amp;href=https%3A%2F%2Fwww.dailywalkins.com%2FWalker%2F%2522https%3A%2F%2Fwww.dailywalkins.com%2FWalker%2FSelectedJob%2F%2522%2B4281&amp;locale=en_US&amp;sdk=joey"><span style="vertical-align: bottom; width: 49px; height: 15px;"><iframe name="f5b3cee346f47c" width="1000px" height="1000px" title="fb:share_button Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v3.0/plugins/share_button.php?app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Df39bbacce57e68%26domain%3Dwww.dailywalkins.com%26origin%3Dhttps%253A%252F%252Fwww.dailywalkins.com%252Ff26da6f917329f%26relation%3Dparent.parent&amp;container_width=24&amp;href=https%3A%2F%2Fwww.dailywalkins.com%2FWalker%2F%2522https%3A%2F%2Fwww.dailywalkins.com%2FWalker%2FSelectedJob%2F%2522%2B4281&amp;locale=en_US&amp;sdk=joey" style="border: none; visibility: visible; width: 49px; height: 15px;" class=""></iframe></span></fb:share-button>
+                                                        <img id="imgFB" src="/assets/images/fbi.gif" alt="fbi">
+                                                    </div>
+                                                    <script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                                                    <div class="share red-tooltip online-status" data-toggle="tooltip" data-placement="bottom" title="Share with Linked-In">
+                                                        <script type="IN/Share" data-url="&quot;https://www.dailywalkins.com/Walker/SelectedJob/&quot;+4281">
+                                                        </script>
+                                                        <img id="linkedinImg" src="/assets/images/linkedin_circle.png" alt="linkedin">
+                                                    </div>
+                                                    <a data-toggle="tooltip" class="share red-tooltip online-status" data-placement="bottom" title="Email" id="A1" href="/walker/SendJobEmail?jobno=4281" target="_blank">
+                                                        <img id="imgSMS" src="/assets/images/mail.png" alt="mail">
+                                                    </a>
+                                                    <a data-toggle="tooltip" class="share red-tooltip online-status" data-placement="bottom" title="SMS" id="A3" href="/walker/SendJobSMS?jobno=4281" target="_blank">
+                                                        <img id="imgSMS" src="/assets/images/sms.png" alt="sms">
+                                                    </a>
+                                                </div> -->
+                                                            <div class="listing-item__date">
+                                                                <span
+                                                                    class="listing-item__employment-type employment-type-1">Walkin
+                                                                    Date : {{job.walkinDate|date:'dd-MM-yyyy'}}</span>
+                                                            </div>
+
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

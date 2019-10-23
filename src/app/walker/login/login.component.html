@@ -1,0 +1,119 @@
+<!-- <app-navbar></app-navbar>
+<div class="container col-lg-4 col-md-6 col-sm-8 col-xs animated fadeIn" style="float:none;">
+    <div class="div-center text-center" style="background-image: url('assets/img/bg.jpg');">
+      <h1 style="color:#008BCA;font-family: sans-serif;font-size: 36px">Walker</h1>
+     
+      <mat-card>
+        <form class="form" (ngSubmit)="onSubmit(vm)">
+          <h1>Login</h1>
+          <hr/>
+          <mat-card-content>
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" ngModel name="email" id="email" #email="ngModel" [(ngModel)]="vm.email" type="email" pattern="[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,125}[a-zA-Z]{2,63}$" required>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-hint *ngIf="email.touched && email.invalid">
+                  <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                  <mat-error *ngIf="email.errors && email.errors.pattern">Invalid email</mat-error>
+                </mat-hint>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" ngModel name="password" id="password" #password="ngModel" [(ngModel)]="vm.password" type="password" required>
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint *ngIf="password.touched && password.invalid">
+                  <mat-error *ngIf="password.errors.required">Password is required</mat-error>
+                </mat-hint>
+              </mat-form-field>
+            </p>
+           
+            <div class="text-center" style="margin:10px;">
+              <a id="fpwd"  routerLink="/walker/forgot-password">Forgot Password?</a>
+              <button id="button"  type="submit">Login</button>
+            </div>
+           
+           <hr>
+            <a id="reg" routerLink="/walker/register">Register as a new user</a>
+           
+            
+            
+          </mat-card-content>
+        </form>
+      </mat-card>
+    </div>
+  </div>ng 
+
+   -->
+   <app-navbar></app-navbar>
+<form novalidate="novalidate">
+  <div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+      <div class="container">
+        <h1 class="page-title" style="text-align: center;line-height: 84px;">Walker</h1>
+        <section class="inner-page inner-page-login">
+          <div id="login" class="animate form">
+            <div class="form-horizontal">
+              <div class="row">
+                <div class="form-group ">
+                  <div class="text-danger">
+
+                  </div>
+                </div>
+                <div id="wrapper1">
+                  <h1>Login</h1>
+                  <div class="form-group">
+                    <label class="col-md-3 control-label data-icon-u">Email<span style="color:red;">*</span></label>
+                    <label class="col-sm-1" style="margin-top:6px">:</label>
+                    <div class="col-md-8">
+                      <input class="form-control form-control-text valid" data-val="true"
+                        ngModel #email="ngModel" [(ngModel)]="walker.email"
+                        pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                        id="Email" name="Email" placeholder="mymail@mail.com"
+                        type="text" value="" required>
+                        <mat-hint *ngIf="email.touched && email.invalid">
+                          <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                         
+                          <mat-error *ngIf="email.errors.pattern">Please enter valid email id.</mat-error>
+                        </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-3 control-label data-icon-i">Password<span style="color:red;">*</span></label>
+                    <label class="col-sm-1" style="margin-top:6px">:</label>
+                    <div class="col-md-8">
+                      <input class="form-control form-control-text valid" data-val="true"
+                       id="Password" name="Password" ngModel #password="ngModel" [(ngModel)]="walker.password"
+                        placeholder="eg. X8df!90EO" type="password">
+                        <mat-hint *ngIf="password.touched && password.invalid">
+                          <mat-error *ngIf="password.errors.required">Password is required</mat-error>
+                         
+                          <mat-error *ngIf="password.errors.pattern">Please enter password containing 1 number and 1 special character.</mat-error>
+                        </mat-hint>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                      <span class="forget-password">
+                        <a routerLink="/walker/forgot-password">Forgot password?</a>
+                      </span>
+                      <span class="login button">
+                        <input type="submit" (click)="login(walker)" value="Login">
+                      </span>
+                    </div>
+                  </div>
+                  <p class="change_link">
+                    <a routerLink="/walker/register">Register as a new user</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</form>
+<app-footer></app-footer>
