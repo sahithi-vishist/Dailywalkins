@@ -45,8 +45,11 @@
                                                 </label>
                                                 <div class="col-sm-7">
                                                     <input type="text" name="panelName" class="form-control"
-                                                        [(ngModel)]="obj.panelName">
-
+                                                        [(ngModel)]="obj.panelName"#name="ngModel"required>
+                                                        <mat-hint *ngIf="name.touched && name.invalid">
+                                                            <mat-error *ngIf="name.errors.required">Please specify valid name</mat-error>
+                                            
+                                                          </mat-hint>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -56,8 +59,11 @@
                                                 </label>
                                                 <div class="col-sm-7">
                                                     <input type="text" name="contactNo" class="form-control"
-                                                        [(ngModel)]="obj.contactNo">
-
+                                                        [(ngModel)]="obj.contactNo"#contactNo="ngModel" required pattern="^[0-9 ]{10}$">
+                                                        <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+                                                            <mat-error *ngIf="contactNo.errors.required">Contact Number is required</mat-error>
+                                                            <mat-error *ngIf="contactNo.errors.pattern">Enter valid Mobile Number</mat-error>
+                                                          </mat-hint>
 
                                                 </div>
                                             </div>
@@ -68,8 +74,11 @@
                                                 </label>
                                                 <div class="col-sm-7">
                                                     <input type="text" name="companyEmail" class="form-control"
-                                                        [(ngModel)]="obj.companyEmail">
-
+                                                        [(ngModel)]="obj.companyEmail"required email #emailId="ngModel">
+                                                        <mat-hint *ngIf="emailId.touched && emailId.invalid">
+                                                            <mat-error *ngIf="emailId.errors.required">Email Address is required</mat-error>
+                                                            <mat-error *ngIf="emailId.errors.email">Enter valid Email Address</mat-error>
+                                                          </mat-hint>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -79,8 +88,11 @@
                                                 </label>
                                                 <div class="col-sm-7">
                                                     <input type="text" name="keySkills" class="form-control"
-                                                        [(ngModel)]="obj.keySkills">
-
+                                                        [(ngModel)]="obj.keySkills"#keySkills="ngModel"required>
+                                                        <mat-hint *ngIf="keySkills.touched && keySkills.invalid">
+                                                            <mat-error *ngIf="keySkills.errors.required">Please specify keySkills</mat-error>
+                                            
+                                                          </mat-hint>
                                                 </div>
                                             </div>
 

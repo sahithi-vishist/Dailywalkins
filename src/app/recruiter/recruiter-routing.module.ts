@@ -27,6 +27,12 @@ import { UploadProfilesComponent } from './upload-profiles/upload-profiles.compo
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import { ShortlistedCandidatesComponent } from './shortlisted-candidates/shortlisted-candidates.component';
 import { EvaluationFormsComponent } from './evaluation-forms/evaluation-forms.component';
+import { SearchwalkersComponent } from './searchwalkers/searchwalkers.component';
+import { EmailComponent } from './email/email.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { SmsComponent } from './sms/sms.component';
+import { ModifySearchComponent } from './modify-search/modify-search.component';
+
 
 
 const routes: Routes = [
@@ -39,6 +45,11 @@ const routes: Routes = [
   {path:"myprofile",component:MyprofileComponent,canActivate: [RecruiterguardGuard]},
   {path:"view",component:ViewComponent},
   {path:"edit",component:EditComponent},
+  {path:"searchProfiles",component:SearchwalkersComponent},
+  {path:"sendSMS",component:SmsComponent},
+  {path:"modifySearch",component:ModifySearchComponent},
+  {path:"sendEmail",component:EmailComponent},
+  {path:"selected-job/:walkerId",component:ViewProfileComponent},
   {path:"WalkinCentral/CreateDrive",component:CreateDriveComponent},
   {path:"registration",component:RegistrationRComponent},
   {path:"editdrive/:id",component:EditdriveComponent},

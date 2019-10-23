@@ -89,14 +89,21 @@
                                     <label class="control-label col-md-2 label-txt-alg" for="Industry">Industry</label>
                                     <label class="col-sm-1" style="width:3% !important;">:</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control" id="IndustryName"
-                                            placeholder="" ngModel #industry="ngModel"
-                                            (change)=selectIndustry($event) [(ngModel)]="edit.industry"
+                                        <!-- <select class="form-control" id="IndustryName"
+                                            placeholder=""ngModel #industry="ngModel"
+                                            (change)=selectIndustry($event)
                                             name="Industry" type="hidden" value="{{edit.industry}}">
                                             <option value="">--Select Industry--</option>
                                             <option *ngFor="let ind of industries" value="{{ind.industryId}}">
                                                 {{ind.industryType}}</option>
-                                        </select>
+                                        </select> -->
+                                        <ng-select [items]="industries"
+                                        bindLabel="industryType" (change)="selectIndustry($event)"
+                                        placeholder="Select item" ngModel #industry="ngModel"
+                                        appendTo="body"
+            s
+                                        [(ngModel)]="edit.industry">
+                             </ng-select>
                                         <mat-hint *ngIf="industry.touched && industry.invalid">
                                             <mat-error *ngIf="industry.errors.required">Industry is Required
                                             </mat-error>
@@ -108,11 +115,11 @@
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <div class="thumbnail">
-                                            <img src="/assets/images/Profile-Avatar.jpg" id="imgProfile">
+                                            <img  src="{{imgURL}}"  onerror="this.src='/assets/images/download.png'"id="imgProfile">
 
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" [(ngModel)]="edit.companyLogo"id="ImageFile" name="image">
+                                    <input type="file" id="ImageFile"  accept="image/*" (change)="selectCompanyLogo($event)"name="image">
                                     <label style="color:red;" id="lblLogo"></label>
                                 </div>
                             </div>

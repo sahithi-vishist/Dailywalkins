@@ -8,6 +8,7 @@ import { WalkerAuthService } from './walker/walker-auth.service';
 export class HttpinterceptorService implements HttpInterceptor {
 tokenString;
   constructor(private service:WalkerAuthService) { }
+
   intercept(request:HttpRequest<any>,next:HttpHandler){
    if(localStorage.getItem('token') != null)
    {

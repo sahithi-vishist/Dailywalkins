@@ -26,12 +26,12 @@ authenticate(loginDetails):Observable<any>{
     
  }
 
+getRecruiterById(recId){
+  return this.http.get("http://localhost:62222/getRecruiterById?recruiterId=" +recId);
+}
 getIndustries(){
   return this.http.get("http://localhost:62222/getIndustries");
     
-}
-updateCreatedDrive(driveformmodel:DriveFormModel){
-  return this.http.put('http://localhost:62222/updateDrive',driveformmodel);
 }
 getJobtype(){
   return this.http.get("http://localhost:62222/getJobTypes");
@@ -51,7 +51,8 @@ getExperience(){
 getSalary(){
   return this.http.get("http://localhost:62222/getSalaryDetails");
 }
-createDrive(driveformmodel:DriveFormModel ){
+createDrive(driveformmodel){
+
  
   return this.http.post("http://localhost:62222/postdrive",driveformmodel);
 }
@@ -77,7 +78,8 @@ postWalkinDetails(walkinModel){
 getRoles(){
   return this.http.get('http://localhost:62222/getRoles');
 }
-updatePostWalkins(walkinModel:PostWalkinModel){
+
+updatePostWalkins(walkinModel){
   return this.http.put("http://localhost:62222/updatewalkin",walkinModel);
 }
 getPostWalkins(recruiterEmail){
@@ -85,6 +87,49 @@ this.recruiterEmailObj={
   "email":recruiterEmail
 }
 return this.http.post("http://localhost:62222/EmailCheck",this.recruiterEmailObj)
+}
+updateCreatedDrive(driveformmodel){
+  return this.http.put('http://localhost:62222/updateDrive',driveformmodel);
+}
+getCoordinators(){
+  return this.http.get('http://localhost:62222/getCoordinatorDetails');
+}
+getCoordinatorId(id){
+  return this.http.get('http://localhost:62222/getByidCo?id='+id);
+}
+postCoordinatorDetails(obj){
+  return this.http.post('http://localhost:62222/saveCoordinatorDetails',obj);
+}
+getAllWakers(){
+  return this.http.get('http://localhost:62222/totalwalkers');
+}
+getWalkersBySkills(skills){
+  return this.http.post('http://localhost:62222/getWalkersByKeySkills',{"keySkills":skills})
+}
+
+getWalkerById(id){
+  return this.http.get('http://localhost:62222/getwalkerbyid?walkerId='+id);
+}
+getLocations(){
+  return this.http.get('http://localhost:62222/getLocations');
+} 
+getWalkersByPrefLocation(prefLocations){
+  return this.http.post('http://localhost:62222/searchWalkerByPreferedLocation',{"preferredLocation":prefLocations})
+}
+getCompanyNames(){
+  return this.http.get('http://localhost:62222/getcompanies');
+}
+getDesignation(){
+  return this.http.get('http://localhost:62222/getdesignationService');
+}
+getAllLocations(){
+  return this.http.get('http://localhost:62222/getAllLocations');
+}
+getALLLocalities(location){
+  return this.http.get('http://localhost:62222/localities1',location);
+}
+getKeyskills(){
+  return this.http.get('http://localhost:62222/getkeyskills');
 }
 recruiterRegsiter(regdata,logo){
   var regDate=this.date.transform(this.myDate,'yyyy-MM-dd');

@@ -14,13 +14,15 @@
                     </h3>
                     <hr>
                     <p>
-                        <span class="bold" style="font-weight:900">Company Name :</span>&nbsp;
-                        <label id="lblresumeHeadline" style="color:#0080FF;" class="resumeHeadline-disc label-weight">{{companyName}} </label>
+                        <span class="bold" style="font-weight:900">CompanyName&nbsp;:</span>&nbsp;
+                        <label id="lblresumeHeadline" style="color:#0080FF;"
+                            class="resumeHeadline-disc label-weight">{{companyName}} </label>
                     </p>
                     <ul class="icons-list icons-item">
                         <li>
                             <i class="icon-li fa fa-envelope"></i>
-                            <label id="lbluser" style="text-align: left; color:darkturquoise;" class="label-weight">{{email}} </label>
+                            <label id="lbluser" style="text-align: left; color:darkturquoise;"
+                                class="label-weight">{{email}} </label>
                         </li>
                         <li>
                             <i class="icon-li fa fa-phone"></i>+91
@@ -31,8 +33,8 @@
                             <label id="lblLocation" class="label-weight">{{location}} </label>
                         </li>
                         <li>
-                            <i class="icon-li fa fa-calendar"></i>Last Updated :
-                            <label id="lblcontactno" class="label-weight">{{updatedOn|date:'dd-MM-yyyy'}}</label>                            
+                            <i class="icon-li fa fa-calendar"></i>Last Updated<b> :</b>
+                            <label id="lblcontactno" class="label-weight">{{updatedOn|date:'dd-MM-yyyy'}}</label>
                         </li>
                     </ul>
                     <hr>
@@ -42,22 +44,22 @@
 
                 <div class="col-md-4">
                     <div class="thumbnail">
-                                <img src="/assets/images/Profile-Avatar.jpg" id="imgProfile">
-                        
+                        <img src="data:image/jpeg;base64,{{companyLogo}}" alt="Logo Not Loaded" id="imgProfile">
+
                     </div>
                     <div class="form-inline" id="wrapper1">
                         <div class="feature-box btn-add-delect">
                             <span class="login button">
                                 <!---->
-                                <input type="submit"(click)="viewProfile()" value="View and Edit" class="btn-edit-rc">
-                            </span>                           
+                                <input type="submit" (click)="viewProfile()" value="View and Edit" class="btn-edit-rc">
+                            </span>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-      
+
         <div class="wrapper">
             <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
                 <div class="container">
@@ -67,49 +69,56 @@
                     <label style="font:bold;color:green"> {{countJobs}} posted job(s) found... </label>
                     <div class="table-responsive">
                         <div class="jobs-list jobs-list-width">
-                                <section *ngFor="let pw of postedJobs" class="main-sections listing__featured">
-                                    <div class="listing-item__list ">
-                                        <article class="media well listing-item listing-item__jobs listing-item__featured ">
-                                            <div class="media-left listing-item__logo mdeia-logo-border">
+                            <section *ngFor="let pw of postedJobs" class="main-sections listing__featured">
+                                <div class="listing-item__list ">
+                                    <article class="media well listing-item listing-item__jobs listing-item__featured ">
+                                        <div class="media-left listing-item__logo mdeia-logo-border">
 
-                                                <img class="media-object profile__img-company" src="/assets/images/de-con.jpg">
+                                            <img class="media-object profile__img-company"
+                                                src="data:image/jpeg;base64,{{pw.companyLogo}}" alt="Logo Not Loaded"
+                                                id="imgProfile">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="media-heading listing-item__title">
+                                                <a
+                                                    routerLink="/recruitment/selectedjob/{{pw.jobNo}}">{{pw.jobTitle}}</a>
                                             </div>
-                                            <div class="media-body">
-                                                <div class="media-heading listing-item__title">
-                                                    <a routerLink="/recruitment/selectedjob/{{pw.jobNo}}">{{pw.jobTitle}}</a>
-                                                </div>
-                                                <div class="listing-item__info clearfix">
-                                                    <span class="listing-item__info--item listing-item__info--item-location">
-                                                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                            <div class="listing-item__info clearfix">
+                                                <span
+                                                    class="listing-item__info--item listing-item__info--item-location">
+                                                    <i class="fa fa-briefcase" aria-hidden="true"></i>
                                                     {{pw.companyName}}
-                                                    </span>
-                                                    <span class="listing-item__info--item listing-item__info--item-location">
-                                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                        {{pw.walkinLocation}}
-                                                    </span>
-                                                </div>
-                                                <div class="listing-item__desc hidden-sm hidden-xs">
-                                                    <label>Client:</label>
-                                                    {{pw.endClient}}
-                                                </div>
-                                                <div class="listing-item__desc hidden-sm hidden-xs">
-                                                    <label>Key Skills :</label>
-                                                  {{pw.keySkills}}
-                                                </div>
-                                                <div class="listing-item__desc hidden-sm hidden-xs">
-                                                    <label>Posted date :</label>
- 07/09/2019
-                                                </div>
+                                                </span>
+                                                <span
+                                                    class="listing-item__info--item listing-item__info--item-location">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                    {{pw.walkinLocation}}
+                                                </span>
                                             </div>
-                                            <div class="media-right text-right">
-                                                <div class="listing-item__date">
-                                                    <span class="listing-item__employment-type">Walkin Date : {{pw.walkinDate|date:'dd-MM-yyyy'}}</span>
-                                                </div>
-                                                <span class="listing-item__employment-type">Applied :{{pw.appliedCount}}</span>
+                                            <div class="listing-item__desc hidden-sm hidden-xs">
+                                                <label>Client &nbsp;:</label>
+                                                {{pw.endClient}}
                                             </div>
-                                        </article>
-                                    </div>
-                                </section>
+                                            <div class="listing-item__desc hidden-sm hidden-xs">
+                                                <label>Key Skills :</label>
+                                                {{pw.keySkills}}
+                                            </div>
+                                            <div class="listing-item__desc hidden-sm hidden-xs">
+                                                <label>Posted date :</label>
+                                                07/09/2019
+                                            </div>
+                                        </div>
+                                        <div class="media-right text-right">
+                                            <div class="listing-item__date">
+                                                <span class="listing-item__employment-type">Walkin Date :
+                                                    {{pw.walkinDate|date:'dd-MM-yyyy'}}</span>
+                                            </div>
+                                            <span class="listing-item__employment-type">Applied
+                                                :{{pw.appliedCount}}</span>
+                                        </div>
+                                    </article>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>

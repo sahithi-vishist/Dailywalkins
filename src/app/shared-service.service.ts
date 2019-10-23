@@ -11,15 +11,16 @@ object;
 jobTitle;
 fName:String;
 url="http://localhost:62222"
+   
   constructor(private http:HttpClient) { }
   setFirstName(firstName){
-this.fName=firstName;
-
-  }
-  getfName(){
+    this.fName=firstName;
     
-    return this.fName;
-  }
+      }
+      getfName(){
+        
+        return this.fName;
+      }
   setJSON(searchObj){
 this.object=searchObj;
   }
@@ -43,6 +44,7 @@ return this.http.post(this.url+'/searchByLocation',{"location":toSearchObj.locat
   }
   getWalkinsByminExp(toSearchObj){
     return this.http.post(this.url+'/searchByMinExp',{"expMin":toSearchObj.expMin,expMax:toSearchObj.expMax});
+    return this.http.post(this.url+'/searchByMinExp',{"expMin":toSearchObj.expMin});
   }
   getWalkinsBymaxExp(toSearchObj){
     return this.http.post(this.url+'/searchByMaxExp',{"expMax":toSearchObj.expMax});
@@ -56,4 +58,27 @@ return this.http.post(this.url+'/searchByLocation',{"location":toSearchObj.locat
   getWalkinsByQualification(toSearchObj){
     return this.http.post(this.url+'/searchByQualification',{"qualification":toSearchObj.qualification.qualification})
   }
+  
+  getWalkerByIndustry(toSearchObj){
+    
+    return this.http.post(this.url+'/searchWalkerByIndustry',{"industryId":toSearchObj})
+  }
+  getWalkerByRole(toSearchObj){
+    return this.http.post(this.url+'/searchWalkerRole',{"roleId":toSearchObj})
+  }
+  getWalkerByNoticePeriod(toSearchObj){
+    return this.http.post(this.url+'/searchWalkerNoticePeriod',{"noticePeriod":toSearchObj})
+  }
+  getWalkerByQualification(toSearchObj){
+    return this.http.post(this.url+'/searchByWalkerQualification',{"education":toSearchObj})
+  }
+  getwalkerByExperience(minExp,maxExp){
+    return this.http.get(this.url+'/getbyexperience?minExp='+minExp+'&'+'maxExp='+maxExp);
+  }
+  getwalkerByLocation(toSearchObj){
+    return this.http.post(this.url+'/searchWalkerByLocation',{"location":toSearchObj})
+  }
+ getwalkerByAll(toSearchObj){
+  return this.http.post(this.url+'/searchByAll',toSearchObj);
+ }
 }

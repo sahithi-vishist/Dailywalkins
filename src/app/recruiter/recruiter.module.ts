@@ -65,6 +65,13 @@ import { CandidateDetailsComponent } from './candidate-details/candidate-details
 import { ShortlistedCandidatesComponent } from './shortlisted-candidates/shortlisted-candidates.component';
 import { EvaluationFormsComponent } from './evaluation-forms/evaluation-forms.component';
 import { NavbarWComponent } from './navbar-w/navbar-w.component';
+// import { NgSelectModule } from '@ng-select/ng-select';
+import { SearchwalkersComponent } from './searchwalkers/searchwalkers.component';
+import { EmailComponent } from './email/email.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { SmsComponent } from './sms/sms.component';
+import { ModifySearchComponent } from './modify-search/modify-search.component';
+
 
 @NgModule({
   declarations: [LoginRComponent,
@@ -76,7 +83,6 @@ import { NavbarWComponent } from './navbar-w/navbar-w.component';
    EditWalkinComponent,ViewComponent, EditComponent,LogoutComponent ,
    CreateDriveComponent, LogoutComponent, NavbarRComponent, 
    EditdriveComponent, ViewWalkinsComponent,WalkinDetailsRComponent,
-  
    HomepageComponent,
    EditWalkinComponent,
    CreateComponent,
@@ -90,7 +96,11 @@ import { NavbarWComponent } from './navbar-w/navbar-w.component';
    ShortlistedCandidatesComponent,
    EvaluationFormsComponent,
    NavbarWComponent,
- 
+   SearchwalkersComponent,
+   EmailComponent,
+   ViewProfileComponent,
+   SmsComponent,
+   ModifySearchComponent
 ],
   imports: [
     SharedModule,
@@ -126,7 +136,8 @@ import { NavbarWComponent } from './navbar-w/navbar-w.component';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    //NgSelectModule
   ],
   exports:[LoginRComponent,
     SharedModule,
@@ -138,6 +149,10 @@ import { NavbarWComponent } from './navbar-w/navbar-w.component';
   NavbarRComponent,EditdriveComponent,DrivedetailsComponent,
  WalkinDetailsRComponent,UploadProfilesComponent,NavbarWComponent,EditdriveComponent,
  CandidateDetailsComponent,ShortlistedCandidatesComponent,EvaluationFormsComponent,
-  ViewWalkinsComponent,HomepageComponent]
+  ViewWalkinsComponent,HomepageComponent,UploadProfilesComponent,NavbarWComponent,
+ CandidateDetailsComponent,ShortlistedCandidatesComponent,
+ EvaluationFormsComponent,ViewWalkinsComponent,HomepageComponent,
+  SearchwalkersComponent,EmailComponent,ViewProfileComponent,
+SmsComponent,ModifySearchComponent]
 })
 export class RecruiterModule { }

@@ -16,6 +16,7 @@ jobDetails;
       this.jobId=this.route.snapshot.params.jobId;
       this.service.getJobById(this.jobId).subscribe((res)=>{
 this.jobDetails=res;
+this.jobDetails.companyLogo=res['companyLogo'];
       });
     }
 

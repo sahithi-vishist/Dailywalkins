@@ -31,7 +31,7 @@ export class WalkinDetailsRComponent implements OnInit {
          noticePeriod:res['noticePeriod'],
          jobType:res['jobType'],
         qualification:res['qualification'],
-        companyLogo:res['companyLogo'],
+       companyLogo:res['companyLogo'],
         contactNoLandline:res['contactNoLandline'],
         companyAddress:res['companyAddress'],
         contactNo:res['contactNo'],
@@ -47,12 +47,13 @@ export class WalkinDetailsRComponent implements OnInit {
         industry:res['industry'],
         
        }
+      // console.log("company logo is"+this.obj.companyLogo);
   this.noticeText=this.obj.noticePeriod.noticeText;
   this.qualification=res['qualification'].qualification;
   this.jobType=res['jobType'].jobType;
   this.locality=res['locality'].city;
   this.location=res['locality'].location;
-  this.experience=res['experienceMax'].expValue+"to"+res['experienceMin'].expValue;
+  this.experience=res['experienceMin'].expValue+"-"+res['experienceMax'].expValue;
   console.log("experience value is"+this.experience)
       });
     }

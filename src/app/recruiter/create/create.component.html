@@ -22,7 +22,7 @@
                         </div>
                 </div>
               <div class="col-md-9" style="padding-right:0px;">
-  <form (ngSubmit)="create()">  
+  <form #cordForm="ngForm"(ngSubmit)="create();cordForm.reset()">  
         <div class="row">
     <div id="dvgetCoOrdinatorDetails">
         <div class="portlet">
@@ -37,16 +37,23 @@
                             Name<span style="float: right">:</span><span style="color: Red;">*</span>
                         </label>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                         <div class="col-sm-7">
-                            <input  type="text" name="name" class="form-control" [(ngModel)]="obj.name" required>
-                             </div>
+                            <input  type="text" name="name" class="form-control" [(ngModel)]="obj.name" #name="ngModel"required>
+                            <mat-hint *ngIf="name.touched && name.invalid">
+                                <mat-error *ngIf="name.errors.required">Please specify valid name</mat-error>
+                
+                              </mat-hint>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label bold">
                             Contact Number<span style="float: right">:</span><span style="color: Red;">*</span>
                         </label>
                         <div class="col-sm-7">
-                            <input  type="text" name="contactNo" class="form-control"  [(ngModel)]="obj.contactNo">
-  
+                            <input  type="text" name="contactNo" class="form-control"  [(ngModel)]="obj.contactNo"#contactNo="ngModel" required pattern="^[0-9 ]{10}$">
+                            <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+                                <mat-error *ngIf="contactNo.errors.required">Contact Number is required</mat-error>
+                                <mat-error *ngIf="contactNo.errors.pattern">Enter valid Mobile Number</mat-error>
+                              </mat-hint>
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,8 +61,12 @@
                             Email<span style="float: right">:</span><span style="color: Red;">*</span>
                         </label>
                         <div class="col-sm-7">
-                            <input class="form-control" name="email" type="text"  [(ngModel)]="obj.email">
-                               </div>
+                            <input class="form-control" name="email" type="text"  [(ngModel)]="obj.email" required email #emailId="ngModel">
+                            <mat-hint *ngIf="emailId.touched && emailId.invalid">
+                                <mat-error *ngIf="emailId.errors.required">Email Address is required</mat-error>
+                                <mat-error *ngIf="emailId.errors.email">Enter valid Email Address</mat-error>
+                              </mat-hint>
+                        </div>
                     </div>
   
                     <div class="form-group">

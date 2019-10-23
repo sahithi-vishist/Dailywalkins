@@ -21,7 +21,7 @@ loginFacUser;
     this.service.getLoginFac(this.loginFacUser).subscribe((res)=>
     {
       this.objAdd=res;
-      console.log(this.objAdd);
+     // console.log(this.objAdd);
       // this.facilityId = this.objAdd.find(id => id['facilityLoginId'] == id);
       // console.log(this.facilityId);
     })
@@ -35,7 +35,7 @@ loginFacUser;
     
   updateCo(objAdd){
     this.service.setter(objAdd);
-    this.router.navigate(['/facility/up'])
+    this.router.navigate(['/facility/up']);
   }
   
 }

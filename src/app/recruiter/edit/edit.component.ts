@@ -15,13 +15,16 @@ export class EditComponent implements OnInit {
   id;
   message;
   edit;
+  imgURL;
   myDate = new Date();
   logoString;
-  industries;
+  industries:any[];
+  selectedCompanyLogo:File;
+  logo;
   constructor(private http: HttpClient, private date: DatePipe,
     private alert: AlertService, private router: Router,private service:RecruiterauthserviceService) {
-    //var id=localStorage.getItem('recruiterId');
-this.service.getIndustries().subscribe((res)=>{
+   
+this.service.getIndustries().subscribe((res:any)=>{
   this.industries=res;
 });
     var regDate = this.date.transform(this.myDate, 'yyyy-MM-dd');
@@ -31,18 +34,18 @@ this.service.getIndustries().subscribe((res)=>{
 
     var status = "Active";
     this.id = localStorage.getItem('recruiterId');
-    this.http.get("http://localhost:62222/getRecruiterById?recruiterId=" + this.id).subscribe((res) => {
-
-console.log(res);
+    this.service.getRecruiterById(this.id).subscribe((res) => {
+this.logo=res['companyLogo'];
+//console.log(res);
       this.edit = {
         recruiterId: '', firstName: '',
-        lastName: '', email: '', contactNo: '', contactnoLandline: '', industry: '',
+        lastName: '', email: '', contactNo: '', contactnoLandline: '', industry:res['industry'],
         "password": res['password'], "confirmPassword": res['confirmPassword'],
         "companyName": res['companyName'], "standardCurrentCompany": res['standardCurrentCompany'],
         "companyURL": res['companyURL'], "address": res['address'], "companyProfile": res['companyProfile'],
         "activation": true, "regDate": regDate, "emailVerified": true, "isOnline": true,
         "designation": res['designation'], "visibility": true, "updateDate": updateDate,
-        "logoString": res['companyLogo'], "isMobileOnline": true, "lastLogin": lastLogin,
+        "isMobileOnline": true, "lastLogin": lastLogin,
         "lastActive": lastActive, "status": status
       };
       this.edit.recruiterId = this.id;
@@ -52,22 +55,38 @@ console.log(res);
       this.edit.email = res['email'];
       this.edit.contactNo = res['contactNo'];
       this.edit.contactnoLandline = res['contactnoLandline'];
-      this.edit.companyLogo = res['companyLogo'];
-      this.edit.industry = res['industry'].industryType;
 
+ //    this.edit.industry = res['industry'];
       
-      //this.result=res;
+
+      console.log("++++++++++++++++" + this.edit.industry);
+     
     }, (err) => {
       console.log("error");
     });
   }
+  selectCompanyLogo(event){
+    this.selectedCompanyLogo=event.target.files[0];
+   // console.log(this.selectedCompanyLogo);
+   var reader = new FileReader();
+   reader.readAsDataURL(event.target.files[0]); 
+   reader.onload = (_event) => { 
+     this.imgURL = reader.result; 
+   }
+    }
   selectIndustry(event){
-    this.edit.industry=this.industries.find(industry=>industry['industryId']==event.target['value']);
-    console.log(this.edit.industry);
+    this.edit.industry=this.industries.find(ind=>ind['industryId']==event.industryId);
+    //console.log("--------------" + this.edit.industry);
+    
+   
   }
-  updateReg(val) {
 
-    this.http.put('http://localhost:62222/updateRecruiterRegistration', this.edit).subscribe((res) => {
+  updateReg(val) {
+    const formData=new FormData();
+    formData.append('recDetails',JSON.stringify(this.edit));
+    formData.append('companyLogo',this.selectedCompanyLogo);
+    console.log(formData.get('companyLogo'));
+    this.http.put('http://localhost:62222/updateRecruiterRegistration',formData).subscribe((res) => {
       if (res != null) {
         this.alert.showAlert('success', "Updated Successfully");
         this.router.navigate(['/recruitment/view']);
