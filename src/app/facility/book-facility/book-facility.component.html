@@ -1,0 +1,124 @@
+<div class="body-content demo-index">
+    <div class="">
+
+<form (ngSubmit)="bookfac(obj)">        
+    <div class="wrapper">
+        <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+            <div class="container">
+                <h1 class="page-title">Book Facility</h1>
+                <section class="inner-page">
+                    <div id="register" class="animate form">
+                        <div class="form-horizontal">
+                            <input data-val="true" data-val-number="The field FacilityID must be a number." data-val-required="The FacilityID field is required." id="FacilityID" name="FacilityID" type="hidden" value="1902">
+                            <div class="form-group from-model">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;">Company Name <span style="color:red;">*</span></label>
+                                <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control ui-autocomplete-input" name="companyName" type="text" [(ngModel)]="obj.companyName">
+                                    </div>
+                            </div>
+                            <div class="form-group from-model">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px">Email <span style="color:red;">*</span></label>
+                                <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" name="companyEmail" [(ngModel)]="obj.companyEmail">
+                                    </div>
+                            </div>
+                            <div class="form-group from-model">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px">Contact Number <span style="color:red;">*</span></label>
+                                <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control"type="text" name="contactNumber" [(ngModel)]="obj.contactNumber">
+                                     </div>
+                            </div>
+                            <div class="form-group from-model">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;">Date <span style="color:red;"></span></label>
+                                <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                <div class="col-sm-6">
+                                    <input data-val="true" data-val-required="Date is Required" id="Date" name="Date" type="hidden" value="02/10/2019">
+                                    <input class="form-control hasDatepicker" disabled="disabled" id="txtDate-1" name="Date" placeholder="dd/mm/yyyy" type="text" value="02/10/2019">
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group from-model">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;">Interview Desks <span style="color:red;"></span></label>
+                                <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" name="numberofseats" [(ngModel)]="obj.numberofseats">
+                                    <span style="background-color: #32CD32; color: #fff; padding: 5px;border-radius: 4px;position: relative;top: 8px;"> Seats Available</span>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;"> TP Rooms</label>
+                                <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" data-val="true" name="numberOfTprooms" type="text" [(ngModel)]="obj.numberOfTprooms">
+                                    <span style="background-color: #32CD32; color: #fff; padding: 5px;border-radius: 4px;position: relative;top: 8px;"> TP Rooms Available</span>
+                                      </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;"> Meeting Rooms</label>
+                                <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" name="numberOfMeetingRooms" [(ngModel)]="obj.numberOfMeetingRooms" >
+                                    <span style="background-color: #32CD32; color: #fff; padding: 5px;border-radius: 4px;position: relative;top: 8px;"> Meeting Rooms Available</span>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;"> Co-Ordinators</label>
+                                <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" name="numberOfCoordinators" [(ngModel)]="obj.numberOfCoordinators">
+                                    <span style="background-color: rgb(154, 185, 154); color: #fff; padding: 5px;border-radius: 4px;position: relative;top: 8px;">  Co-Ordinators Available</span>
+                                   </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5" style="margin-top:18px;">Lineup Resources</label>
+                                <label class="col-sm-1" style="margin-top:18px;">:</label>
+                                <label class="col-sm-6" style="margin-top:22px;">
+                                    <input data-val="true" data-val-required="The ResourcesNeeded field is required." id="ResourcesNeeded" name="ResourcesNeeded" type="hidden" value="False">
+                                    <input class="radiobtn" id="rd_yes" name="rdYes" onchange="checkResource(this.value)" type="radio" value="yes"><label for="YES">YES</label>
+                                    <input checked="checked" class="radiobtn" id="rd_no" name="rdNo" onchange="checkResource(this.value)" type="radio" value="no"><label for="NO">NO</label>
+                                </label>
+                            </div>
+                            <div id="divResourse" style="display:none;">
+                                <div class="form-group">
+                                    <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;"> Job Skills</label>
+                                    <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control ui-autocomplete-input" name="jobSkills" type="text" [(ngModel)]="obj.jobSkills">
+                                                                         
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;"> Resources Needed</label>
+                                    <label class="col-sm-1" style="margin-top: 8px;">:</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" data-val="true"type="text"  name="resourcesneededcount" [(ngModel)]="obj.resourcesneededcount">
+                                        <span style="position: relative;top: 8px;"> Resources Count</span>                                           
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;"> </label>
+                                <label class="col-sm-1" style="margin-top: 8px;"></label>
+                                <div class="col-sm-6">
+                                    <input type="submit" id="btnSubmit" class="btn btn-primary btn-sm" value="Send Enquiry" >
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5" style="white-space:nowrap;margin-top: 8px;"> </label>
+                                <label class="col-sm-1" style="margin-top: 8px;"></label>
+                                <div class="col-sm-6">
+                                    <span style="padding: 5px;position: relative;top: 8px;"> Team will revert in 30 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>

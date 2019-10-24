@@ -1,0 +1,192 @@
+<app-navbar-r></app-navbar-r>
+<div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <h1 class="content-header-title page-title">Walkin Details</h1>
+            <div class="portlet">
+                <div class="portlet-header portlet-header-con" data-original-title="" title="">
+                    <h3 class="h3-align-portlet ">
+                        UI developer
+                        <span class="portlet-tools pull-right btn btn-primary btn-sm">
+                            <a routerLink="/recruitment/editWalkin/{{jobDetails.jobNo}}">Edit</a>
+                        </span>                           
+                    </h3>
+                </div>
+                <div class="portlet-content form-bottom">
+                    <div class="form-horizontal wrapper-1 txt-wrapper">
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Experience_">Experience </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8 ">
+                                <label class="text-form-color ">{{jobDetails.expMin.expValue}} - {{jobDetails.expMax.expValue}} years</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Industry_Type_">Industry Type </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="IT_Software___Hardware">{{jobDetails.industryId.industryType}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Role_">Role </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="Developer">{{jobDetails.roleId.roleName}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Number_of_Positions_">Number of Positions </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="">{{jobDetails.jobPositions}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Key_Skills_">Key Skills </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="Angular7">{{jobDetails.keySkills}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Job_Description_">Job Description </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="Delivering_a_complete_front_end_code">{{jobDetails.jobDescription}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Designation_">Designation </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="UI_Developer_">{{jobDetails.designation}} </label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Notice_Period_">Notice Period </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="">{{jobDetails.noticePeriod.noticeText}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Job_Type_">Job Type </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="Permanent">{{jobDetails.jobTypeId.jobType}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Qualification_">Qualification </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color">{{jobDetails.qualification.qualification}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="CTC_">CTC </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="">{{jobDetails.minSal.salValue}}lpa to </label>
+                                <label class="text-form-color" for="">{{jobDetails.maxSal.salValue}}lpa</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Company_Name_">Company Name </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="Vishist_Business_Solutions_Pvt_Ltd">{{jobDetails.companyName}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="End_Client_">End Client </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="Vishist_Business_Solutions_Pvt_Ltd_">{{jobDetails.endClient}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2 label-txt-alg" for="Company_Profile_">Company Profile </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color">{{jobDetails.companyProfile}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Location_">Location </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color">{{jobDetails.walkinLocation}}</label> 
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Locality_">Locality </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color">{{jobDetails.locality}}</label> 
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Contact_Person_">Contact Person </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="xyz">{{jobDetails.contactPerson}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Email_">Email </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color">jobDetails.email</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Contact_No__Mobile__">Contact No (Mobile) </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="">{{jobDetails.phone}}</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Landline_No_">Landline No </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="NA">{{jobDetails.contactNoLandline}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Roles___Responsibilities_">Roles &amp; Responsibilities </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="NA">{{jobDetails.rolesResponsibilties}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Company_Address_">Company Address </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="col-md-8">
+                                <label class="text-form-color" for="hyderabad">{{jobDetails.address}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:8px !important">
+                            <label class="control-label col-md-2 label-txt-alg" for="Company_Logo_">Company Logo </label>
+                            <label class="col-sm-1" style="width:3% !important;">:</label>
+                            <div class="CompanyLogo">
+
+                                <img src="data:image/jpeg;base64,{{jobDetails.companyLogo}}" alt="Logo Not Loaded" id="imgProfile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+<app-footer></app-footer>

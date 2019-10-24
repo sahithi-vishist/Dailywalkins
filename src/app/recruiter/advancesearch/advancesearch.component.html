@@ -1,0 +1,192 @@
+<app-navbar-r></app-navbar-r>
+<form ngForm (ngSubmit)="advanceSearch()">
+    <div class="wrapper">
+        <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+            <div class="container">
+                <h1 class="page-title">Search Profiles</h1>
+                <section class="inner-page">
+                    <div id="register" class="animate form">
+                        <div class="form-horizontal ">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-8 wrapper-1">
+                                    <h2> Advance Search </h2>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Key words <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                id="txtKeySkills" [(ngModel)]="vm.KeySkills" name="KeySkills"
+                                                placeholder="java" type="text" value="" autocomplete="off">
+                                            <div class="checkbox checkbox-alg-none">
+                                                <input id="allkeywords" name="allkeywords" type="hidden" value="">
+                                                <input class="check" id="chkAll" name="chkAll" (click)="checkboxAll()"
+                                                    [(ngModel)]="check" type="checkbox" value="true"><input
+                                                    name="chkAll" type="hidden" value="false"> All Keywords
+                                                <label class="checkbox-label checkbox-alg-none">
+                                                    <input id="Extendrsme" name="Extendrsme" type="hidden" value="">
+                                                    <input class="check" id="chkResume" name="chkResume"
+                                                        (click)="checkboxResume()" [(ngModel)]="check" type="checkbox"
+                                                        value="true"><input name="chkResume" type="hidden"
+                                                        value="false"> Resume
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Additional Skills <span
+                                                style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width"
+                                                [(ngModel)]="vm.skills" id="txtAddSkills" name="AddSkills"
+                                                placeholder="java" type="text" value="">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Exclude Skills <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width"
+                                                [(ngModel)]="vm.exskills" id="txtExdSkills" name="ExcludeSkills"
+                                                placeholder="java" type="text" value="">
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Location <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                [(ngModel)]="vm.location" id="txtLocation" name="Location"
+                                                placeholder="Hyderabad" type="text" value="" [matAutocomplete]="lauto">
+                                            <mat-autocomplete #lauto="matAutocomplete">
+                                                <mat-option *ngFor="let loc of locations" value="{{loc.city}}">
+                                                    {{loc.city}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Preferred Location <span
+                                                style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input
+                                                class="form-control form-control-width input-width ui-autocomplete-input"
+                                                [(ngModel)]="vm.preflocation" id="txtPfLocation" name="PreferedLocation"
+                                                placeholder="Hyderabad" type="text" value="" [matAutocomplete]="plauto">
+                                            <mat-autocomplete #plauto="matAutocomplete">
+                                                <mat-option *ngFor="let loc of locations" value="{{loc.city}}">
+                                                    {{loc.city}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Experience <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8" style="white-space:nowrap">
+                                            <div class="form-inline">
+                                                <select class="form-control" [(ngModel)]="vm.minExp" data-val="true"
+                                                    (change)="onSelectMinExp($event)" id="minExp" name="MinExp">
+                                                    <option value="">--Select value --</option>
+
+                                                    <option *ngFor="let exp of experience" value="{{exp.experienceId}}">
+                                                        {{exp.expValue}}</option>
+                                                </select>
+
+                                                Year(s)&nbsp; to
+
+                                                <select class="form-control" [(ngModel)]="vm.maxExp" data-val="true"
+                                                    (change)="onSelectMaxExp($event)" ss id="maxExp" name="MaxExp">
+                                                    <option value="">--Select value--</option>
+
+                                                    <option *ngFor="let expe of experience"
+                                                        value="{{expe.experienceId}}">{{expe.expValue}}</option>
+                                                </select>
+
+                                                Years(s)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Industry <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                id="IndustryName" [(ngModel)]="vm.industryname"
+                                                (change)="selectIndustry($event)" name="Industry">
+                                                <option value="">--Select type--</option>
+                                                <option *ngFor="let ind of industries" value="{{ind.industryId}}">
+                                                    {{ind.industryType}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Role <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                [(ngModel)]="vm.role" (change)="selectRole($event)" id="RoleName"
+                                                name="Role">
+                                                <option value="">Select</option>
+                                                <option *ngFor="let role of roles" value="{{role.roleId}}">
+                                                    {{role.roleName}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Highest Degree <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                [(ngModel)]="vm.degree" (change)="selectQualification($event)"
+                                                id="ddlEducation" name="Education">
+                                                <option value="">--Select Education--</option>
+                                                <option *ngFor="let qual of qualifications"
+                                                    value="{{qual.qualificationId}}">{{qual.qualification}}</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Notice Period <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control form-control-width-1 input-width"
+                                                [(ngModel)]="vm.period" (change)="selectNoticePeriod($event)"
+                                                id="NoticePeriod" name="NoticePeriod">
+                                                <option value="">--Select NoticePeriod--</option>
+                                                <option *ngFor="let period of noticeperiod"
+                                                    value="{{period.noticePeriodId}}">{{period.noticeText}}</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-8">
+
+                                            <div class="">
+                                                <input type="submit" value="Search" class="btn btn-primary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</form>
+<app-footer></app-footer>

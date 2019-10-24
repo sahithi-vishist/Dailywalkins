@@ -1,0 +1,703 @@
+<app-navbar-r></app-navbar-r>
+
+<div id="snackbar"></div>
+  
+<div class="body-content demo-index">
+    <div class="">
+        
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="../assets/css/jquery.ui.timepicker.css" type="text/css">
+
+
+
+<style>
+.dropdown-menu > .active > a {
+    background-color: none !important;
+    color: #fff !important;
+}
+
+.multiselect-container > li > a > label {
+    height: 1% !important;
+}
+
+.dropdown-menu {
+    position: relative;
+    top: 0px !important;
+    left: 0px !important;
+}
+
+label.checkbox {
+    position: relative;
+    top: 0px !important;
+}
+
+.open > .dropdown-menu {
+    display: block;
+    width: 230px;
+    text-align: center;
+}
+
+button.multiselect.dropdown-toggle.btn.btn-default {
+    width: 230px !important;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > li > a > label:hover {
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #017163 !important;
+}
+</style>
+
+ 
+<form #walkinForm="ngForm" (ngSubmit)="update()">     
+    <div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <h1 class="page-title">Edit  Walkin</h1>
+            <section class="inner-page">
+                <div id="register" class="animate form">
+                    <div class="form-horizontal ">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 wrapper-1">
+                                <h1> Post Walkin </h1>
+                                <div class="form-group">
+                                        <label class="label-icon-2  col-sm-3">Job Title <span
+                                                style="color:red;">*</span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control form-control-width input-width" data-val="true"
+                                            [(ngModel)]="walkinModel.jobTitle" #jtitle="ngModel" required id="txtJobTitle"
+                                                name="JobTitle" type="text" value="">
+                                            <mat-hint *ngIf="jtitle.touched && jtitle.invalid">
+                                                <mat-error *ngIf="jtitle.errors.required">Job title is required
+                                                </mat-error>
+    
+                                            </mat-hint>
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2  col-sm-3">Walkin Date <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width hasDatepicker"
+                                                    data-val="true" [(ngModel)]="walkinModel.walkinDate" #wdate="ngModel" required
+                                                    id="txtWalkinDate" name="WalkinDate" type="date" value="">
+        
+                                                <mat-hint *ngIf="wdate.touched && wdate.invalid">
+                                                    <mat-error *ngIf="wdate.errors.required">Walkin Date is required
+                                                    </mat-error>
+        
+                                                </mat-hint>
+        
+                                            </div>
+                                     </div>
+                                <div class="form-group">
+                                            <label class="col-sm-3" style="white-space:nowrap">Walkin Time Slots <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                    <ng-select bindLabel="hoursText" 
+                                                    appendTo="body" [searchable]="true" multiple="true" name="time"
+                                                    [clearable]="true" (change)="selectedTimeSlots($event)"
+                                                    [(ngModel)]="walkinModel.walkinTimeSlots" #timeslot="ngModel">
+                                                    <ng-option [value]="slot.hoursText"
+                                                        *ngFor="let slot of timeSlots">
+                                                        {{slot.hoursText}}
+                                                    </ng-option>
+                                                </ng-select>
+                                                        <!-- <ng-select [items]="timeSlots"
+                                                        bindLabel="hoursText" (change)="selectedTimeSlots($event)"
+                                                        placeholder="Select timeslot" ngModel #timeslot="ngModel"
+                                                        appendTo="body" name="timeslot1"
+                            
+                                                        [(ngModel)]="walkinModel.walkinTimeSlots">
+                                             </ng-select> -->
+                                                    <!-- <select class="listbox form-control form-control-width-1 input-width"
+                                                        data-val="true" [(ngModel)]="walkinModel.walkinTimeSlots" #timeslot="ngModel"
+                                                        required id="WalkinTimeSlots"
+                                                        name="WalkinTimeSlots"(change)="selectedTimeSlots($event)">
+                                                        <option value="">--Select TimeSlot--</option>
+                                                        <option *ngFor="let period of timeSlots"value="{{period.timeSlotsId}}">{{period.hoursText}}</option>
+                                                    </select> -->
+                                                    <!-- <div class="btn-group">
+                                                        <button type="button"
+                                                            class="multiselect dropdown-toggle btn btn-default"
+                                                            data-toggle="dropdown" title="None selected"><span
+                                                                class="multiselect-selected-text">None selected</span> <b
+                                                                class="caret"></b></button>
+                                                        <ul class="multiselect-container dropdown-menu">
+                                                            <li class="multiselect-item multiselect-all"><a tabindex="0"
+                                                                    class="multiselect-all"><label class="checkbox"><input
+                                                                            type="checkbox" value="multiselect-all"> Select
+                                                                        all</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="08.00 AM"><input type="checkbox" value="8">
+                                                                        08.00 AM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="09.00 AM"><input type="checkbox" value="9">
+                                                                        09.00 AM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="10.00 AM"><input type="checkbox" value="10">
+                                                                        10.00 AM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="11.00 AM"><input type="checkbox" value="11">
+                                                                        11.00 AM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="12.00 PM"><input type="checkbox" value="12">
+                                                                        12.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="01.00 PM"><input type="checkbox" value="13">
+                                                                        01.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="02.00 PM"><input type="checkbox" value="14">
+                                                                        02.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="03.00 PM"><input type="checkbox" value="15">
+                                                                        03.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="04.00 PM"><input type="checkbox" value="16">
+                                                                        04.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="05.00 PM"><input type="checkbox" value="17">
+                                                                        05.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="06.00 PM"><input type="checkbox" value="18">
+                                                                        06.00 PM</label></a></li>
+                                                            <li><a tabindex="0"><label class="checkbox"
+                                                                        title="07.00 PM"><input type="checkbox" value="19">
+                                                                        07.00 PM</label></a></li>
+                                                        </ul>
+                                                    </div> -->
+                                               
+                                                <mat-hint *ngIf="timeslot.touched && timeslot.invalid">
+                                                    <mat-error *ngIf="timeslot.errors.required"> Please specify walkin
+                                                        WalkinTimeSlots</mat-error>
+        
+                                                </mat-hint>
+                                            </div>
+                                     </div>
+                                <div class="form-group">
+                                        <label class="col-sm-3">Experience <span style="color:red;">*</span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8" style="white-space:nowrap">
+                                            <div class="form-inline">
+                                                    <ng-select [items]="experience"
+                                                    bindLabel="expValue" (change)="selectMinExp($event)"
+                                                    placeholder="Select minimum" ngModel #expMin="ngModel"
+                                                    appendTo="body" name="expmin"
+                        
+                                                    [(ngModel)]="walkinModel.expMin">
+                                            </ng-select>
+    
+                                                Year(s)
+    
+                                                &nbsp; to
+                                                <ng-select [items]="experience"
+                                                bindLabel="expValue" (change)="selectMaxExp($event)"
+                                                placeholder="Select minimum" ngModel #expMax="ngModel"
+                                                appendTo="body" name="expmax"
+                    
+                                                [(ngModel)]="walkinModel.expMax">
+                                        </ng-select> Year(s)
+                                                <mat-hint
+                                                *ngIf="expMin.touched && expMin.invalid">
+                                                <mat-error
+                                                    *ngIf="expMin.errors.required">
+                                                    Please specify MinimumExperience</mat-error>
+                                            </mat-hint>
+                                            <mat-hint
+                                                *ngIf="expMax.touched && expMax.invalid">
+                                                <mat-error
+                                                    *ngIf="expMax.errors.required">
+                                                    Please specify MaximumExperience</mat-error>
+                                            </mat-hint>
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-5 col-sm-3" style="white-space:nowrap">Walkin Location
+                                                <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8" style="white-space:nowrap">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    [(ngModel)]="walkinModel.walkinLocation" #wlocation="ngModel" id="txtLocation"
+                                                    name="WalkinLocation" type="text" value=""(ngModelChange)="selectWalkinLocation()" [matAutocomplete]="wlocauto">
+                                                    <mat-autocomplete #wlocauto="matAutocomplete">
+                                                            <mat-option *ngFor="let loc of locations" value="{{loc.city}}">
+                                                              {{loc.city}}
+                                                            </mat-option>
+                                                          </mat-autocomplete>
+                                                    <mat-hint *ngIf="wlocation.touched && wlocation.invalid">
+                                                            <mat-error *ngIf="wlocation.errors.required"> Please specify walkin Location
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                     </div>
+                                <div class="form-group">
+                                                <label class="label-icon-5 col-sm-3">Locality <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input
+                                                        class="form-control form-control-width input-width ui-autocomplete-input"
+                                                        [(ngModel)]="walkinModel.locality" #locality="ngModel" id="txtLocality"
+                                                        name="WalkinLocality" type="text" value="" autocomplete="off">
+                                                        <mat-hint *ngIf="locality.touched && locality.invalid">
+                                                                <mat-error *ngIf="locality.errors.required"> Please specify Locality
+                                                                </mat-error>
+                    
+                                                            </mat-hint>
+                                                </div>
+                                     </div>
+                                <div class="form-group">
+                                                    <label class="col-sm-3">Industry <span style="color:red;">*</span></label>
+                                                    <label class="col-sm-1">:</label>
+                                                    <div class="col-sm-8">
+                                                        <input data-val="true"
+                                                            id="InId" name="InId" type="hidden" value="0">
+                                                        <input data-val="true" required 
+                                                            id="Industry" name="Industry" type="hidden" value="">
+                                                            <ng-select [items]="industries"
+                                                            bindLabel="industryType" (change)="selectIndustry($event)"
+                                                            placeholder="Select Industry" ngModel #industry="ngModel"
+                                                            appendTo="body" name="Industryname"
+                                s
+                                                            [(ngModel)]="walkinModel.industryId">
+                                                 </ng-select>
+                                                        <mat-hint *ngIf="industry.touched && industry.invalid">
+                                                                <mat-error *ngIf="industry.errors.required"> Please specify industry
+                                                                </mat-error>
+                    
+                                                            </mat-hint>
+                                                    </div>
+                                     </div>
+                                <div class="form-group">
+                                                    <label class="col-sm-3">Role <span style="color:red;">*</span></label>
+                                                    <label class="col-sm-1">:</label>
+                                                    <div class="col-sm-8">
+                                                        <input data-val="true" required id="Role"
+                                                            name="Role" type="hidden" value="">
+                                                        <input data-val="true" 
+                                                           required  id="RId" name="RId"
+                                                            type="hidden" value="">
+                                                        <select class="form-control form-control-width-1 input-width"
+                                                            [(ngModel)]="walkinModel.role" #role="ngModel"(change)="selectRole($event)"id="RoleName" name="Role">
+                                                            <option value="">--Select Role--</option>
+                                                            <option *ngFor="let rol of roles"
+                                                                    value="{{rol.roleId}}">{{rol.roleName}}</option>
+                                                        </select>
+                                                        <mat-hint *ngIf="role.touched && role.invalid">
+                                                                <mat-error *ngIf="role.errors.required"> Please specify role
+                                                                </mat-error>
+                    
+                                                            </mat-hint>
+                                                    </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3">Job Positions <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" data-val="true"
+                                                    [(ngModel)]="walkinModel.jobPositions" #jpositions="ngModel"
+                                                    required id="txtjobPositions"
+                                                    name="jobPositions" type="text" value="0">
+                                                    <mat-hint *ngIf="jpositions.touched && jpositions.invalid">
+                                                            <mat-error *ngIf="jpositions.errors.required"> Please specify JobPositions
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3">Key Skills <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    data-val="true" [(ngModel)]="walkinModel.keySkills" #jobskills="ngModel"
+                                                    required id="txtKeySkills"
+                                                    name="KeySkills" placeholder="java,c++" type="text" value=""
+                                                    autocomplete="off">
+                                                    <mat-hint *ngIf="jobskills.touched && jobskills.invalid">
+                                                            <mat-error *ngIf="jobskills.errors.required"> Please specify KeySkills
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3">Job Description <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" data-val="true"
+                                                    [(ngModel)]="walkinModel.jobDescription" #jdescription="ngModel"
+                                                    required
+                                                    id="txtJobDescription" name="JobDescription" placeholder="java,c++"
+                                                    type="text" value="">
+                                                    <mat-hint *ngIf="jdescription.touched && jdescription.invalid">
+                                                            <mat-error *ngIf="jdescription.errors.required"> Please specify JobDescription
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3">Designation <span
+                                                    style="color:red;"></span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    [(ngModel)]="walkinModel.designation" #designation="ngModel" id="txtDesignation"
+                                                    name="Designation" placeholder="UI" type="text" value=""
+                                                    autocomplete="off">
+                                            </div>
+                                    </div>
+                                 <div class="form-group">
+                                            <label class="col-sm-3"> Notice Period <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                    <ng-select [items]="noticeperiodList"
+                                                    bindLabel="noticeText" (change)="selectNoticePeriod($event)"
+                                                    placeholder="Select period" ngModel #noticeperiod="ngModel"
+                                                    appendTo="body" name="noticename"
+                        
+                                                    [(ngModel)]="walkinModel.noticePeriod">
+                                         </ng-select>
+                                                <mat-hint *ngIf="noticeperiod.touched &&noticeperiod.invalid">
+                                                        <mat-error *ngIf="noticeperiod.errors.required"> Please specify NoticePeriod
+                                                        </mat-error>
+            
+                                                    </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="col-sm-3">Job Type <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                    <ng-select [items]="jobtypeList"
+                                                    bindLabel="jobType" (change)="selectJobType($event)"
+                                                     ngModel #jobtype="ngModel"
+                                                    appendTo="body" name="jobname"
+                        
+                                                    [(ngModel)]="walkinModel.jobTypeId">
+                                         </ng-select>
+                                                <mat-hint *ngIf="jobtype.touched &&jobtype.invalid">
+                                                        <mat-error *ngIf="jobtype.errors.required"> Please specify jobType
+                                                        </mat-error>
+            
+                                                    </mat-hint>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="col-sm-3">
+                                                Qualification <span style="color:red;">*</span>
+                                            </label><label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                    <ng-select bindLabel="hoursText" 
+                                                                appendTo="body" [searchable]="true" multiple="true" name="qualname"
+                                                                [clearable]="true" (change)="selectQualification($event)" required
+                                                                [(ngModel)]="walkinModel.qualification" #qualification="ngModel" >
+                                                                <ng-option [value]="qual.qualification"
+                                                                    *ngFor="let qual of qualifications">
+                                                                    {{qual.qualification}}
+                                                                </ng-option>
+                                                            </ng-select>
+                                                <mat-hint *ngIf="qualification.touched && qualification.invalid">
+                                                    <mat-error *ngIf="qualification.errors.required">Qualification is required
+                                                    </mat-error>
+                                                </mat-hint>
+                                            </div>
+                                        </div>
+                                <div class="form-group">
+                                            <label class="col-sm-3" style="white-space:nowrap">Annual Salary Offered <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8" style="white-space:nowrap">
+                                                <div class="form-inline">
+                                                        <ng-select [items]="salary"
+                                                        bindLabel="salValue" (change)="selectMinSalary($event)"
+                                                         ngModel #salMin="ngModel"
+                                                        appendTo="body" name="salarymin"
+                            
+                                                        [(ngModel)]="walkinModel.minSal">
+                                                </ng-select>
+                                                    Lakh(s)&nbsp; to
+                                                    <ng-select [items]="salary"
+                                                    bindLabel="salValue" (change)="selectMaxSalary($event)"
+                                                     ngModel #salMax="ngModel"
+                                                    appendTo="body" name="salarymax"
+                        
+                                                    [(ngModel)]="walkinModel.maxSal">
+                                            </ng-select>
+                                                    Lakh(s)
+                                        
+                                                        <mat-hint *ngIf="salMin.touched && salMin.invalid">
+                                                                <mat-error *ngIf="salMin.errors.required">MinimumSalary is required
+                                                                </mat-error>
+                                                            </mat-hint>
+                                                            <mat-hint *ngIf="salMax.touched && salMax.invalid">
+                                                                    <mat-error *ngIf="salMax.errors.required">MaximumSalary is required
+                                                                    </mat-error>
+                                                                </mat-hint>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Company Name
+                                                <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input
+                                                    class="form-control form-control-width input-width ui-autocomplete-input"
+                                                    data-val="true" [(ngModel)]="walkinModel.companyName" #cname="ngModel"
+                                                    required id="txtCompanyName"
+                                                    name="CompanyName" type="text" value="" autocomplete="off">
+                                                    <mat-hint *ngIf="cname.touched && cname.invalid">
+                                                            <mat-error *ngIf="cname.errors.required">Please Specify Company Name
+                                                            </mat-error>
+                                                        </mat-hint>
+                                            </div>
+                                    </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3">End Client <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" data-val="true"
+                                                    [(ngModel)]="walkinModel.endClient" #endclient="ngModel" required
+                                                    id="txtEndClient" name="EndClient" type="text" value="">
+                                    
+                                                <input type="checkbox" class="check" id="chkClient" value="None"
+                                                (click)="changeClientName()"> Same as company name
+                                            
+                                                <mat-hint *ngIf="endclient.touched && endclient.invalid">
+                                                        <mat-error *ngIf="endclient.errors.required">Please specify EndClient
+                                                        </mat-error>
+            
+                                                    </mat-hint>
+                                        </div>
+                                    </div>
+                                    
+                                <div class="form-group">
+                                            <label class="label-icon-5 col-sm-3" style="white-space:nowrap">Client Location
+                                                <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8" style="white-space:nowrap">
+                                                <input class="form-control form-control-width input-width"
+                                                    [(ngModel)]="walkinModel.location" #clocation="ngModel" id="txtClientLocation"
+                                                    name="WalkinLocation" type="text" value="">
+                                                    <mat-hint *ngIf="clocation.touched && clocation.invalid">
+                                                            <mat-error *ngIf="clocation.errors.required">Please specify Client Location
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                        </div>
+                                <div class="form-group">
+                                            <label class="label-icon-5 col-sm-3">Client Locality <span
+                                                    style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width"required
+                                                    [(ngModel)]="walkinModel.clientLocality" #clocality="ngModel" id="txtClientLocality"
+                                                    name="WalkinLocality" type="text" value="">
+                                                    <mat-hint *ngIf="clocality.touched && clocality.invalid">
+                                                            <mat-error *ngIf="clocality.errors.required">Please specify Client Locality
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                        </div>
+                                <div class="form-group">
+                                            <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Company Profile
+                                                <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control form-control-width input-width" data-val="true"
+                                                    [(ngModel)]="walkinModel.companyProfile" #cprofile="ngModel"
+                                                    required id="txtCompanyProfile"
+                                                    name="CompanyProfile" type="text" value="">
+                                                    <mat-hint *ngIf="cprofile.touched && cprofile.invalid">
+                                                            <mat-error *ngIf="cprofile.errors.required">Please specify CompanyProfile
+                                                            </mat-error>
+                
+                                                        </mat-hint>
+                                            </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="label-icon-1 col-sm-3">Email <span style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width" data-val="true"
+                                                        [(ngModel)]="walkinModel.email" #email="ngModel" required email id="txtEmail"
+                                                        name="Email" type="text" value="">
+                                                    <mat-hint *ngIf="email.touched && email.invalid">
+                                                        <mat-error *ngIf="email.errors.required">Email is required</mat-error>
+                                                        <mat-error *ngIf="email.errors.email">Invalid email</mat-error>
+                                                    </mat-hint>
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Contact Person <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width" data-val="true"
+                                                        [(ngModel)]="walkinModel.contactPerson " #cperson="ngModel" required id="txtContactPerson"
+                                                        name="ContactPerson" type="text" value="" />
+                                                    <mat-hint *ngIf="cperson.touched && cperson.invalid">
+                                                        <mat-error *ngIf="cperson.errors.required">ContactPerson is required
+                                                        </mat-error>
+                
+                                                    </mat-hint>
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="col-sm-3">Contact Number <span style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            +91
+                                                        </div>
+                                                        <input class="form-control form-control-width input-width input-width-con"
+                                                            data-val="true" [(ngModel)]="walkinModel.phone" #cno="ngModel" required
+                                                            id="txtPhone" name="Phone" type="text" value="">
+                                                    </div>
+                                                    <mat-hint *ngIf="cno.touched && cno.invalid">
+                                                        <mat-error *ngIf="cno.errors.required">ContactNumber is required</mat-error>
+                
+                                                    </mat-hint>
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="col-sm-3" style="white-space:nowrap">ContactNo_Landline <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            +91
+                                                        </div>
+                                                        <input class="form-control form-control-width input-width input-width-con"
+                                                            [(ngModel)]="walkinModel.contactNoLandline" #clno="ngModel" id="txtContactNo_Landline"
+                                                            name="ContactNo_Landline" type="text" value="">
+                                                    </div>
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Roles &amp;
+                                                    Responsibilities: <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        [(ngModel)]="walkinModel.rolesResponsibilties" id="txtRolesResponsibilties"
+                                                        name="RolesResponsibilties" placeholder="ui" type="text" value="">
+                                                </div>
+                                        </div>
+                                <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Venue Details </label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input class="form-control form-control-width input-width"
+                                                        [(ngModel)]="walkinModel.venueDetails" #vdetails="ngModel" id="txtAddress"
+                                                        name="venuedetails" placeholder="miyapur" type="text" value="">
+                                                </div>
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    <div class="col-sm-8">
+                                            <div class="form-group">
+                                                    <label>
+                                                        <input id="RequirePanel" name="RequirePanel" type="hidden" value="">
+                                                        <input type="checkbox" class="check check-box-2" [(ngModel)]="walkinModel.requirePanel"
+                                                            id="chkRequirePanel" name="requiredpanel" value="chkRequirePanel"
+                                                            (click)="chkRequireFPanel()">
+                                                        Panel Needed
+                                                        <br>
+                                                    </label>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label>
+                                                            <input id="SpaceNeeded" name="SpaceNeeded" type="hidden" value="">
+                                                            <input type="checkbox" class="check check-box-2" [(ngModel)]="walkinModel.spaceNeeded"
+                                                                id="chkSpace" name="SpaceNeeded" value="chkSpaceNeeded"
+                                                                (click)="chkFSpace()">Space Needed
+                                                            <br>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label>
+                                                                <input id="ResourceNeeded" name="ResourceNeeded" type="hidden" value="">
+                                                                <input type="checkbox" class="check check-box-2" [(ngModel)]="walkinModel.resourceNeeded"
+                                                                    #resorce="ngModel" id="chkResource" name="ResourceNeeded"
+                                                                    value="chkResourceNeeded" (click)="chkFResource()">Resource Needed
+                                                                <br>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                <input id="TPArrangement" name="TPArrangement" type="hidden" value="">
+                                                                <input type="checkbox" class="check check-box-2" [(ngModel)]="walkinModel.tpArrangement"
+                                                                    #tparr="ngModel" id="chkTP" name="TPArrangement"
+                                                                    value="chkTPArrangement" (click)="chkFTP()">TP Arrangement
+                                                                <br>
+                                                            </label>
+                                                        </div>
+                                       
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="col-sm-3"> Company Logo <span style="color:red;">*</span></label>
+                                            <label class="col-sm-1">:</label>
+                                            <div class="col-sm-8" style="position:relative;top:6px;">
+                                                <figure class="form-inline">
+                                                    <input data-val="true" required id="CompanyLogo" name="CompanyLogo"
+                                                        type="hidden" value="">
+                                                    <input type="file"ngModel #file="ngModel" name="image"(change)="selectCompanyLogo($event)"
+                                                        id="logoFile"><br>
+                                                    <img src="{{imgURL}}"  onerror="this.src='/assets/images/download.png'" id="imgProfile" height="80"
+                                                        width="100" >
+                                                </figure>
+                                                <label style="color:red;" id="lblLogo"></label>
+                                                <mat-hint *ngIf="file.touched && file.invalid">
+                                                    <mat-error *ngIf="file.errors.required">CompanyLogo is required</mat-error>
+            
+                                                </mat-hint>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label class="col-sm-3"></label>
+                                                <label class="col-sm-1"></label>
+                                                <div class="col-sm-8">
+                                                    <input type="submit" value="Update" (click)="updateWalkin(walkinModel)"
+                                                        class="btn btn-primary">
+                                                </div>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</form>
+</div>                                     
+
+
+
+
+
+<app-footer></app-footer>

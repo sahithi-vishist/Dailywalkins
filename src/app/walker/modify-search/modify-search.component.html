@@ -1,0 +1,137 @@
+<app-navbar></app-navbar>
+<form [formGroup]="advSearchForm" (ngSubmit)="advanceSearch()">
+    <div class="wrapper">
+        <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+            <div class="container">
+                <h1 class="page-title">Search Walkins</h1>
+                <section class="inner-page">
+                    <div id="register" class="animate form">
+                        <div class="form-horizontal ">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-8 wrapper-1">
+                                    <h1> Advance Search </h1>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Key words <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" id="txtKeySkills" formControlName="keySkills"
+                                                placeholder="java" type="text" value="" [formControl]="skillControl" [matAutocomplete]="kauto">
+                                                <mat-autocomplete #kauto="matAutocomplete">
+                                                    <mat-option *ngFor="let skill of keySkillsOptions|async" value="{{skill}}">
+                                                      {{skill}}
+                                                    </mat-option>
+                                                  </mat-autocomplete>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Location <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" id="txtLocation" formControlName="location" 
+                                                placeholder="Hyderabad" [formControl]="locControl" type="text" [matAutocomplete]="lauto">
+                                                <mat-autocomplete #lauto="matAutocomplete">
+                                                    <mat-option *ngFor="let loc of locationOptions|async" value="{{loc}}">
+                                                        {{loc}}
+                                                    </mat-option>
+                                                  </mat-autocomplete>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Education <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" id="txtEducation" formControlName="education"
+                                                type="text" value="" [formControl]="eduControl" [matAutocomplete]="eauto" [multiple]="true">
+                                                <mat-autocomplete #eauto="matAutocomplete">
+                                                    <mat-option *ngFor="let edu of educationOptions|async" value="{{edu}}">
+                                                      {{edu}}
+                                                    </mat-option>
+                                                  </mat-autocomplete>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Experience <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8" style="white-space:nowrap">
+                                            <div class="form-inline">
+
+                                                <select class="form-control" placeholder="--Select Experience--"
+                                                    id="minExp" formControlName="minExp" (change)="onSelectMinExp($event)">
+                                                    <option value="">--Select Experience--</option>
+                                                    <option *ngFor="let exp of experience" value="{{exp.experienceId}}">
+                                                        {{exp.expValue}}</option>
+
+                                                </select>
+
+                                                Year(s)&nbsp; to
+
+                                                <select class="form-control" placeholder="--Select Experience--"
+                                                    id="maxExp" formControlName="maxExp" (change)="onSelectMaxExp($event)">
+                                                    <option value="">--Select Experience--</option>
+
+                                                    <option *ngFor="let exp of experience" value="{{exp.experienceId}}">
+                                                        {{exp.expValue}}</option>
+
+                                                </select>
+                                                Year(s)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Industry <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+
+                                            <select class="form-control" formControlName="industry" (change)="onSelectIndustry($event)" id="IndustryName">
+                                                <option value="">--Select type--</option>
+                                                <option *ngFor="let ind of industries" value="{{ind.industryId}}">{{ind.industryType}}</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Role <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+
+                                            <select class="form-control" id="RoleName" formControlName="role" (change)="onSelectRole($event)">
+                                                <option>--Select Role--</option>
+                                                <option *ngFor="let role of roles" value="{{role.roleId}}">{{role.roleName}}</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3">Job Type <span style="color:red;"></span></label>
+                                        <label class="col-sm-1">:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="jType" formControlName="jobType" (change)="onSelectJobType($event)">
+                                                <option value="">--Select type--</option>
+                                                <option *ngFor="let jt of jobTypes" value="{{jt.jobTypeId}}">{{jt.jobType}}</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-8">
+
+                                            <div class="">
+                                                <input type="submit" value="Search" class="btn btn-primary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</form>

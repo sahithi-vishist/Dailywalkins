@@ -1,0 +1,503 @@
+ <app-navbar-fac></app-navbar-fac>
+
+<div id="snackbar"></div>
+
+<div class="body-content demo-index">
+    <div class="">
+
+        <form #addForm="ngForm"(ngSubmit)="addfacility()">
+            <div class="wrapper">
+                <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+                    <div class="container">
+                        <h1 class="page-title">Facility</h1>
+                        <section class="inner-page">
+                            <div id="register" class="animate form">
+                                <div class="form-horizontal ">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-8 wrapper-1">
+                                            <h1> Add </h1>
+                                            <div class="form-group">
+                                                <label class="label-icon-2  col-sm-3">Facility <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.facility"
+                                                        name="facility"#facility="ngModel" required>
+                                                        <mat-hint *ngIf="facility.touched && facility.invalid">
+                                                            <mat-error *ngIf="facility.errors.required">Facility is required</mat-error>
+                                                            
+                                                          </mat-hint>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2  col-sm-3">Location <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.location"
+                                                        name="location"#location="ngModel"pattern="[a-zA-Z ]*$" required>
+                                                        <mat-hint *ngIf="location.touched && location.invalid">
+                                                            <mat-error *ngIf="location.errors.required">location  is required</mat-error>
+                                                            <mat-error *ngIf="location.errors.pattern ">Enter valid location</mat-error>
+                                                          </mat-hint>
+                                                    </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3" style="white-space:nowrap">Locality <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.locality"
+                                                        name="locality" #locality="ngModel"pattern="[a-zA-Z ]*$" required>
+                                                        <mat-hint *ngIf="locality.touched && locality.invalid">
+                                                            <mat-error *ngIf="locality.errors.required">locality  is required</mat-error>
+                                                            <mat-error *ngIf="locality.errors.pattern ">Enter valid locality</mat-error>
+                                                          </mat-hint>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Contact Name <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8" style="white-space:nowrap">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.contactName" name="contactName"#contactName="ngModel"pattern="[a-zA-Z ]*$" required>
+                                                        <mat-hint *ngIf="contactName.touched && contactName.invalid">
+                                                            <mat-error *ngIf="contactName.errors.required">contactName  is required</mat-error>
+                                                            <mat-error *ngIf="contactName.errors.pattern ">Enter valid contactName</mat-error>
+                                                          </mat-hint>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-5 col-sm-3" style="white-space:nowrap">Email
+                                                    <span style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8" style="white-space:nowrap">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.email"
+                                                        name="email" #emailId="ngModel"required email>
+                                                        <mat-hint *ngIf="emailId.touched && emailId.invalid">
+                                                            <mat-error *ngIf="emailId.errors.required">Email Address is required</mat-error>
+                                                            <mat-error *ngIf="emailId.errors.email">Enter valid Email Address</mat-error>
+                                                          </mat-hint>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-5 col-sm-3">Contact Number <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.contactNumber" name="contactNumber"#contactNo="ngModel" required pattern="^[0-9 ]{10}$">
+                                                        <mat-hint *ngIf="contactNo.touched && contactNo.invalid">
+                                                            <mat-error *ngIf="contactNo.errors.required">Contact Number is required</mat-error>
+                                                            <mat-error *ngIf="contactNo.errors.pattern">Enter valid Mobile Number</mat-error>
+                                                          </mat-hint>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Address <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <textarea class="form-control form-control-width input-width"
+                                                        cols="20" class="form-control" [(ngModel)]="obj.address" #address="ngModel" required
+                                                        name="address" rows="2"></textarea>
+                                                        <mat-hint *ngIf="address.touched && address.invalid">
+                                                            <mat-error *ngIf="address.errors.required">Address is required</mat-error>
+                                                           
+                                                          </mat-hint>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">No of Interview Desks <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.seatingAvailabilityCount"
+                                                        name="seatingAvailability">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">No of TP Rooms <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.tpAvailabilityCount"
+                                                        name="tpAvailabilityCount">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3" style="white-space:nowrap">No of Meeting Rooms
+                                                    <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.meetingRoomsCount" name="meetingRoomsCount">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Co-Ordinators <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.coordinators" name="coordinators">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3"><span style="color:red;">Charges </span></label>
+                                                <label class="col-sm-1"></label>
+                                                <div class="col-sm-8">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Per Interview Desk <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.seatCost"
+                                                        name="seatCost">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Per TP Room <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.tproomCost"
+                                                        name="tpRoomCost">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Per
+                                                    Meeting Room <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.MeetingRoomCost" name="MeetingRoomCost">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Per
+                                                    Co-Ordinator <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.coordinatorCost" name="coordinatorCost">
+                                                </div>
+                                            </div>
+                                            <div class="form-group  form-inline">
+                                                <label class="label-icon-2 col-sm-3"
+                                                    style="white-space:nowrap">Availability Calendar <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="">
+                                                    <div class="col-sm-3">
+                                                        <input type="date" class="form-control"
+                                                            [(ngModel)]="obj.availabilityFromDate"
+                                                            name="availabilityFromDate"#availabilityFromDate="ngModel" required>
+                                                            <mat-hint *ngIf="availabilityFromDate.touched && availabilityFromDate.invalid">
+                                                                <mat-error *ngIf="availabilityFromDate.errors.required">availabilityFromDate  is required</mat-error>
+                                    
+                                                              </mat-hint>
+                                                    </div>
+                                                    <div class="col-sm-1"
+                                                        style="width:12% !important;position: relative;left: 33px;">
+                                                        <label>To </label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="date" class="form-control"
+                                                            [(ngModel)]="obj.availabilityToDate"
+                                                            name="availabilityToDate"#availabilityToDate="ngModel" required>
+                                                            <mat-hint *ngIf="availabilityToDate.touched && availabilityToDate.invalid">
+                                                                <mat-error *ngIf="availabilityToDate.errors.required">availabilityFromDate  is required</mat-error>
+                                    
+                                                              </mat-hint>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Additional Information <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <textarea cols="20" class="form-control" [(ngModel)]="obj.comments"
+                                                        name="Comments" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3"> <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1"></label>
+                                                <div class="col-sm-8">
+                                                    <input type="submit" value="Submit" class="btn btn-primary"[title]= 'addForm.valid ? "click to submit":"Please update the required fields"' [disabled] = '!addForm.control.valid'>&nbsp;
+                                                    <input type="button" value="Cancel" class="btn btn-primary"(click)="cancel()">
+                                                </div>s
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <!-- <form (ngSubmit)="addfacility()">
+            <input name="__RequestVerificationToken" type="hidden"
+                value="od5zq2_AEyys2e9m6_q2R186YswULJgq8ykyZmgvvFJgGDag0C17Pc10GuKRhp09V9zAF98iH8yqyGKpJXvkyzjrdbzo8dIEgXE14uj4pJo1">
+            <div class="wrapper">
+                <div class="wrapper-container" style="background: #fff url(../assets/images/bg.jpg) repeat top left;">
+                    <div class="container">
+                        <h1 class="page-title">Facility</h1>
+                        <section class="inner-page">
+                            <div id="register" class="animate form">
+                                <div class="form-horizontal ">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-8 wrapper-1">
+                                            <h1> Add </h1>
+                                            <div class="form-group">
+                                                <label class="label-icon-2  col-sm-3">Facility <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.facility"
+                                                        name="facility"#facility="ngModel" required>
+                                                        <mat-hint *ngIf="facility.touched && facility.invalid">
+                                                            <mat-error *ngIf="facility.errors.required">Facility is required</mat-error>
+                                                           
+                                                          </mat-hint>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2  col-sm-3">Location <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.location"
+                                                        name="location" #location="ngModel"pattern="[a-zA-Z ]*$" required>
+                                                        <mat-hint *ngIf="location.touched && location.invalid">
+                                                            <mat-error *ngIf="location.errors.required">location  is required</mat-error>
+                                                            <mat-error *ngIf="location.errors.pattern ">Enter valid location</mat-error>
+                                                          </mat-hint>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3" style="white-space:nowrap">Locality <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.locality"
+                                                        name="locality" #locality="ngModel"pattern="[a-zA-Z ]*$" required>
+                                                        <mat-hint *ngIf="locality.touched && location.invalid">
+                                                            <mat-error *ngIf="locality.errors.required">locality  is required</mat-error>
+                                                            <mat-error *ngIf="locality.errors.pattern ">Enter valid locality</mat-error>
+                                                          </mat-hint>
+                                                        
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Contact Name <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8" style="white-space:nowrap">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.contactName" name="contactName" #contactName="ngModel"pattern="[a-zA-Z ]*$" required>
+                                                        <mat-hint *ngIf="contactName.touched && contactName.invalid">
+                                                            <mat-error *ngIf="contactName.errors.required">contactName  is required</mat-error>
+                                                            <mat-error *ngIf="contactName.errors.pattern ">Enter valid contactName</mat-error>
+                                                          </mat-hint>
+                                                    </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-5 col-sm-3" style="white-space:nowrap">Email
+                                                    <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8" style="white-space:nowrap">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.email"
+                                                        name="email"required email #emailId="ngModel">
+                                                        <mat-hint *ngIf="emailId.touched && emailId.invalid">
+                                                            <mat-error *ngIf="emailId.errors.required">Email Address is required</mat-error>
+                                                            <mat-error *ngIf="emailId.errors.email">Enter valid Email Address</mat-error>
+                                                          </mat-hint>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-5 col-sm-3">Contact Number <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.contactNumber" name="contactNumber" #contactNumber="ngModel"pattern="^[0-9 ]{10}$" required>
+                                                        <mat-hint *ngIf="contactNumber.touched && contactNumber.invalid">
+                                                            <mat-error *ngIf="contactNumber.errors.required">contactNumber  is required</mat-error>
+                                                            <mat-error *ngIf="contactNumber.errors.pattern ">Enter valid contactNumber</mat-error>
+                                                          </mat-hint>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Address <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <textarea class="form-control form-control-width input-width"
+                                                        cols="20" class="form-control" [(ngModel)]="obj.address"
+                                                        name="address" rows="2" #address="ngModel" required>
+                                                        <mat-hint *ngIf="address.touched && address.invalid">
+                                                            <mat-error *ngIf="address.errors.required">Address  is required</mat-error>
+
+                                                          </mat-hint></textarea>
+                                                       
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">No of Interview Desks <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.seatingAvailabilityCount"
+                                                        name="seatingAvailability">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">No of TP Rooms <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.tpAvailabilityCount"
+                                                        name="tpAvailabilityCount">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3" style="white-space:nowrap">No of Meeting Rooms
+                                                    <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.meetingRoomsCount" name="meetingRoomsCount">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3">Co-Ordinators <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.coordinators" name="coordinators">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3"><span style="color:red;">Charges </span></label>
+                                                <label class="col-sm-1"></label>
+                                                <div class="col-sm-8">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Per Interview Desk <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.seatCost"
+                                                        name="seatCost">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Per TP Room <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" [(ngModel)]="obj.tproomCost"
+                                                        name="tpRoomCost">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Per
+                                                    Meeting Room <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.MeetingRoomCost" name="MeetingRoomCost">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3" style="white-space:nowrap">Per
+                                                    Co-Ordinator <span style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="obj.coordinatorCost" name="coordinatorCost">
+                                                </div>
+                                            </div>
+                                            <div class="form-group  form-inline">
+                                                <label class="label-icon-2 col-sm-3"
+                                                    style="white-space:nowrap">Availability Calendar <span
+                                                        style="color:red;">*</span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="">
+                                                    <div class="col-sm-3">
+                                                        <input type="date" class="form-control"
+                                                            [(ngModel)]="obj.availabilityFromDate"
+                                                            name="availabilityFromDate" #availabilityFromDate="ngModel" required>
+                                                            <mat-hint *ngIf="availabilityFromDate.touched && availabilityFromDate.invalid">
+                                                                <mat-error *ngIf="availabilityFromDate.errors.required">availabilityFromDate  is required</mat-error>
+                                                              </mat-hint>
+                                                       
+                                                    </div>
+                                                    <div class="col-sm-1"
+                                                        style="width:12% !important;position: relative;left: 33px;">
+                                                        <label>To </label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="date" class="form-control"
+                                                            [(ngModel)]="obj.availabilityToDate"
+                                                            name="availabilityToDate" #availabilityToDate="ngModel"sss required>
+                                                            <mat-hint *ngIf="availabilityToDate.touched && availabilityFromDate.invalid">
+                                                                <mat-error *ngIf="availabilityToDate.errors.required">availabilityToDate  is required</mat-error>
+                
+                                                              </mat-hint>
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3">Additional Information <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1">:</label>
+                                                <div class="col-sm-8">
+                                                    <textarea cols="20" class="form-control" [(ngModel)]="obj.comments"
+                                                        name="Comments" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-icon-2 col-sm-3"> <span
+                                                        style="color:red;"></span></label>
+                                                <label class="col-sm-1"></label>
+                                                <div class="col-sm-8">
+                                                    <input type="submit" value="Submit" class="btn btn-primary">&nbsp;
+                                                    <input type="button" value="Cancel" class="btn btn-primary"
+                                                        onclick="return close();">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+        </form> -->
+    </div>
+
+    <app-footer></app-footer> 

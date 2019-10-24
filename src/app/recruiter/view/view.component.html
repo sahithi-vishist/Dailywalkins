@@ -1,0 +1,116 @@
+<app-navbar-r></app-navbar-r>
+<div class="wrapper">
+        <div class="wrapper-container" style="background: #fff url(../../assets/images/bg.jpg) repeat top left;">
+            <div class="container">
+                <h1 class="page-title"> My Profile</h1>
+    
+                <div>
+                    <div class="alert alert-success" style="height: 46px; display: none;" id="divsucc">
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="inner-page">
+                    <div class="portlet">
+                        <div class="portlet-header">
+                            <h3>
+                                Personal Information
+                                <span class="portlet-tools pull-right btn btn-primary btn-sm">
+                                   <a routerLink="/recruitment/edit">Edit</a>
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="portlet-content">
+                            <div class="form-horizontal custom-form">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" for="First_Name">First Name</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+                                            <div class="col-md-8">
+                                                    {{fName}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" for="Last_Name">Last Name</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+                                            <div class="col-md-8">
+                                                    {{lName}}
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" for="Email">Email</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+                                            <div class="col-md-8">
+                                                    {{email}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" for="Location">Location</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+                                            <div class="col-md-8">
+                                                    {{location}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" for="Address">Address</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+                                            <div class="col-md-8">
+                                                    {{address}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group contactNumber">
+                                            <label class="control-label col-md-3" for="Contact_Number">Contact Number</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+    
+                                            <div class="col-md-8">
+                                                    {{contactNo}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" for="ContactNo_Landline">ContactNo_Landline</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+                                            <div class="col-md-8">
+                                                    {{contactnoLandline}}
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" for="Industry">Industry</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+                                            <div class="col-md-8">
+                                                    {{industry}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" for="Company_Profile">Company Profile</label>
+                                            <label class="col-sm-1" style="width:3% !important">:</label>
+                                            <div class="col-md-8">
+                                                    {{companyProfile}}
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+<<<<<<< HEAD
+    <img src="/assets/images/Profile-Avatar.jpg">
+=======
+    <img src="data:image/jpeg;base64,{{companyLogo}}"alt="Logo Not Loaded">
+>>>>>>> 74bd2b30d3b8c01b5d4424677127872b43bb8c12
+    
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>

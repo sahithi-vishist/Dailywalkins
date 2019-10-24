@@ -1,0 +1,292 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+    <div class="wrapper-container" style="background: #fff url(../../assets/images/bg.jpg) repeat top left;">
+        <div class="container">
+            <h1 class="page-title"> My Profile</h1>
+        </div>
+
+        <div>
+            <label style="color:green;"></label>
+        </div>
+
+        <div class="container">
+            <div class="inner-page">
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <h3>
+                            Personal Information
+                            <span class="portlet-tools pull-right btn btn-primary btn-sm">
+                                <a routerLink='/walker/edit'>Edit</a>
+                            </span>
+                        </h3>
+                    </div>
+
+                    <div class="portlet-content">
+                        <div class="form-horizontal custom-form">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="First_Name">First Name</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+                                        <div class="col-md-8">
+                                            {{result['firstName']}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="Last_Name">Last Name</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+                                        <div class="col-md-8">
+                                            {{result['lastName']}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="Gender">Gender</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+                                        <div class="col-md-8">
+                                            {{result['gender']}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="Email">Email</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+                                        <div class="col-md-8">
+                                            {{result['email']}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="Location">Location</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+                                        <div class="col-md-8">
+                                            {{result['location'].city}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group contactNumber">
+                                        <label class="control-label col-md-3" for="Contact_Number">Contact
+                                            Number</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+
+                                        <div class="col-md-8">
+                                            {{result['contactNo']}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"
+                                            for="ContactNo_Landline">ContactNo_Landline</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+                                        <div class="col-md-8">
+                                            {{result['contactNoLandline']}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="Date_Of_Birth">Date Of Birth</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+                                        <div class="col-md-4">
+
+                                            <label class="" for=""> {{result['dateOfBirth']|date:'yyyy-MM-dd'}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="Languages_Known">Languages
+                                            Known</label>
+                                        <label class="col-sm-1" style="width:3% !important">:</label>
+                                        <div class="col-md-8">
+                                            {{result['languagesKnown']}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <img src="data:image/jpeg;base64,{{result['photo']}}" alt="Logo Not Loaded"
+                                            id="imgProfile">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-page" style="min-height: 200px;">
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <h3>
+                            Educational Information
+                            <span class="portlet-tools pull-right btn btn-primary btn-sm">
+                                <a routerLink="/walker/edit">Edit</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="portlet-content">
+                        <div class="form-horizontal custom-form">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Education">Education</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{education}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Institute">Institute</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{result['institute']}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Year_Of_Pass">Year Of Pass</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{result['yearOfPass']}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-page">
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <h3>
+                            Experience Information
+                            <span class="portlet-tools pull-right btn btn-primary btn-sm">
+                                <a routerLink='/walker/edit'>Edit</a>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="portlet-content">
+                        <div class="form-horizontal custom-form">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Experience">Experience</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    <div class="form-inline">
+                                        <input data-val="true" data-val-number="The field Experience must be a number."
+                                            data-val-required="Experience details are Required" id="Experience"
+                                            name="Experience" type="hidden" value="2.6">
+                                        {{result['experience']}} Years
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="CurrentCTC">Current CTC</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-sm-8">
+                                    <div class="form-inline">
+                                        <input data-val="true" data-val-number="The field Current CTC must be a number."
+                                            data-val-required="CTC details are Required" id="CurrentCTC"
+                                            name="CurrentCTC" type="hidden" value="6.6">
+                                        {{result['currentCTC']}} lpa
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Industry">Industry</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{industryType}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Role">Role</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{role}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="white-space:nowrap">Key Skills </label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{result['keySkills']}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="ResumeHeadLine">Resume HeadLine</label>
+
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{result['resumeHeadLine']}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="white-space:nowrap">Current Designation
+                                </label>
+
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{result['currentDesignation']}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="white-space:nowrap">Current Company <span
+                                        style="color:red;"></span></label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{result['currentCompany']}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="PreferredLocation">Preferred Location</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{result['preferredLocation']}}
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="NoticePeriod">Notice Period</label>
+                                <label class="col-sm-1" style="width:3% !important">:</label>
+                                <div class="col-md-8">
+                                    {{noticePeriod}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-page">
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <h3>
+                            Uploaded Resume
+                            <span class="portlet-tools pull-right btn btn-primary btn-sm">
+                                <a routerLink="/walker/edit">Edit</a>
+                            </span>
+                            <span class="portlet-tools pull-right btn btn-primary btn-sm"
+                                style="position: relative;left: -12px;">
+                                <a href="/Walker/DownloadResume">Download</a>
+                            </span>
+
+                        </h3>
+                    </div>
+                    <div class="portlet-content">
+                        <div class="clearboth">
+                            <div class="iframe-demo">&nbsp;</div>
+                            <label id="lblresume" style="color:red"></label>
+                           
+                            <iframe src="{{resume}}" type="application/pdf" width="100%" height="100%"></iframe>
+                            <!-- <img width='100%' height='100%' src="data:image/doc;base64,{{result['resume']}}"/> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
