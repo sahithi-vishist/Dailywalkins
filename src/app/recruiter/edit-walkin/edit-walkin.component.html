@@ -190,7 +190,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                     bindLabel="expValue" (change)="selectMinExp($event)"
                                                     placeholder="Select minimum" ngModel #expMin="ngModel"
                                                     appendTo="body" name="expmin"
-                        
+                                                    style="display:inline-block;width:110px;height:30px"
                                                     [(ngModel)]="walkinModel.expMin">
                                             </ng-select>
     
@@ -201,7 +201,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                 bindLabel="expValue" (change)="selectMaxExp($event)"
                                                 placeholder="Select minimum" ngModel #expMax="ngModel"
                                                 appendTo="body" name="expmax"
-                    
+                                                style="display:inline-block;width:110px;height:30px"
                                                 [(ngModel)]="walkinModel.expMax">
                                         </ng-select> Year(s)
                                                 <mat-hint
@@ -430,7 +430,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                         bindLabel="salValue" (change)="selectMinSalary($event)"
                                                          ngModel #salMin="ngModel"
                                                         appendTo="body" name="salarymin"
-                            
+                                                        style="display:inline-block;width:110px;height:30px"
                                                         [(ngModel)]="walkinModel.minSal">
                                                 </ng-select>
                                                     Lakh(s)&nbsp; to
@@ -438,7 +438,7 @@ button.multiselect.dropdown-toggle.btn.btn-default {
                                                     bindLabel="salValue" (change)="selectMaxSalary($event)"
                                                      ngModel #salMax="ngModel"
                                                     appendTo="body" name="salarymax"
-                        
+                                                    style="display:inline-block;width:110px;height:30px"
                                                     [(ngModel)]="walkinModel.maxSal">
                                             </ng-select>
                                                     Lakh(s)

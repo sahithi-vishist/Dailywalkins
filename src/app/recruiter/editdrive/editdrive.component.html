@@ -74,7 +74,7 @@
                                                             <div class="form-inline">
                                                                 <ng-select [items]="experience" bindLabel="expValue"
                                                                     (change)="selectExpmin($event)"
-                                                                    formControlName="ExpMin" appendTo="body"
+                                                                    formControlName="ExpMin" appendTo="body" style="display:inline-block;width:110px;height:30px"
                                                                     [(ngModel)]="driveformmodel.experienceMin">
                                                                 </ng-select>
 
@@ -85,7 +85,7 @@
                                                                 <ng-select [items]="experience" bindLabel="expValue"
                                                                     (change)="selectExpmax($event)"
                                                                     placeholder="Select minimum"
-                                                                    formControlName="ExpMax" appendTo="body"
+                                                                    formControlName="ExpMax" appendTo="body" style="display:inline-block;width:110px;height:30px"
                                                                     [(ngModel)]="driveformmodel.experienceMax">
                                                                 </ng-select>
                                                                 Year(s)
@@ -375,14 +375,14 @@
 
                                                                 <ng-select [items]="salary" bindLabel="salValue"
                                                                     (change)="selectMinSalary($event)"
-                                                                    formControlName="SalMin" appendTo="body"
+                                                                    formControlName="SalMin" appendTo="body" style="display:inline-block;width:110px;height:30px"
                                                                     [(ngModel)]="driveformmodel.salaryMin">
                                                                 </ng-select>
                                                                 Lakh(s)
                                                                 &nbsp; to
                                                                 <ng-select [items]="salary" bindLabel="salValue"
                                                                     (change)="selectMaxSalary($event)"
-                                                                    formControlName="SalMax" appendTo="body"
+                                                                    formControlName="SalMax" appendTo="body" style="display:inline-block;width:110px;height:30px"
                                                                     [(ngModel)]="driveformmodel.salaryMax">
                                                                 </ng-select>
                                                                 Lakh(s)

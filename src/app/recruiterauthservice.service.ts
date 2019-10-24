@@ -120,7 +120,7 @@ getCompanyNames(){
   return this.http.get('http://localhost:62222/getcompanies');
 }
 getDesignation(){
-  return this.http.get('http://localhost:62222/getdesignationService');
+  return this.http.get('http://localhost:62222/getdesignations');
 }
 getAllLocations(){
   return this.http.get('http://localhost:62222/getAllLocations');
